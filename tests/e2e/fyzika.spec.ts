@@ -99,3 +99,87 @@ test.describe('Prevodník jednotiek', () => {
     await expect(page.getByTestId('equation-hint')).toContainText('m')
   })
 })
+
+test.describe('Kvíz — Medzinárodná sústava jednotiek', () => {
+  test.beforeEach(async ({ goto }) => {
+    await goto('/fyzika/uvod/medzinarodna-sustava', { waitUntil: 'hydration' })
+  })
+
+  test('kvíz sekcia je viditeľná', async ({ page }) => {
+    await expect(page.getByRole('heading', { name: 'Otestuj sa' })).toBeVisible()
+    await expect(page.getByTestId('quiz-progress')).toHaveText('Otázka 1 z 7')
+    await expect(page.getByTestId('quiz-question')).toBeVisible()
+  })
+
+  test('zobrazujú sa 4 možnosti odpovede', async ({ page }) => {
+    for (let i = 0; i < 4; i++) {
+      await expect(page.getByTestId(`quiz-option-${i}`)).toBeVisible()
+    }
+  })
+
+  test('správna odpoveď zobrazí zelenú spätnú väzbu', async ({ page }) => {
+    // Otázka 1: správna odpoveď je index 1 — "meter (m)"
+    await page.getByTestId('quiz-option-1').click()
+    await expect(page.getByTestId('quiz-feedback')).toContainText('✓ Správne!')
+    await expect(page.getByTestId('quiz-feedback')).toBeVisible()
+  })
+
+  test('nesprávna odpoveď zobrazí červenú spätnú väzbu', async ({ page }) => {
+    // Otázka 1: nesprávna odpoveď — index 0 "kilometer (km)"
+    await page.getByTestId('quiz-option-0').click()
+    await expect(page.getByTestId('quiz-feedback')).toContainText('✗ Nesprávne')
+  })
+
+  test('vysvetlenie sa zobrazí po odpovedi', async ({ page }) => {
+    await page.getByTestId('quiz-option-1').click()
+    await expect(page.getByTestId('quiz-feedback')).toContainText('Meter (m) je základná jednotka')
+  })
+
+  test('po odpovedi nie je možné zmeniť odpoveď', async ({ page }) => {
+    await page.getByTestId('quiz-option-0').click()
+    await expect(page.getByTestId('quiz-option-1')).toBeDisabled()
+    await expect(page.getByTestId('quiz-option-2')).toBeDisabled()
+  })
+
+  test('tlačidlo Ďalšia otázka posunie na druhú otázku', async ({ page }) => {
+    await page.getByTestId('quiz-option-1').click()
+    await page.getByTestId('quiz-next-btn').click()
+    await expect(page.getByTestId('quiz-progress')).toHaveText('Otázka 2 z 7')
+    await expect(page.getByTestId('quiz-feedback')).not.toBeVisible()
+  })
+
+  test('skóre sa zvýši po správnej odpovedi', async ({ page }) => {
+    await page.getByTestId('quiz-option-1').click()
+    await page.getByTestId('quiz-next-btn').click()
+    await expect(page.getByText('1 správnych')).toBeVisible()
+  })
+
+  test('skóre sa nezvýši po nesprávnej odpovedi', async ({ page }) => {
+    await page.getByTestId('quiz-option-0').click()
+    await page.getByTestId('quiz-next-btn').click()
+    await expect(page.getByText('0 správnych')).toBeVisible()
+  })
+
+  test('po poslednej otázke sa zobrazí obrazovka výsledkov', async ({ page }) => {
+    // Správne odpovede: 1, 2, 2, 2, 3, 3, 1
+    const correct = [1, 2, 2, 2, 3, 3, 1]
+    for (const idx of correct) {
+      await page.getByTestId(`quiz-option-${idx}`).click()
+      await page.getByTestId('quiz-next-btn').click()
+    }
+    await expect(page.getByTestId('quiz-result')).toBeVisible()
+    await expect(page.getByTestId('quiz-score')).toHaveText('7 / 7')
+  })
+
+  test('tlačidlo Skúsiť znova resetuje kvíz', async ({ page }) => {
+    // Rýchlo prejdi celý kvíz (ľubovoľné odpovede)
+    for (let q = 0; q < 7; q++) {
+      await page.getByTestId('quiz-option-0').click()
+      await page.getByTestId('quiz-next-btn').click()
+    }
+    await expect(page.getByTestId('quiz-result')).toBeVisible()
+    await page.getByTestId('quiz-reset-btn').click()
+    await expect(page.getByTestId('quiz-result')).not.toBeVisible()
+    await expect(page.getByTestId('quiz-progress')).toHaveText('Otázka 1 z 7')
+  })
+})

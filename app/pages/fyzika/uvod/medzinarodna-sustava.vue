@@ -208,7 +208,7 @@
     </section>
 
     <!-- Summary box -->
-    <div class="bg-gray-50 border border-gray-200 rounded-2xl p-6">
+    <div class="bg-gray-50 border border-gray-200 rounded-2xl p-6 mb-12">
       <h3 class="font-bold text-gray-900 mb-3">Zhrnutie</h3>
       <ul class="space-y-2 text-sm text-gray-700">
         <li class="flex gap-2"><span class="text-emerald-500 font-bold">✓</span> Sústava SI má <strong>7 základných jednotiek</strong> — meter, kilogram, sekunda, ampér, kelvin, mól, kandela.</li>
@@ -216,6 +216,99 @@
         <li class="flex gap-2"><span class="text-emerald-500 font-bold">✓</span> Odvodené jednotky (newton, joule, watt…) vznikajú kombináciou základných.</li>
       </ul>
     </div>
+
+    <!-- Section 5: Quiz -->
+    <section>
+      <h2 class="text-2xl font-bold text-gray-900 mb-1">Otestuj sa</h2>
+      <p class="text-gray-500 mb-6">Vyber správnu odpoveď — okamžite uvidíš či si to vedel.</p>
+
+      <!-- Results screen -->
+      <div v-if="quizFinished" data-testid="quiz-result" class="bg-white border border-gray-200 rounded-2xl p-8 text-center">
+        <div class="text-6xl mb-4">{{ scoreEmoji }}</div>
+        <p data-testid="quiz-score" class="text-3xl font-extrabold text-gray-900 mb-1">{{ quizScore }} / {{ quiz.length }}</p>
+        <p class="text-gray-500 mb-6">{{ scoreMessage }}</p>
+        <button
+          data-testid="quiz-reset-btn"
+          class="px-6 py-3 rounded-xl bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition-colors"
+          @click="resetQuiz"
+        >
+          Skúsiť znova
+        </button>
+      </div>
+
+      <!-- Question screen -->
+      <div v-else class="bg-white border border-gray-200 rounded-2xl p-6">
+
+        <!-- Progress -->
+        <div class="flex items-center justify-between mb-2">
+          <span data-testid="quiz-progress" class="text-sm font-semibold text-gray-400">Otázka {{ currentQ + 1 }} z {{ quiz.length }}</span>
+          <span class="text-sm font-semibold text-emerald-600">{{ quizScore }} správnych</span>
+        </div>
+        <div class="w-full bg-gray-100 rounded-full h-1.5 mb-6">
+          <div
+            class="bg-emerald-500 h-1.5 rounded-full transition-all duration-300"
+            :style="{ width: `${(currentQ / quiz.length) * 100}%` }"
+          />
+        </div>
+
+        <!-- Question -->
+        <p data-testid="quiz-question" class="text-lg font-semibold text-gray-900 mb-5">{{ currentQuestion.question }}</p>
+
+        <!-- Options -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
+          <button
+            v-for="(option, i) in currentQuestion.options"
+            :key="i"
+            :data-testid="`quiz-option-${i}`"
+            :disabled="selectedAnswer !== null"
+            :class="[
+              'text-left px-4 py-3 rounded-xl border-2 font-medium text-sm transition-all duration-150',
+              selectedAnswer === null
+                ? 'border-gray-200 text-gray-700 hover:border-emerald-400 hover:bg-emerald-50 cursor-pointer'
+                : i === currentQuestion.correctIndex
+                  ? 'border-emerald-500 bg-emerald-50 text-emerald-800'
+                  : i === selectedAnswer
+                    ? 'border-red-400 bg-red-50 text-red-800'
+                    : 'border-gray-100 text-gray-400 cursor-not-allowed',
+            ]"
+            @click="selectAnswer(i)"
+          >
+            <span class="font-bold mr-2 text-gray-400">{{ ['A', 'B', 'C', 'D'][i] }}.</span>
+            {{ option }}
+          </button>
+        </div>
+
+        <!-- Feedback -->
+        <Transition name="fade">
+          <div v-if="selectedAnswer !== null">
+            <div
+              data-testid="quiz-feedback"
+              :class="[
+                'rounded-xl p-4 mb-4 text-sm',
+                selectedAnswer === currentQuestion.correctIndex
+                  ? 'bg-emerald-50 border border-emerald-200 text-emerald-800'
+                  : 'bg-red-50 border border-red-200 text-red-800',
+              ]"
+            >
+              <p class="font-bold mb-1">
+                {{ selectedAnswer === currentQuestion.correctIndex ? '✓ Správne!' : '✗ Nesprávne' }}
+              </p>
+              <p>{{ currentQuestion.explanation }}</p>
+            </div>
+            <div class="flex justify-end">
+              <button
+                data-testid="quiz-next-btn"
+                class="px-5 py-2.5 rounded-xl bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition-colors"
+                @click="nextQuestion"
+              >
+                {{ currentQ < quiz.length - 1 ? 'Ďalšia otázka →' : 'Zobraziť výsledok' }}
+              </button>
+            </div>
+          </div>
+        </Transition>
+
+      </div>
+    </section>
 
   </div>
 </template>
@@ -229,6 +322,109 @@ import {
   formatNumber,
   type LinearUnit,
 } from '~/utils/converter'
+
+// ── Quiz ──────────────────────────────────────────────────────────────────
+
+interface QuizQuestion {
+  question: string
+  options: string[]
+  correctIndex: number
+  explanation: string
+}
+
+const quiz: QuizQuestion[] = [
+  {
+    question: 'Ktorá je základná jednotka dĺžky v sústave SI?',
+    options: ['kilometer (km)', 'meter (m)', 'centimeter (cm)', 'míľa (mi)'],
+    correctIndex: 1,
+    explanation: 'Meter (m) je základná jednotka dĺžky.',
+  },
+  {
+    question: 'Koľko metrov je 1 kilometer?',
+    options: ['100 m', '10 000 m', '1 000 m', '10 m'],
+    correctIndex: 2,
+    explanation: 'Predpona kilo (k) znamená 10³ = 1 000. Teda 1 km = 1 000 m.',
+  },
+  {
+    question: 'Čo meria jednotka ampér (A)?',
+    options: ['Napätie', 'Odpor', 'Elektrický prúd', 'Elektrický náboj'],
+    correctIndex: 2,
+    explanation: 'Ampér (A) je základná jednotka elektrického prúdu — meria množstvo náboja prúdiaceho prierezom vodiča za sekundu.',
+  },
+  {
+    question: 'Aká predpona SI znamená 10⁻³ (tisícina)?',
+    options: ['mikro (μ)', 'centi (c)', 'mili (m)', 'nano (n)'],
+    correctIndex: 2,
+    explanation: 'Mili (m) znamená 10⁻³ = 0,001. Príklady: milimeter, miligram, milisekunda.',
+  },
+  {
+    question: 'Koľko základných jednotiek obsahuje sústava SI?',
+    options: ['5', '6', '8', '7'],
+    correctIndex: 3,
+    explanation: 'Sústava SI má 7 základných jednotiek: meter, kilogram, sekunda, ampér, kelvin, mól a kandela.',
+  },
+  {
+    question: 'Ktorá teplota zodpovedá absolútnej nule 0 K?',
+    options: ['0 °C', '−100 °C', '−373,15 °C', '−273,15 °C'],
+    correctIndex: 3,
+    explanation: 'Absolútna nula je 0 K = −273,15 °C. Je to najnižšia možná teplota — pri nej ustávajú všetky tepelné pohyby častíc.',
+  },
+  {
+    question: 'Čo meria jednotka kandela (cd)?',
+    options: ['Teplotu', 'Svietivosť', 'Energiu', 'Látkové množstvo'],
+    correctIndex: 1,
+    explanation: 'Kandela (cd) je základná jednotka svietivosti — meria intenzitu svetelného žiarenia v danom smere.',
+  },
+]
+
+const currentQ = ref(0)
+const selectedAnswer = ref<number | null>(null)
+const quizScore = ref(0)
+const quizFinished = ref(false)
+
+const currentQuestion = computed(() => quiz[currentQ.value] as QuizQuestion)
+
+function selectAnswer(i: number) {
+  if (selectedAnswer.value !== null) return
+  selectedAnswer.value = i
+  if (i === currentQuestion.value.correctIndex) {
+    quizScore.value++
+  }
+}
+
+function nextQuestion() {
+  if (currentQ.value < quiz.length - 1) {
+    currentQ.value++
+    selectedAnswer.value = null
+  } else {
+    quizFinished.value = true
+  }
+}
+
+function resetQuiz() {
+  currentQ.value = 0
+  selectedAnswer.value = null
+  quizScore.value = 0
+  quizFinished.value = false
+}
+
+const scoreEmoji = computed(() => {
+  const ratio = quizScore.value / quiz.length
+  if (ratio === 1) return '🏆'
+  if (ratio >= 0.7) return '🎉'
+  if (ratio >= 0.4) return '💪'
+  return '📚'
+})
+
+const scoreMessage = computed(() => {
+  const ratio = quizScore.value / quiz.length
+  if (ratio === 1) return 'Perfektné! Zvládol si všetky otázky!'
+  if (ratio >= 0.7) return 'Výborne! Látku ovládaš dobre.'
+  if (ratio >= 0.4) return 'Nie je to zlé, ale oplatí sa zopakovať.'
+  return 'Prejdi si tému ešte raz a skús to znova.'
+})
+
+// ── Converter ──────────────────────────────────────────────────────────────
 
 const selectedCategoryIndex = ref(0)
 const fromValue = ref<number>(1)
@@ -333,3 +529,15 @@ const derivedUnits = [
   { name: 'Coulomb',  symbol: 'C',  quantity: 'el. náboj',  definition: '1 C = 1 A·s — množstvo elektrického náboja', color: 'bg-yellow-500' },
 ]
 </script>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(-4px);
+}
+</style>
