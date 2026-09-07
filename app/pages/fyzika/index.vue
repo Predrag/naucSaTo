@@ -12,10 +12,15 @@
 
     <!-- Topic grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div
+      <component
+        :is="topic.link ? nuxtLink : 'div'"
         v-for="topic in topics"
         :key="topic.slug"
-        class="flex flex-col rounded-2xl border border-gray-200 bg-white overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-200 cursor-default"
+        :to="topic.link || undefined"
+        :class="[
+          'flex flex-col rounded-2xl border border-gray-200 bg-white overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-200',
+          topic.link ? 'cursor-pointer' : 'cursor-default',
+        ]"
       >
         <div :class="['px-8 py-8 flex items-center gap-4', topic.bg]">
           <span class="text-4xl">{{ topic.icon }}</span>
@@ -23,17 +28,29 @@
         </div>
         <div class="p-5 flex flex-col flex-1">
           <p class="text-sm text-gray-500 leading-relaxed flex-1">{{ topic.description }}</p>
-          <span class="mt-4 inline-block text-xs font-semibold text-gray-400 bg-gray-100 rounded-full px-3 py-1 self-start">
+          <span
+            v-if="topic.link"
+            class="mt-4 inline-block text-xs font-semibold text-emerald-600 bg-emerald-50 rounded-full px-3 py-1 self-start"
+          >
+            Otvoriť →
+          </span>
+          <span
+            v-else
+            class="mt-4 inline-block text-xs font-semibold text-gray-400 bg-gray-100 rounded-full px-3 py-1 self-start"
+          >
             Čoskoro
           </span>
         </div>
-      </div>
+      </component>
     </div>
 
   </div>
 </template>
 
 <script setup lang="ts">
+import { resolveComponent } from 'vue'
+const nuxtLink = resolveComponent('NuxtLink')
+
 const topics = [
   {
     slug: 'uvod',
@@ -41,6 +58,7 @@ const topics = [
     title: 'Úvod do fyziky',
     description: 'Fyzikálne veličiny, jednotky SI, meranie a experimentovanie. Základ, bez ktorého sa nezaobídeme.',
     bg: 'bg-emerald-500',
+    link: '/fyzika/uvod',
   },
   {
     slug: 'mechanika',
