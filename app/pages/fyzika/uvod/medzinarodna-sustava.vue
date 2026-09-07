@@ -2,7 +2,7 @@
   <div class="max-w-4xl mx-auto px-4 py-12">
 
     <!-- Breadcrumb -->
-    <nav class="flex items-center gap-2 text-sm text-gray-400 mb-8 flex-wrap">
+    <nav data-testid="breadcrumb" class="flex items-center gap-2 text-sm text-gray-400 mb-8 flex-wrap">
       <NuxtLink to="/fyzika" class="hover:text-emerald-600 transition-colors">⚡ Fyzika</NuxtLink>
       <span>/</span>
       <NuxtLink to="/fyzika/uvod" class="hover:text-emerald-600 transition-colors">Úvod do fyziky</NuxtLink>
@@ -125,13 +125,13 @@
           <button
             v-for="(cat, i) in converterCategories"
             :key="cat.name"
-            @click="selectCategory(i)"
             :class="[
               'flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold transition-colors',
               selectedCategoryIndex === i
                 ? 'bg-emerald-600 text-white shadow-sm'
                 : 'bg-gray-100 text-gray-600 hover:bg-gray-200',
             ]"
+            @click="selectCategory(i)"
           >
             {{ cat.icon }} {{ cat.name }}
           </button>
@@ -145,16 +145,17 @@
             <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1.5">Hodnota</label>
             <div class="flex rounded-xl border border-gray-300 overflow-hidden focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-100 transition">
               <input
-                v-model="fromValue"
+                v-model.number="fromValue"
                 type="number"
                 placeholder="0"
+                data-testid="converter-input"
                 class="flex-1 min-w-0 px-4 py-3 text-lg font-semibold text-gray-900 outline-none bg-white"
-              />
+              >
               <select
                 v-model="fromUnitIndex"
                 class="px-3 py-3 bg-gray-50 border-l border-gray-300 text-sm font-semibold text-gray-700 outline-none cursor-pointer"
               >
-                <option v-for="(unit, j) in activeCategory.units" :key="unit.symbol" :value="j">
+                <option v-for="(unit, j) in activeCategory?.units ?? []" :key="unit.symbol" :value="j">
                   {{ unit.symbol }}
                 </option>
               </select>
@@ -164,9 +165,10 @@
           <!-- Swap button -->
           <div class="flex justify-center sm:pb-1">
             <button
-              @click="swapUnits"
               class="w-10 h-10 rounded-full bg-gray-100 hover:bg-emerald-100 hover:text-emerald-700 text-gray-500 flex items-center justify-center text-lg transition-colors"
               title="Prehodiť jednotky"
+              data-testid="converter-swap"
+              @click="swapUnits"
             >
               ⇄
             </button>
@@ -176,14 +178,14 @@
           <div class="flex-1">
             <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1.5">Výsledok</label>
             <div class="flex rounded-xl border border-emerald-200 bg-emerald-50 overflow-hidden">
-              <div class="flex-1 min-w-0 px-4 py-3 text-lg font-bold text-emerald-700 truncate">
+              <div data-testid="converter-result" class="flex-1 min-w-0 px-4 py-3 text-lg font-bold text-emerald-700 truncate">
                 {{ result }}
               </div>
               <select
                 v-model="toUnitIndex"
                 class="px-3 py-3 bg-emerald-100 border-l border-emerald-200 text-sm font-semibold text-emerald-700 outline-none cursor-pointer"
               >
-                <option v-for="(unit, j) in activeCategory.units" :key="unit.symbol" :value="j">
+                <option v-for="(unit, j) in activeCategory?.units ?? []" :key="unit.symbol" :value="j">
                   {{ unit.symbol }}
                 </option>
               </select>
@@ -193,7 +195,7 @@
         </div>
 
         <!-- Equation hint -->
-        <p v-if="equationHint" class="mt-4 text-sm text-gray-400 text-center">
+        <p v-if="equationHint" data-testid="equation-hint" class="mt-4 text-sm text-gray-400 text-center">
           {{ equationHint }}
         </p>
 
@@ -214,63 +216,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue'
-
-// ── Converter ──────────────────────────────────────────────────────────────
-
-interface LinearUnit  { symbol: string; name: string; factor: number; isTemp?: false }
-interface TempUnit    { symbol: string; name: string; isTemp: true }
-type ConverterUnit = LinearUnit | TempUnit
-
-interface ConverterCategory {
-  name: string
-  icon: string
-  units: ConverterUnit[]
-}
-
-const converterCategories: ConverterCategory[] = [
-  {
-    name: 'Dĺžka', icon: '📏',
-    units: [
-      { name: 'kilometer',  symbol: 'km',  factor: 1000       },
-      { name: 'meter',      symbol: 'm',   factor: 1          },
-      { name: 'centimeter', symbol: 'cm',  factor: 0.01       },
-      { name: 'milimeter',  symbol: 'mm',  factor: 0.001      },
-      { name: 'mikrometer', symbol: 'μm',  factor: 1e-6       },
-      { name: 'nanometer',  symbol: 'nm',  factor: 1e-9       },
-    ],
-  },
-  {
-    name: 'Hmotnosť', icon: '⚖️',
-    units: [
-      { name: 'tona',      symbol: 't',   factor: 1000   },
-      { name: 'kilogram',  symbol: 'kg',  factor: 1      },
-      { name: 'dekagram',  symbol: 'dag', factor: 0.01   },
-      { name: 'gram',      symbol: 'g',   factor: 0.001  },
-      { name: 'miligram',  symbol: 'mg',  factor: 1e-6   },
-    ],
-  },
-  {
-    name: 'Čas', icon: '⏱️',
-    units: [
-      { name: 'hodina',      symbol: 'h',   factor: 3600  },
-      { name: 'minúta',      symbol: 'min', factor: 60    },
-      { name: 'sekunda',     symbol: 's',   factor: 1     },
-      { name: 'milisekunda', symbol: 'ms',  factor: 0.001 },
-    ],
-  },
-  {
-    name: 'Teplota', icon: '🌡️',
-    units: [
-      { name: 'stupeň Celzia',     symbol: '°C', isTemp: true },
-      { name: 'kelvin',            symbol: 'K',  isTemp: true },
-      { name: 'stupeň Fahrenheita',symbol: '°F', isTemp: true },
-    ],
-  },
-]
+import { ref, computed } from 'vue'
+import {
+  converterCategories,
+  convertTemp,
+  convertLinear,
+  formatNumber,
+  type LinearUnit,
+} from '~/utils/converter'
 
 const selectedCategoryIndex = ref(0)
-const fromValue = ref<string>('1')
+const fromValue = ref<number>(1)
 const fromUnitIndex = ref(0)
 const toUnitIndex = ref(1)
 
@@ -280,7 +236,7 @@ function selectCategory(i: number) {
   selectedCategoryIndex.value = i
   fromUnitIndex.value = 0
   toUnitIndex.value = 1
-  fromValue.value = '1'
+  fromValue.value = 1
 }
 
 function swapUnits() {
@@ -289,52 +245,30 @@ function swapUnits() {
   toUnitIndex.value = tmp
 }
 
-function convertTemp(val: number, from: string, to: string): number {
-  let celsius = from === '°C' ? val : from === 'K' ? val - 273.15 : (val - 32) * 5 / 9
-  if (to === '°C') return celsius
-  if (to === 'K')  return celsius + 273.15
-  return celsius * 9 / 5 + 32
-}
-
-function toSuperscript(n: number): string {
-  const map: Record<string, string> = { '0':'⁰','1':'¹','2':'²','3':'³','4':'⁴','5':'⁵','6':'⁶','7':'⁷','8':'⁸','9':'⁹','-':'⁻' }
-  return String(n).split('').map(c => map[c] ?? c).join('')
-}
-
-function formatNumber(n: number): string {
-  if (!isFinite(n)) return '—'
-  if (n === 0) return '0'
-  const abs = Math.abs(n)
-  if (abs >= 0.0001 && abs < 1e13) {
-    return new Intl.NumberFormat('sk-SK', { maximumSignificantDigits: 7 }).format(n)
-  }
-  const exp = Math.floor(Math.log10(abs))
-  const mantissa = n / Math.pow(10, exp)
-  const mantissaStr = new Intl.NumberFormat('sk-SK', { maximumSignificantDigits: 4 }).format(mantissa)
-  return `${mantissaStr} × 10${toSuperscript(exp)}`
-}
-
 const result = computed(() => {
-  const raw = parseFloat(fromValue.value.replace(',', '.'))
+  const raw = fromValue.value
   if (isNaN(raw)) return '—'
   const cat = activeCategory.value
+  if (!cat) return '—'
   const from = cat.units[fromUnitIndex.value]
   const to   = cat.units[toUnitIndex.value]
+  if (!from || !to) return '—'
   if (from.symbol === to.symbol) return formatNumber(raw)
   if (from.isTemp) return formatNumber(convertTemp(raw, from.symbol, to.symbol))
   const linear = from as LinearUnit
   const toLinear = to as LinearUnit
-  return formatNumber(raw * linear.factor / toLinear.factor)
+  return formatNumber(convertLinear(raw, linear.factor, toLinear.factor))
 })
 
 const equationHint = computed(() => {
-  const raw = parseFloat(fromValue.value.replace(',', '.'))
+  const raw = fromValue.value
   if (isNaN(raw)) return ''
   const cat = activeCategory.value
+  if (!cat) return ''
   const from = cat.units[fromUnitIndex.value]
   const to   = cat.units[toUnitIndex.value]
-  if (from.symbol === to.symbol) return ''
-  return `${raw.toString().replace('.', ',')} ${from.symbol} = ${result.value} ${to.symbol}`
+  if (!from || !to || from.symbol === to.symbol) return ''
+  return `${formatNumber(raw)} ${from.symbol} = ${result.value} ${to.symbol}`
 })
 
 // ── Static data ─────────────────────────────────────────────────────────────

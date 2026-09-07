@@ -2,7 +2,7 @@
   <div class="max-w-6xl mx-auto px-4 py-12">
 
     <!-- Breadcrumb -->
-    <nav class="flex items-center gap-2 text-sm text-gray-400 mb-8">
+    <nav data-testid="breadcrumb" class="flex items-center gap-2 text-sm text-gray-400 mb-8">
       <NuxtLink to="/fyzika" class="hover:text-emerald-600 transition-colors">⚡ Fyzika</NuxtLink>
       <span>/</span>
       <span class="text-gray-700 font-medium">Úvod do fyziky</span>
