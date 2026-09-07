@@ -46,12 +46,17 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(unit, i) in baseUnits" :key="unit.quantity" :class="i % 2 === 0 ? 'bg-white' : 'bg-gray-50'">
-              <td class="px-5 py-3 font-medium text-gray-800">{{ unit.quantity }}</td>
-              <td class="px-5 py-3 text-gray-700">{{ unit.name }}</td>
-              <td class="px-5 py-3 font-mono font-bold text-emerald-700">{{ unit.symbol }}</td>
-              <td class="px-5 py-3 text-gray-500 hidden sm:table-cell">{{ unit.example }}</td>
-            </tr>
+            <template v-for="(unit, i) in baseUnits" :key="unit.quantity">
+              <tr :class="i % 2 === 0 ? 'bg-white' : 'bg-gray-50'">
+                <td class="px-5 pt-3 pb-1 font-medium text-gray-800">{{ unit.quantity }}</td>
+                <td class="px-5 pt-3 pb-1 text-gray-700">{{ unit.name }}</td>
+                <td class="px-5 pt-3 pb-1 font-mono font-bold text-emerald-700">{{ unit.symbol }}</td>
+                <td class="px-5 pt-3 pb-1 text-gray-500 hidden sm:table-cell">{{ unit.example }}</td>
+              </tr>
+              <tr :class="i % 2 === 0 ? 'bg-white' : 'bg-gray-50'">
+                <td colspan="4" class="px-5 pb-3 text-xs text-gray-400 italic">{{ unit.description }}</td>
+              </tr>
+            </template>
           </tbody>
         </table>
       </div>
@@ -274,13 +279,34 @@ const equationHint = computed(() => {
 // ── Static data ─────────────────────────────────────────────────────────────
 
 const baseUnits = [
-  { quantity: 'Dĺžka', name: 'meter', symbol: 'm', example: 'výška človeka ≈ 1,75 m' },
-  { quantity: 'Hmotnosť', name: 'kilogram', symbol: 'kg', example: 'hmotnosť knihy ≈ 0,5 kg' },
-  { quantity: 'Čas', name: 'sekunda', symbol: 's', example: 'trvanie jedného úderu srdca ≈ 0,8 s' },
-  { quantity: 'Elektrický prúd', name: 'ampér', symbol: 'A', example: 'nabíjačka telefónu ≈ 2 A' },
-  { quantity: 'Termodynamická teplota', name: 'kelvin', symbol: 'K', example: '0 °C = 273,15 K' },
-  { quantity: 'Látkové množstvo', name: 'mól', symbol: 'mol', example: '1 mol vody = 18 g' },
-  { quantity: 'Svietivosť', name: 'kandela', symbol: 'cd', example: 'sviečka ≈ 1 cd' },
+  {
+    quantity: 'Dĺžka', name: 'meter', symbol: 'm', example: 'výška človeka ≈ 1,75 m',
+    description: 'Meter je vzdialenosť, ktorú prejde svetlo vo vákuu za časový interval 1/299 792 458 sekundy.',
+  },
+  {
+    quantity: 'Hmotnosť', name: 'kilogram', symbol: 'kg', example: 'hmotnosť knihy ≈ 0,5 kg',
+    description: 'Kilogram je definovaný hodnotou Planckovej konštanty h = 6,626 070 15 × 10⁻³⁴ J·s.',
+  },
+  {
+    quantity: 'Čas', name: 'sekunda', symbol: 's', example: 'trvanie jedného úderu srdca ≈ 0,8 s',
+    description: 'Sekunda je trvanie 9 192 631 770 periód žiarenia zodpovedajúceho prechodu medzi dvoma hyperjemnými hladinami základného stavu atómu cézia-133.',
+  },
+  {
+    quantity: 'Elektrický prúd', name: 'ampér', symbol: 'A', example: 'nabíjačka telefónu ≈ 2 A',
+    description: 'Ampér je definovaný hodnotou elementárneho náboja e = 1,602 176 634 × 10⁻¹⁹ C — toľko náboja prejde prierezom vodiča za sekundu.',
+  },
+  {
+    quantity: 'Termodynamická teplota', name: 'kelvin', symbol: 'K', example: '0 °C = 273,15 K',
+    description: 'Kelvin je definovaný hodnotou Boltzmannovej konštanty k = 1,380 649 × 10⁻²³ J/K. Nulový kelvin (0 K = −273,15 °C) je absolútna nula — najnižšia možná teplota.',
+  },
+  {
+    quantity: 'Látkové množstvo', name: 'mól', symbol: 'mol', example: '1 mol vody = 18 g',
+    description: 'Jeden mól obsahuje presne 6,022 140 76 × 10²³ elementárnych častíc (atómov, molekúl…). Toto číslo sa nazýva Avogadrova konštanta.',
+  },
+  {
+    quantity: 'Svietivosť', name: 'kandela', symbol: 'cd', example: 'sviečka ≈ 1 cd',
+    description: 'Kandela je svietivosť zdroja, ktorý vyžaruje monochromatické žiarenie o frekvencii 540 × 10¹² Hz s vyžiareným výkonom 1/683 W na steradián.',
+  },
 ]
 
 const prefixes = [
