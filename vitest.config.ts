@@ -8,7 +8,7 @@ export default defineConfig({
       {
         test: {
           name: 'unit',
-          include: ['test/unit/*.{test,spec}.ts'],
+          include: ['tests/unit/*.{test,spec}.ts'],
           environment: 'node',
         },
       },
