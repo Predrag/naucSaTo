@@ -4,6 +4,9 @@ import { defineVitestProject } from '@nuxt/test-utils/config'
 
 export default defineConfig({
   test: {
+    reporters: process.env.GITHUB_ACTIONS
+      ? ['github-actions', 'verbose']
+      : ['verbose'],
     projects: [
       {
         test: {
