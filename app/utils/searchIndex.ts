@@ -25,6 +25,13 @@ export const searchIndex: SearchEntry[] = [
     keywords: 'uvod zaklady fyzika',
   },
   {
+    title: 'Skalárne a vektorové veličiny',
+    description: 'Skalár vs. vektor, zobrazenie vektora, sčítanie vektorov, rozklad na zložky, Pytagorova veta.',
+    path: '/fyzika/uvod/skalar-vektor',
+    category: 'Fyzika / Úvod',
+    keywords: 'skalar vektor sila rychlost zrychlenie scitanie rozklad zlozky trojuholnik rovnobeznik',
+  },
+  {
     title: 'Meranie fyzikálnych veličín',
     description: 'Fyzikálna veličina, meracie prístroje, chyby merania, platné číslice, vedecký zápis.',
     path: '/fyzika/uvod/meranie-velicin',

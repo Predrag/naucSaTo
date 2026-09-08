@@ -81,6 +81,7 @@ const sections = [
     title: 'Skalárne a vektorové veličiny',
     description: 'Rozdiel medzi skalárom a vektorom, sčítavanie vektorov, rozklad na zložky.',
     bg: 'bg-cyan-500',
+    link: '/fyzika/uvod/skalar-vektor',
   },
   {
     slug: 'osobnosti',
