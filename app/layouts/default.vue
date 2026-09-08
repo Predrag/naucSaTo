@@ -3,7 +3,7 @@
 
     <!-- Navigation -->
     <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
-      <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between gap-6">
+      <nav aria-label="Hlavná navigácia" class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between gap-6">
 
         <NuxtLink to="/" class="flex items-center gap-2 shrink-0">
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -27,6 +27,8 @@
 
         <!-- Search button -->
         <button
+          type="button"
+          data-testid="search-trigger"
           class="flex items-center gap-2 px-3 py-2 text-sm text-gray-500 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
           @click="searchModal?.open()"
         >

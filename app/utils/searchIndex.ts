@@ -25,6 +25,13 @@ export const searchIndex: SearchEntry[] = [
     keywords: 'uvod zaklady fyzika',
   },
   {
+    title: 'Meranie fyzikálnych veličín',
+    description: 'Fyzikálna veličina, meracie prístroje, chyby merania, platné číslice, vedecký zápis.',
+    path: '/fyzika/uvod/meranie-velicin',
+    category: 'Fyzika / Úvod',
+    keywords: 'meranie chyba systematicka nahodna absolutna relativna platne cislice voltmeter ampermetr vahy stopky',
+  },
+  {
     title: 'Medzinárodná sústava jednotiek',
     description: 'Sústava SI, 7 základných jednotiek, predpony kilo mega mili, odvodené jednotky newton joule watt pascal hertz coulomb.',
     path: '/fyzika/uvod/medzinarodna-sustava',

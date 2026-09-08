@@ -1,10 +1,10 @@
 <template>
   <div class="max-w-6xl mx-auto px-4 py-12">
 
-    <nav data-testid="breadcrumb" class="flex items-center gap-2 text-sm text-gray-400 mb-8">
+    <nav data-testid="breadcrumb" aria-label="Navigačná cesta" class="flex items-center gap-2 text-sm text-gray-400 mb-8">
       <NuxtLink to="/fyzika" class="hover:text-emerald-600 transition-colors">⚡ Fyzika</NuxtLink>
       <span>/</span>
-      <span class="text-gray-700 font-medium">Vedci</span>
+      <span class="text-gray-700 font-medium">Osobnosti fyziky</span>
     </nav>
 
     <div class="flex items-center gap-3 mb-3">
@@ -24,9 +24,12 @@
       >
         <div :class="['px-6 py-6 flex items-center gap-4', scientist.bg]">
           <span class="text-4xl">{{ scientist.icon }}</span>
-          <div>
-            <p class="text-xl font-extrabold text-white">{{ scientist.name }}</p>
-            <p class="text-sm text-white/80">{{ scientist.years }}</p>
+          <div class="flex-1 min-w-0">
+            <p class="text-xl font-extrabold text-white leading-snug">{{ scientist.name }}</p>
+            <p class="text-sm text-white/80 flex items-center gap-1.5 mt-0.5">
+              <span>{{ scientist.flag }}</span>
+              <span>{{ scientist.years }}</span>
+            </p>
           </div>
         </div>
         <div class="p-5 flex flex-col flex-1">
@@ -49,6 +52,7 @@ const scientists = [
   {
     slug: 'newton',
     icon: '🍎',
+    flag: '🇬🇧',
     name: 'Isaac Newton',
     years: '1643 – 1727',
     bg: 'bg-emerald-600',
@@ -59,6 +63,7 @@ const scientists = [
   {
     slug: 'joule',
     icon: '🔋',
+    flag: '🇬🇧',
     name: 'James Prescott Joule',
     years: '1818 – 1889',
     bg: 'bg-teal-600',
@@ -69,6 +74,7 @@ const scientists = [
   {
     slug: 'watt',
     icon: '⚙️',
+    flag: '🏴󠁧󠁢󠁳󠁣󠁴󠁿',
     name: 'James Watt',
     years: '1736 – 1819',
     bg: 'bg-blue-600',
@@ -79,6 +85,7 @@ const scientists = [
   {
     slug: 'pascal',
     icon: '💧',
+    flag: '🇫🇷',
     name: 'Blaise Pascal',
     years: '1623 – 1662',
     bg: 'bg-purple-600',
@@ -89,6 +96,7 @@ const scientists = [
   {
     slug: 'hertz',
     icon: '📡',
+    flag: '🇩🇪',
     name: 'Heinrich Hertz',
     years: '1857 – 1894',
     bg: 'bg-orange-600',
@@ -99,6 +107,7 @@ const scientists = [
   {
     slug: 'coulomb',
     icon: '⚡',
+    flag: '🇫🇷',
     name: 'Charles-Augustin de Coulomb',
     years: '1736 – 1806',
     bg: 'bg-yellow-600',
@@ -109,6 +118,7 @@ const scientists = [
   {
     slug: 'petzval',
     icon: '📷',
+    flag: '🇸🇰',
     name: 'Jozef Maximilián Petzval',
     years: '1807 – 1891',
     bg: 'bg-indigo-600',
@@ -119,6 +129,7 @@ const scientists = [
   {
     slug: 'jedlik',
     icon: '⚡',
+    flag: '🇸🇰',
     name: 'Štefan Anián Jedlík',
     years: '1800 – 1895',
     bg: 'bg-amber-600',
@@ -129,6 +140,7 @@ const scientists = [
   {
     slug: 'segner',
     icon: '💧',
+    flag: '🇸🇰',
     name: 'Ján Andrej Segner',
     years: '1704 – 1777',
     bg: 'bg-blue-600',
@@ -139,6 +151,7 @@ const scientists = [
   {
     slug: 'stodola',
     icon: '⚙️',
+    flag: '🇸🇰',
     name: 'Aurel Bohuslav Stodola',
     years: '1859 – 1942',
     bg: 'bg-slate-600',
@@ -149,6 +162,7 @@ const scientists = [
   {
     slug: 'hell',
     icon: '🔭',
+    flag: '🇸🇰',
     name: 'Maximilián Hell',
     years: '1720 – 1792',
     bg: 'bg-violet-700',
@@ -159,6 +173,7 @@ const scientists = [
   {
     slug: 'murgas',
     icon: '📻',
+    flag: '🇸🇰',
     name: 'Jozef Murgaš',
     years: '1864 – 1929',
     bg: 'bg-green-700',

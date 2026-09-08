@@ -3,11 +3,12 @@
     <Transition name="backdrop">
       <div
         v-if="isOpen"
+        data-testid="search-backdrop"
         class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-start justify-center pt-24 px-4"
         @click.self="close"
       >
         <Transition name="modal">
-          <div v-if="isOpen" class="w-full max-w-xl bg-white rounded-2xl shadow-2xl overflow-hidden">
+          <div v-if="isOpen" data-testid="search-modal" class="w-full max-w-xl bg-white rounded-2xl shadow-2xl overflow-hidden">
 
             <!-- Input -->
             <div class="flex items-center gap-3 px-4 py-3 border-b border-gray-100">
@@ -19,6 +20,7 @@
                 v-model="query"
                 type="text"
                 placeholder="Vyhľadaj tému, vedca, jednotku…"
+                data-testid="search-input"
                 class="flex-1 text-base text-gray-900 placeholder-gray-400 outline-none bg-transparent"
                 @keydown.escape="close"
                 @keydown.arrow-down.prevent="moveDown"
@@ -29,7 +31,7 @@
             </div>
 
             <!-- Results -->
-            <ul v-if="results.length" class="max-h-80 overflow-y-auto py-2" role="listbox">
+            <ul v-if="results.length" data-testid="search-results" class="max-h-80 overflow-y-auto py-2" role="listbox">
               <li
                 v-for="(result, i) in results"
                 :key="result.item.path"
@@ -62,6 +64,7 @@
               <button
                 v-for="hint in hints"
                 :key="hint"
+                type="button"
                 class="text-xs text-gray-500 bg-gray-100 hover:bg-gray-200 rounded-full px-3 py-1 transition-colors"
                 @click="query = hint"
               >
@@ -147,7 +150,7 @@ function navigate(path: string) {
 function onKeydown(e: KeyboardEvent) {
   if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
     e.preventDefault()
-    isOpen.value ? close() : open()
+    if (isOpen.value) { close() } else { open() }
   }
 }
 

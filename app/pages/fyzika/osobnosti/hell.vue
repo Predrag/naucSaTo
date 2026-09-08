@@ -1,7 +1,7 @@
 <template>
   <div class="max-w-3xl mx-auto px-4 py-12">
 
-    <nav data-testid="breadcrumb" class="flex items-center gap-2 text-sm text-gray-400 mb-8 flex-wrap">
+    <nav data-testid="breadcrumb" aria-label="Navigačná cesta" class="flex items-center gap-2 text-sm text-gray-400 mb-8 flex-wrap">
       <NuxtLink to="/fyzika" class="hover:text-emerald-600 transition-colors">⚡ Fyzika</NuxtLink>
       <span>/</span>
       <NuxtLink to="/fyzika/osobnosti" class="hover:text-emerald-600 transition-colors">Osobnosti fyziky</NuxtLink>
@@ -57,7 +57,8 @@
 
     <div class="bg-gray-50 border border-gray-200 rounded-2xl p-5">
       <p class="text-xs text-gray-400 uppercase font-semibold tracking-wide mb-3">Odkaz na Wikipédiu</p>
-      <a href="https://sk.wikipedia.org/wiki/Maximilián_Hell" target="_blank" rel="noopener noreferrer"
+      <a
+        href="https://sk.wikipedia.org/wiki/Maximilián_Hell" target="_blank" rel="noopener noreferrer"
         class="inline-flex items-center gap-2 text-sm font-semibold text-violet-600 hover:underline">
         Maximilián Hell na sk.wikipedia.org →
       </a>

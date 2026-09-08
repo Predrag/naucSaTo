@@ -2,7 +2,7 @@
   <div class="max-w-4xl mx-auto px-4 py-12">
 
     <!-- Breadcrumb -->
-    <nav data-testid="breadcrumb" class="flex items-center gap-2 text-sm text-gray-400 mb-8 flex-wrap">
+    <nav data-testid="breadcrumb" aria-label="Navigačná cesta" class="flex items-center gap-2 text-sm text-gray-400 mb-8 flex-wrap">
       <NuxtLink to="/fyzika" class="hover:text-emerald-600 transition-colors">⚡ Fyzika</NuxtLink>
       <span>/</span>
       <NuxtLink to="/fyzika/uvod" class="hover:text-emerald-600 transition-colors">Úvod do fyziky</NuxtLink>
@@ -39,10 +39,10 @@
         <table class="w-full text-sm">
           <thead>
             <tr class="bg-emerald-600 text-white">
-              <th class="text-left px-5 py-3 font-semibold">Fyzikálna veličina</th>
-              <th class="text-left px-5 py-3 font-semibold">Jednotka</th>
-              <th class="text-left px-5 py-3 font-semibold">Značka</th>
-              <th class="text-left px-5 py-3 font-semibold hidden sm:table-cell">Príklad použitia</th>
+              <th scope="col" class="text-left px-5 py-3 font-semibold">Fyzikálna veličina</th>
+              <th scope="col" class="text-left px-5 py-3 font-semibold">Jednotka</th>
+              <th scope="col" class="text-left px-5 py-3 font-semibold">Značka</th>
+              <th scope="col" class="text-left px-5 py-3 font-semibold hidden sm:table-cell">Príklad použitia</th>
             </tr>
           </thead>
           <tbody>
@@ -73,10 +73,10 @@
         <table class="w-full text-sm">
           <thead>
             <tr class="bg-gray-700 text-white">
-              <th class="text-left px-5 py-3 font-semibold">Predpona</th>
-              <th class="text-left px-5 py-3 font-semibold">Značka</th>
-              <th class="text-left px-5 py-3 font-semibold">Hodnota</th>
-              <th class="text-left px-5 py-3 font-semibold hidden sm:table-cell">Príklad</th>
+              <th scope="col" class="text-left px-5 py-3 font-semibold">Predpona</th>
+              <th scope="col" class="text-left px-5 py-3 font-semibold">Značka</th>
+              <th scope="col" class="text-left px-5 py-3 font-semibold">Hodnota</th>
+              <th scope="col" class="text-left px-5 py-3 font-semibold hidden sm:table-cell">Príklad</th>
             </tr>
           </thead>
           <tbody>
@@ -117,7 +117,7 @@
               :to="`/fyzika/osobnosti/${unit.slug}`"
               class="inline-block mt-2 text-xs font-semibold text-emerald-600 hover:underline"
             >
-              O vedcovi →
+              Kto to bol? →
             </NuxtLink>
           </div>
         </div>
@@ -125,7 +125,7 @@
     </section>
 
     <!-- Section 4: Converter -->
-    <section class="mb-12">
+    <section aria-label="Prevodník jednotiek" class="mb-12">
       <h2 class="text-2xl font-bold text-gray-900 mb-1">Prevodník jednotiek</h2>
       <p class="text-gray-500 mb-5">Zadaj hodnotu a vyber jednotky — výsledok sa prepočíta okamžite.</p>
 
@@ -136,6 +136,7 @@
           <button
             v-for="(cat, i) in converterCategories"
             :key="cat.name"
+            type="button"
             :class="[
               'flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold transition-colors',
               selectedCategoryIndex === i
@@ -153,9 +154,10 @@
 
           <!-- From -->
           <div class="flex-1">
-            <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1.5">Hodnota</label>
+            <label for="converter-input-field" class="block text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1.5">Hodnota</label>
             <div class="flex rounded-xl border border-gray-300 overflow-hidden focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-100 transition">
               <input
+                id="converter-input-field"
                 v-model.number="fromValue"
                 type="number"
                 placeholder="0"
@@ -164,6 +166,7 @@
               >
               <select
                 v-model="fromUnitIndex"
+                aria-label="Zdrojová jednotka"
                 class="px-3 py-3 bg-gray-50 border-l border-gray-300 text-sm font-semibold text-gray-700 outline-none cursor-pointer"
               >
                 <option v-for="(unit, j) in activeCategory?.units ?? []" :key="unit.symbol" :value="j">
@@ -176,6 +179,7 @@
           <!-- Swap button -->
           <div class="flex justify-center sm:pb-1">
             <button
+              type="button"
               class="w-10 h-10 rounded-full bg-gray-100 hover:bg-emerald-100 hover:text-emerald-700 text-gray-500 flex items-center justify-center text-lg transition-colors"
               title="Prehodiť jednotky"
               data-testid="converter-swap"
@@ -194,6 +198,7 @@
               </div>
               <select
                 v-model="toUnitIndex"
+                aria-label="Cieľová jednotka"
                 class="px-3 py-3 bg-emerald-100 border-l border-emerald-200 text-sm font-semibold text-emerald-700 outline-none cursor-pointer"
               >
                 <option v-for="(unit, j) in activeCategory?.units ?? []" :key="unit.symbol" :value="j">
@@ -224,7 +229,7 @@
     </div>
 
     <!-- Section 5: Quiz -->
-    <section>
+    <section aria-label="Kvíz">
       <h2 class="text-2xl font-bold text-gray-900 mb-1">Otestuj sa</h2>
       <p class="text-gray-500 mb-6">Vyber správnu odpoveď — okamžite uvidíš či si to vedel.</p>
 
@@ -234,6 +239,7 @@
         <p data-testid="quiz-score" class="text-3xl font-extrabold text-gray-900 mb-1">{{ quizScore }} / {{ quiz.length }}</p>
         <p class="text-gray-500 mb-6">{{ scoreMessage }}</p>
         <button
+          type="button"
           data-testid="quiz-reset-btn"
           class="px-6 py-3 rounded-xl bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition-colors"
           @click="resetQuiz"
@@ -265,6 +271,7 @@
           <button
             v-for="(option, i) in currentQuestion.options"
             :key="i"
+            type="button"
             :data-testid="`quiz-option-${i}`"
             :disabled="selectedAnswer !== null"
             :class="[
@@ -303,6 +310,7 @@
             </div>
             <div class="flex justify-end">
               <button
+                type="button"
                 data-testid="quiz-next-btn"
                 class="px-5 py-2.5 rounded-xl bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition-colors"
                 @click="nextQuestion"

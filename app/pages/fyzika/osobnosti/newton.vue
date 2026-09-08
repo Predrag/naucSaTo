@@ -1,10 +1,10 @@
 <template>
   <div class="max-w-3xl mx-auto px-4 py-12">
 
-    <nav data-testid="breadcrumb" class="flex items-center gap-2 text-sm text-gray-400 mb-8 flex-wrap">
+    <nav data-testid="breadcrumb" aria-label="Navigačná cesta" class="flex items-center gap-2 text-sm text-gray-400 mb-8 flex-wrap">
       <NuxtLink to="/fyzika" class="hover:text-emerald-600 transition-colors">⚡ Fyzika</NuxtLink>
       <span>/</span>
-      <NuxtLink to="/fyzika/osobnosti" class="hover:text-emerald-600 transition-colors">Vedci</NuxtLink>
+      <NuxtLink to="/fyzika/osobnosti" class="hover:text-emerald-600 transition-colors">Osobnosti fyziky</NuxtLink>
       <span>/</span>
       <span class="text-gray-700 font-medium">Isaac Newton</span>
     </nav>
