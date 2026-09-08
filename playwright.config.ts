@@ -2,6 +2,8 @@ import { fileURLToPath } from 'node:url'
 import { defineConfig, devices } from '@playwright/test'
 import type { ConfigOptions } from '@nuxt/test-utils/playwright'
 
+// const BASE_URL = process.env.BASE_URL || 'http://localhost:3001'
+
 export default defineConfig<ConfigOptions>({
   testDir: './tests/e2e',
   fullyParallel: true,
@@ -12,7 +14,8 @@ export default defineConfig<ConfigOptions>({
   use: {
     trace: 'on-first-retry',
     nuxt: {
-      rootDir: fileURLToPath(new URL('.', import.meta.url)),
+      rootDir: fileURLToPath(new URL('.', import.meta.url))
+      // host: BASE_URL,
     },
   },
   projects: [

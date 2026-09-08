@@ -81,5 +81,13 @@ const sections = [
     description: 'Rozdiel medzi skalárom a vektorom, sčítavanie vektorov, rozklad na zložky.',
     bg: 'bg-cyan-500',
   },
+  {
+    slug: 'osobnosti',
+    icon: '🔬',
+    title: 'Osobnosti fyziky',
+    description: 'Newton, Joule, Watt, Pascal, Hertz, Coulomb — ľudia, po ktorých sú pomenované jednotky SI.',
+    bg: 'bg-rose-500',
+    link: '/fyzika/osobnosti',
+  },
 ]
 </script>

@@ -110,9 +110,15 @@
           <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 text-xl font-bold font-mono text-white" :class="unit.color">
             {{ unit.symbol }}
           </div>
-          <div>
+          <div class="flex-1 min-w-0">
             <p class="font-semibold text-gray-900">{{ unit.name }} <span class="text-gray-400 font-normal text-sm">({{ unit.quantity }})</span></p>
             <p class="text-sm text-gray-500 mt-0.5">{{ unit.definition }}</p>
+            <NuxtLink
+              :to="`/fyzika/osobnosti/${unit.slug}`"
+              class="inline-block mt-2 text-xs font-semibold text-emerald-600 hover:underline"
+            >
+              O vedcovi →
+            </NuxtLink>
           </div>
         </div>
       </div>
@@ -521,12 +527,12 @@ const prefixes = [
 ]
 
 const derivedUnits = [
-  { name: 'Newton',   symbol: 'N',  quantity: 'sila',       definition: '1 N = 1 kg·m/s² — sila, ktorá udeľuje 1 kg zrýchlenie 1 m/s²', color: 'bg-emerald-500' },
-  { name: 'Joule',    symbol: 'J',  quantity: 'energia, práca', definition: '1 J = 1 N·m = 1 kg·m²/s²', color: 'bg-teal-500' },
-  { name: 'Watt',     symbol: 'W',  quantity: 'výkon',      definition: '1 W = 1 J/s — energia za sekundu', color: 'bg-blue-500' },
-  { name: 'Pascal',   symbol: 'Pa', quantity: 'tlak',       definition: '1 Pa = 1 N/m² — sila na jednotku plochy', color: 'bg-purple-500' },
-  { name: 'Hertz',    symbol: 'Hz', quantity: 'frekvencia', definition: '1 Hz = 1/s — počet opakovaní za sekundu', color: 'bg-orange-500' },
-  { name: 'Coulomb',  symbol: 'C',  quantity: 'el. náboj',  definition: '1 C = 1 A·s — množstvo elektrického náboja', color: 'bg-yellow-500' },
+  { name: 'Newton',   symbol: 'N',  quantity: 'sila',           definition: '1 N = 1 kg·m/s² — sila, ktorá udeľuje 1 kg zrýchlenie 1 m/s²', color: 'bg-emerald-500', slug: 'newton'  },
+  { name: 'Joule',    symbol: 'J',  quantity: 'energia, práca', definition: '1 J = 1 N·m = 1 kg·m²/s²',                                       color: 'bg-teal-500',    slug: 'joule'   },
+  { name: 'Watt',     symbol: 'W',  quantity: 'výkon',          definition: '1 W = 1 J/s — energia za sekundu',                                color: 'bg-blue-500',    slug: 'watt'    },
+  { name: 'Pascal',   symbol: 'Pa', quantity: 'tlak',           definition: '1 Pa = 1 N/m² — sila na jednotku plochy',                         color: 'bg-purple-500',  slug: 'pascal'  },
+  { name: 'Hertz',    symbol: 'Hz', quantity: 'frekvencia',     definition: '1 Hz = 1/s — počet opakovaní za sekundu',                         color: 'bg-orange-500',  slug: 'hertz'   },
+  { name: 'Coulomb',  symbol: 'C',  quantity: 'el. náboj',      definition: '1 C = 1 A·s — množstvo elektrického náboja',                      color: 'bg-yellow-500',  slug: 'coulomb' },
 ]
 </script>
 

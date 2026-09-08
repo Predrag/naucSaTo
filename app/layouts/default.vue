@@ -25,15 +25,29 @@
           </li>
         </ul>
 
+        <!-- Search button -->
+        <button
+          class="flex items-center gap-2 px-3 py-2 text-sm text-gray-500 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+          @click="searchModal?.open()"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
+          </svg>
+          <span class="hidden sm:inline">Hľadať</span>
+          <kbd class="hidden md:inline-flex items-center text-xs border border-gray-300 rounded px-1 py-0.5 text-gray-400">Ctrl K</kbd>
+        </button>
+
         <NuxtLink
           to="/matematika"
-          class="shrink-0 px-5 py-2 rounded-lg bg-teal-600 text-white text-sm font-semibold hover:bg-teal-700 transition-colors"
+          class="shrink-0 hidden sm:block px-5 py-2 rounded-lg bg-teal-600 text-white text-sm font-semibold hover:bg-teal-700 transition-colors"
         >
           Začať sa učiť
         </NuxtLink>
 
       </nav>
     </header>
+
+    <SearchModal ref="searchModal" />
 
     <main class="flex-1">
       <slot />
@@ -82,9 +96,13 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
+
 const navItems = [
   { to: '/matematika', label: 'Matematika' },
   { to: '/fyzika', label: 'Fyzika' },
   { to: '/chemia', label: 'Chémia' },
 ]
+
+const searchModal = ref(null)
 </script>
