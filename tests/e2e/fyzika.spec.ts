@@ -4,14 +4,24 @@ test.describe('Fyzika - navigácia', () => {
   test('hlavná stránka fyziky zobrazuje témy', async ({ page, goto }) => {
     await goto('/fyzika', { waitUntil: 'hydration' })
     await expect(page.getByRole('heading', { name: 'Fyzika' })).toBeVisible()
-    await expect(page.getByText('Úvod do fyziky')).toBeVisible()
-    await expect(page.getByText('Mechanika')).toBeVisible()
-    await expect(page.getByText('Optika')).toBeVisible()
+    const topics = [
+      'Úvod do fyziky',
+      'Mechanika',
+      'Molekulová fyzika a termodynamika',
+      'Elektrický prúd',
+      'Magnetické pole',
+      'Kmity a vlnenie',
+      'Optika',
+      'Atómová a jadrová fyzika',
+    ]
+    for (const topic of topics) {
+      await expect(page.getByText(topic, { exact: true })).toBeVisible()
+    }
   })
 
   test('klik na Úvod do fyziky presmeruje na /fyzika/uvod', async ({ page, goto }) => {
     await goto('/fyzika', { waitUntil: 'hydration' })
-    await page.getByText('Otvoriť →').first().click()
+    await page.getByRole('link', { name: 'Úvod do fyziky' }).click()
     await expect(page).toHaveURL(/\/fyzika\/uvod$/)
     await expect(page.getByRole('heading', { name: 'Úvod do fyziky' })).toBeVisible()
   })
@@ -21,6 +31,7 @@ test.describe('Fyzika - navigácia', () => {
     await expect(page.getByText('Medzinárodná sústava jednotiek')).toBeVisible()
     await expect(page.getByText('Meranie fyzikálnych veličín')).toBeVisible()
     await expect(page.getByText('Skalárne a vektorové veličiny')).toBeVisible()
+    await expect(page.getByText('Osobnosti fyziky')).toBeVisible()
   })
 
   test('breadcrumb na /fyzika/uvod obsahuje správne odkazy', async ({ page, goto }) => {
@@ -30,7 +41,7 @@ test.describe('Fyzika - navigácia', () => {
 
   test('klik na Medzinárodná sústava jednotiek presmeruje správne', async ({ page, goto }) => {
     await goto('/fyzika/uvod', { waitUntil: 'hydration' })
-    await page.getByText('Otvoriť →').first().click()
+    await page.getByRole('link', { name: 'Medzinárodná sústava jednotiek' }).click()
     await expect(page).toHaveURL(/\/fyzika\/uvod\/medzinarodna-sustava$/)
     await expect(page.getByRole('heading', { name: 'Medzinárodná sústava jednotiek' })).toBeVisible()
   })
