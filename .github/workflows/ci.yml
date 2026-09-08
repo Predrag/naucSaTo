@@ -27,22 +27,21 @@ jobs:
         run: npm run test:unit
 
   e2e-tests:
-    timeout-minutes: 5
+    timeout-minutes: 15
     name: E2E testy (Playwright)
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.63.0-noble
+      options: --user 1001
     steps:
       - uses: actions/checkout@v6
 
       - uses: actions/setup-node@v6
         with:
           node-version: lts/*
-          cache: npm
 
       - name: Inštalácia závislostí
         run: npm ci --legacy-peer-deps
-
-      - name: Inštalácia Playwright prehliadačov
-        run: npx playwright install --with-deps chromium firefox
 
       - name: Build aplikácie
         run: npm run build
@@ -51,7 +50,7 @@ jobs:
         run: npm run test:e2e
 
       - name: Nahratie Playwright reportu
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         if: ${{ !cancelled() }}
         with:
           name: playwright-report
