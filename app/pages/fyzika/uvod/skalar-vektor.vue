@@ -142,13 +142,13 @@
                 </defs>
                 <!-- A -->
                 <line x1="20" y1="80" x2="118" y2="80" stroke="#3B82F6" stroke-width="2.5" marker-end="url(#arr-tri-a)"/>
-                <text x="65" y="96" fill="#3B82F6" font-size="13" font-weight="bold" text-anchor="middle">A⃗</text>
+                <VecLabel letter="A" :x="65" :y="96" color="#3B82F6" :fontSize="13"/>
                 <!-- B -->
                 <line x1="122" y1="80" x2="198" y2="28" stroke="#8B5CF6" stroke-width="2.5" marker-end="url(#arr-tri-b)"/>
-                <text x="172" y="66" fill="#8B5CF6" font-size="13" font-weight="bold">B⃗</text>
+                <VecLabel letter="B" :x="172" :y="66" color="#8B5CF6" :fontSize="13"/>
                 <!-- R -->
                 <line x1="20" y1="80" x2="194" y2="31" stroke="#10B981" stroke-width="2.5" stroke-dasharray="6,3" marker-end="url(#arr-tri-r)"/>
-                <text x="90" y="43" fill="#10B981" font-size="13" font-weight="bold">R⃗</text>
+                <VecLabel letter="R" :x="90" :y="43" color="#10B981" :fontSize="13"/>
               </svg>
             </div>
             <!-- Metóda rovnobežníka -->
@@ -166,13 +166,13 @@
                 <line x1="50" y1="42" x2="195" y2="38" stroke="#9CA3AF" stroke-width="1.5" stroke-dasharray="4,3"/>
                 <!-- A -->
                 <line x1="25" y1="105" x2="113" y2="105" stroke="#3B82F6" stroke-width="2.5" marker-end="url(#arr-par-a)"/>
-                <text x="65" y="118" fill="#3B82F6" font-size="13" font-weight="bold" text-anchor="middle">A⃗</text>
+                <VecLabel letter="A" :x="65" :y="118" color="#3B82F6" :fontSize="13"/>
                 <!-- B -->
                 <line x1="25" y1="105" x2="47" y2="44" stroke="#8B5CF6" stroke-width="2.5" marker-end="url(#arr-par-b)"/>
-                <text x="18" y="72" fill="#8B5CF6" font-size="13" font-weight="bold">B⃗</text>
+                <VecLabel letter="B" :x="18" :y="72" color="#8B5CF6" :fontSize="13"/>
                 <!-- R -->
                 <line x1="25" y1="105" x2="191" y2="41" stroke="#10B981" stroke-width="2.5" marker-end="url(#arr-par-r)"/>
-                <text x="120" y="65" fill="#10B981" font-size="13" font-weight="bold">R⃗</text>
+                <VecLabel letter="R" :x="120" :y="65" color="#10B981" :fontSize="13"/>
               </svg>
             </div>
           </div>
@@ -195,11 +195,11 @@
                 <marker id="sc-r1" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#10B981"/></marker>
               </defs>
               <line x1="15" y1="25" x2="88" y2="25" stroke="#3B82F6" stroke-width="2.5" marker-end="url(#sc-a1)"/>
-              <text x="48" y="18" fill="#3B82F6" font-size="11" font-weight="bold" text-anchor="middle">A⃗</text>
+              <VecLabel letter="A" :x="48" :y="18" color="#3B82F6" :fontSize="11"/>
               <line x1="91" y1="25" x2="148" y2="25" stroke="#8B5CF6" stroke-width="2.5" marker-end="url(#sc-b1)"/>
-              <text x="122" y="18" fill="#8B5CF6" font-size="11" font-weight="bold" text-anchor="middle">B⃗</text>
+              <VecLabel letter="B" :x="122" :y="18" color="#8B5CF6" :fontSize="11"/>
               <line x1="15" y1="55" x2="148" y2="55" stroke="#10B981" stroke-width="2.5" stroke-dasharray="5,2" marker-end="url(#sc-r1)"/>
-              <text x="80" y="70" fill="#10B981" font-size="11" font-weight="bold" text-anchor="middle">R⃗ = A + B</text>
+              <VecLabel letter="R" :x="80" :y="70" color="#10B981" :fontSize="11"/>
             </svg>
             <MathFormula display formula="R = A + B" />
             <p class="text-xs text-gray-500">Vektory v rovnakom smere — výslednica je ich súčet.</p>
@@ -217,11 +217,11 @@
               <!-- pravý uhol -->
               <rect x="45" y="68" width="10" height="10" fill="none" stroke="#9CA3AF" stroke-width="1.5"/>
               <line x1="45" y1="78" x2="130" y2="78" stroke="#3B82F6" stroke-width="2.5" marker-end="url(#sc-a2)"/>
-              <text x="85" y="95" fill="#3B82F6" font-size="11" font-weight="bold" text-anchor="middle">A⃗</text>
+              <VecLabel letter="A" :x="85" :y="95" color="#3B82F6" :fontSize="11"/>
               <line x1="45" y1="78" x2="45" y2="18" stroke="#8B5CF6" stroke-width="2.5" marker-end="url(#sc-b2)"/>
-              <text x="25" y="50" fill="#8B5CF6" font-size="11" font-weight="bold">B⃗</text>
+              <VecLabel letter="B" :x="25" :y="50" color="#8B5CF6" :fontSize="11"/>
               <line x1="45" y1="78" x2="128" y2="20" stroke="#10B981" stroke-width="2.5" stroke-dasharray="5,2" marker-end="url(#sc-r2)"/>
-              <text x="105" y="52" fill="#10B981" font-size="11" font-weight="bold">R⃗</text>
+              <VecLabel letter="R" :x="105" :y="52" color="#10B981" :fontSize="11"/>
             </svg>
             <MathFormula display formula="R = \sqrt{A^2+B^2}" />
             <p class="text-xs text-gray-500">Pytagorova veta — najčastejší prípad.</p>
@@ -237,11 +237,11 @@
                 <marker id="sc-r3" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#10B981"/></marker>
               </defs>
               <line x1="15" y1="25" x2="148" y2="25" stroke="#3B82F6" stroke-width="2.5" marker-end="url(#sc-a3)"/>
-              <text x="80" y="18" fill="#3B82F6" font-size="11" font-weight="bold" text-anchor="middle">A⃗</text>
+              <VecLabel letter="A" :x="80" :y="18" color="#3B82F6" :fontSize="11"/>
               <line x1="148" y1="25" x2="65" y2="25" stroke="#8B5CF6" stroke-width="2.5" marker-end="url(#sc-b3)"/>
-              <text x="108" y="38" fill="#8B5CF6" font-size="11" font-weight="bold" text-anchor="middle">B⃗</text>
+              <VecLabel letter="B" :x="108" :y="38" color="#8B5CF6" :fontSize="11"/>
               <line x1="15" y1="55" x2="62" y2="55" stroke="#10B981" stroke-width="2.5" stroke-dasharray="5,2" marker-end="url(#sc-r3)"/>
-              <text x="38" y="70" fill="#10B981" font-size="11" font-weight="bold" text-anchor="middle">R⃗</text>
+              <VecLabel letter="R" :x="38" :y="70" color="#10B981" :fontSize="11"/>
             </svg>
             <MathFormula display formula="R = |A - B|" />
             <p class="text-xs text-gray-500">Opačné smery — výslednica je rozdiel veľkostí.</p>
@@ -260,11 +260,11 @@
                 <marker id="sub-r" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#10B981"/></marker>
               </defs>
               <line x1="15" y1="30" x2="123" y2="30" stroke="#3B82F6" stroke-width="2.5" marker-end="url(#sub-a)"/>
-              <text x="66" y="20" fill="#3B82F6" font-size="11" font-weight="bold" text-anchor="middle">A⃗</text>
+              <VecLabel letter="A" :x="66" :y="20" color="#3B82F6" :fontSize="11"/>
               <line x1="127" y1="30" x2="62" y2="30" stroke="#EF4444" stroke-width="2.5" marker-end="url(#sub-nb)"/>
-              <text x="97" y="46" fill="#EF4444" font-size="11" font-weight="bold" text-anchor="middle">−B⃗</text>
+              <VecLabel letter="−B" :x="97" :y="46" color="#EF4444" :fontSize="11"/>
               <line x1="15" y1="65" x2="60" y2="65" stroke="#10B981" stroke-width="2.5" stroke-dasharray="5,2" marker-end="url(#sub-r)"/>
-              <text x="37" y="80" fill="#10B981" font-size="11" font-weight="bold" text-anchor="middle">R⃗</text>
+              <VecLabel letter="R" :x="37" :y="80" color="#10B981" :fontSize="11"/>
             </svg>
             <p class="text-sm text-gray-500 mt-2">Opačný vektor <MathFormula formula="-\vec{B}" /> má rovnakú veľkosť, ale opačný zmysel.</p>
           </div>
@@ -278,11 +278,11 @@
                 <marker id="mul-na" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#EF4444"/></marker>
               </defs>
               <line x1="15" y1="22" x2="88" y2="22" stroke="#3B82F6" stroke-width="2.5" marker-end="url(#mul-a)"/>
-              <text x="50" y="13" fill="#3B82F6" font-size="11" font-weight="bold" text-anchor="middle">A⃗</text>
+              <VecLabel letter="A" :x="50" :y="13" color="#3B82F6" :fontSize="11"/>
               <line x1="15" y1="50" x2="158" y2="50" stroke="#10B981" stroke-width="2.5" marker-end="url(#mul-2a)"/>
-              <text x="85" y="41" fill="#10B981" font-size="11" font-weight="bold" text-anchor="middle">2A⃗ (k=2)</text>
+              <VecLabel letter="2A" :x="85" :y="41" color="#10B981" :fontSize="11"/>
               <line x1="88" y1="75" x2="15" y2="75" stroke="#EF4444" stroke-width="2.5" marker-end="url(#mul-na)"/>
-              <text x="52" y="88" fill="#EF4444" font-size="11" font-weight="bold" text-anchor="middle">−A⃗ (k=−1)</text>
+              <VecLabel letter="−A" :x="52" :y="88" color="#EF4444" :fontSize="11"/>
             </svg>
           </div>
         </div>
@@ -323,15 +323,15 @@
 
           <!-- Fx - vodorovná zložka -->
           <line x1="35" y1="155" x2="182" y2="155" stroke="#F97316" stroke-width="2.5" marker-end="url(#dec-fx)"/>
-          <text x="108" y="172" fill="#F97316" font-size="13" font-weight="bold" text-anchor="middle">Fₓ</text>
+          <text x="108" y="172" fill="#F97316" font-size="13" font-weight="bold" text-anchor="middle">F<tspan dy="3" font-size="10">x</tspan></text>
 
           <!-- Fy - zvislá zložka -->
           <line x1="185" y1="155" x2="185" y2="56" stroke="#8B5CF6" stroke-width="2.5" marker-end="url(#dec-fy)"/>
-          <text x="208" y="110" fill="#8B5CF6" font-size="13" font-weight="bold">F_y</text>
+          <text x="208" y="110" fill="#8B5CF6" font-size="13" font-weight="bold">F<tspan dy="3" font-size="10">y</tspan></text>
 
           <!-- F - hlavný vektor -->
           <line x1="35" y1="155" x2="182" y2="56" stroke="#10B981" stroke-width="3" marker-end="url(#dec-f)"/>
-          <text x="90" y="88" fill="#10B981" font-size="14" font-weight="bold" transform="rotate(-30, 90, 88)">F⃗</text>
+          <VecLabel letter="F" :x="90" :y="88" color="#10B981" :fontSize="14"/>
 
           <!-- Uhol α -->
           <path d="M 75,155 A 40,40 0 0,0 66,128" fill="none" stroke="#6B7280" stroke-width="1.5"/>
@@ -376,6 +376,15 @@
           <p><MathFormula formula="F_y = 100 \cdot \sin 30° = 100 \cdot 0{,}5 = \mathbf{50\;\text{N}}" /></p>
         </div>
       </div>
+    </section>
+
+    <!-- Interaktívna animácia -->
+    <section aria-label="Interaktívna animácia sčítania vektorov" class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-1">Vyskúšaj si — metóda trojuholníka</h2>
+      <p class="text-gray-500 mb-5">
+        Nastav veľkosť a uhol oboch vektorov a sleduj, ako sa tvoria kroky sčítania.
+      </p>
+      <VectorAdditionDemo />
     </section>
 
     <!-- Summary -->
