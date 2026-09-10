@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-v-html -->
 <template>
   <div class="max-w-4xl mx-auto px-4 py-12">
 
@@ -250,7 +251,8 @@
 
         <Transition name="fade">
           <div v-if="selectedAnswer !== null">
-            <div data-testid="quiz-feedback"
+            <div
+data-testid="quiz-feedback"
               :class="['rounded-xl p-4 mb-4 text-sm', selectedAnswer === currentQuestion.correctIndex ? 'bg-emerald-50 border border-emerald-200 text-emerald-800' : 'bg-red-50 border border-red-200 text-red-800']"
             >
               <p class="font-bold mb-1">{{ selectedAnswer === currentQuestion.correctIndex ? '✓ Správne!' : '✗ Nesprávne' }}</p>
@@ -258,7 +260,8 @@
               <p v-html="currentQuestion.explanation" />
             </div>
             <div class="flex justify-end">
-              <button type="button" data-testid="quiz-next-btn"
+              <button
+type="button" data-testid="quiz-next-btn"
                 class="px-5 py-2.5 rounded-xl bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition-colors"
                 @click="nextQuestion"
               >{{ currentQ < quiz.length - 1 ? 'Ďalšia otázka →' : 'Zobraziť výsledok' }}</button>
@@ -397,6 +400,15 @@ const scoreMessage = computed(() => {
   if (r >= 0.7) return 'Výborne! Látku ovládaš dobre.'
   if (r >= 0.4) return 'Nie je to zlé, ale oplatí sa zopakovať.'
   return 'Prejdi si tému ešte raz a skús to znova.'
+})
+
+useHead({
+  title: 'Kinematika | Mechanika | Náuka Portál',
+  meta: [
+    { name: 'description', content: 'Rovnomerný pohyb, zrýchlenie, rovnomerne zmenený pohyb. Vzorce, grafy a príklady z kinematiky pre gymnázium.' },
+    { property: 'og:title', content: 'Kinematika | Mechanika | Náuka Portál' },
+    { property: 'og:description', content: 'Rovnomerný pohyb, zrýchlenie, rovnomerne zmenený pohyb. Vzorce, grafy a príklady z kinematiky pre gymnázium.' },
+  ],
 })
 </script>
 

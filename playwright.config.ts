@@ -11,10 +11,14 @@ export default defineConfig<ConfigOptions>({
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : 3,
   reporter: 'html',
+  expect:{
+    timeout: 5000
+  },
   use: {
     trace: 'on-first-retry',
+    actionTimeout: 10 * 1000,
     nuxt: {
-      rootDir: fileURLToPath(new URL('.', import.meta.url))
+      rootDir: fileURLToPath(new URL('.', import.meta.url)),
       // host: BASE_URL,
     },
   },

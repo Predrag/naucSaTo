@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-v-html -->
 <template>
   <div class="max-w-4xl mx-auto px-4 py-12">
 
@@ -75,7 +76,7 @@
         <div class="bg-gray-50 border border-gray-200 rounded-2xl p-5">
           <p class="font-bold text-gray-800 mb-3">Príklad: Ťahanie saní</p>
           <p class="text-sm text-gray-600 mb-3">
-            Chlapec ťahá sane silou <span v-html="km('F = 80\\,\\text{N}')"></span> pod uhlom <span v-html="km('\\alpha = 30°')"></span>. Prejde dráhu <span v-html="km('s = 50\\,\\text{m}')"></span>. Akú prácu vykoná?
+            Chlapec ťahá sane silou <span v-html="km('F = 80\\,\\text{N}')"/> pod uhlom <span v-html="km('\\alpha = 30°')"/>. Prejde dráhu <span v-html="km('s = 50\\,\\text{m}')"/>. Akú prácu vykoná?
           </p>
           <div class="bg-white rounded-xl p-4 border border-gray-100 text-sm text-gray-700">
             <MathFormula display formula="W = F \cdot s \cdot \cos\alpha = 80 \cdot 50 \cdot \cos 30° = 80 \cdot 50 \cdot 0{,}866 \approx 3\,464\,\text{J}" />
@@ -114,7 +115,7 @@
             </div>
           </div>
           <div class="bg-gray-50 border border-gray-200 rounded-xl p-4 text-sm text-gray-600">
-            <strong>Príklad:</strong> Auto s hmotnosťou <span v-html="km('m = 1\\,200\\,\\text{kg}')"></span> ide rýchlosťou <span v-html="km('v = 20\\,\\text{m/s}')"></span>.
+            <strong>Príklad:</strong> Auto s hmotnosťou <span v-html="km('m = 1\\,200\\,\\text{kg}')"/> ide rýchlosťou <span v-html="km('v = 20\\,\\text{m/s}')"/>.
             <MathFormula display formula="E_k = \frac{1}{2} \cdot 1\,200 \cdot 20^2 = \frac{1}{2} \cdot 1\,200 \cdot 400 = 240\,000\,\text{J} = 240\,\text{kJ}" />
           </div>
         </div>
@@ -123,7 +124,7 @@
         <div class="mb-8">
           <h3 class="text-xl font-bold text-gray-800 mb-4">Gravitačná potenciálna energia</h3>
           <p class="text-gray-600 mb-4">
-            Teleso zdvihnuté do výšky <span v-html="km('h')"></span> nad referenčnou hladinou má gravitačnú potenciálnu energiu.
+            Teleso zdvihnuté do výšky <span v-html="km('h')"/> nad referenčnou hladinou má gravitačnú potenciálnu energiu.
           </p>
           <div class="bg-orange-50 border border-orange-200 rounded-2xl p-5 mb-4">
             <MathFormula display formula="E_p = mgh" />
@@ -142,7 +143,7 @@
               </div>
             </div>
           </div>
-          <p class="text-sm text-gray-500 italic">Pozn.: <span v-html="km('g \\approx 9{,}81\\,\\text{m/s}^2')"></span>, v príkladoch sa často používa <span v-html="km('g = 10\\,\\text{m/s}^2')"></span>.</p>
+          <p class="text-sm text-gray-500 italic">Pozn.: <span v-html="km('g \\approx 9{,}81\\,\\text{m/s}^2')"/>, v príkladoch sa často používa <span v-html="km('g = 10\\,\\text{m/s}^2')"/>.</p>
         </div>
 
         <!-- Potenciálna energia pružnosti -->
@@ -161,12 +162,12 @@
                 <span class="font-bold text-orange-600">s</span> — predĺženie/stlačenie <span class="text-gray-400">[m]</span>
               </div>
               <div class="bg-white rounded-xl p-3 border border-orange-100">
-                Energia rastie ako <span v-html="km('s^2')"></span> — zdvojnásobená deformácia = 4× energia
+                Energia rastie ako <span v-html="km('s^2')"/> — zdvojnásobená deformácia = 4× energia
               </div>
             </div>
           </div>
           <div class="bg-gray-50 border border-gray-200 rounded-xl p-4 text-sm text-gray-600">
-            <strong>Príklad:</strong> Pružina s tuhosťou <span v-html="km('k = 200\\,\\text{N/m}')"></span> je stlačená o <span v-html="km('s = 0{,}1\\,\\text{m}')"></span>.
+            <strong>Príklad:</strong> Pružina s tuhosťou <span v-html="km('k = 200\\,\\text{N/m}')"/> je stlačená o <span v-html="km('s = 0{,}1\\,\\text{m}')"/>.
             <MathFormula display formula="E_{p\,pruž} = \frac{1}{2} \cdot 200 \cdot (0{,}1)^2 = \frac{1}{2} \cdot 200 \cdot 0{,}01 = 1\,\text{J}" />
           </div>
         </div>
@@ -193,7 +194,7 @@
           <div class="bg-blue-50 border border-blue-200 rounded-xl p-5 mb-4">
             <p class="font-bold text-blue-800 mb-2">Príklad: Voľný pád</p>
             <p class="text-sm text-gray-700 mb-3">
-              Guľa s hmotnosťou <span v-html="km('m = 2\\,\\text{kg}')"></span> padá z výšky <span v-html="km('h = 5\\,\\text{m}')"></span>. Akú rýchlosť má pri dopade?
+              Guľa s hmotnosťou <span v-html="km('m = 2\\,\\text{kg}')"/> padá z výšky <span v-html="km('h = 5\\,\\text{m}')"/>. Akú rýchlosť má pri dopade?
             </p>
             <p class="text-sm text-gray-600 mb-2">Využijeme zákon zachovania energie:</p>
             <MathFormula display formula="mgh = \frac{1}{2}mv^2 \quad\Rightarrow\quad v = \sqrt{2gh} = \sqrt{2 \cdot 10 \cdot 5} = \sqrt{100} = 10\,\text{m/s}" />
@@ -224,7 +225,7 @@
             </div>
           </div>
           <div class="bg-gray-50 border border-gray-200 rounded-xl p-4 text-sm text-gray-600">
-            <strong>Príklad:</strong> Motor vykoná prácu <span v-html="km('W = 36\\,000\\,\\text{J}')"></span> za čas <span v-html="km('t = 60\\,\\text{s}')"></span>.
+            <strong>Príklad:</strong> Motor vykoná prácu <span v-html="km('W = 36\\,000\\,\\text{J}')"/> za čas <span v-html="km('t = 60\\,\\text{s}')"/>.
             <MathFormula display formula="P = \frac{W}{t} = \frac{36\,000}{60} = 600\,\text{W}" />
           </div>
         </div>
@@ -250,9 +251,9 @@
             </div>
           </div>
           <div class="bg-gray-50 border border-gray-200 rounded-xl p-4 text-sm text-gray-600">
-            <strong>Príklad:</strong> Elektromotor spotrebuje <span v-html="km('W_{cel} = 5\\,000\\,\\text{J}')"></span>, užitočná práca je <span v-html="km('W_{už} = 3\\,800\\,\\text{J}')"></span>.
+            <strong>Príklad:</strong> Elektromotor spotrebuje <span v-html="km('W_{cel} = 5\\,000\\,\\text{J}')"/>, užitočná práca je <span v-html="km('W_{už} = 3\\,800\\,\\text{J}')"/>.
             <MathFormula display formula="\eta = \frac{3\,800}{5\,000} \cdot 100\,\% = 76\,\%" />
-            <p class="mt-2">Straty sú <span v-html="km('1\\,200\\,\\text{J}')"></span> — väčšinou teplo pri trení.</p>
+            <p class="mt-2">Straty sú <span v-html="km('1\\,200\\,\\text{J}')"/> — väčšinou teplo pri trení.</p>
           </div>
         </div>
 
@@ -265,31 +266,31 @@
       <ul class="space-y-3 text-gray-700 text-sm">
         <li class="flex items-start gap-2">
           <span class="text-yellow-600 font-bold mt-0.5">✓</span>
-          <span>Mechanická práca <span v-html="km('W = F \\cdot s \\cdot \\cos\\alpha')"></span> — záleží na sile, dráhe aj uhle medzi nimi. Jednotka je joule (J).</span>
+          <span>Mechanická práca <span v-html="km('W = F \\cdot s \\cdot \\cos\\alpha')"/> — záleží na sile, dráhe aj uhle medzi nimi. Jednotka je joule (J).</span>
         </li>
         <li class="flex items-start gap-2">
           <span class="text-yellow-600 font-bold mt-0.5">✓</span>
-          <span>Kinetická energia <span v-html="km('E_k = \\tfrac{1}{2}mv^2')"></span> — energia pohybu; rastie so štvorcom rýchlosti.</span>
+          <span>Kinetická energia <span v-html="km('E_k = \\tfrac{1}{2}mv^2')"/> — energia pohybu; rastie so štvorcom rýchlosti.</span>
         </li>
         <li class="flex items-start gap-2">
           <span class="text-yellow-600 font-bold mt-0.5">✓</span>
-          <span>Gravitačná potenciálna energia <span v-html="km('E_p = mgh')"></span> — závisí od výšky nad referenčnou hladinou.</span>
+          <span>Gravitačná potenciálna energia <span v-html="km('E_p = mgh')"/> — závisí od výšky nad referenčnou hladinou.</span>
         </li>
         <li class="flex items-start gap-2">
           <span class="text-yellow-600 font-bold mt-0.5">✓</span>
-          <span>Potenciálna energia pružnosti <span v-html="km('E_{p} = \\tfrac{1}{2}ks^2')"></span> — energia deformovanej pružiny.</span>
+          <span>Potenciálna energia pružnosti <span v-html="km('E_{p} = \\tfrac{1}{2}ks^2')"/> — energia deformovanej pružiny.</span>
         </li>
         <li class="flex items-start gap-2">
           <span class="text-yellow-600 font-bold mt-0.5">✓</span>
-          <span>Zákon zachovania energie: <span v-html="km('E_k + E_p = \\text{konšt.}')"></span> — v izolovanej sústave bez trenia.</span>
+          <span>Zákon zachovania energie: <span v-html="km('E_k + E_p = \\text{konšt.}')"/> — v izolovanej sústave bez trenia.</span>
         </li>
         <li class="flex items-start gap-2">
           <span class="text-yellow-600 font-bold mt-0.5">✓</span>
-          <span>Výkon <span v-html="km('P = W/t = Fv')"></span> — udáva rýchlosť konania práce. Jednotka je watt (W).</span>
+          <span>Výkon <span v-html="km('P = W/t = Fv')"/> — udáva rýchlosť konania práce. Jednotka je watt (W).</span>
         </li>
         <li class="flex items-start gap-2">
           <span class="text-yellow-600 font-bold mt-0.5">✓</span>
-          <span>Účinnosť <span v-html="km('\\eta = W_{už}/W_{cel} \\cdot 100\\,\\%')"></span> — reálne stroje majú vždy <span v-html="km('\\eta < 100\\,\\%')"></span>.</span>
+          <span>Účinnosť <span v-html="km('\\eta = W_{už}/W_{cel} \\cdot 100\\,\\%')"/> — reálne stroje majú vždy <span v-html="km('\\eta < 100\\,\\%')"/>.</span>
         </li>
       </ul>
     </div>
@@ -308,11 +309,11 @@
           <div
             class="bg-yellow-500 h-2 rounded-full transition-all duration-500"
             :style="{ width: ((currentQ) / quiz.length * 100) + '%' }"
-          ></div>
+          />
         </div>
 
         <!-- Otázka -->
-        <p data-testid="quiz-question" class="text-lg font-semibold text-gray-800 mb-5" v-html="currentQuestion.question"></p>
+        <p data-testid="quiz-question" class="text-lg font-semibold text-gray-800 mb-5" v-html="currentQuestion.question"/>
 
         <!-- Možnosti -->
         <div class="space-y-3 mb-6">
@@ -321,7 +322,6 @@
             :key="i"
             type="button"
             :data-testid="`quiz-option-${i}`"
-            @click="selectAnswer(i)"
             :disabled="selectedAnswer !== null"
             :class="[
               'w-full text-left px-5 py-3 rounded-xl border-2 text-sm font-medium transition-all duration-200',
@@ -333,8 +333,9 @@
                     ? 'border-red-400 bg-red-50 text-red-800'
                     : 'border-gray-200 bg-gray-50 text-gray-400'
             ]"
+            @click="selectAnswer(i)"
             v-html="option"
-          ></button>
+          />
         </div>
 
         <!-- Spätná väzba -->
@@ -350,7 +351,7 @@
             ]"
           >
             <span class="font-bold mr-1">{{ selectedAnswer === currentQuestion.correctIndex ? '✓ Správne!' : '✗ Nesprávne.' }}</span>
-            <span v-html="currentQuestion.explanation"></span>
+            <span v-html="currentQuestion.explanation"/>
           </div>
         </Transition>
 
@@ -360,8 +361,8 @@
             v-if="selectedAnswer !== null"
             type="button"
             data-testid="quiz-next-btn"
-            @click="nextQuestion"
             class="bg-yellow-600 hover:bg-yellow-700 text-white font-semibold px-6 py-2.5 rounded-xl transition-colors"
+            @click="nextQuestion"
           >
             {{ currentQ < quiz.length - 1 ? 'Ďalšia otázka →' : 'Zobraziť výsledok' }}
           </button>
@@ -378,8 +379,8 @@
         <button
           type="button"
           data-testid="quiz-reset-btn"
-          @click="resetQuiz"
           class="bg-yellow-600 hover:bg-yellow-700 text-white font-semibold px-8 py-3 rounded-xl transition-colors"
+          @click="resetQuiz"
         >
           Skúsiť znova
         </button>
@@ -389,7 +390,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, computed } from 'vue'
 import katex from 'katex'
 
@@ -446,7 +447,7 @@ const selectedAnswer = ref(null)
 const quizScore = ref(0)
 const quizFinished = ref(false)
 
-const currentQuestion = computed(() => quiz[currentQ.value])
+const currentQuestion = computed(() => quiz[currentQ.value] as QuizQuestion)
 
 function selectAnswer(i) {
   if (selectedAnswer.value !== null) return

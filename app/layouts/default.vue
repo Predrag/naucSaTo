@@ -10,7 +10,7 @@
             <rect width="32" height="32" rx="8" fill="#14BF96"/>
             <path d="M8 22L16 10L24 22H8Z" fill="white" opacity="0.9"/>
           </svg>
-          <span class="text-lg font-bold text-gray-900">NaučSaTo</span>
+          <span class="text-lg font-bold text-gray-900">Náuka Portál</span>
         </NuxtLink>
 
         <ul class="hidden md:flex items-center gap-1 flex-1">
@@ -64,7 +64,7 @@
               <rect width="32" height="32" rx="8" fill="#14BF96"/>
               <path d="M8 22L16 10L24 22H8Z" fill="white" opacity="0.9"/>
             </svg>
-            <span class="text-white font-bold">NaučSaTo</span>
+            <span class="text-white font-bold">Náuka Portál</span>
           </div>
           <p class="text-sm leading-relaxed">
             Bezplatné vzdelávacie materiály z prírodných vied pre žiakov ZŠ a SŠ na Slovensku.
@@ -89,7 +89,7 @@
       </div>
       <div class="border-t border-gray-800">
         <div class="max-w-6xl mx-auto px-6 py-4 text-xs text-gray-600">
-          © {{ new Date().getFullYear() }} NaučSaTo. Všetky práva vyhradené.
+          © {{ new Date().getFullYear() }} Náuka Portál. Všetky práva vyhradené.
         </div>
       </div>
     </footer>

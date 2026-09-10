@@ -117,4 +117,13 @@ const topics = [
     link: '/fyzika/atomova-fyzika',
   },
 ]
+
+useHead({
+  title: 'Fyzika | Náuka Portál',
+  meta: [
+    { name: 'description', content: 'Mechanika, optika, elektrina, atómová fyzika — bezplatné materiály z fyziky pre gymnazistov. Vzorce, príklady, kvízy.' },
+    { property: 'og:title', content: 'Fyzika | Náuka Portál' },
+    { property: 'og:description', content: 'Mechanika, optika, elektrina, atómová fyzika — bezplatné materiály z fyziky pre gymnazistov. Vzorce, príklady, kvízy.' },
+  ],
+})
 </script>

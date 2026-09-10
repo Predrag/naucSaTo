@@ -65,6 +65,7 @@ const sections = [
     title: 'Stavba atómu',
     description: 'Jadrový model atómu, protóny, neutróny, elektróny, spektrum.',
     bg: 'bg-emerald-500',
+    link: '/fyzika/atomova-fyzika/stavba-atomu',
   },
   {
     slug: 'radioaktivita',
@@ -72,6 +73,7 @@ const sections = [
     title: 'Rádioaktivita',
     description: 'Žiarenie alfa, beta, gama. Polčas rozpadu, rádioaktivita prostredia.',
     bg: 'bg-orange-500',
+    link: '/fyzika/atomova-fyzika/radioaktivita',
   },
   {
     slug: 'jaderna-energia',
@@ -79,6 +81,7 @@ const sections = [
     title: 'Jadrová energia',
     description: 'Väzbová energia jadra, hmotnostný úbytok, štiepenie a syntéza jadier.',
     bg: 'bg-red-500',
+    link: '/fyzika/atomova-fyzika/jaderna-energia',
   },
 ]
 </script>

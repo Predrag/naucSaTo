@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-v-html -->
 <template>
   <div class="max-w-4xl mx-auto px-4 py-12">
 
@@ -24,7 +25,7 @@
       Vrh telesa je pohyb, pri ktorom dostane teleso počiatočnú rýchlosť a ďalej sa pohybuje
       len vplyvom gravitačného zrýchlenia. Kľúčovou myšlienkou je <strong>rozklad pohybu</strong>
       na nezávislé vodorovnú a zvislú zložku. Budeme používať
-      <span v-html="km('g = 10\\,\\text{m/s}^2')"></span>.
+      <span v-html="km('g = 10\\,\\text{m/s}^2')"/>.
     </p>
 
     <!-- ===== SEKCIA 1: VODOROVNÝ VRH ===== -->
@@ -35,13 +36,13 @@
 
       <p class="text-gray-700 mb-4">
         Pri vodorovnom vrhu dostane teleso počiatočnú rýchlosť
-        <span v-html="km('v_0')"></span> v <strong>horizontálnom smere</strong> a zároveň voľne padá vplyvom gravitácie.
+        <span v-html="km('v_0')"/> v <strong>horizontálnom smere</strong> a zároveň voľne padá vplyvom gravitácie.
         Pohyb sa skladá z dvoch navzájom nezávislých pohybov:
       </p>
 
       <ul class="list-disc pl-6 text-gray-700 mb-6 space-y-1">
         <li><strong>Vodorovný smer:</strong> rovnomerný priamočiary pohyb – žiadna sila, rýchlosť
-          <span v-html="km('v_x = v_0')"></span> je konštantná.</li>
+          <span v-html="km('v_x = v_0')"/> je konštantná.</li>
         <li><strong>Zvislý smer:</strong> voľný pád – gravitácia zrýchľuje teleso smerom nadol.</li>
       </ul>
 
@@ -74,11 +75,11 @@
       <div class="bg-blue-50 border-l-4 border-blue-600 rounded-r-xl p-5 mb-4">
         <h3 class="font-bold text-blue-800 mb-3">Príklad – kameň hodený vodorovne</h3>
         <p class="text-gray-700 mb-3">
-          Kameň hodíme vodorovne z výšky <span v-html="km('h = 20\\,\\text{m}')"></span>
-          počiatočnou rýchlosťou <span v-html="km('v_0 = 15\\,\\text{m/s}')"></span>.
+          Kameň hodíme vodorovne z výšky <span v-html="km('h = 20\\,\\text{m}')"/>
+          počiatočnou rýchlosťou <span v-html="km('v_0 = 15\\,\\text{m/s}')"/>.
           Nájdite čas pádu a horizontálnu vzdialenosť dopadu.
         </p>
-        <p class="text-gray-700 mb-1 font-semibold">Čas pádu (zvislý smer, <span v-html="km('y = h')"></span>):</p>
+        <p class="text-gray-700 mb-1 font-semibold">Čas pádu (zvislý smer, <span v-html="km('y = h')"/>):</p>
         <MathFormula display formula="t = \sqrt{\frac{2h}{g}} = \sqrt{\frac{2 \cdot 20}{10}} = \sqrt{4} = 2\,\text{s}" />
         <p class="text-gray-700 mb-1 font-semibold">Horizontálna vzdialenosť:</p>
         <MathFormula display formula="x = v_0\,t = 15 \cdot 2 = 30\,\text{m}" />
@@ -93,7 +94,7 @@
 
       <p class="text-gray-700 mb-4">
         Pri šikmom vrhu dostane teleso počiatočnú rýchlosť
-        <span v-html="km('v_0')"></span> pod uhlom <span v-html="km('\\alpha')"></span>
+        <span v-html="km('v_0')"/> pod uhlom <span v-html="km('\\alpha')"/>
         voči vodorovnej rovine. Počiatočnú rýchlosť rozkladáme na dve zložky:
       </p>
 
@@ -142,9 +143,9 @@
       <div class="bg-yellow-50 border border-yellow-300 rounded-xl p-5 mb-6">
         <h3 class="font-bold text-yellow-800 mb-2">Maximálny dosah pri α = 45°</h3>
         <p class="text-gray-700">
-          Dosah <span v-html="km('D = \\frac{v_0^2\\sin 2\\alpha}{g}')"></span> je
-          najväčší, keď <span v-html="km('\\sin 2\\alpha = 1')"></span>,
-          čiže <span v-html="km('2\\alpha = 90°')"></span> — to nastáva pri uhle
+          Dosah <span v-html="km('D = \\frac{v_0^2\\sin 2\\alpha}{g}')"/> je
+          najväčší, keď <span v-html="km('\\sin 2\\alpha = 1')"/>,
+          čiže <span v-html="km('2\\alpha = 90°')"/> — to nastáva pri uhle
           <strong>α = 45°</strong>. Doplnkové uhly (napr. 30° a 60°) dávajú rovnaký dosah,
           ale rôznu maximálnu výšku.
         </p>
@@ -153,9 +154,9 @@
       <div class="bg-blue-50 border-l-4 border-blue-600 rounded-r-xl p-5 mb-4">
         <h3 class="font-bold text-blue-800 mb-3">Príklad – šikmý vrh pod uhlom 30°</h3>
         <p class="text-gray-700 mb-3">
-          Teleso je vhodené pod uhlom <span v-html="km('\\alpha = 30°')"></span>
-          s počiatočnou rýchlosťou <span v-html="km('v_0 = 20\\,\\text{m/s}')"></span>.
-          (<span v-html="km('\\sin 30° = 0{,}5,\\; \\cos 30° \\approx 0{,}866')"></span>)
+          Teleso je vhodené pod uhlom <span v-html="km('\\alpha = 30°')"/>
+          s počiatočnou rýchlosťou <span v-html="km('v_0 = 20\\,\\text{m/s}')"/>.
+          (<span v-html="km('\\sin 30° = 0{,}5,\\; \\cos 30° \\approx 0{,}866')"/>)
         </p>
         <p class="text-gray-700 mb-1 font-semibold">Maximálna výška:</p>
         <MathFormula display formula="H = \frac{20^2 \cdot 0{,}25}{20} = \frac{100}{20} = 5\,\text{m}" />
@@ -173,7 +174,7 @@
       </h2>
 
       <p class="text-gray-700 mb-4">
-        Vrh zvisle nahor je špeciálnym prípadom šikmého vrhu pri uhle <span v-html="km('\\alpha = 90°')"></span>.
+        Vrh zvisle nahor je špeciálnym prípadom šikmého vrhu pri uhle <span v-html="km('\\alpha = 90°')"/>.
         Teleso sa pohybuje iba v zvislom smere. Gravitácia ho <strong>spomaľuje</strong> počas výstupu,
         v najvyššom bode je momentálna rýchlosť nulová, potom teleso padá späť nadol.
       </p>
@@ -208,7 +209,7 @@
         <h3 class="font-bold text-blue-800 mb-3">Príklad – lopta hodená zvisle nahor</h3>
         <p class="text-gray-700 mb-3">
           Lopta je hodená zvisle nahor počiatočnou rýchlosťou
-          <span v-html="km('v_0 = 30\\,\\text{m/s}')"></span>.
+          <span v-html="km('v_0 = 30\\,\\text{m/s}')"/>.
           Nájdite maximálnu výšku a celkový čas letu.
         </p>
         <p class="text-gray-700 mb-1 font-semibold">Maximálna výška:</p>
@@ -229,22 +230,22 @@
         <li class="flex items-start gap-2">
           <span class="text-red-600 font-bold mt-0.5">✓</span>
           <span>Pri vodorovnom vrhu:
-            <span v-html="km('x = v_0 t')"></span> a
-            <span v-html="km('y = \\tfrac{1}{2}gt^2')"></span>;
+            <span v-html="km('x = v_0 t')"/> a
+            <span v-html="km('y = \\tfrac{1}{2}gt^2')"/>;
             trajektória je <strong>parabola</strong>.</span>
         </li>
         <li class="flex items-start gap-2">
           <span class="text-red-600 font-bold mt-0.5">✓</span>
           <span>Šikmý vrh: zložky rýchlosti
-            <span v-html="km('v_x = v_0\\cos\\alpha')"></span> a
-            <span v-html="km('v_y = v_0\\sin\\alpha - gt')"></span>.</span>
+            <span v-html="km('v_x = v_0\\cos\\alpha')"/> a
+            <span v-html="km('v_y = v_0\\sin\\alpha - gt')"/>.</span>
         </li>
         <li class="flex items-start gap-2">
           <span class="text-red-600 font-bold mt-0.5">✓</span>
           <span>Maximálna výška šikmého vrhu:
-            <span v-html="km('H = \\frac{v_0^2\\sin^2\\!\\alpha}{2g}')"></span>;
+            <span v-html="km('H = \\frac{v_0^2\\sin^2\\!\\alpha}{2g}')"/>;
             dosah:
-            <span v-html="km('D = \\frac{v_0^2\\sin 2\\alpha}{g}')"></span>.</span>
+            <span v-html="km('D = \\frac{v_0^2\\sin 2\\alpha}{g}')"/>.</span>
         </li>
         <li class="flex items-start gap-2">
           <span class="text-red-600 font-bold mt-0.5">✓</span>
@@ -253,9 +254,9 @@
         <li class="flex items-start gap-2">
           <span class="text-red-600 font-bold mt-0.5">✓</span>
           <span>Vrh zvisle nahor: max. výška
-            <span v-html="km('H = \\frac{v_0^2}{2g}')"></span>,
+            <span v-html="km('H = \\frac{v_0^2}{2g}')"/>,
             celkový čas letu
-            <span v-html="km('T = \\frac{2v_0}{g}')"></span>.</span>
+            <span v-html="km('T = \\frac{2v_0}{g}')"/>.</span>
         </li>
       </ul>
     </div>
@@ -275,7 +276,7 @@
               data-testid="quiz-question"
               class="text-gray-800 font-medium mb-4"
               v-html="currentQuestion.question"
-            ></p>
+            />
 
             <div class="space-y-2 mb-4">
               <button
@@ -283,7 +284,6 @@
                 :key="i"
                 type="button"
                 :data-testid="`quiz-option-${i}`"
-                @click="selectAnswer(i)"
                 :class="[
                   'w-full text-left px-4 py-3 rounded-xl border transition-colors',
                   selectedAnswer === null
@@ -294,8 +294,9 @@
                         ? 'border-red-400 bg-red-50 text-red-800'
                         : 'border-gray-100 bg-gray-50 text-gray-400 cursor-default'
                 ]"
+                @click="selectAnswer(i)"
               >
-                <span v-html="option"></span>
+                <span v-html="option"/>
               </button>
             </div>
 
@@ -305,15 +306,15 @@
                 data-testid="quiz-feedback"
                 class="bg-blue-50 rounded-xl p-4 mb-4 text-gray-700 text-sm"
                 v-html="currentQuestion.explanation"
-              ></div>
+              />
             </Transition>
 
             <button
               v-if="selectedAnswer !== null"
               type="button"
               data-testid="quiz-next-btn"
-              @click="nextQuestion"
               class="bg-red-600 text-white px-6 py-2 rounded-xl hover:bg-red-700 transition-colors font-medium"
+              @click="nextQuestion"
             >
               {{ currentQ < quiz.length - 1 ? 'Ďalšia otázka' : 'Zobraziť výsledok' }}
             </button>
@@ -330,8 +331,8 @@
         <button
           type="button"
           data-testid="quiz-reset-btn"
-          @click="resetQuiz"
           class="bg-red-600 text-white px-6 py-2 rounded-xl hover:bg-red-700 transition-colors font-medium"
+          @click="resetQuiz"
         >
           Skúsiť znova
         </button>
@@ -341,7 +342,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, computed } from 'vue';
 import katex from 'katex';
 
@@ -398,7 +399,7 @@ const selectedAnswer = ref(null)
 const quizScore = ref(0)
 const quizFinished = ref(false)
 
-const currentQuestion = computed(() => quiz[currentQ.value])
+const currentQuestion = computed(() => quiz[currentQ.value] as QuizQuestion)
 
 function selectAnswer(i) {
   if (selectedAnswer.value !== null) return
@@ -439,7 +440,7 @@ const scoreMessage = computed(() => {
 })
 
 useHead({
-  title: 'Vrhy telies – Mechanika | NaučSaTo',
+  title: 'Vrhy telies – Mechanika | Náuka Portál',
   meta: [
     {
       name: 'description',

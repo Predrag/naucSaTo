@@ -542,6 +542,15 @@ const derivedUnits = [
   { name: 'Hertz',    symbol: 'Hz', quantity: 'frekvencia',     definition: '1 Hz = 1/s — počet opakovaní za sekundu',                         color: 'bg-orange-500',  slug: 'hertz'   },
   { name: 'Coulomb',  symbol: 'C',  quantity: 'el. náboj',      definition: '1 C = 1 A·s — množstvo elektrického náboja',                      color: 'bg-yellow-500',  slug: 'coulomb' },
 ]
+
+useHead({
+  title: 'Medzinárodná sústava jednotiek SI | Náuka Portál',
+  meta: [
+    { name: 'description', content: 'Základné a odvodené jednotky SI, predpony (kilo, mega, mili), prevodník jednotiek. Fyzika pre gymnázium.' },
+    { property: 'og:title', content: 'Medzinárodná sústava jednotiek SI | Náuka Portál' },
+    { property: 'og:description', content: 'Základné a odvodené jednotky SI, predpony (kilo, mega, mili), prevodník jednotiek. Fyzika pre gymnázium.' },
+  ],
+})
 </script>
 
 <style scoped>

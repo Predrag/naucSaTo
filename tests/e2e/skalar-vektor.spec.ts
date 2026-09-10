@@ -48,7 +48,7 @@ test.describe('Skalárne a vektorové veličiny — obsah', () => {
   })
 
   test('príklady vektorových veličín sú zobrazené', async ({ page }) => {
-    await expect(page.getByText('sila F')).toBeVisible()
+    await expect(page.getByText('sila F').first()).toBeVisible()
     await expect(page.getByText('rýchlosť v')).toBeVisible()
   })
 
@@ -88,14 +88,15 @@ test.describe('VectorAdditionDemo — interaktívna animácia', () => {
   })
 
   test('slidery pre vektor A sú prítomné', async ({ page }) => {
-    await expect(page.getByText(/Vektor A⃗ — veľkosť:/)).toBeVisible()
+    // KaTeX rozdeľuje text node, hľadáme label text 'Veľkosť' a slider
+    await expect(page.getByText('Veľkosť').first()).toBeVisible()
     const sliders = page.locator('input[type="range"]')
     const count = await sliders.count()
     expect(count).toBe(4) // 2 pre A, 2 pre B
   })
 
   test('rovnica sa zobrazuje pod canvasom', async ({ page }) => {
-    await expect(page.getByText('VEĽKOSŤ VÝSLEDNICE')).toBeVisible()
+    await expect(page.getByText('VEĽKOSŤ VÝSLEDNICE').first()).toBeVisible()
     // KaTeX rovnica je vykreslená
     const formulaArea = page.locator('.bg-emerald-50')
     await expect(formulaArea.locator('.katex').first()).toBeVisible()

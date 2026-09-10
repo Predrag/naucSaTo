@@ -65,6 +65,7 @@ const sections = [
     title: 'Svetlo a tiene',
     description: 'Priamočiare šírenie svetla, tieň, zatmenie, difúzny odraz.',
     bg: 'bg-yellow-500',
+    link: '/fyzika/optika/svetlo-a-tiene',
   },
   {
     slug: 'odraz-lom',
@@ -72,6 +73,7 @@ const sections = [
     title: 'Odraz a lom svetla',
     description: 'Zákon odrazu, zákon lomu, index lomu, totálny odraz.',
     bg: 'bg-amber-500',
+    link: '/fyzika/optika/odraz-lom',
   },
   {
     slug: 'sosovky-zrkadla',
@@ -79,6 +81,7 @@ const sections = [
     title: 'Šošovky a zrkadlá',
     description: 'Zobrazenie šošovkami a zrkadlami, zväčšenie, oko a okuliare.',
     bg: 'bg-orange-500',
+    link: '/fyzika/optika/sosovky-zrkadla',
   },
   {
     slug: 'vlnove-vlastnosti-svetla',
@@ -86,6 +89,7 @@ const sections = [
     title: 'Vlnové vlastnosti svetla',
     description: 'Disperzia, interferencia, difrakcia, polarizácia, spektrum.',
     bg: 'bg-red-500',
+    link: '/fyzika/optika/vlnove-vlastnosti-svetla',
   },
 ]
 </script>

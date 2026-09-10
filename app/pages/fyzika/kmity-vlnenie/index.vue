@@ -62,6 +62,7 @@ const sections = [
     title: 'Mechanické kmitanie',
     description: 'Perióda, frekvencia, amplitúda, harmonické kmitanie, oscilátor.',
     bg: 'bg-purple-500',
+    link: '/fyzika/kmity-vlnenie/mechanicke-kmitanie',
   },
   {
     slug: 'kyvadlo',
@@ -69,6 +70,7 @@ const sections = [
     title: 'Kyvadlo a oscilátor',
     description: 'Matematické kyvadlo, pružinové kyvadlo, vlastná frekvencia, rezonancia.',
     bg: 'bg-violet-500',
+    link: '/fyzika/kmity-vlnenie/kyvadlo',
   },
   {
     slug: 'mechanicke-vlnenie',
@@ -76,6 +78,7 @@ const sections = [
     title: 'Mechanické vlnenie',
     description: 'Vlnová dĺžka, rýchlosť vlnenia, Dopplerov jav, interferencia, polarizácia.',
     bg: 'bg-blue-500',
+    link: '/fyzika/kmity-vlnenie/mechanicke-vlnenie',
   },
   {
     slug: 'zvuk',
@@ -83,6 +86,7 @@ const sections = [
     title: 'Zvuk',
     description: 'Hlasitosť, výška tónu, farba zvuku, rýchlosť zvuku, sluch.',
     bg: 'bg-sky-500',
+    link: '/fyzika/kmity-vlnenie/zvuk',
   },
 ]
 </script>

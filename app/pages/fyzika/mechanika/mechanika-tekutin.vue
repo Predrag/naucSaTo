@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-v-html -->
 <template>
   <div class="max-w-4xl mx-auto px-4 py-12">
 
@@ -273,13 +274,13 @@
           <div data-testid="quiz-progress" class="flex items-center gap-3 mb-5">
             <span class="text-sm text-gray-500">Otázka {{ currentQ + 1 }} / {{ quiz.length }}</span>
             <div class="flex-1 bg-gray-200 rounded-full h-2">
-              <div class="bg-cyan-500 h-2 rounded-full transition-all duration-300" :style="{ width: ((currentQ + 1) / quiz.length * 100) + '%' }"></div>
+              <div class="bg-cyan-500 h-2 rounded-full transition-all duration-300" :style="{ width: ((currentQ + 1) / quiz.length * 100) + '%' }"/>
             </div>
           </div>
 
           <!-- Otázka -->
           <div data-testid="quiz-question" class="bg-white border border-gray-200 rounded-2xl p-6 mb-4 shadow-sm">
-            <p class="text-lg font-semibold text-gray-900 leading-relaxed" v-html="currentQuestion.question"></p>
+            <p class="text-lg font-semibold text-gray-900 leading-relaxed" v-html="currentQuestion.question"/>
           </div>
 
           <!-- Možnosti -->
@@ -293,15 +294,16 @@
               :class="optionClass(i)"
               @click="selectAnswer(i)"
               v-html="option"
-            ></button>
+            />
           </div>
 
           <!-- Feedback -->
           <Transition name="fade">
-            <div v-if="selectedAnswer !== null" data-testid="quiz-feedback" class="rounded-xl p-4 mb-4 text-sm leading-relaxed"
+            <div
+v-if="selectedAnswer !== null" data-testid="quiz-feedback" class="rounded-xl p-4 mb-4 text-sm leading-relaxed"
               :class="selectedAnswer === currentQuestion.correctIndex ? 'bg-emerald-50 border border-emerald-200 text-emerald-800' : 'bg-red-50 border border-red-200 text-red-800'">
               <span class="font-bold mr-1">{{ selectedAnswer === currentQuestion.correctIndex ? '✓ Správne!' : '✗ Nesprávne.' }}</span>
-              <span v-html="currentQuestion.explanation"></span>
+              <span v-html="currentQuestion.explanation"/>
             </div>
           </Transition>
 
@@ -342,7 +344,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, computed } from 'vue';
 import katex from 'katex';
 
@@ -439,7 +441,7 @@ const selectedAnswer = ref(null);
 const quizScore = ref(0);
 const quizFinished = ref(false);
 
-const currentQuestion = computed(() => quiz[currentQ.value]);
+const currentQuestion = computed(() => quiz[currentQ.value] as QuizQuestion);
 
 function selectAnswer(i) {
   if (selectedAnswer.value !== null) return;

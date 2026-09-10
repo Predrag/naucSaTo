@@ -604,6 +604,15 @@ const scoreMessage = computed(() => {
   if (r >= 0.4) return 'Nie je to zlé, ale oplatí sa zopakovať.'
   return 'Prejdi si tému ešte raz a skús to znova.'
 })
+
+useHead({
+  title: 'Skalárne a vektorové veličiny | Náuka Portál',
+  meta: [
+    { name: 'description', content: 'Rozdiel skaláru a vektoru, sčítanie vektorov, rozklad na zložky. Fyzika pre gymnázium.' },
+    { property: 'og:title', content: 'Skalárne a vektorové veličiny | Náuka Portál' },
+    { property: 'og:description', content: 'Rozdiel skaláru a vektoru, sčítanie vektorov, rozklad na zložky. Fyzika pre gymnázium.' },
+  ],
+})
 </script>
 
 <style scoped>

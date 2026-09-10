@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-v-html -->
 <template>
   <div class="max-w-4xl mx-auto px-4 py-12">
 
@@ -54,7 +55,7 @@
           <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4">
             <p class="text-sm font-semibold text-yellow-800 mb-2">📌 Zotrvačnosť a hmotnosť</p>
             <p class="text-sm text-gray-700">
-              <strong>Zotrvačnosť</strong> je vlastnosť telesa brániť sa zmene pohybového stavu. Mierou zotrvačnosti je <strong>hmotnosť</strong> <span v-html="km('m')"></span>. Ťažšie teleso má väčšiu zotrvačnosť – ťažšie ho rozbehnúť aj zastaviť.
+              <strong>Zotrvačnosť</strong> je vlastnosť telesa brániť sa zmene pohybového stavu. Mierou zotrvačnosti je <strong>hmotnosť</strong> <span v-html="km('m')"/>. Ťažšie teleso má väčšiu zotrvačnosť – ťažšie ho rozbehnúť aj zastaviť.
             </p>
           </div>
         </div>
@@ -62,7 +63,7 @@
         <!-- Vzorce výslednice -->
         <div class="bg-gray-50 border border-gray-200 rounded-xl p-4">
           <p class="text-sm font-semibold text-gray-700 mb-2">Teleso v pokoji – rovnováha síl</p>
-          <p class="text-sm text-gray-600">Na knihu na stole pôsobí tiaž <span v-html="km('G = mg')"></span> smerom nadol a normálová sila <span v-html="km('N')"></span> smerom nahor. Výslednica:</p>
+          <p class="text-sm text-gray-600">Na knihu na stole pôsobí tiaž <span v-html="km('G = mg')"/> smerom nadol a normálová sila <span v-html="km('N')"/> smerom nahor. Výslednica:</p>
           <MathFormula display formula="\vec{F}_{\text{výsl}} = \vec{G} + \vec{N} = \vec{0}" />
         </div>
       </div>
@@ -82,15 +83,15 @@
           <MathFormula display formula="\vec{F} = m \cdot \vec{a}" />
           <div class="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm text-gray-700">
             <div class="bg-white rounded-lg p-3 text-center">
-              <span class="font-bold text-emerald-700 text-lg" v-html="km('\\vec{F}')"></span>
+              <span class="font-bold text-emerald-700 text-lg" v-html="km('\\vec{F}')"/>
               <p class="text-xs text-gray-500 mt-1">výsledná sila (N)</p>
             </div>
             <div class="bg-white rounded-lg p-3 text-center">
-              <span class="font-bold text-emerald-700 text-lg" v-html="km('m')"></span>
+              <span class="font-bold text-emerald-700 text-lg" v-html="km('m')"/>
               <p class="text-xs text-gray-500 mt-1">hmotnosť (kg)</p>
             </div>
             <div class="bg-white rounded-lg p-3 text-center">
-              <span class="font-bold text-emerald-700 text-lg" v-html="km('\\vec{a}')"></span>
+              <span class="font-bold text-emerald-700 text-lg" v-html="km('\\vec{a}')"/>
               <p class="text-xs text-gray-500 mt-1">zrýchlenie (m/s²)</p>
             </div>
           </div>
@@ -149,21 +150,21 @@
             <tbody class="divide-y divide-gray-100">
               <tr class="bg-white hover:bg-gray-50">
                 <td class="px-4 py-2 text-gray-700 font-medium">Sila</td>
-                <td class="px-4 py-2"><span v-html="km('F')"></span></td>
+                <td class="px-4 py-2"><span v-html="km('F')"/></td>
                 <td class="px-4 py-2 text-gray-600">Newton (N = kg·m/s²)</td>
-                <td class="px-4 py-2"><span v-html="km('F = ma')"></span></td>
+                <td class="px-4 py-2"><span v-html="km('F = ma')"/></td>
               </tr>
               <tr class="bg-gray-50 hover:bg-gray-100">
                 <td class="px-4 py-2 text-gray-700 font-medium">Hmotnosť</td>
-                <td class="px-4 py-2"><span v-html="km('m')"></span></td>
+                <td class="px-4 py-2"><span v-html="km('m')"/></td>
                 <td class="px-4 py-2 text-gray-600">Kilogram (kg)</td>
-                <td class="px-4 py-2"><span v-html="km('m = F/a')"></span></td>
+                <td class="px-4 py-2"><span v-html="km('m = F/a')"/></td>
               </tr>
               <tr class="bg-white hover:bg-gray-50">
                 <td class="px-4 py-2 text-gray-700 font-medium">Zrýchlenie</td>
-                <td class="px-4 py-2"><span v-html="km('a')"></span></td>
+                <td class="px-4 py-2"><span v-html="km('a')"/></td>
                 <td class="px-4 py-2 text-gray-600">Meter za sekundu² (m/s²)</td>
-                <td class="px-4 py-2"><span v-html="km('a = F/m')"></span></td>
+                <td class="px-4 py-2"><span v-html="km('a = F/m')"/></td>
               </tr>
             </tbody>
           </table>
@@ -247,7 +248,7 @@
             <p class="font-semibold text-sm">Príklad 3 – Výslednica kolineárnych síl</p>
           </div>
           <div class="bg-white px-5 py-4 space-y-2">
-            <p class="text-sm text-gray-700"><strong>Zadanie:</strong> Na teleso pôsobí sila <span v-html="km('F_1 = 15\\,\\text{N}')"></span> doprava a sila <span v-html="km('F_2 = 6\\,\\text{N}')"></span> doľava. Určte výslednicu a zrýchlenie telesa s hmotnosťou 3 kg.</p>
+            <p class="text-sm text-gray-700"><strong>Zadanie:</strong> Na teleso pôsobí sila <span v-html="km('F_1 = 15\\,\\text{N}')"/> doprava a sila <span v-html="km('F_2 = 6\\,\\text{N}')"/> doľava. Určte výslednicu a zrýchlenie telesa s hmotnosťou 3 kg.</p>
             <p class="text-sm text-gray-600"><strong>Riešenie:</strong></p>
             <MathFormula display formula="F_{\text{výsl}} = F_1 - F_2 = 15\,\text{N} - 6\,\text{N} = 9\,\text{N} \text{ (doprava)}" />
             <MathFormula display formula="a = \frac{F_{\text{výsl}}}{m} = \frac{9\,\text{N}}{3\,\text{kg}} = 3\,\text{m/s}^2" />
@@ -258,7 +259,7 @@
         <!-- Rozklad síl -->
         <div class="bg-orange-50 border border-orange-200 rounded-xl p-5">
           <p class="text-sm font-semibold text-orange-800 mb-3">Rozklad sily na zložky</p>
-          <p class="text-sm text-gray-700 mb-3">Keď sila zviera s osou x uhol <span v-html="km('\\alpha')"></span>, rozkladáme ju na zložky:</p>
+          <p class="text-sm text-gray-700 mb-3">Keď sila zviera s osou x uhol <span v-html="km('\\alpha')"/>, rozkladáme ju na zložky:</p>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
               <MathFormula display formula="F_x = F \cdot \cos\alpha" />
@@ -275,9 +276,9 @@
           <ol class="text-sm text-gray-700 space-y-2 list-decimal list-inside">
             <li>Narysuj teleso ako bod alebo obdĺžnik.</li>
             <li>Zakresli <strong>všetky</strong> sily pôsobiace na teleso so šípkami (veľkosť = dĺžka šípky).</li>
-            <li>Urč smer a veľkosť každej sily: tiaž <span v-html="km('G = mg')"></span>, normálová sila <span v-html="km('N')"></span>, trecia sila <span v-html="km('F_t')"></span>, ťah lana <span v-html="km('T')"></span>…</li>
+            <li>Urč smer a veľkosť každej sily: tiaž <span v-html="km('G = mg')"/>, normálová sila <span v-html="km('N')"/>, trecia sila <span v-html="km('F_t')"/>, ťah lana <span v-html="km('T')"/>…</li>
             <li>Vypočítaj výslednicu pomocou vektorového súčtu po osách.</li>
-            <li>Použi 2. Newtonov zákon: <span v-html="km('\\vec{F}_{\\text{výsl}} = m\\vec{a}')"></span>.</li>
+            <li>Použi 2. Newtonov zákon: <span v-html="km('\\vec{F}_{\\text{výsl}} = m\\vec{a}')"/>.</li>
           </ol>
         </div>
 
@@ -288,7 +289,7 @@
           </div>
           <div class="bg-white px-5 py-4 space-y-2">
             <p class="text-sm text-gray-700"><strong>Zadanie:</strong> Teleso s hmotnosťou 2 kg leží na hladkej naklonenej rovine pod uhlom 30°. Aké je zrýchlenie po rovine nadol?</p>
-            <p class="text-sm text-gray-600"><strong>Riešenie:</strong> Tiaž <span v-html="km('G = mg')"></span> sa rozkladá na zložku pozdĺž roviny a zložku kolmú na rovinu.</p>
+            <p class="text-sm text-gray-600"><strong>Riešenie:</strong> Tiaž <span v-html="km('G = mg')"/> sa rozkladá na zložku pozdĺž roviny a zložku kolmú na rovinu.</p>
             <MathFormula display formula="F_{\parallel} = m \cdot g \cdot \sin 30° = 2 \cdot 10 \cdot 0{,}5 = 10\,\text{N}" />
             <MathFormula display formula="a = g \cdot \sin 30° = 10 \cdot 0{,}5 = 5\,\text{m/s}^2" />
             <p class="text-sm text-emerald-700 font-medium">Teleso sa zrýchľuje po rovine nadol hodnotou 5 m/s².</p>
@@ -307,11 +308,11 @@
         </li>
         <li class="flex items-start gap-2">
           <span class="text-emerald-500 font-bold mt-0.5">2.</span>
-          <span><strong>2. zákon sily:</strong> <span v-html="km('F = ma')"></span> – výsledná sila sa rovná súčinu hmotnosti a zrýchlenia. Sila a zrýchlenie majú rovnaký smer.</span>
+          <span><strong>2. zákon sily:</strong> <span v-html="km('F = ma')"/> – výsledná sila sa rovná súčinu hmotnosti a zrýchlenia. Sila a zrýchlenie majú rovnaký smer.</span>
         </li>
         <li class="flex items-start gap-2">
           <span class="text-emerald-500 font-bold mt-0.5">3.</span>
-          <span><strong>3. zákon akcie a reakcie:</strong> <span v-html="km('\\vec{F}_{AB} = -\\vec{F}_{BA}')"></span> – sily vždy pôsobia v pároch, navzájom opačne smerujúcich, na rôzne telesá.</span>
+          <span><strong>3. zákon akcie a reakcie:</strong> <span v-html="km('\\vec{F}_{AB} = -\\vec{F}_{BA}')"/> – sily vždy pôsobia v pároch, navzájom opačne smerujúcich, na rôzne telesá.</span>
         </li>
         <li class="flex items-start gap-2">
           <span class="text-emerald-500 font-bold mt-0.5">4.</span>
@@ -323,7 +324,7 @@
         </li>
         <li class="flex items-start gap-2">
           <span class="text-emerald-500 font-bold mt-0.5">6.</span>
-          <span><strong>Rozklad síl:</strong> Silu pod uhlom <span v-html="km('\\alpha')"></span> rozkladáme: <span v-html="km('F_x = F\\cos\\alpha')"></span>, <span v-html="km('F_y = F\\sin\\alpha')"></span>.</span>
+          <span><strong>Rozklad síl:</strong> Silu pod uhlom <span v-html="km('\\alpha')"/> rozkladáme: <span v-html="km('F_x = F\\cos\\alpha')"/>, <span v-html="km('F_y = F\\sin\\alpha')"/>.</span>
         </li>
       </ul>
     </div>
@@ -342,14 +343,14 @@
               :key="i"
               class="w-2.5 h-2.5 rounded-full transition-colors"
               :class="i === currentQ ? 'bg-emerald-500' : i < currentQ ? 'bg-emerald-200' : 'bg-gray-200'"
-            ></span>
+            />
           </div>
         </div>
 
         <!-- Otázka -->
         <Transition name="fade" mode="out-in">
           <div :key="currentQ">
-            <p data-testid="quiz-question" class="text-lg font-semibold text-gray-800 mb-5" v-html="currentQuestion.question"></p>
+            <p data-testid="quiz-question" class="text-lg font-semibold text-gray-800 mb-5" v-html="currentQuestion.question"/>
 
             <!-- Možnosti -->
             <div class="space-y-3 mb-6">
@@ -358,7 +359,6 @@
                 :key="i"
                 type="button"
                 :data-testid="`quiz-option-${i}`"
-                @click="selectAnswer(i)"
                 class="w-full text-left px-4 py-3 rounded-xl border-2 transition-all text-sm font-medium"
                 :class="{
                   'border-gray-200 hover:border-emerald-400 hover:bg-emerald-50 text-gray-700 cursor-pointer': selectedAnswer === null,
@@ -367,19 +367,22 @@
                   'border-gray-200 text-gray-400 cursor-default': selectedAnswer !== null && i !== selectedAnswer && i !== currentQuestion.correctIndex,
                   'cursor-not-allowed': selectedAnswer !== null
                 }"
+                @click="selectAnswer(i)"
                 v-html="option"
-              ></button>
+              />
             </div>
 
             <!-- Spätná väzba -->
             <Transition name="fade">
-              <div v-if="selectedAnswer !== null" data-testid="quiz-feedback" class="rounded-xl p-4 mb-4"
+              <div
+v-if="selectedAnswer !== null" data-testid="quiz-feedback" class="rounded-xl p-4 mb-4"
                 :class="selectedAnswer === currentQuestion.correctIndex ? 'bg-emerald-50 border border-emerald-200' : 'bg-red-50 border border-red-200'">
-                <p class="text-sm font-semibold mb-1"
+                <p
+class="text-sm font-semibold mb-1"
                   :class="selectedAnswer === currentQuestion.correctIndex ? 'text-emerald-700' : 'text-red-700'">
                   {{ selectedAnswer === currentQuestion.correctIndex ? '✓ Správne!' : '✗ Nesprávne' }}
                 </p>
-                <p class="text-sm text-gray-700" v-html="currentQuestion.explanation"></p>
+                <p class="text-sm text-gray-700" v-html="currentQuestion.explanation"/>
               </div>
             </Transition>
 
@@ -388,8 +391,8 @@
               <button
                 type="button"
                 data-testid="quiz-next-btn"
-                @click="nextQuestion"
                 class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-6 py-2.5 rounded-xl transition-colors text-sm"
+                @click="nextQuestion"
               >
                 {{ currentQ < quiz.length - 1 ? 'Ďalšia otázka →' : 'Zobraziť výsledok' }}
               </button>
@@ -408,8 +411,8 @@
         <button
           type="button"
           data-testid="quiz-reset-btn"
-          @click="resetQuiz"
           class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-8 py-3 rounded-xl transition-colors"
+          @click="resetQuiz"
         >
           Skúsiť znova
         </button>
@@ -419,7 +422,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, computed } from 'vue';
 import katex from 'katex';
 
@@ -470,7 +473,7 @@ const currentQ = ref(0);
 const selectedAnswer = ref(null);
 const quizScore = ref(0);
 const quizFinished = ref(false);
-const currentQuestion = computed(() => quiz[currentQ.value]);
+const currentQuestion = computed(() => quiz[currentQ.value] as QuizQuestion);
 
 function selectAnswer(i) {
   if (selectedAnswer.value !== null) return;

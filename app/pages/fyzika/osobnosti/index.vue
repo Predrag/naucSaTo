@@ -182,4 +182,13 @@ const scientists = [
     description: 'Kňaz, maliar a vynálezca z Tajova, priekopník bezdrôtovej komunikácie, ktorého patenty skončili u Marconiho.',
   },
 ]
+
+useHead({
+  title: 'Osobnosti fyziky | Náuka Portál',
+  meta: [
+    { name: 'description', content: 'Newton, Joule, Watt, Pascal, Hertz — vedci fyziky a ich objavy. Aj slovenské osobnosti: Petzval, Jedlík, Segner.' },
+    { property: 'og:title', content: 'Osobnosti fyziky | Náuka Portál' },
+    { property: 'og:description', content: 'Newton, Joule, Watt, Pascal, Hertz — vedci fyziky a ich objavy. Aj slovenské osobnosti: Petzval, Jedlík, Segner.' },
+  ],
+})
 </script>

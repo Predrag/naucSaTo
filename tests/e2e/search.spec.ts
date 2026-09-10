@@ -43,7 +43,7 @@ test.describe('Vyhľadávanie — SearchModal', () => {
     await page.getByTestId('search-trigger').click()
     await page.getByTestId('search-input').fill('newton')
     await expect(page.getByTestId('search-results')).toBeVisible()
-    await expect(page.getByRole('option', { name: /Newton/ })).toBeVisible()
+    await expect(page.getByRole('option', { name: /Newton/ }).first()).toBeVisible()
   })
 
   test('vyhladavanie "SI" zobrazí stránku jednotiek', async ({ page }) => {
@@ -60,8 +60,8 @@ test.describe('Vyhľadávanie — SearchModal', () => {
 
   test('klik na výsledok naviguje na správnu stránku', async ({ page }) => {
     await page.getByTestId('search-trigger').click()
-    await page.getByTestId('search-input').fill('newton')
-    await page.getByRole('option', { name: /Newton/ }).first().click()
+    await page.getByTestId('search-input').fill('Isaac Newton')
+    await page.getByRole('option', { name: /Isaac Newton/ }).first().click()
     await expect(page).toHaveURL(/\/fyzika\/osobnosti\/newton$/)
     await expect(page.getByTestId('search-modal')).not.toBeVisible()
   })
@@ -84,7 +84,7 @@ test.describe('Vyhľadávanie — SearchModal', () => {
 
   test('Enter po výbere výsledku naviguje', async ({ page }) => {
     await page.getByTestId('search-trigger').click()
-    await page.getByTestId('search-input').fill('newton')
+    await page.getByTestId('search-input').fill('Isaac Newton')
     await expect(page.getByTestId('search-results')).toBeVisible()
     await page.keyboard.press('Enter')
     await expect(page).toHaveURL(/\/fyzika\/osobnosti\/newton$/)

@@ -62,6 +62,7 @@ const sections = [
     title: 'Časticová stavba látok',
     description: 'Atómy, molekuly, kryštalické a amorfné látky, vnútorná energia.',
     bg: 'bg-blue-500',
+    link: '/fyzika/molekulova-fyzika/casticova-stavba',
   },
   {
     slug: 'tlak-kapaliny-plyny',
@@ -69,6 +70,7 @@ const sections = [
     title: 'Tlak v kvapalinách a plynoch',
     description: 'Hydrostatický tlak, Pascalov zákon, Archimedov zákon, atmosferický tlak.',
     bg: 'bg-cyan-500',
+    link: '/fyzika/molekulova-fyzika/tlak-kapaliny-plyny',
   },
   {
     slug: 'idealny-plyn',
@@ -76,6 +78,7 @@ const sections = [
     title: 'Ideálny plyn',
     description: 'Stavová rovnica, izodeje — izobarický, izochorický, izotermický a adiabatický dej.',
     bg: 'bg-teal-500',
+    link: '/fyzika/molekulova-fyzika/idealny-plyn',
   },
   {
     slug: 'zmeny-skupenstva',
@@ -83,6 +86,7 @@ const sections = [
     title: 'Zmeny skupenstva',
     description: 'Topenie, tuhnutie, vyparovanie, kondenzácia, sublimácia. Nasýtené pary.',
     bg: 'bg-sky-500',
+    link: '/fyzika/molekulova-fyzika/zmeny-skupenstva',
   },
   {
     slug: 'vlhkost-vzduchu',
@@ -90,6 +94,7 @@ const sections = [
     title: 'Vlhkosť vzduchu',
     description: 'Relatívna a absolútna vlhkosť, rosný bod, využitie v praxi.',
     bg: 'bg-indigo-500',
+    link: '/fyzika/molekulova-fyzika/vlhkost-vzduchu',
   },
 ]
 </script>

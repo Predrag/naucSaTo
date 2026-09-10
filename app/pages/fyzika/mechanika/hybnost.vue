@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-v-html -->
 <template>
   <div class="max-w-4xl mx-auto px-4 py-12">
 
@@ -34,15 +35,15 @@
           <MathFormula display formula="\vec{p} = m \cdot \vec{v}" />
           <div class="mt-3 grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm text-gray-700">
             <div class="bg-white rounded-lg p-3 text-center">
-              <span class="font-bold text-teal-700 text-lg" v-html="km('\\vec{p}')"></span>
+              <span class="font-bold text-teal-700 text-lg" v-html="km('\\vec{p}')"/>
               <p class="text-xs text-gray-500 mt-1">hybnosť (kg·m/s)</p>
             </div>
             <div class="bg-white rounded-lg p-3 text-center">
-              <span class="font-bold text-teal-700 text-lg" v-html="km('m')"></span>
+              <span class="font-bold text-teal-700 text-lg" v-html="km('m')"/>
               <p class="text-xs text-gray-500 mt-1">hmotnosť (kg)</p>
             </div>
             <div class="bg-white rounded-lg p-3 text-center">
-              <span class="font-bold text-teal-700 text-lg" v-html="km('\\vec{v}')"></span>
+              <span class="font-bold text-teal-700 text-lg" v-html="km('\\vec{v}')"/>
               <p class="text-xs text-gray-500 mt-1">rýchlosť (m/s)</p>
             </div>
           </div>
@@ -52,8 +53,8 @@
           <p class="text-sm font-semibold text-teal-800 mb-1">Smer hybnosti</p>
           <p class="text-sm text-gray-700">
             Hybnosť je <strong>vektor</strong> — má rovnaký smer ako rýchlosť telesa. Jednotka hybnosti je
-            <span v-html="km('\\text{kg}\\cdot\\text{m/s}')"></span>,
-            čo je totožné s jednotkou <span v-html="km('\\text{N}\\cdot\\text{s}')"></span>.
+            <span v-html="km('\\text{kg}\\cdot\\text{m/s}')"/>,
+            čo je totožné s jednotkou <span v-html="km('\\text{N}\\cdot\\text{s}')"/>.
           </p>
         </div>
 
@@ -92,11 +93,11 @@
           <MathFormula display formula="\vec{F} \cdot \Delta t = \Delta \vec{p} = m\vec{v}_2 - m\vec{v}_1" />
           <div class="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-gray-700">
             <div class="bg-white rounded-lg p-3">
-              <span class="font-bold text-teal-700" v-html="km('\\vec{F} \\cdot \\Delta t')"></span>
+              <span class="font-bold text-teal-700" v-html="km('\\vec{F} \\cdot \\Delta t')"/>
               <p class="text-xs text-gray-500 mt-1">impulz sily (N·s)</p>
             </div>
             <div class="bg-white rounded-lg p-3">
-              <span class="font-bold text-teal-700" v-html="km('\\Delta \\vec{p}')"></span>
+              <span class="font-bold text-teal-700" v-html="km('\\Delta \\vec{p}')"/>
               <p class="text-xs text-gray-500 mt-1">zmena hybnosti (kg·m/s)</p>
             </div>
           </div>
@@ -204,11 +205,11 @@
       <ul class="space-y-3 text-sm text-gray-700">
         <li class="flex items-start gap-3">
           <span class="text-teal-600 font-bold mt-0.5">✓</span>
-          <span>Hybnosť <span v-html="km('\\vec{p} = m\\vec{v}')"></span> je vektorová veličina s jednotkou kg·m/s.</span>
+          <span>Hybnosť <span v-html="km('\\vec{p} = m\\vec{v}')"/> je vektorová veličina s jednotkou kg·m/s.</span>
         </li>
         <li class="flex items-start gap-3">
           <span class="text-teal-600 font-bold mt-0.5">✓</span>
-          <span>Impulz sily <span v-html="km('\\vec{F}\\cdot\\Delta t')"></span> sa rovná zmene hybnosti <span v-html="km('\\Delta\\vec{p}')"></span>.</span>
+          <span>Impulz sily <span v-html="km('\\vec{F}\\cdot\\Delta t')"/> sa rovná zmene hybnosti <span v-html="km('\\Delta\\vec{p}')"/>.</span>
         </li>
         <li class="flex items-start gap-3">
           <span class="text-teal-600 font-bold mt-0.5">✓</span>
@@ -241,12 +242,12 @@
                 'h-2 rounded-full transition-all duration-300',
                 i < currentQ ? 'bg-teal-500 w-6' : i === currentQ ? 'bg-teal-300 w-6' : 'bg-gray-200 w-4'
               ]"
-            ></div>
+            />
           </div>
         </div>
 
         <!-- Question -->
-        <p data-testid="quiz-question" class="text-gray-900 font-semibold text-lg mb-5" v-html="currentQuestion.question"></p>
+        <p data-testid="quiz-question" class="text-gray-900 font-semibold text-lg mb-5" v-html="currentQuestion.question"/>
 
         <!-- Options -->
         <div class="space-y-3 mb-5">
@@ -255,7 +256,6 @@
             :key="i"
             type="button"
             :data-testid="`quiz-option-${i}`"
-            @click="selectAnswer(i)"
             :class="[
               'w-full text-left px-5 py-3 rounded-xl border-2 text-sm font-medium transition-all duration-200',
               selectedAnswer === null
@@ -266,9 +266,10 @@
                     ? 'border-red-400 bg-red-50 text-red-800'
                     : 'border-gray-200 text-gray-400 cursor-default'
             ]"
+            @click="selectAnswer(i)"
           >
             <span class="font-bold mr-2">{{ ['A', 'B', 'C', 'D'][i] }}.</span>
-            <span v-html="option"></span>
+            <span v-html="option"/>
           </button>
         </div>
 
@@ -287,7 +288,7 @@
             <p class="font-semibold mb-1">
               {{ selectedAnswer === currentQuestion.correctIndex ? '✓ Správne!' : '✗ Nesprávne' }}
             </p>
-            <p v-html="currentQuestion.explanation"></p>
+            <p v-html="currentQuestion.explanation"/>
           </div>
         </Transition>
 
@@ -297,8 +298,8 @@
             v-if="selectedAnswer !== null"
             type="button"
             data-testid="quiz-next-btn"
-            @click="nextQuestion"
             class="bg-teal-600 hover:bg-teal-700 text-white font-semibold px-6 py-2.5 rounded-xl transition-colors"
+            @click="nextQuestion"
           >
             {{ currentQ < quiz.length - 1 ? 'Ďalšia otázka →' : 'Zobraziť výsledok' }}
           </button>
@@ -315,8 +316,8 @@
         <button
           type="button"
           data-testid="quiz-reset-btn"
-          @click="resetQuiz"
           class="bg-teal-600 hover:bg-teal-700 text-white font-semibold px-8 py-3 rounded-xl transition-colors"
+          @click="resetQuiz"
         >
           Skúsiť znova
         </button>
@@ -326,7 +327,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, computed } from 'vue'
 import katex from 'katex'
 
@@ -422,7 +423,7 @@ const selectedAnswer = ref(null)
 const quizScore = ref(0)
 const quizFinished = ref(false)
 
-const currentQuestion = computed(() => quiz[currentQ.value])
+const currentQuestion = computed(() => quiz[currentQ.value] as QuizQuestion)
 
 function selectAnswer(i) {
   if (selectedAnswer.value !== null) return

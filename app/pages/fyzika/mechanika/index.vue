@@ -129,4 +129,13 @@ const sections = [
     link: '/fyzika/mechanika/trenie',
   },
 ]
+
+useHead({
+  title: 'Mechanika | Fyzika | Náuka Portál',
+  meta: [
+    { name: 'description', content: 'Kinematika, Newtonove zákony, gravitácia, energia, hybnosť — kompletná mechanika pre gymnázium.' },
+    { property: 'og:title', content: 'Mechanika | Fyzika | Náuka Portál' },
+    { property: 'og:description', content: 'Kinematika, Newtonove zákony, gravitácia, energia, hybnosť — kompletná mechanika pre gymnázium.' },
+  ],
+})
 </script>

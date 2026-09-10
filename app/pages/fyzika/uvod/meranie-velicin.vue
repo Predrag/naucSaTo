@@ -501,6 +501,15 @@ const scoreMessage = computed(() => {
   if (r >= 0.4) return 'Nie je to zlé, ale oplatí sa zopakovať.'
   return 'Prejdi si tému ešte raz a skús to znova.'
 })
+
+useHead({
+  title: 'Meranie fyzikálnych veličín | Náuka Portál',
+  meta: [
+    { name: 'description', content: 'Chyby merania, neistota merania, platné číslice, meracie prístroje. Fyzika pre gymnázium.' },
+    { property: 'og:title', content: 'Meranie fyzikálnych veličín | Náuka Portál' },
+    { property: 'og:description', content: 'Chyby merania, neistota merania, platné číslice, meracie prístroje. Fyzika pre gymnázium.' },
+  ],
+})
 </script>
 
 <style scoped>

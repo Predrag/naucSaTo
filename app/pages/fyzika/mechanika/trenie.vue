@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-v-html -->
 <template>
   <div class="max-w-4xl mx-auto px-4 py-12">
 
@@ -203,7 +204,8 @@
             <path d="M 70,170 A 40,40 0 0,0 66,148" fill="none" stroke="#64748B" stroke-width="1.5" />
             <text x="80" y="163" fill="#475569" font-size="13" font-style="italic">α</text>
             <!-- Teleso (obdĺžnik na svahu) -->
-            <rect x="148" y="104" width="34" height="22" rx="3"
+            <rect
+x="148" y="104" width="34" height="22" rx="3"
               fill="#DBEAFE" stroke="#3B82F6" stroke-width="1.5"
               transform="rotate(-16.7, 165, 115)" />
             <!-- Fg - gravitačná sila (zvislá dole) -->
@@ -216,7 +218,8 @@
             <line x1="165" y1="117" x2="181" y2="82" stroke="#16A34A" stroke-width="2.5" marker-end="url(#arr-perp)" />
             <text x="185" y="88" fill="#16A34A" font-size="12" font-weight="bold">F<tspan dy="3" font-size="9">⊥</tspan></text>
             <!-- Pravý uhol medzi zložkami -->
-            <rect x="152" y="127" width="8" height="8" fill="none" stroke="#9CA3AF" stroke-width="1"
+            <rect
+x="152" y="127" width="8" height="8" fill="none" stroke="#9CA3AF" stroke-width="1"
               transform="rotate(-16.7, 156, 131)" />
           </svg>
         </div>

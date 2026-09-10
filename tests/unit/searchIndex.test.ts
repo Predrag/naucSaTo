@@ -76,4 +76,34 @@ describe('searchIndex', () => {
     expect(si?.keywords).toContain('meter')
     expect(si?.keywords).toContain('kilogram')
   })
+
+  it('obsahuje sekciu Mechanika a jej podsekcie', () => {
+    const paths = searchIndex.map(e => e.path)
+    expect(paths).toContain('/fyzika/mechanika')
+    expect(paths).toContain('/fyzika/mechanika/kinematika')
+    expect(paths).toContain('/fyzika/mechanika/newtonove-zakony')
+    expect(paths).toContain('/fyzika/mechanika/gravitacia')
+    expect(paths).toContain('/fyzika/mechanika/vrhy')
+    expect(paths).toContain('/fyzika/mechanika/pohyb-po-kruznici')
+    expect(paths).toContain('/fyzika/mechanika/praca-energia')
+    expect(paths).toContain('/fyzika/mechanika/mechanika-tekutin')
+  })
+
+  it('obsahuje všetky hlavné sekcie fyziky', () => {
+    const paths = searchIndex.map(e => e.path)
+    expect(paths).toContain('/fyzika/molekulova-fyzika')
+    expect(paths).toContain('/fyzika/kmity-vlnenie')
+    expect(paths).toContain('/fyzika/elektricky-prud')
+    expect(paths).toContain('/fyzika/magneticke-pole')
+    expect(paths).toContain('/fyzika/optika')
+    expect(paths).toContain('/fyzika/atomova-fyzika')
+  })
+
+  it('každá sekcia má správnu category', () => {
+    const mech = searchIndex.find(e => e.path === '/fyzika/mechanika/kinematika')
+    expect(mech?.category).toBe('Fyzika / Mechanika')
+
+    const mol = searchIndex.find(e => e.path === '/fyzika/molekulova-fyzika')
+    expect(mol).toBeDefined()
+  })
 })
