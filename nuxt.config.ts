@@ -13,6 +13,12 @@ export default defineNuxtConfig({
     '@nuxtjs/sitemap',
   ],
 
+  runtimeConfig: {
+    public: {
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://naukaportal.netlify.app',
+    },
+  },
+
   app: {
     head: {
       htmlAttrs: { lang: 'sk' },
