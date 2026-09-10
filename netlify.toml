@@ -1,6 +1,6 @@
 [build]
   command = "npm run generate"
-  publish = ".netlify/static"
+  publish = "dist"
 
 [build.environment]
   NODE_VERSION = "22"
