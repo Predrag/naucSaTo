@@ -66,6 +66,7 @@ const topics = [
     title: 'Mechanika',
     description: 'Kinematika, dynamika, pohyb, sily a Newtonove zákony. Fyzika v každodennom svete.',
     bg: 'bg-teal-500',
+    link: '/fyzika/mechanika',
   },
   {
     slug: 'termodynamika',
@@ -73,6 +74,7 @@ const topics = [
     title: 'Molekulová fyzika a termodynamika',
     description: 'Teplo, teplota, skupenstvá látok, ideálny plyn a termodynamické deje.',
     bg: 'bg-orange-500',
+    link: '/fyzika/molekulova-fyzika',
   },
   {
     slug: 'elektricky-prud',
@@ -80,6 +82,7 @@ const topics = [
     title: 'Elektrický prúd',
     description: 'Elektrický náboj, napätie, odpor, Ohmov zákon a elektrické obvody.',
     bg: 'bg-yellow-500',
+    link: '/fyzika/elektricky-prud',
   },
   {
     slug: 'magnetizmus',
@@ -87,6 +90,7 @@ const topics = [
     title: 'Magnetické pole',
     description: 'Magnety, magnetické pole, elektromagnety a elektromagnetická indukcia.',
     bg: 'bg-blue-500',
+    link: '/fyzika/magneticke-pole',
   },
   {
     slug: 'kmity-vlnenie',
@@ -94,6 +98,7 @@ const topics = [
     title: 'Kmity a vlnenie',
     description: 'Mechanické kmitanie, vlnenie, zvuk a jeho vlastnosti.',
     bg: 'bg-purple-500',
+    link: '/fyzika/kmity-vlnenie',
   },
   {
     slug: 'optika',
@@ -101,6 +106,7 @@ const topics = [
     title: 'Optika',
     description: 'Svetlo, odraz, lom, šošovky, zrkadlá a optické prístroje.',
     bg: 'bg-sky-500',
+    link: '/fyzika/optika',
   },
   {
     slug: 'atomova-fyzika',
@@ -108,6 +114,7 @@ const topics = [
     title: 'Atómová a jadrová fyzika',
     description: 'Štruktúra atómu, rádioaktivita, jadrové reakcie a energia.',
     bg: 'bg-red-500',
+    link: '/fyzika/atomova-fyzika',
   },
 ]
 </script>

@@ -134,6 +134,108 @@ export const searchIndex: SearchEntry[] = [
     keywords: 'murgas radio bezdrotova telegrafia vlny tajov slovensko',
   },
 
+  // ── Mechanika ────────────────────────────────────────────────────────────────
+  {
+    title: 'Mechanika',
+    description: 'Prehľad tém mechaniky — kinematika, Newtonove zákony, gravitácia, vrhy, energia.',
+    path: '/fyzika/mechanika',
+    category: 'Fyzika / Mechanika',
+    keywords: 'mechanika pohyb sila hmotnost dynamika kinematika',
+  },
+  {
+    title: 'Kinematika',
+    description: 'Rýchlosť, zrýchlenie, rovnomerný a rovnomerne zmenený pohyb.',
+    path: '/fyzika/mechanika/kinematika',
+    category: 'Fyzika / Mechanika',
+    keywords: 'kinematika rychlost zrychlenie pohyb rovnomerny',
+  },
+  {
+    title: 'Newtonove zákony pohybu',
+    description: 'Zákon zotrvačnosti, zákon sily F = ma, zákon akcie a reakcie.',
+    path: '/fyzika/mechanika/newtonove-zakony',
+    category: 'Fyzika / Mechanika',
+    keywords: 'newton zakony sila hmotnost zotrvacnost dynamika',
+  },
+  {
+    title: 'Gravitácia a voľný pád',
+    description: 'Newtonov gravitačný zákon, gravitačné zrýchlenie g, voľný pád.',
+    path: '/fyzika/mechanika/gravitacia',
+    category: 'Fyzika / Mechanika',
+    keywords: 'gravitacia volny pad g zrychlenie newton zem',
+  },
+  {
+    title: 'Vrhy telies',
+    description: 'Vodorovný vrh, šikmý vrh, rozklad pohybu na zložky.',
+    path: '/fyzika/mechanika/vrhy',
+    category: 'Fyzika / Mechanika',
+    keywords: 'vrh vodorovny sikmy teleso trajektoria',
+  },
+  {
+    title: 'Pohyb po kružnici',
+    description: 'Rovnomerný pohyb po kružnici, uhlová rýchlosť, perióda, dostredivá sila.',
+    path: '/fyzika/mechanika/pohyb-po-kruznici',
+    category: 'Fyzika / Mechanika',
+    keywords: 'kruznica pohyb uhlova rychlost perioda frekvencia dostrediva sila',
+  },
+  {
+    title: 'Práca a energia',
+    description: 'Mechanická práca, kinetická a potenciálna energia, zachovanie energie, výkon.',
+    path: '/fyzika/mechanika/praca-energia',
+    category: 'Fyzika / Mechanika',
+    keywords: 'praca energia kineticka potencialna vykon zachovanie',
+  },
+  {
+    title: 'Mechanika tekutín',
+    description: 'Tlak v kvapalinách, Pascalov zákon, Archimedov zákon, vztlaková sila.',
+    path: '/fyzika/mechanika/mechanika-tekutin',
+    category: 'Fyzika / Mechanika',
+    keywords: 'tekutiny tlak pascal archimedes vztlak kvapalina',
+  },
+
+  // Ďalšie témy fyziky
+  {
+    title: 'Molekulová fyzika a termodynamika',
+    description: 'Teplo, teplota, skupenstvá látok, ideálny plyn a termodynamické deje.',
+    path: '/fyzika/molekulova-fyzika',
+    category: 'Fyzika',
+    keywords: 'molekulova fyzika termodynamika teplo teplota plyn skupenstava',
+  },
+  {
+    title: 'Kmity a vlnenie',
+    description: 'Mechanické kmitanie, vlnenie, zvuk a jeho vlastnosti.',
+    path: '/fyzika/kmity-vlnenie',
+    category: 'Fyzika',
+    keywords: 'kmity vlnenie zvuk mechanicke kmitanie frekvencia amplituda',
+  },
+  {
+    title: 'Elektrický prúd',
+    description: 'Ohmov zákon, rezistory, výkon — elektrické obvody a zákon zachovania energie.',
+    path: '/fyzika/elektricky-prud',
+    category: 'Fyzika',
+    keywords: 'elektricky prud ohm rezistor vykon napatie odpor obvod',
+  },
+  {
+    title: 'Magnetické pole',
+    description: 'Magnetická indukcia, elektromagnetická indukcia — magnety a elektromagnety.',
+    path: '/fyzika/magneticke-pole',
+    category: 'Fyzika',
+    keywords: 'magneticke pole indukcna elektromagneticka indukcnost magnet',
+  },
+  {
+    title: 'Optika',
+    description: 'Odraz, lom svetla, šošovky, zrkadlá a spektrum — optické prístroje.',
+    path: '/fyzika/optika',
+    category: 'Fyzika',
+    keywords: 'optika odraz lom sosovka zrkadlo spektrum svetlo',
+  },
+  {
+    title: 'Atómová a jadrová fyzika',
+    description: 'Rádioaktivita, jadrová energia — štruktúra atómu a jadrové reakcie.',
+    path: '/fyzika/atomova-fyzika',
+    category: 'Fyzika',
+    keywords: 'atomova jadrova fyzika radioaktivita jadro energia reakcia',
+  },
+
   // ── Matematika ────────────────────────────────────────────────────────────
   {
     title: 'Matematika',

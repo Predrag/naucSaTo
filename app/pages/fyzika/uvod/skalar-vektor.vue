@@ -142,72 +142,77 @@
                 </defs>
                 <!-- A -->
                 <line x1="20" y1="80" x2="118" y2="80" stroke="#3B82F6" stroke-width="2.5" marker-end="url(#arr-tri-a)"/>
-                <VecLabel letter="A" :x="65" :y="96" color="#3B82F6" :fontSize="13"/>
+                <VecLabel letter="A" :x="65" :y="110" color="#3B82F6" :font-size="13"/>
                 <!-- B -->
                 <line x1="122" y1="80" x2="198" y2="28" stroke="#8B5CF6" stroke-width="2.5" marker-end="url(#arr-tri-b)"/>
-                <VecLabel letter="B" :x="172" :y="66" color="#8B5CF6" :fontSize="13"/>
+                <VecLabel letter="B" :x="170" :y="74" color="#8B5CF6" :font-size="13"/>
                 <!-- R -->
                 <line x1="20" y1="80" x2="194" y2="31" stroke="#10B981" stroke-width="2.5" stroke-dasharray="6,3" marker-end="url(#arr-tri-r)"/>
-                <VecLabel letter="R" :x="90" :y="43" color="#10B981" :fontSize="13"/>
+                <VecLabel letter="R" :x="90" :y="43" color="#10B981" :font-size="13"/>
               </svg>
             </div>
             <!-- Metóda rovnobežníka -->
             <div class="bg-emerald-50 rounded-lg p-4">
               <p class="text-sm font-semibold text-emerald-800 mb-2">Metóda rovnobežníka</p>
               <p class="text-sm text-gray-600 mb-3">Oba vektory vyjdú zo spoločného bodu. Výslednica je uhlopriečka rovnobežníka, ktorý tvoria.</p>
-              <svg viewBox="0 0 230 120" class="w-full" aria-label="Metóda rovnobežníka">
+              <svg viewBox="0 0 185 140" class="w-full" aria-label="Metóda rovnobežníka">
                 <defs>
                   <marker id="arr-par-a" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#3B82F6"/></marker>
                   <marker id="arr-par-b" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#8B5CF6"/></marker>
                   <marker id="arr-par-r" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#10B981"/></marker>
                 </defs>
-                <!-- rovnobežník - bodkované hrany -->
-                <line x1="115" y1="105" x2="195" y2="38" stroke="#9CA3AF" stroke-width="1.5" stroke-dasharray="4,3"/>
-                <line x1="50" y1="42" x2="195" y2="38" stroke="#9CA3AF" stroke-width="1.5" stroke-dasharray="4,3"/>
+                <!--
+                  Počiatok O=(25,105), A=(113,105) → dx_A=88, dy_A=0
+                  B=(47,44)         → dx_B=22, dy_B=-61
+                  4. roh P = O + A + B = (25+88+22, 105+0-61) = (135, 44)
+                -->
+                <!-- rovnobežník — bodkované hrany rovnobežné s A a B -->
+                <line x1="113" y1="105" x2="135" y2="44" stroke="#9CA3AF" stroke-width="1.5" stroke-dasharray="4,3"/>
+                <line x1="47"  y1="44"  x2="135" y2="44" stroke="#9CA3AF" stroke-width="1.5" stroke-dasharray="4,3"/>
                 <!-- A -->
                 <line x1="25" y1="105" x2="113" y2="105" stroke="#3B82F6" stroke-width="2.5" marker-end="url(#arr-par-a)"/>
-                <VecLabel letter="A" :x="65" :y="118" color="#3B82F6" :fontSize="13"/>
+                <VecLabel letter="A" :x="65" :y="128" color="#3B82F6" :font-size="13"/>
                 <!-- B -->
                 <line x1="25" y1="105" x2="47" y2="44" stroke="#8B5CF6" stroke-width="2.5" marker-end="url(#arr-par-b)"/>
-                <VecLabel letter="B" :x="18" :y="72" color="#8B5CF6" :fontSize="13"/>
-                <!-- R -->
-                <line x1="25" y1="105" x2="191" y2="41" stroke="#10B981" stroke-width="2.5" marker-end="url(#arr-par-r)"/>
-                <VecLabel letter="R" :x="120" :y="65" color="#10B981" :fontSize="13"/>
+                <VecLabel letter="B" :x="14" :y="72" color="#8B5CF6" :font-size="13"/>
+                <!-- R — uhlopriečka rovnobežníka -->
+                <line x1="25" y1="105" x2="135" y2="44" stroke="#10B981" stroke-width="2.5" marker-end="url(#arr-par-r)"/>
+                <VecLabel letter="R" :x="92" :y="62" color="#10B981" :font-size="13"/>
               </svg>
             </div>
           </div>
           <div class="mt-4 bg-gray-50 rounded-lg p-3 text-center">
             <p class="text-xs text-gray-400 mb-1">Veľkosť výslednice (všeobecný prípad)</p>
             <MathFormula display formula="R = \sqrt{A^2 + B^2 + 2AB\cos\alpha}" />
-            <p class="text-xs text-gray-400 mt-1">kde α je uhol zvieraný vektormi A a B</p>
+            <p class="text-xs text-gray-400 mt-1">kde &alpha; je uhol zvieraný vektormi A a B</p>
           </div>
         </div>
 
         <!-- Špeciálne prípady -->
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <!-- α = 0° -->
-          <div class="bg-white border border-gray-200 rounded-xl p-4">
-            <p class="text-xs font-bold uppercase tracking-wide mb-2 text-emerald-700">Rovnobežné (α = 0°)</p>
-            <svg viewBox="0 0 180 80" class="w-full mb-2" aria-label="Vektory v rovnakom smere">
+          <div class="bg-white border border-gray-200 rounded-xl p-4 flex flex-col">
+            <p class="text-xs font-bold tracking-wide mb-2 text-emerald-700">ROVNOBEŽNÉ (&alpha; = 0°)</p>
+            <svg viewBox="0 0 180 110" class="w-full mb-2" aria-label="Vektory v rovnakom smere">
               <defs>
                 <marker id="sc-a1" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#3B82F6"/></marker>
                 <marker id="sc-b1" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#8B5CF6"/></marker>
                 <marker id="sc-r1" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#10B981"/></marker>
               </defs>
               <line x1="15" y1="25" x2="88" y2="25" stroke="#3B82F6" stroke-width="2.5" marker-end="url(#sc-a1)"/>
-              <VecLabel letter="A" :x="48" :y="18" color="#3B82F6" :fontSize="11"/>
+              <VecLabel letter="A" :x="48" :y="18" color="#3B82F6" :font-size="11"/>
               <line x1="91" y1="25" x2="148" y2="25" stroke="#8B5CF6" stroke-width="2.5" marker-end="url(#sc-b1)"/>
-              <VecLabel letter="B" :x="122" :y="18" color="#8B5CF6" :fontSize="11"/>
+              <VecLabel letter="B" :x="122" :y="18" color="#8B5CF6" :font-size="11"/>
               <line x1="15" y1="55" x2="148" y2="55" stroke="#10B981" stroke-width="2.5" stroke-dasharray="5,2" marker-end="url(#sc-r1)"/>
-              <VecLabel letter="R" :x="80" :y="70" color="#10B981" :fontSize="11"/>
+              <VecLabel letter="R" :x="80" :y="80" color="#10B981" :font-size="11"/>
             </svg>
-            <MathFormula display formula="R = A + B" />
-            <p class="text-xs text-gray-500">Vektory v rovnakom smere — výslednica je ich súčet.</p>
+            <MathFormula display formula="\vec{R} = \vec{A} + \vec{B}" />
+            <p class="text-xs text-gray-500 mt-auto">Vektory v rovnakom smere — výslednica je ich súčet.</p>
           </div>
 
           <!-- α = 90° -->
-          <div class="bg-white border border-gray-200 rounded-xl p-4">
-            <p class="text-xs font-bold uppercase tracking-wide mb-2 text-blue-700">Kolmé (α = 90°)</p>
+          <div class="bg-white border border-gray-200 rounded-xl p-4 flex flex-col">
+            <p class="text-xs font-bold tracking-wide mb-2 text-blue-700">KOLMÉ (&alpha; = 90°)</p>
             <svg viewBox="0 0 180 110" class="w-full mb-2" aria-label="Kolmé vektory">
               <defs>
                 <marker id="sc-a2" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#3B82F6"/></marker>
@@ -217,34 +222,35 @@
               <!-- pravý uhol -->
               <rect x="45" y="68" width="10" height="10" fill="none" stroke="#9CA3AF" stroke-width="1.5"/>
               <line x1="45" y1="78" x2="130" y2="78" stroke="#3B82F6" stroke-width="2.5" marker-end="url(#sc-a2)"/>
-              <VecLabel letter="A" :x="85" :y="95" color="#3B82F6" :fontSize="11"/>
+              <VecLabel letter="A" :x="85" :y="100" color="#3B82F6" :font-size="11"/>
               <line x1="45" y1="78" x2="45" y2="18" stroke="#8B5CF6" stroke-width="2.5" marker-end="url(#sc-b2)"/>
-              <VecLabel letter="B" :x="25" :y="50" color="#8B5CF6" :fontSize="11"/>
+              <VecLabel letter="B" :x="25" :y="50" color="#8B5CF6" :font-size="11"/>
               <line x1="45" y1="78" x2="128" y2="20" stroke="#10B981" stroke-width="2.5" stroke-dasharray="5,2" marker-end="url(#sc-r2)"/>
-              <VecLabel letter="R" :x="105" :y="52" color="#10B981" :fontSize="11"/>
+              <VecLabel letter="R" :x="95" :y="70" color="#10B981" :font-size="11"/>
             </svg>
-            <MathFormula display formula="R = \sqrt{A^2+B^2}" />
-            <p class="text-xs text-gray-500">Pytagorova veta — najčastejší prípad.</p>
+            <MathFormula display formula="|\vec{R}| = \sqrt{A^2+B^2}" />
+            <p class="text-xs text-gray-500 mt-auto">Pytagorova veta — najčastejší prípad.</p>
           </div>
 
           <!-- α = 180° -->
-          <div class="bg-white border border-gray-200 rounded-xl p-4">
-            <p class="text-xs font-bold uppercase tracking-wide mb-2 text-red-700">Protiľahlé (α = 180°)</p>
-            <svg viewBox="0 0 180 80" class="w-full mb-2" aria-label="Protiľahlé vektory">
+          <div class="bg-white border border-gray-200 rounded-xl p-4 flex flex-col">
+            <p class="text-xs font-bold tracking-wide mb-2 text-red-700">PROTIĽAHLÉ (&alpha; = 180°)</p>
+            <svg viewBox="0 0 180 110" class="w-full mb-2" aria-label="Protiľahlé vektory">
               <defs>
                 <marker id="sc-a3" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#3B82F6"/></marker>
                 <marker id="sc-b3" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#8B5CF6"/></marker>
                 <marker id="sc-r3" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#10B981"/></marker>
               </defs>
               <line x1="15" y1="25" x2="148" y2="25" stroke="#3B82F6" stroke-width="2.5" marker-end="url(#sc-a3)"/>
-              <VecLabel letter="A" :x="80" :y="18" color="#3B82F6" :fontSize="11"/>
+              <VecLabel letter="A" :x="80" :y="18" color="#3B82F6" :font-size="11"/>
               <line x1="148" y1="25" x2="65" y2="25" stroke="#8B5CF6" stroke-width="2.5" marker-end="url(#sc-b3)"/>
-              <VecLabel letter="B" :x="108" :y="38" color="#8B5CF6" :fontSize="11"/>
+              <VecLabel letter="B" :x="108" :y="50" color="#8B5CF6" :font-size="11"/>
               <line x1="15" y1="55" x2="62" y2="55" stroke="#10B981" stroke-width="2.5" stroke-dasharray="5,2" marker-end="url(#sc-r3)"/>
-              <VecLabel letter="R" :x="38" :y="70" color="#10B981" :fontSize="11"/>
+              <VecLabel letter="R" :x="38" :y="80" color="#10B981" :font-size="11"/>
             </svg>
-            <MathFormula display formula="R = |A - B|" />
-            <p class="text-xs text-gray-500">Opačné smery — výslednica je rozdiel veľkostí.</p>
+            <MathFormula display formula="|\vec{R}| = |A - B|" />
+
+            <p class="text-xs text-gray-500 mt-auto">Opačné smery — výslednica je rozdiel veľkostí.</p>
           </div>
         </div>
 
@@ -260,29 +266,29 @@
                 <marker id="sub-r" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#10B981"/></marker>
               </defs>
               <line x1="15" y1="30" x2="123" y2="30" stroke="#3B82F6" stroke-width="2.5" marker-end="url(#sub-a)"/>
-              <VecLabel letter="A" :x="66" :y="20" color="#3B82F6" :fontSize="11"/>
+              <VecLabel letter="A" :x="66" :y="20" color="#3B82F6" :font-size="11"/>
               <line x1="127" y1="30" x2="62" y2="30" stroke="#EF4444" stroke-width="2.5" marker-end="url(#sub-nb)"/>
-              <VecLabel letter="−B" :x="97" :y="46" color="#EF4444" :fontSize="11"/>
+              <VecLabel letter="−B" :x="97" :y="55" color="#EF4444" :font-size="11"/>
               <line x1="15" y1="65" x2="60" y2="65" stroke="#10B981" stroke-width="2.5" stroke-dasharray="5,2" marker-end="url(#sub-r)"/>
-              <VecLabel letter="R" :x="37" :y="80" color="#10B981" :fontSize="11"/>
+              <VecLabel letter="R" :x="37" :y="90" color="#10B981" :font-size="11"/>
             </svg>
             <p class="text-sm text-gray-500 mt-2">Opačný vektor <MathFormula formula="-\vec{B}" /> má rovnakú veľkosť, ale opačný zmysel.</p>
           </div>
           <div class="bg-white border border-gray-200 rounded-xl p-5">
             <h3 class="font-bold text-gray-900 mb-3">Násobenie skalárom</h3>
             <MathFormula display formula="k\vec{A}:\quad |k\vec{A}| = |k| \cdot A" />
-            <svg viewBox="0 0 230 90" class="w-full mt-3" aria-label="Násobenie vektora skalárom">
+            <svg viewBox="0 0 230 110" class="w-full mt-3" aria-label="Násobenie vektora skalárom">
               <defs>
                 <marker id="mul-a" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#3B82F6"/></marker>
                 <marker id="mul-2a" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#10B981"/></marker>
                 <marker id="mul-na" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#EF4444"/></marker>
               </defs>
-              <line x1="15" y1="22" x2="88" y2="22" stroke="#3B82F6" stroke-width="2.5" marker-end="url(#mul-a)"/>
-              <VecLabel letter="A" :x="50" :y="13" color="#3B82F6" :fontSize="11"/>
-              <line x1="15" y1="50" x2="158" y2="50" stroke="#10B981" stroke-width="2.5" marker-end="url(#mul-2a)"/>
-              <VecLabel letter="2A" :x="85" :y="41" color="#10B981" :fontSize="11"/>
-              <line x1="88" y1="75" x2="15" y2="75" stroke="#EF4444" stroke-width="2.5" marker-end="url(#mul-na)"/>
-              <VecLabel letter="−A" :x="52" :y="88" color="#EF4444" :fontSize="11"/>
+              <line x1="15" y1="30" x2="88" y2="30" stroke="#3B82F6" stroke-width="2.5" marker-end="url(#mul-a)"/>
+              <VecLabel letter="A" :x="50" :y="22" color="#3B82F6" :font-size="11"/>
+              <line x1="15" y1="58" x2="158" y2="58" stroke="#10B981" stroke-width="2.5" marker-end="url(#mul-2a)"/>
+              <VecLabel letter="2A" :x="85" :y="54" color="#10B981" :font-size="11"/>
+              <line x1="88" y1="83" x2="15" y2="83" stroke="#EF4444" stroke-width="2.5" marker-end="url(#mul-na)"/>
+              <VecLabel letter="−A" :x="52" :y="108" color="#EF4444" :font-size="11"/>
             </svg>
           </div>
         </div>
@@ -331,7 +337,7 @@
 
           <!-- F - hlavný vektor -->
           <line x1="35" y1="155" x2="182" y2="56" stroke="#10B981" stroke-width="3" marker-end="url(#dec-f)"/>
-          <VecLabel letter="F" :x="90" :y="88" color="#10B981" :fontSize="14"/>
+          <VecLabel letter="F" :x="90" :y="88" color="#10B981" :font-size="14"/>
 
           <!-- Uhol α -->
           <path d="M 75,155 A 40,40 0 0,0 66,128" fill="none" stroke="#6B7280" stroke-width="1.5"/>
@@ -407,7 +413,8 @@
         <div class="text-6xl mb-4">{{ scoreEmoji }}</div>
         <p data-testid="quiz-score" class="text-3xl font-extrabold text-gray-900 mb-1">{{ quizScore }} / {{ quiz.length }}</p>
         <p class="text-gray-500 mb-6">{{ scoreMessage }}</p>
-        <button type="button" data-testid="quiz-reset-btn"
+        <button
+type="button" data-testid="quiz-reset-btn"
           class="px-6 py-3 rounded-xl bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition-colors"
           @click="resetQuiz">
           Skúsiť znova
@@ -426,7 +433,8 @@
         <p data-testid="quiz-question" class="text-lg font-semibold text-gray-900 mb-5">{{ currentQuestion.question }}</p>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
-          <button v-for="(option, i) in currentQuestion.options" :key="i"
+          <button
+v-for="(option, i) in currentQuestion.options" :key="i"
             type="button" :data-testid="`quiz-option-${i}`" :disabled="selectedAnswer !== null"
             :class="[
               'text-left px-4 py-3 rounded-xl border-2 font-medium text-sm transition-all duration-150',
@@ -446,7 +454,8 @@
 
         <Transition name="fade">
           <div v-if="selectedAnswer !== null">
-            <div data-testid="quiz-feedback"
+            <div
+data-testid="quiz-feedback"
               :class="['rounded-xl p-4 mb-4 text-sm',
                 selectedAnswer === currentQuestion.correctIndex
                   ? 'bg-emerald-50 border border-emerald-200 text-emerald-800'
@@ -456,7 +465,8 @@
               <p v-html="currentQuestion.explanation" />
             </div>
             <div class="flex justify-end">
-              <button type="button" data-testid="quiz-next-btn"
+              <button
+type="button" data-testid="quiz-next-btn"
                 class="px-5 py-2.5 rounded-xl bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition-colors"
                 @click="nextQuestion">
                 {{ currentQ < quiz.length - 1 ? 'Ďalšia otázka →' : 'Zobraziť výsledok' }}

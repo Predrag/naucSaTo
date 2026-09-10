@@ -31,34 +31,39 @@
           letter="A"
           :x="(ox + aEx) / 2 + labelOff(aAngle).dx"
           :y="(oy + aEy) / 2 + labelOff(aAngle).dy"
-          color="#3B82F6" :fontSize="14"/>
+          color="#3B82F6" :font-size="14"/>
 
         <!-- Vektor B (začína na konci A) -->
         <line
           :x1="aEx" :y1="aEy" :x2="bEx" :y2="bEy"
           stroke="#8B5CF6" stroke-width="3" marker-end="url(#va-b)"
           :style="{ ...styleB, opacity: phase >= 2 ? 1 : 0 }"/>
-        <VecLabel v-if="phase >= 2"
+        <VecLabel
+v-if="phase >= 2"
           letter="B"
           :x="(aEx + bEx) / 2 + labelOff(bAngle).dx"
           :y="(aEy + bEy) / 2 + labelOff(bAngle).dy"
-          color="#8B5CF6" :fontSize="14"/>
+          color="#8B5CF6" :font-size="14"/>
 
         <!-- Výslednica R -->
         <line
           :x1="ox" :y1="oy" :x2="bEx" :y2="bEy"
           stroke="#10B981" stroke-width="3" marker-end="url(#va-r)"
           :style="{ ...styleR, opacity: phase >= 3 ? 1 : 0 }"/>
-        <VecLabel v-if="phase >= 3"
+        <VecLabel
+v-if="phase >= 3"
           letter="R"
           :x="(ox + bEx) / 2 + labelOff(Math.atan2(oy - bEy, bEx - ox) * 180 / Math.PI).dx"
           :y="(oy + bEy) / 2 + labelOff(Math.atan2(oy - bEy, bEx - ox) * 180 / Math.PI).dy"
-          color="#10B981" :fontSize="14"/>
+          color="#10B981" :font-size="14"/>
 
-        <!-- Info: veľkosť výslednice -->
-        <text v-if="phase >= 3" :x="W - 10" y="22" fill="#10B981" font-size="12" text-anchor="end" font-weight="bold">
-          |R⃗| = {{ rDisplay }}
-        </text>
+        <!-- Info: veľkosť výslednice — VecLabel + text vedľa -->
+        <g v-if="phase >= 3">
+          <text :x="W - 10" y="22" fill="#10B981" font-size="12" text-anchor="end" font-weight="bold">
+            | = {{ rDisplay }}
+          </text>
+          <VecLabel letter="R" :x="W - 52" :y="22" color="#10B981" :font-size="12"/>
+        </g>
       </svg>
 
       <!-- Stavový popis (krok animácie) -->
@@ -82,16 +87,16 @@
         <!-- Vektor A -->
         <div>
           <p class="text-sm font-bold text-blue-700 mb-2">
-            Vektor A⃗ — veľkosť: {{ aLen }}, uhol: {{ aAngle }}°
+            Vektor <MathFormula formula="\vec{A}" /> — veľkosť: {{ aLen }}, uhol: {{ aAngle }}°
           </p>
           <div class="space-y-2">
             <div class="flex items-center gap-3">
               <span class="text-xs text-gray-400 w-16 shrink-0">Veľkosť</span>
-              <input type="range" v-model.number="aLen" min="40" max="130" class="flex-1 accent-blue-500" @input="onSlider"/>
+              <input v-model.number="aLen" type="range" min="40" max="130" class="flex-1 accent-blue-500" @input="onSlider">
             </div>
             <div class="flex items-center gap-3">
               <span class="text-xs text-gray-400 w-16 shrink-0">Uhol</span>
-              <input type="range" v-model.number="aAngle" min="-75" max="75" class="flex-1 accent-blue-500" @input="onSlider"/>
+              <input v-model.number="aAngle" type="range" min="-75" max="75" class="flex-1 accent-blue-500" @input="onSlider">
             </div>
           </div>
         </div>
@@ -99,16 +104,16 @@
         <!-- Vektor B -->
         <div>
           <p class="text-sm font-bold text-purple-700 mb-2">
-            Vektor B⃗ — veľkosť: {{ bLen }}, uhol: {{ bAngle }}°
+            Vektor <MathFormula formula="\vec{B}" /> — veľkosť: {{ bLen }}, uhol: {{ bAngle }}°
           </p>
           <div class="space-y-2">
             <div class="flex items-center gap-3">
               <span class="text-xs text-gray-400 w-16 shrink-0">Veľkosť</span>
-              <input type="range" v-model.number="bLen" min="40" max="130" class="flex-1 accent-purple-500" @input="onSlider"/>
+              <input v-model.number="bLen" type="range" min="40" max="130" class="flex-1 accent-purple-500" @input="onSlider">
             </div>
             <div class="flex items-center gap-3">
               <span class="text-xs text-gray-400 w-16 shrink-0">Uhol</span>
-              <input type="range" v-model.number="bAngle" min="-75" max="75" class="flex-1 accent-purple-500" @input="onSlider"/>
+              <input v-model.number="bAngle" type="range" min="-75" max="75" class="flex-1 accent-purple-500" @input="onSlider">
             </div>
           </div>
         </div>
@@ -116,14 +121,16 @@
 
       <!-- Tlačidlá -->
       <div class="flex flex-wrap gap-3 pt-1">
-        <button type="button"
+        <button
+type="button"
           class="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition-colors disabled:opacity-50"
           :disabled="animating"
           @click="runAnimation">
           <span>{{ animating ? '⏳' : '▶' }}</span>
           {{ animating ? 'Animujem…' : 'Animovať' }}
         </button>
-        <button type="button"
+        <button
+type="button"
           class="px-5 py-2.5 rounded-xl bg-gray-100 text-gray-700 font-semibold hover:bg-gray-200 transition-colors"
           @click="showAll">
           Zobraziť všetko
