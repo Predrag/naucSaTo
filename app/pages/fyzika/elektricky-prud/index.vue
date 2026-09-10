@@ -1,23 +1,20 @@
 <template>
   <div class="max-w-6xl mx-auto px-4 py-12">
 
-    <!-- Breadcrumb -->
-    <nav data-testid="breadcrumb" aria-label="Navigačná cesta" class="flex items-center gap-2 text-sm text-gray-400 mb-8">
+    <nav data-testid="breadcrumb" aria-label="Navigačná cesta" class="flex items-center gap-2 text-sm text-gray-400 mb-8 flex-wrap">
       <NuxtLink to="/fyzika" class="hover:text-emerald-600 transition-colors">⚡ Fyzika</NuxtLink>
       <span>/</span>
-      <span class="text-gray-700 font-medium">Úvod do fyziky</span>
+      <span class="text-gray-700 font-medium">Elektrický prúd</span>
     </nav>
 
-    <!-- Header -->
     <div class="flex items-center gap-3 mb-3">
-      <span class="text-4xl">📏</span>
-      <h1 class="text-4xl font-extrabold text-emerald-700">Úvod do fyziky</h1>
+      <span class="text-4xl">🔌</span>
+      <h1 class="text-4xl font-extrabold text-emerald-700">Elektrický prúd</h1>
     </div>
     <p class="text-gray-500 text-lg mb-10">
-      Vyber si tému, ktorú si chceš preštudovať.
+      Prúd, napätie, odpor, Ohmov zákon, obvody a premena elektrickej energie.
     </p>
 
-    <!-- Sub-section grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       <component
         :is="section.link ? nuxtLink : 'div'"
@@ -60,36 +57,36 @@ const nuxtLink = resolveComponent('NuxtLink')
 
 const sections = [
   {
-    slug: 'medzinarodna-sustava',
-    icon: '🌍',
-    title: 'Medzinárodná sústava jednotiek',
-    description: 'Sústava SI, základné a odvodené jednotky, predpony (kilo, mega, mili…) a ich použitie v praxi.',
-    bg: 'bg-emerald-500',
-    link: '/fyzika/uvod/medzinarodna-sustava',
+    slug: 'elektricke-veliciny',
+    icon: '⚡',
+    title: 'Elektrické veličiny',
+    description: 'Elektrický prúd I, napätie U, odpor R — definície a jednotky.',
+    bg: 'bg-yellow-500',
+    link: '/fyzika/elektricky-prud/elektricke-veliciny',
   },
   {
-    slug: 'meranie-velicin',
-    icon: '📐',
-    title: 'Meranie fyzikálnych veličín',
-    description: 'Ako správne merať, chyby merania, presnosť a zaokrúhľovanie výsledkov.',
-    bg: 'bg-teal-500',
-    link: '/fyzika/uvod/meranie-velicin',
+    slug: 'ohmov-zakon',
+    icon: '📊',
+    title: 'Ohmov zákon',
+    description: 'U=IR, závislosť odporu od geometrie a teploty vodiča.',
+    bg: 'bg-amber-500',
+    link: '/fyzika/elektricky-prud/ohmov-zakon',
   },
   {
-    slug: 'skalar-vektor',
-    icon: '➡️',
-    title: 'Skalárne a vektorové veličiny',
-    description: 'Rozdiel medzi skalárom a vektorom, sčítavanie vektorov, rozklad na zložky.',
-    bg: 'bg-cyan-500',
-    link: '/fyzika/uvod/skalar-vektor',
+    slug: 'zapojenie-rezistorov',
+    icon: '🔗',
+    title: 'Zapojenie rezistorov',
+    description: 'Sériové a paralelné zapojenie, výpočet celkového odporu.',
+    bg: 'bg-orange-500',
+    link: '/fyzika/elektricky-prud/zapojenie-rezistorov',
   },
   {
-    slug: 'osobnosti',
-    icon: '🔬',
-    title: 'Osobnosti fyziky',
-    description: 'Newton, Joule, Watt, Pascal, Hertz, Coulomb — ľudia, po ktorých sú pomenované jednotky SI.',
-    bg: 'bg-rose-500',
-    link: '/fyzika/osobnosti',
+    slug: 'elektricka-praca-vykon',
+    icon: '💡',
+    title: 'Elektrická práca a výkon',
+    description: 'W=UIt, P=UI, Joulov zákon, istič.',
+    bg: 'bg-red-500',
+    link: '/fyzika/elektricky-prud/elektricka-praca-vykon',
   },
 ]
 </script>

@@ -1,23 +1,20 @@
 <template>
   <div class="max-w-6xl mx-auto px-4 py-12">
 
-    <!-- Breadcrumb -->
-    <nav data-testid="breadcrumb" aria-label="Navigačná cesta" class="flex items-center gap-2 text-sm text-gray-400 mb-8">
+    <nav data-testid="breadcrumb" aria-label="Navigačná cesta" class="flex items-center gap-2 text-sm text-gray-400 mb-8 flex-wrap">
       <NuxtLink to="/fyzika" class="hover:text-emerald-600 transition-colors">⚡ Fyzika</NuxtLink>
       <span>/</span>
-      <span class="text-gray-700 font-medium">Úvod do fyziky</span>
+      <span class="text-gray-700 font-medium">Molekulová fyzika a termodynamika</span>
     </nav>
 
-    <!-- Header -->
     <div class="flex items-center gap-3 mb-3">
-      <span class="text-4xl">📏</span>
-      <h1 class="text-4xl font-extrabold text-emerald-700">Úvod do fyziky</h1>
+      <span class="text-4xl">🌡️</span>
+      <h1 class="text-4xl font-extrabold text-emerald-700">Molekulová fyzika a termodynamika</h1>
     </div>
     <p class="text-gray-500 text-lg mb-10">
-      Vyber si tému, ktorú si chceš preštudovať.
+      Skúma vnútornú stavbu látok, tepelné deje a vlastnosti plynov, kvapalín a tuhých látok.
     </p>
 
-    <!-- Sub-section grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       <component
         :is="section.link ? nuxtLink : 'div'"
@@ -60,36 +57,44 @@ const nuxtLink = resolveComponent('NuxtLink')
 
 const sections = [
   {
-    slug: 'medzinarodna-sustava',
-    icon: '🌍',
-    title: 'Medzinárodná sústava jednotiek',
-    description: 'Sústava SI, základné a odvodené jednotky, predpony (kilo, mega, mili…) a ich použitie v praxi.',
-    bg: 'bg-emerald-500',
-    link: '/fyzika/uvod/medzinarodna-sustava',
+    slug: 'casticova-stavba',
+    icon: '⚛️',
+    title: 'Časticová stavba látok',
+    description: 'Atómy, molekuly, kryštalické a amorfné látky, vnútorná energia.',
+    bg: 'bg-blue-500',
+    link: '/fyzika/molekulova-fyzika/casticova-stavba',
   },
   {
-    slug: 'meranie-velicin',
-    icon: '📐',
-    title: 'Meranie fyzikálnych veličín',
-    description: 'Ako správne merať, chyby merania, presnosť a zaokrúhľovanie výsledkov.',
-    bg: 'bg-teal-500',
-    link: '/fyzika/uvod/meranie-velicin',
-  },
-  {
-    slug: 'skalar-vektor',
-    icon: '➡️',
-    title: 'Skalárne a vektorové veličiny',
-    description: 'Rozdiel medzi skalárom a vektorom, sčítavanie vektorov, rozklad na zložky.',
+    slug: 'tlak-kapaliny-plyny',
+    icon: '💧',
+    title: 'Tlak v kvapalinách a plynoch',
+    description: 'Hydrostatický tlak, Pascalov zákon, Archimedov zákon, atmosferický tlak.',
     bg: 'bg-cyan-500',
-    link: '/fyzika/uvod/skalar-vektor',
+    link: '/fyzika/molekulova-fyzika/tlak-kapaliny-plyny',
   },
   {
-    slug: 'osobnosti',
+    slug: 'idealny-plyn',
     icon: '🔬',
-    title: 'Osobnosti fyziky',
-    description: 'Newton, Joule, Watt, Pascal, Hertz, Coulomb — ľudia, po ktorých sú pomenované jednotky SI.',
-    bg: 'bg-rose-500',
-    link: '/fyzika/osobnosti',
+    title: 'Ideálny plyn',
+    description: 'Stavová rovnica, izodeje — izobarický, izochorický, izotermický a adiabatický dej.',
+    bg: 'bg-teal-500',
+    link: '/fyzika/molekulova-fyzika/idealny-plyn',
+  },
+  {
+    slug: 'zmeny-skupenstva',
+    icon: '🧊',
+    title: 'Zmeny skupenstva',
+    description: 'Topenie, tuhnutie, vyparovanie, kondenzácia, sublimácia. Nasýtené pary.',
+    bg: 'bg-sky-500',
+    link: '/fyzika/molekulova-fyzika/zmeny-skupenstva',
+  },
+  {
+    slug: 'vlhkost-vzduchu',
+    icon: '🌦️',
+    title: 'Vlhkosť vzduchu',
+    description: 'Relatívna a absolútna vlhkosť, rosný bod, využitie v praxi.',
+    bg: 'bg-indigo-500',
+    link: '/fyzika/molekulova-fyzika/vlhkost-vzduchu',
   },
 ]
 </script>

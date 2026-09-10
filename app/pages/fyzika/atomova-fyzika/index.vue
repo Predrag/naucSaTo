@@ -2,19 +2,19 @@
   <div class="max-w-6xl mx-auto px-4 py-12">
 
     <!-- Breadcrumb -->
-    <nav data-testid="breadcrumb" aria-label="Navigačná cesta" class="flex items-center gap-2 text-sm text-gray-400 mb-8">
+    <nav data-testid="breadcrumb" aria-label="Navigačná cesta" class="flex items-center gap-2 text-sm text-gray-400 mb-8 flex-wrap">
       <NuxtLink to="/fyzika" class="hover:text-emerald-600 transition-colors">⚡ Fyzika</NuxtLink>
       <span>/</span>
-      <span class="text-gray-700 font-medium">Úvod do fyziky</span>
+      <span class="text-gray-700 font-medium">Atómová a jadrová fyzika</span>
     </nav>
 
     <!-- Header -->
     <div class="flex items-center gap-3 mb-3">
-      <span class="text-4xl">📏</span>
-      <h1 class="text-4xl font-extrabold text-emerald-700">Úvod do fyziky</h1>
+      <span class="text-4xl">⚛️</span>
+      <h1 class="text-4xl font-extrabold text-emerald-700">Atómová a jadrová fyzika</h1>
     </div>
     <p class="text-gray-500 text-lg mb-10">
-      Vyber si tému, ktorú si chceš preštudovať.
+      Štruktúra atómu, rádioaktivita a jadrová energia.
     </p>
 
     <!-- Sub-section grid -->
@@ -60,36 +60,28 @@ const nuxtLink = resolveComponent('NuxtLink')
 
 const sections = [
   {
-    slug: 'medzinarodna-sustava',
-    icon: '🌍',
-    title: 'Medzinárodná sústava jednotiek',
-    description: 'Sústava SI, základné a odvodené jednotky, predpony (kilo, mega, mili…) a ich použitie v praxi.',
+    slug: 'stavba-atomu',
+    icon: '⚛️',
+    title: 'Stavba atómu',
+    description: 'Jadrový model atómu, protóny, neutróny, elektróny, spektrum.',
     bg: 'bg-emerald-500',
-    link: '/fyzika/uvod/medzinarodna-sustava',
+    link: '/fyzika/atomova-fyzika/stavba-atomu',
   },
   {
-    slug: 'meranie-velicin',
-    icon: '📐',
-    title: 'Meranie fyzikálnych veličín',
-    description: 'Ako správne merať, chyby merania, presnosť a zaokrúhľovanie výsledkov.',
-    bg: 'bg-teal-500',
-    link: '/fyzika/uvod/meranie-velicin',
+    slug: 'radioaktivita',
+    icon: '☢️',
+    title: 'Rádioaktivita',
+    description: 'Žiarenie alfa, beta, gama. Polčas rozpadu, rádioaktivita prostredia.',
+    bg: 'bg-orange-500',
+    link: '/fyzika/atomova-fyzika/radioaktivita',
   },
   {
-    slug: 'skalar-vektor',
-    icon: '➡️',
-    title: 'Skalárne a vektorové veličiny',
-    description: 'Rozdiel medzi skalárom a vektorom, sčítavanie vektorov, rozklad na zložky.',
-    bg: 'bg-cyan-500',
-    link: '/fyzika/uvod/skalar-vektor',
-  },
-  {
-    slug: 'osobnosti',
-    icon: '🔬',
-    title: 'Osobnosti fyziky',
-    description: 'Newton, Joule, Watt, Pascal, Hertz, Coulomb — ľudia, po ktorých sú pomenované jednotky SI.',
-    bg: 'bg-rose-500',
-    link: '/fyzika/osobnosti',
+    slug: 'jaderna-energia',
+    icon: '💥',
+    title: 'Jadrová energia',
+    description: 'Väzbová energia jadra, hmotnostný úbytok, štiepenie a syntéza jadier.',
+    bg: 'bg-red-500',
+    link: '/fyzika/atomova-fyzika/jaderna-energia',
   },
 ]
 </script>

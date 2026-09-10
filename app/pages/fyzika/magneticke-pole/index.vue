@@ -1,23 +1,20 @@
 <template>
   <div class="max-w-6xl mx-auto px-4 py-12">
 
-    <!-- Breadcrumb -->
-    <nav data-testid="breadcrumb" aria-label="Navigačná cesta" class="flex items-center gap-2 text-sm text-gray-400 mb-8">
+    <nav data-testid="breadcrumb" aria-label="Navigačná cesta" class="flex items-center gap-2 text-sm text-gray-400 mb-8 flex-wrap">
       <NuxtLink to="/fyzika" class="hover:text-emerald-600 transition-colors">⚡ Fyzika</NuxtLink>
       <span>/</span>
-      <span class="text-gray-700 font-medium">Úvod do fyziky</span>
+      <span class="text-gray-700 font-medium">Magnetické pole</span>
     </nav>
 
-    <!-- Header -->
     <div class="flex items-center gap-3 mb-3">
-      <span class="text-4xl">📏</span>
-      <h1 class="text-4xl font-extrabold text-emerald-700">Úvod do fyziky</h1>
+      <span class="text-4xl">🧲</span>
+      <h1 class="text-4xl font-extrabold text-emerald-700">Magnetické pole</h1>
     </div>
     <p class="text-gray-500 text-lg mb-10">
-      Vyber si tému, ktorú si chceš preštudovať.
+      Magnetické pole, pôsobenie na vodiče a náboje, elektromagnetická indukcia.
     </p>
 
-    <!-- Sub-section grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       <component
         :is="section.link ? nuxtLink : 'div'"
@@ -60,36 +57,36 @@ const nuxtLink = resolveComponent('NuxtLink')
 
 const sections = [
   {
-    slug: 'medzinarodna-sustava',
-    icon: '🌍',
-    title: 'Medzinárodná sústava jednotiek',
-    description: 'Sústava SI, základné a odvodené jednotky, predpony (kilo, mega, mili…) a ich použitie v praxi.',
-    bg: 'bg-emerald-500',
-    link: '/fyzika/uvod/medzinarodna-sustava',
+    slug: 'magneticke-pole-zaklady',
+    icon: '🧭',
+    title: 'Magnetické pole — základy',
+    description: 'Magnetická indukcia B, magnetické indukčné čiary, Ampérovo pravidlo pravej ruky.',
+    bg: 'bg-blue-500',
+    link: '/fyzika/magneticke-pole/magneticke-pole-zaklady',
   },
   {
-    slug: 'meranie-velicin',
-    icon: '📐',
-    title: 'Meranie fyzikálnych veličín',
-    description: 'Ako správne merať, chyby merania, presnosť a zaokrúhľovanie výsledkov.',
-    bg: 'bg-teal-500',
-    link: '/fyzika/uvod/meranie-velicin',
+    slug: 'sila-na-vodic',
+    icon: '⚡',
+    title: 'Sila na vodič s prúdom',
+    description: 'Flemingovo pravidlo ľavej ruky, F=BIl·sinα, elektromotor.',
+    bg: 'bg-indigo-500',
+    link: '/fyzika/magneticke-pole/sila-na-vodic',
   },
   {
-    slug: 'skalar-vektor',
-    icon: '➡️',
-    title: 'Skalárne a vektorové veličiny',
-    description: 'Rozdiel medzi skalárom a vektorom, sčítavanie vektorov, rozklad na zložky.',
-    bg: 'bg-cyan-500',
-    link: '/fyzika/uvod/skalar-vektor',
+    slug: 'elektromagneticka-indukcia',
+    icon: '🔄',
+    title: 'Elektromagnetická indukcia',
+    description: 'Faradayov zákon, Lenzov zákon, generátor elektrickej energie.',
+    bg: 'bg-purple-500',
+    link: '/fyzika/magneticke-pole/elektromagneticka-indukcia',
   },
   {
-    slug: 'osobnosti',
-    icon: '🔬',
-    title: 'Osobnosti fyziky',
-    description: 'Newton, Joule, Watt, Pascal, Hertz, Coulomb — ľudia, po ktorých sú pomenované jednotky SI.',
-    bg: 'bg-rose-500',
-    link: '/fyzika/osobnosti',
+    slug: 'striedavy-prud',
+    icon: '〰️',
+    title: 'Striedavý prúd',
+    description: 'Generátor, frekvencia, amplitúda, efektívna hodnota, transformátor.',
+    bg: 'bg-violet-500',
+    link: '/fyzika/magneticke-pole/striedavy-prud',
   },
 ]
 </script>

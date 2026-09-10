@@ -1,23 +1,20 @@
 <template>
   <div class="max-w-6xl mx-auto px-4 py-12">
 
-    <!-- Breadcrumb -->
-    <nav data-testid="breadcrumb" aria-label="Navigačná cesta" class="flex items-center gap-2 text-sm text-gray-400 mb-8">
+    <nav data-testid="breadcrumb" aria-label="Navigačná cesta" class="flex items-center gap-2 text-sm text-gray-400 mb-8 flex-wrap">
       <NuxtLink to="/fyzika" class="hover:text-emerald-600 transition-colors">⚡ Fyzika</NuxtLink>
       <span>/</span>
-      <span class="text-gray-700 font-medium">Úvod do fyziky</span>
+      <span class="text-gray-700 font-medium">Kmity a vlnenie</span>
     </nav>
 
-    <!-- Header -->
     <div class="flex items-center gap-3 mb-3">
-      <span class="text-4xl">📏</span>
-      <h1 class="text-4xl font-extrabold text-emerald-700">Úvod do fyziky</h1>
+      <span class="text-4xl">〰️</span>
+      <h1 class="text-4xl font-extrabold text-emerald-700">Kmity a vlnenie</h1>
     </div>
     <p class="text-gray-500 text-lg mb-10">
-      Vyber si tému, ktorú si chceš preštudovať.
+      Periodické deje v prírode a technike — od kyvadla až po zvuk a elektromagnetické vlny.
     </p>
 
-    <!-- Sub-section grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       <component
         :is="section.link ? nuxtLink : 'div'"
@@ -60,36 +57,36 @@ const nuxtLink = resolveComponent('NuxtLink')
 
 const sections = [
   {
-    slug: 'medzinarodna-sustava',
-    icon: '🌍',
-    title: 'Medzinárodná sústava jednotiek',
-    description: 'Sústava SI, základné a odvodené jednotky, predpony (kilo, mega, mili…) a ich použitie v praxi.',
-    bg: 'bg-emerald-500',
-    link: '/fyzika/uvod/medzinarodna-sustava',
+    slug: 'mechanicke-kmitanie',
+    icon: '🔔',
+    title: 'Mechanické kmitanie',
+    description: 'Perióda, frekvencia, amplitúda, harmonické kmitanie, oscilátor.',
+    bg: 'bg-purple-500',
+    link: '/fyzika/kmity-vlnenie/mechanicke-kmitanie',
   },
   {
-    slug: 'meranie-velicin',
-    icon: '📐',
-    title: 'Meranie fyzikálnych veličín',
-    description: 'Ako správne merať, chyby merania, presnosť a zaokrúhľovanie výsledkov.',
-    bg: 'bg-teal-500',
-    link: '/fyzika/uvod/meranie-velicin',
+    slug: 'kyvadlo',
+    icon: '⏱️',
+    title: 'Kyvadlo a oscilátor',
+    description: 'Matematické kyvadlo, pružinové kyvadlo, vlastná frekvencia, rezonancia.',
+    bg: 'bg-violet-500',
+    link: '/fyzika/kmity-vlnenie/kyvadlo',
   },
   {
-    slug: 'skalar-vektor',
-    icon: '➡️',
-    title: 'Skalárne a vektorové veličiny',
-    description: 'Rozdiel medzi skalárom a vektorom, sčítavanie vektorov, rozklad na zložky.',
-    bg: 'bg-cyan-500',
-    link: '/fyzika/uvod/skalar-vektor',
+    slug: 'mechanicke-vlnenie',
+    icon: '〰️',
+    title: 'Mechanické vlnenie',
+    description: 'Vlnová dĺžka, rýchlosť vlnenia, Dopplerov jav, interferencia, polarizácia.',
+    bg: 'bg-blue-500',
+    link: '/fyzika/kmity-vlnenie/mechanicke-vlnenie',
   },
   {
-    slug: 'osobnosti',
-    icon: '🔬',
-    title: 'Osobnosti fyziky',
-    description: 'Newton, Joule, Watt, Pascal, Hertz, Coulomb — ľudia, po ktorých sú pomenované jednotky SI.',
-    bg: 'bg-rose-500',
-    link: '/fyzika/osobnosti',
+    slug: 'zvuk',
+    icon: '🔊',
+    title: 'Zvuk',
+    description: 'Hlasitosť, výška tónu, farba zvuku, rýchlosť zvuku, sluch.',
+    bg: 'bg-sky-500',
+    link: '/fyzika/kmity-vlnenie/zvuk',
   },
 ]
 </script>

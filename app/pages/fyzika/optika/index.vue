@@ -2,19 +2,19 @@
   <div class="max-w-6xl mx-auto px-4 py-12">
 
     <!-- Breadcrumb -->
-    <nav data-testid="breadcrumb" aria-label="Navigačná cesta" class="flex items-center gap-2 text-sm text-gray-400 mb-8">
+    <nav data-testid="breadcrumb" aria-label="Navigačná cesta" class="flex items-center gap-2 text-sm text-gray-400 mb-8 flex-wrap">
       <NuxtLink to="/fyzika" class="hover:text-emerald-600 transition-colors">⚡ Fyzika</NuxtLink>
       <span>/</span>
-      <span class="text-gray-700 font-medium">Úvod do fyziky</span>
+      <span class="text-gray-700 font-medium">Optika</span>
     </nav>
 
     <!-- Header -->
     <div class="flex items-center gap-3 mb-3">
-      <span class="text-4xl">📏</span>
-      <h1 class="text-4xl font-extrabold text-emerald-700">Úvod do fyziky</h1>
+      <span class="text-4xl">🔭</span>
+      <h1 class="text-4xl font-extrabold text-emerald-700">Optika</h1>
     </div>
     <p class="text-gray-500 text-lg mb-10">
-      Vyber si tému, ktorú si chceš preštudovať.
+      Svetlo, jeho šírenie, odraz, lom a vlnové vlastnosti.
     </p>
 
     <!-- Sub-section grid -->
@@ -60,36 +60,36 @@ const nuxtLink = resolveComponent('NuxtLink')
 
 const sections = [
   {
-    slug: 'medzinarodna-sustava',
-    icon: '🌍',
-    title: 'Medzinárodná sústava jednotiek',
-    description: 'Sústava SI, základné a odvodené jednotky, predpony (kilo, mega, mili…) a ich použitie v praxi.',
-    bg: 'bg-emerald-500',
-    link: '/fyzika/uvod/medzinarodna-sustava',
+    slug: 'svetlo-a-tiene',
+    icon: '💡',
+    title: 'Svetlo a tiene',
+    description: 'Priamočiare šírenie svetla, tieň, zatmenie, difúzny odraz.',
+    bg: 'bg-yellow-500',
+    link: '/fyzika/optika/svetlo-a-tiene',
   },
   {
-    slug: 'meranie-velicin',
-    icon: '📐',
-    title: 'Meranie fyzikálnych veličín',
-    description: 'Ako správne merať, chyby merania, presnosť a zaokrúhľovanie výsledkov.',
-    bg: 'bg-teal-500',
-    link: '/fyzika/uvod/meranie-velicin',
+    slug: 'odraz-lom',
+    icon: '🪞',
+    title: 'Odraz a lom svetla',
+    description: 'Zákon odrazu, zákon lomu, index lomu, totálny odraz.',
+    bg: 'bg-amber-500',
+    link: '/fyzika/optika/odraz-lom',
   },
   {
-    slug: 'skalar-vektor',
-    icon: '➡️',
-    title: 'Skalárne a vektorové veličiny',
-    description: 'Rozdiel medzi skalárom a vektorom, sčítavanie vektorov, rozklad na zložky.',
-    bg: 'bg-cyan-500',
-    link: '/fyzika/uvod/skalar-vektor',
-  },
-  {
-    slug: 'osobnosti',
+    slug: 'sosovky-zrkadla',
     icon: '🔬',
-    title: 'Osobnosti fyziky',
-    description: 'Newton, Joule, Watt, Pascal, Hertz, Coulomb — ľudia, po ktorých sú pomenované jednotky SI.',
-    bg: 'bg-rose-500',
-    link: '/fyzika/osobnosti',
+    title: 'Šošovky a zrkadlá',
+    description: 'Zobrazenie šošovkami a zrkadlami, zväčšenie, oko a okuliare.',
+    bg: 'bg-orange-500',
+    link: '/fyzika/optika/sosovky-zrkadla',
+  },
+  {
+    slug: 'vlnove-vlastnosti-svetla',
+    icon: '🌈',
+    title: 'Vlnové vlastnosti svetla',
+    description: 'Disperzia, interferencia, difrakcia, polarizácia, spektrum.',
+    bg: 'bg-red-500',
+    link: '/fyzika/optika/vlnove-vlastnosti-svetla',
   },
 ]
 </script>

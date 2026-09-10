@@ -1,4 +1,7 @@
 {
+  "js/ts.tsdk.path": "node_modules/typescript/lib",
+  "js/ts.tsdk.promptToUseWorkspaceVersion": true,
+  "js/ts.tsserver.experimental.enableProjectDiagnostics": true,
   "files.associations": {
     "*.css": "tailwindcss"
   },
@@ -8,5 +11,9 @@
   "tailwindCSS.includeLanguages": {
     "plaintext": "html",
     "vue": "html"
-  }
+  },
+  // "playwright.env": {
+  //   "BASE_URL": "http://localhost:3005",
+    
+  // }
 }
