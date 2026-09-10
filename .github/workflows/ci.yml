@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  push:
+    branches: [master, main, develop]
+  pull_request:
+    branches: [master, main, develop]
+  workflow_dispatch:
+
+jobs:
+  unit-tests:
+    timeout-minutes: 5
+    name: Unit testy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: lts/*
+          cache: npm
+
+      - name: Inštalácia závislostí
+        run: npm ci --legacy-peer-deps
+
+      - name: Unit testy
+        run: npm run test:unit
+
+  e2e-tests:
+    timeout-minutes: 15
+    name: E2E testy (Playwright)
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.63.0-noble
+      options: --user 1001
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: lts/*
+
+      - name: Inštalácia závislostí
+        run: npm ci --legacy-peer-deps
+
+      - name: Build aplikácie
+        run: npm run build
+
+      - name: E2E testy
+        run: npm run test:e2e
+
+      - name: Nahratie Playwright reportu
+        uses: actions/upload-artifact@v6
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 14
