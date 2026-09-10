@@ -1,16 +1,10 @@
 [build]
   command = "npm run generate"
-  publish = ".output/public"
+  publish = ".netlify/static"
 
 [build.environment]
   NODE_VERSION = "22"
   NUXT_PUBLIC_SITE_URL = "https://naukaportal.netlify.app"
-
-# SPA fallback — presmeruj všetky URL na index.html
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
 
 [[headers]]
   for = "/*"
