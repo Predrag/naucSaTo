@@ -20,6 +20,7 @@ useHead({
   meta: [
     { name: 'description', content: defaultDesc },
     { name: 'author', content: 'Náuka Portál' },
+    { name: 'google-site-verification', content: 'DM4SOAhw4ZGj85maPvUWrcUwKse8tQ7XROv3TVt74nw' },
     // Open Graph
     { property: 'og:type', content: 'website' },
     { property: 'og:site_name', content: 'Náuka Portál' },
