@@ -451,12 +451,34 @@ export const searchIndex: SearchEntry[] = [
   { title: 'Deriváty uhľovodíkov a polyméry', description: 'Deriváty, alkoholy, kyseliny, estery, ropa, zemný plyn, polyméry.', path: '/chemia/organicka-chemia/derivaty-a-plasty', category: 'Chémia / Organická chémia', keywords: 'derivaty uhlovodikov polymery plast ropa benzin destilácia PE PP PVC alkohol etanol' },
 
   // ── Matematika ────────────────────────────────────────────────────────────
-  {
-    title: 'Matematika',
-    description: 'Prehľad tém matematiky — zlomky, rovnice, geometria, funkcie.',
-    path: '/matematika',
-    category: 'Matematika',
-    keywords: 'matematika predmet zlomky rovnice geometria funkcie algebra',
-  },
+  { title: 'Matematika', description: 'Prehľad tém matematiky — čísla, funkcie, geometria, kombinatorika, logika.', path: '/matematika', category: 'Matematika', keywords: 'matematika predmet gymnazium algebra geometria funkcie kombinatorika logika' },
+
+  // Čísla a výrazy
+  { title: 'Čísla a množiny', description: 'Číselné obory N, Z, Q, R, I; množiny; intervaly; absolútna hodnota.', path: '/matematika/cisla-a-vyrazy/cisla-a-mnoziny', category: 'Matematika / Čísla a výrazy', keywords: 'cisla mnoziny intervaly absolutna hodnota racionalne iracionalne realne prirodzene' },
+  { title: 'Mocniny a odmocniny', description: 'Pravidlá pre mocniny, odmocniny, vedecký zápis čísla, logaritmy.', path: '/matematika/cisla-a-vyrazy/mocniny-odmocniny', category: 'Matematika / Čísla a výrazy', keywords: 'mocniny odmocniny vedecky zapis logaritmus exponent pravidla' },
+  { title: 'Rovnice a nerovnice', description: 'Lineárne a kvadratické rovnice, diskriminant, sústavy rovníc, nerovnice.', path: '/matematika/cisla-a-vyrazy/rovnice-a-nerovnice', category: 'Matematika / Čísla a výrazy', keywords: 'rovnice nerovnice linearné kvadraticke diskriminant sustava vietove' },
+  { title: 'Percentuálne výpočty', description: 'Percentá, promile, trojčlenka, úmernosť, jednoduché a zložené úrokovanie.', path: '/matematika/cisla-a-vyrazy/percentualne-vypocty', category: 'Matematika / Čísla a výrazy', keywords: 'percenta promile trojclenka umernost urok zlozene urockovanie zaklad' },
+
+  // Funkcie a grafy
+  { title: 'Základy funkcie', description: 'Definícia funkcie, definičný obor, obor hodnôt, vlastnosti (rast, párnosť, periodicita).', path: '/matematika/funkcie/zaklady-funkcie', category: 'Matematika / Funkcie', keywords: 'funkcia definicny obor graf rast klesanie parnost periodicita nulové body' },
+  { title: 'Lineárna a kvadratická funkcia', description: 'Lineárna funkcia (smernica), kvadratická (parabola, vrchol, diskriminant).', path: '/matematika/funkcie/linearna-kvadraticka', category: 'Matematika / Funkcie', keywords: 'linearna funkcia smernica kvadraticka parabola vrchol diskriminant' },
+  { title: 'Exponenciálna a logaritmická funkcia', description: 'Exponenciálna funkcia aˣ, logaritmus, ln, logaritmické vzorce a rovnice.', path: '/matematika/funkcie/exponencialna-logaritmicka', category: 'Matematika / Funkcie', keywords: 'exponencialna logaritmicka funkcia logaritmus ln log vzorce rovnice' },
+  { title: 'Goniometrické funkcie', description: 'Jednotková kružnica, sínus, kosínus, tangens, grafy a periodičnosť.', path: '/matematika/funkcie/goniometricke-funkcie', category: 'Matematika / Funkcie', keywords: 'sinus cosinus tangens kotangens goniometricke funkcie jednotkova kruznica perioda' },
+
+  // Geometria
+  { title: 'Planimetria', description: 'Trojuholník, Pytagorova veta, zhodnosť, podobnosť, kružnica, obvod a obsah útvarov.', path: '/matematika/geometria/planimetria', category: 'Matematika / Geometria', keywords: 'planimetria trojuholnik pytagor zhodnost podobnost kruznica obsah obvod' },
+  { title: 'Trigonometria', description: 'Sínusová a kosínusová veta, obsah trojuholníka, Heronov vzorec.', path: '/matematika/geometria/trigonometria', category: 'Matematika / Geometria', keywords: 'trigonometria sinusova kosínusova veta obsah trojuholnika heronov vzorec' },
+  { title: 'Stereometria', description: 'Kocka, kváder, valec, kužeľ, guľa — povrch a objem, siete telies.', path: '/matematika/geometria/stereometria', category: 'Matematika / Geometria', keywords: 'stereometria kocka kvader valec kuzel gula povrch objem siete telies' },
+  { title: 'Analytická geometria', description: 'Súradnicová sústava, vzdialenosť bodov, rovnica priamky a kružnice.', path: '/matematika/geometria/analyticka-geometria', category: 'Matematika / Geometria', keywords: 'analyticka geometria suradnice priamka kruznica vzdialenost smernica rovnica' },
+
+  // Kombinatorika
+  { title: 'Kombinatorika', description: 'Permutácie, variácie, kombinácie, faktoriál, Pascalov trojuholník, binomická veta.', path: '/matematika/kombinatorika-statistika/kombinatorika', category: 'Matematika / Kombinatorika', keywords: 'kombinatorika permutacie variacie kombinácie faktorial pascalov trojuholnik binomicka' },
+  { title: 'Pravdepodobnosť', description: 'Klasická definícia pravdepodobnosti, nezávislé javy, Bernoulliho schéma.', path: '/matematika/kombinatorika-statistika/pravdepodobnost', category: 'Matematika / Kombinatorika', keywords: 'pravdepodobnost nahodny jav bernoulli nezavisle udalosti klasicka definicia' },
+  { title: 'Štatistika', description: 'Priemer, medián, modus, rozptyl, smerodajná odchýlka, histogram.', path: '/matematika/kombinatorika-statistika/statistika', category: 'Matematika / Kombinatorika', keywords: 'statistika priemer median modus rozptyl smerodajna odchylka histogram frekvencie' },
+
+  // Logika
+  { title: 'Výroky a logika', description: 'Výrok, implikácia, ekvivalencia, logické spojky, kvantifikátory, de Morgan.', path: '/matematika/logika-a-dokazovanie/vyroky-a-logika', category: 'Matematika / Logika', keywords: 'vyroky logika implikacia ekvivalencia konjunkcia disjunkcia kvantifikatory de morgan' },
+  { title: 'Dôkazovanie', description: 'Priamy dôkaz, dôkaz sporom, protipríklad, matematická indukcia.', path: '/matematika/logika-a-dokazovanie/dokazovanie', category: 'Matematika / Logika', keywords: 'dokazovanie priamy dokaz sporom protipriklad matematicka indukcia' },
+  { title: 'Postupnosti a rady', description: 'Aritmetická a geometrická postupnosť, vzorce, nekonečný rad, sigma notácia.', path: '/matematika/logika-a-dokazovanie/postupnosti', category: 'Matematika / Logika', keywords: 'postupnosti rady aritmeticka geometricka rozdiel kvocient nekonecny rad sigma' },
 
 ]
