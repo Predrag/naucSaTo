@@ -11,17 +11,17 @@
         <p class="text-lg text-gray-500 mb-10">
           Bezplatné vysvetlenia, príklady a cvičenia z matematiky, fyziky a chémie — pre žiakov ZŠ a SŠ.
         </p>
-        <div class="flex flex-wrap gap-3 justify-center">
+        <!-- <div class="flex flex-wrap gap-3 justify-center">
           <NuxtLink to="/matematika" class="px-7 py-3 rounded-lg bg-teal-600 text-white font-semibold hover:bg-teal-700 transition-colors shadow-sm text-base">
             Začať sa učiť
           </NuxtLink>
           <a href="#predmety" class="px-7 py-3 rounded-lg border-2 border-gray-300 text-gray-700 font-semibold hover:border-gray-400 transition-colors text-base">
             Zobraziť predmety
           </a>
-        </div>
+        </div> -->
 
         <!-- Subject badges -->
-        <div class="flex flex-wrap justify-center gap-3 mt-12">
+        <div class="flex flex-wrap justify-center gap-3 mt-1">
           <span class="flex items-center gap-2 bg-blue-50 text-blue-700 border border-blue-200 px-4 py-2 rounded-full text-sm font-medium">📐 Matematika</span>
           <span class="flex items-center gap-2 bg-emerald-50 text-emerald-700 border border-emerald-200 px-4 py-2 rounded-full text-sm font-medium">⚡ Fyzika</span>
           <span class="flex items-center gap-2 bg-orange-50 text-orange-700 border border-orange-200 px-4 py-2 rounded-full text-sm font-medium">🧪 Chémia</span>
@@ -30,7 +30,7 @@
     </section>
 
     <!-- Subject cards -->
-    <section id="predmety" class="max-w-6xl mx-auto px-6 py-16">
+    <section id="predmety" class="max-w-6xl mx-auto px-6 mb-8">
       <h2 class="text-2xl font-bold text-gray-900 mb-2">Vyber si predmet</h2>
       <p class="text-gray-500 mb-8">Klikni na predmet a začni sa učiť hneď teraz.</p>
 
@@ -79,7 +79,7 @@
     </section>
 
     <!-- Why section -->
-    <section class="border-t border-gray-100 bg-gray-50">
+    <!-- <section class="border-t border-gray-100 bg-gray-50">
       <div class="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-3 gap-10">
 
         <div class="flex gap-4 items-start">
@@ -107,7 +107,7 @@
         </div>
 
       </div>
-    </section>
+    </section> -->
 
   </div>
 </template>

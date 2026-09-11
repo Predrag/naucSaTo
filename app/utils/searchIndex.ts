@@ -428,21 +428,57 @@ export const searchIndex: SearchEntry[] = [
     keywords: 'jaderna energia vazbova energia hmotnostny ubytok stiepenie jadier uran plutonium retazova reakcia jaderna synteza deuterium tritium helium reaktor elektricka energia E mc2',
   },
 
-  // ── Matematika ────────────────────────────────────────────────────────────
-  {
-    title: 'Matematika',
-    description: 'Prehľad tém matematiky — zlomky, rovnice, geometria, funkcie.',
-    path: '/matematika',
-    category: 'Matematika',
-    keywords: 'matematika predmet zlomky rovnice geometria funkcie algebra',
-  },
+  // ── Chémia ────────────────────────────────────────────────────────────────────
+  { title: 'Chémia', description: 'Bezpečnosť v laboratóriu, atómy, chemické reakcie, organická chémia pre gymnazistov.', path: '/chemia', category: 'Chémia', keywords: 'chemia predmet gymnazium laboratorium reakcie atomy' },
+  { title: 'Úvod do chémie', description: 'Bezpečnosť, látky, zmesi, roztok, molárna hmotnosť, Avogadrova konštanta.', path: '/chemia/uvod', category: 'Chémia / Úvod', keywords: 'uvod latky zmesi roztok molarná hmotnost avogadro mol' },
+  { title: 'Bezpečnosť v laboratóriu', description: 'Laboratórne pomôcky, bezpečnostné pravidlá, prvá pomoc v chemickom laboratóriu.', path: '/chemia/uvod/bezpecnost-laboratorium', category: 'Chémia / Úvod', keywords: 'bezpecnost laboratorium pomucky skumavka kadicky kahan svorka' },
+  { title: 'Sústavy látok', description: 'Látky, zmesi, roztok, molárna hmotnosť, látkové množstvo, Avogadrova konštanta, koncentrácia.', path: '/chemia/uvod/sustava-latkov', category: 'Chémia / Úvod', keywords: 'sustava latok zmes roztok hmotnostny zlomok molarná hmotnost mol avogadro koncentracia c n/V' },
+  { title: 'Stavba látky a periodická sústava', description: 'Atóm, jadro, elektróny, ióny, PSP, periódy, skupiny, kovy, nekovy.', path: '/chemia/stavba-latky', category: 'Chémia / Stavba látky', keywords: 'stavba latky atom psp periodicka sustava prvkov' },
+  { title: 'Stavba atómu', description: 'Protóny, neutróny, elektróny, nukleónové číslo, izotopy, Bohrov model.', path: '/chemia/stavba-latky/stavba-atomu', category: 'Chémia / Stavba látky', keywords: 'stavba atomu proton neutron elektron nukleonove cislo izotopy bohrov model ion katión anión' },
+  { title: 'Periodická sústava prvkov', description: 'Periódy, skupiny, kovy, nekovy, polokovy, elektronegativita, alkalické kovy, halogény.', path: '/chemia/stavba-latky/periodicka-tabulka', category: 'Chémia / Stavba látky', keywords: 'periodicka tabulka prvkov periody skupiny kovy nekovy elektronegativita alkalicke kovy halogeny' },
+  { title: 'Chemická väzba', description: 'Kovalentná, iónová, vodíková a kovová väzba. Molekuly, kryštály, medzimolekulové sily.', path: '/chemia/stavba-latky/chemicka-vazba', category: 'Chémia / Stavba látky', keywords: 'chemicka vazba kovalentna ionova vodikova kovova molekula krystal' },
+  { title: 'Názvoslovie zlúčenín', description: 'Oxidačné čísla, názvoslovie oxidov, hydroxidov, kyselín, solí anorganických zlúčenín.', path: '/chemia/stavba-latky/nazvoslovie', category: 'Chémia / Stavba látky', keywords: 'nazvoslovie zlucenin oxidacne cislo oxid hydroxid kyselina sol halogenidum' },
+  { title: 'Chemické reakcie', description: 'Rovnice, stechiometria, kinetika, rovnováha, redox, acidobáza, pH.', path: '/chemia/chemicke-reakcie', category: 'Chémia / Chemické reakcie', keywords: 'chemicke reakcie rovnice stechiometria redox pH kyseliny zasady' },
+  { title: 'Chemické rovnice a stechiometria', description: 'Zápis reakcií, zákon zachovania hmotnosti, stechiometrické koeficienty, typy reakcií.', path: '/chemia/chemicke-reakcie/chemicke-rovnice', category: 'Chémia / Chemické reakcie', keywords: 'chemicke rovnice stechiometria zakon zachovania hmotnosti exotermicka endotermicka' },
+  { title: 'Rýchlosť reakcie a rovnováha', description: 'Faktory rýchlosti, katalyzátor, chemická rovnováha, Le Chatelier.', path: '/chemia/chemicke-reakcie/rychlost-rovnovaha', category: 'Chémia / Chemické reakcie', keywords: 'rychlost reakcie katalyzator rovnovaha Le Chatelier koncentracia teplota' },
+  { title: 'Kyseliny, zásady a pH', description: 'Brönstedova teória, pH, neutralizácia, soli, indikátory.', path: '/chemia/chemicke-reakcie/acidobaza-pH', category: 'Chémia / Chemické reakcie', keywords: 'kyseliny zasady pH neutralizacia sol Bronsted indikator lakmus fenolftaleín' },
+  { title: 'Redoxné reakcie', description: 'Oxidácia, redukcia, oxidačné čísla, elektrolýza, korózia kovov.', path: '/chemia/chemicke-reakcie/redox', category: 'Chémia / Chemické reakcie', keywords: 'redox oxidacia redukcna elektrolýza korzia napatiovy rad kovov' },
+  { title: 'Anorganická chémia', description: 'Prvky a ich anorganické zlúčeniny — kovy, nekovy, voda.', path: '/chemia/anorganicka-chemia', category: 'Chémia / Anorganická chémia', keywords: 'anorganicka chemia kovy nekovy voda prvky zluceniny' },
+  { title: 'Nekovy a ich zlúčeniny', description: 'Vodík, kyslík, dusík, síra, uhlík, halogény, vzácne plyny, voda.', path: '/chemia/anorganicka-chemia/nekovy', category: 'Chémia / Anorganická chémia', keywords: 'nekovy vodik kyslik dusik sira uhlik halogeny vzacne plyny amoniak ozón' },
+  { title: 'Kovy a ich zlúčeniny', description: 'Alkalické kovy, kovy alkalických zemín, prechodné kovy, zliatiny.', path: '/chemia/anorganicka-chemia/kovy', category: 'Chémia / Anorganická chémia', keywords: 'kovy alkalicke prechodne zeleza med zlato striebro zliatiny hlinik oceľ' },
+  { title: 'Organická chémia', description: 'Uhľovodíky, deriváty, polyméry, ropa.', path: '/chemia/organicka-chemia', category: 'Chémia / Organická chémia', keywords: 'organicka chemia uhlovodiky derivaty polymery ropa' },
+  { title: 'Uhľovodíky', description: 'Alkány, alkény, alkíny, arény — názvoslovie, izoméria, reakcie.', path: '/chemia/organicka-chemia/uhlovodiky', category: 'Chémia / Organická chémia', keywords: 'uhlovodiky alkany alkeny alkiny areny benzen izoméria IUPAC metan propan' },
+  { title: 'Deriváty uhľovodíkov a polyméry', description: 'Deriváty, alkoholy, kyseliny, estery, ropa, zemný plyn, polyméry.', path: '/chemia/organicka-chemia/derivaty-a-plasty', category: 'Chémia / Organická chémia', keywords: 'derivaty uhlovodikov polymery plast ropa benzin destilácia PE PP PVC alkohol etanol' },
 
-  // ── Chémia ────────────────────────────────────────────────────────────────
-  {
-    title: 'Chémia',
-    description: 'Prehľad tém chémie — prvky, reakcie, periodická tabuľka.',
-    path: '/chemia',
-    category: 'Chémia',
-    keywords: 'chemia predmet prvky reakcie periodicka tabulka zluceniny kovy',
-  },
+  // ── Matematika ────────────────────────────────────────────────────────────
+  { title: 'Matematika', description: 'Prehľad tém matematiky — čísla, funkcie, geometria, kombinatorika, logika.', path: '/matematika', category: 'Matematika', keywords: 'matematika predmet gymnazium algebra geometria funkcie kombinatorika logika' },
+
+  // Čísla a výrazy
+  { title: 'Čísla a množiny', description: 'Číselné obory N, Z, Q, R, I; množiny; intervaly; absolútna hodnota.', path: '/matematika/cisla-a-vyrazy/cisla-a-mnoziny', category: 'Matematika / Čísla a výrazy', keywords: 'cisla mnoziny intervaly absolutna hodnota racionalne iracionalne realne prirodzene' },
+  { title: 'Mocniny a odmocniny', description: 'Pravidlá pre mocniny, odmocniny, vedecký zápis čísla, logaritmy.', path: '/matematika/cisla-a-vyrazy/mocniny-odmocniny', category: 'Matematika / Čísla a výrazy', keywords: 'mocniny odmocniny vedecky zapis logaritmus exponent pravidla' },
+  { title: 'Rovnice a nerovnice', description: 'Lineárne a kvadratické rovnice, diskriminant, sústavy rovníc, nerovnice.', path: '/matematika/cisla-a-vyrazy/rovnice-a-nerovnice', category: 'Matematika / Čísla a výrazy', keywords: 'rovnice nerovnice linearné kvadraticke diskriminant sustava vietove' },
+  { title: 'Percentuálne výpočty', description: 'Percentá, promile, trojčlenka, úmernosť, jednoduché a zložené úrokovanie.', path: '/matematika/cisla-a-vyrazy/percentualne-vypocty', category: 'Matematika / Čísla a výrazy', keywords: 'percenta promile trojclenka umernost urok zlozene urockovanie zaklad' },
+
+  // Funkcie a grafy
+  { title: 'Základy funkcie', description: 'Definícia funkcie, definičný obor, obor hodnôt, vlastnosti (rast, párnosť, periodicita).', path: '/matematika/funkcie/zaklady-funkcie', category: 'Matematika / Funkcie', keywords: 'funkcia definicny obor graf rast klesanie parnost periodicita nulové body' },
+  { title: 'Lineárna a kvadratická funkcia', description: 'Lineárna funkcia (smernica), kvadratická (parabola, vrchol, diskriminant).', path: '/matematika/funkcie/linearna-kvadraticka', category: 'Matematika / Funkcie', keywords: 'linearna funkcia smernica kvadraticka parabola vrchol diskriminant' },
+  { title: 'Exponenciálna a logaritmická funkcia', description: 'Exponenciálna funkcia aˣ, logaritmus, ln, logaritmické vzorce a rovnice.', path: '/matematika/funkcie/exponencialna-logaritmicka', category: 'Matematika / Funkcie', keywords: 'exponencialna logaritmicka funkcia logaritmus ln log vzorce rovnice' },
+  { title: 'Goniometrické funkcie', description: 'Jednotková kružnica, sínus, kosínus, tangens, grafy a periodičnosť.', path: '/matematika/funkcie/goniometricke-funkcie', category: 'Matematika / Funkcie', keywords: 'sinus cosinus tangens kotangens goniometricke funkcie jednotkova kruznica perioda' },
+
+  // Geometria
+  { title: 'Planimetria', description: 'Trojuholník, Pytagorova veta, zhodnosť, podobnosť, kružnica, obvod a obsah útvarov.', path: '/matematika/geometria/planimetria', category: 'Matematika / Geometria', keywords: 'planimetria trojuholnik pytagor zhodnost podobnost kruznica obsah obvod' },
+  { title: 'Trigonometria', description: 'Sínusová a kosínusová veta, obsah trojuholníka, Heronov vzorec.', path: '/matematika/geometria/trigonometria', category: 'Matematika / Geometria', keywords: 'trigonometria sinusova kosínusova veta obsah trojuholnika heronov vzorec' },
+  { title: 'Stereometria', description: 'Kocka, kváder, valec, kužeľ, guľa — povrch a objem, siete telies.', path: '/matematika/geometria/stereometria', category: 'Matematika / Geometria', keywords: 'stereometria kocka kvader valec kuzel gula povrch objem siete telies' },
+  { title: 'Analytická geometria', description: 'Súradnicová sústava, vzdialenosť bodov, rovnica priamky a kružnice.', path: '/matematika/geometria/analyticka-geometria', category: 'Matematika / Geometria', keywords: 'analyticka geometria suradnice priamka kruznica vzdialenost smernica rovnica' },
+
+  // Kombinatorika
+  { title: 'Kombinatorika', description: 'Permutácie, variácie, kombinácie, faktoriál, Pascalov trojuholník, binomická veta.', path: '/matematika/kombinatorika-statistika/kombinatorika', category: 'Matematika / Kombinatorika', keywords: 'kombinatorika permutacie variacie kombinácie faktorial pascalov trojuholnik binomicka' },
+  { title: 'Pravdepodobnosť', description: 'Klasická definícia pravdepodobnosti, nezávislé javy, Bernoulliho schéma.', path: '/matematika/kombinatorika-statistika/pravdepodobnost', category: 'Matematika / Kombinatorika', keywords: 'pravdepodobnost nahodny jav bernoulli nezavisle udalosti klasicka definicia' },
+  { title: 'Štatistika', description: 'Priemer, medián, modus, rozptyl, smerodajná odchýlka, histogram.', path: '/matematika/kombinatorika-statistika/statistika', category: 'Matematika / Kombinatorika', keywords: 'statistika priemer median modus rozptyl smerodajna odchylka histogram frekvencie' },
+
+  // Logika
+  { title: 'Výroky a logika', description: 'Výrok, implikácia, ekvivalencia, logické spojky, kvantifikátory, de Morgan.', path: '/matematika/logika-a-dokazovanie/vyroky-a-logika', category: 'Matematika / Logika', keywords: 'vyroky logika implikacia ekvivalencia konjunkcia disjunkcia kvantifikatory de morgan' },
+  { title: 'Dôkazovanie', description: 'Priamy dôkaz, dôkaz sporom, protipríklad, matematická indukcia.', path: '/matematika/logika-a-dokazovanie/dokazovanie', category: 'Matematika / Logika', keywords: 'dokazovanie priamy dokaz sporom protipriklad matematicka indukcia' },
+  { title: 'Postupnosti a rady', description: 'Aritmetická a geometrická postupnosť, vzorce, nekonečný rad, sigma notácia.', path: '/matematika/logika-a-dokazovanie/postupnosti', category: 'Matematika / Logika', keywords: 'postupnosti rady aritmeticka geometricka rozdiel kvocient nekonecny rad sigma' },
+
 ]
