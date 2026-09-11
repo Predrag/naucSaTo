@@ -39,12 +39,12 @@
           <kbd class="hidden md:inline-flex items-center text-xs border border-gray-300 rounded px-1 py-0.5 text-gray-400">Ctrl K</kbd>
         </button>
 
-        <NuxtLink
+        <!-- <NuxtLink
           to="/matematika"
           class="shrink-0 hidden sm:block px-5 py-2 rounded-lg bg-teal-600 text-white text-sm font-semibold hover:bg-teal-700 transition-colors"
         >
           Začať sa učiť
-        </NuxtLink>
+        </NuxtLink> -->
 
       </nav>
     </header>

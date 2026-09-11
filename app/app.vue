@@ -21,6 +21,7 @@ useHead({
     { name: 'description', content: defaultDesc },
     { name: 'author', content: 'Náuka Portál' },
     { name: 'google-site-verification', content: 'DM4SOAhw4ZGj85maPvUWrcUwKse8tQ7XROv3TVt74nw' },
+    { name: 'keywords', content: 'fyzika, matematika, chémia, gymnázium, stredná škola, ZŠ, vzdelávanie, učenie, bezplatné, online, Slovensko, mechanika, kinematika, elektrina, optika, atómová fyzika, vzorce, príklady' },
     // Open Graph
     { property: 'og:type', content: 'website' },
     { property: 'og:site_name', content: 'Náuka Portál' },
