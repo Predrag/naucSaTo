@@ -484,7 +484,7 @@
 import { ref, computed } from 'vue'
 
 useHead({
-  title: 'Rovnice a nerovnice | Matematika | NaučSaTo',
+  title: 'Rovnice a nerovnice | Matematika | Náuka Portál',
   meta: [
     {
       name: 'description',

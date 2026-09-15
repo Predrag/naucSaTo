@@ -38,7 +38,7 @@
             Chemicky čistá látka zložená z atómov <em>jedného druhu</em>.
             Nemožno ju chemicky rozložiť na jednoduchšie látky.
           </p>
-          <div class="flex justify-center text-sm" v-html="km('\\text{Fe},\\quad \\text{O}_2,\\quad \\text{Au},\\quad \\text{Cu}')"></div>
+          <div class="flex justify-center text-sm" v-html="km('\\text{Fe},\\quad \\text{O}_2,\\quad \\text{Au},\\quad \\text{Cu}')"/>
         </div>
         <div class="bg-orange-50 border border-orange-200 rounded-xl p-4">
           <h3 class="font-bold text-orange-700 mb-2">Zlúčenina</h3>
@@ -46,7 +46,7 @@
             Chemicky čistá látka zložená z atómov <em>dvoch alebo viacerých prvkov</em>
             v stálom hmotnostnom pomere.
           </p>
-          <div class="flex justify-center text-sm" v-html="km('\\text{H}_2\\text{O},\\quad \\text{NaCl},\\quad \\text{CO}_2')"></div>
+          <div class="flex justify-center text-sm" v-html="km('\\text{H}_2\\text{O},\\quad \\text{NaCl},\\quad \\text{CO}_2')"/>
         </div>
       </div>
 
@@ -208,13 +208,13 @@
       <div class="bg-orange-50 border border-orange-200 rounded-xl p-5 mb-6">
         <h3 class="font-bold text-orange-700 mb-3">Hmotnostný zlomok</h3>
         <p class="text-gray-700 text-sm mb-3">
-          Hmotnostný zlomok <span v-html="km('w')"></span> vyjadruje pomer hmotnosti
+          Hmotnostný zlomok <span v-html="km('w')"/> vyjadruje pomer hmotnosti
           zložky k celkovej hmotnosti zmesi:
         </p>
-        <div class="flex justify-center mb-3" v-html="km('w = \\dfrac{m_{\\text{zložky}}}{m_{\\text{zmesi}}}')"></div>
+        <div class="flex justify-center mb-3" v-html="km('w = \\dfrac{m_{\\text{zložky}}}{m_{\\text{zmesi}}}')"/>
         <p class="text-gray-500 text-sm text-center">
           Bezrozmerná veličina; v percentách:
-          <span v-html="km('w\\,[\\%] = w \\cdot 100')"></span>
+          <span v-html="km('w\\,[\\%] = w \\cdot 100')"/>
         </p>
       </div>
 
@@ -223,20 +223,20 @@
         <h3 class="font-bold text-orange-700 mb-2">Príklad 1: Výpočet hmotnostného zlomku</h3>
         <p class="text-gray-700 text-sm mb-4">
           V 200 g roztoku je rozpustených 20 g kuchynskej soli
-          (<span v-html="km('\\text{NaCl}')"></span>). Aký je hmotnostný zlomok soli v roztoku?
+          (<span v-html="km('\\text{NaCl}')"/>). Aký je hmotnostný zlomok soli v roztoku?
         </p>
         <div class="bg-white rounded-lg p-4 space-y-3 text-sm">
           <div class="flex flex-wrap items-center gap-2">
             <span class="text-gray-400 min-w-20">Zadané:</span>
-            <span v-html="km('m_{\\text{NaCl}} = 20\\,\\text{g},\\quad m_{\\text{zmesi}} = 200\\,\\text{g}')"></span>
+            <span v-html="km('m_{\\text{NaCl}} = 20\\,\\text{g},\\quad m_{\\text{zmesi}} = 200\\,\\text{g}')"/>
           </div>
           <div class="flex flex-wrap items-center gap-2">
             <span class="text-gray-400 min-w-20">Vzorec:</span>
-            <span v-html="km('w = \\dfrac{m_{\\text{zložky}}}{m_{\\text{zmesi}}}')"></span>
+            <span v-html="km('w = \\dfrac{m_{\\text{zložky}}}{m_{\\text{zmesi}}}')"/>
           </div>
           <div class="flex flex-wrap items-center gap-2">
             <span class="text-gray-400 min-w-20">Výpočet:</span>
-            <span v-html="km('w = \\dfrac{20\\,\\text{g}}{200\\,\\text{g}} = 0{,}10')"></span>
+            <span v-html="km('w = \\dfrac{20\\,\\text{g}}{200\\,\\text{g}} = 0{,}10')"/>
           </div>
           <p class="text-orange-700 font-semibold border-t border-orange-100 pt-2">
             Roztok obsahuje 10 % hmotnostné NaCl.
@@ -257,32 +257,32 @@
             Počet elementárnych entít (atómov, molekúl, iónov) v jednom <strong>móle</strong>
             akejkoľvek látky:
           </p>
-          <div class="flex justify-center" v-html="km('N_A = 6{,}022 \\times 10^{23}\\,\\text{mol}^{-1}')"></div>
+          <div class="flex justify-center" v-html="km('N_A = 6{,}022 \\times 10^{23}\\,\\text{mol}^{-1}')"/>
         </div>
 
         <!-- Amount of substance -->
         <div class="bg-orange-50 border border-orange-200 rounded-xl p-4">
           <h3 class="font-bold text-orange-700 mb-2">Látkové množstvo</h3>
           <p class="text-gray-600 text-sm mb-2">
-            Látkové množstvo <span v-html="km('n')"></span> [mol] vyjadruje počet entít
+            Látkové množstvo <span v-html="km('n')"/> [mol] vyjadruje počet entít
             cez Avogadrovu konštantu, alebo hmotnostne:
           </p>
-          <div class="flex justify-center mb-2" v-html="km('n = \\dfrac{N}{N_A} = \\dfrac{m}{M}')"></div>
+          <div class="flex justify-center mb-2" v-html="km('n = \\dfrac{N}{N_A} = \\dfrac{m}{M}')"/>
           <p class="text-gray-500 text-xs text-center">
-            <span v-html="km('N')"></span> – počet častíc,
-            <span v-html="km('m')"></span> – hmotnosť [g],
-            <span v-html="km('M')"></span> – molárna hmotnosť [g/mol],
-            <span v-html="km('A_r')"></span> – relatívna atómová hmotnosť
+            <span v-html="km('N')"/> – počet častíc,
+            <span v-html="km('m')"/> – hmotnosť [g],
+            <span v-html="km('M')"/> – molárna hmotnosť [g/mol],
+            <span v-html="km('A_r')"/> – relatívna atómová hmotnosť
           </p>
         </div>
 
         <!-- Concentration -->
         <div class="bg-orange-50 border border-orange-200 rounded-xl p-4">
           <h3 class="font-bold text-orange-700 mb-2">Koncentrácia látkového množstva</h3>
-          <div class="flex justify-center mb-2" v-html="km('c = \\dfrac{n}{V}\\quad [\\text{mol/L}]')"></div>
+          <div class="flex justify-center mb-2" v-html="km('c = \\dfrac{n}{V}\\quad [\\text{mol/L}]')"/>
           <p class="text-gray-500 text-xs text-center">
-            <span v-html="km('n')"></span> – látkové množstvo [mol],
-            <span v-html="km('V')"></span> – objem roztoku [L]
+            <span v-html="km('n')"/> – látkové množstvo [mol],
+            <span v-html="km('V')"/> – objem roztoku [L]
           </p>
         </div>
       </div>
@@ -291,22 +291,22 @@
       <div class="border-l-4 border-orange-400 bg-orange-50 rounded-r-xl p-5 mb-4">
         <h3 class="font-bold text-orange-700 mb-2">Príklad 2: Výpočet koncentrácie roztoku</h3>
         <p class="text-gray-700 text-sm mb-4">
-          Rozpustíme 58,5 g <span v-html="km('\\text{NaCl}')"></span>
-          (molárna hmotnosť <span v-html="km('M = 58{,}5\\,\\text{g/mol}')"></span>)
+          Rozpustíme 58,5 g <span v-html="km('\\text{NaCl}')"/>
+          (molárna hmotnosť <span v-html="km('M = 58{,}5\\,\\text{g/mol}')"/>)
           vo vode, objem roztoku je 2 litre. Aká je koncentrácia roztoku?
         </p>
         <div class="bg-white rounded-lg p-4 space-y-3 text-sm">
           <div class="flex flex-wrap items-center gap-2">
             <span class="text-gray-400 min-w-20">Zadané:</span>
-            <span v-html="km('m = 58{,}5\\,\\text{g},\\quad M = 58{,}5\\,\\text{g/mol},\\quad V = 2\\,\\text{L}')"></span>
+            <span v-html="km('m = 58{,}5\\,\\text{g},\\quad M = 58{,}5\\,\\text{g/mol},\\quad V = 2\\,\\text{L}')"/>
           </div>
           <div class="flex flex-wrap items-center gap-2">
             <span class="text-gray-400 min-w-20">Krok 1:</span>
-            <span v-html="km('n = \\dfrac{m}{M} = \\dfrac{58{,}5\\,\\text{g}}{58{,}5\\,\\text{g/mol}} = 1\\,\\text{mol}')"></span>
+            <span v-html="km('n = \\dfrac{m}{M} = \\dfrac{58{,}5\\,\\text{g}}{58{,}5\\,\\text{g/mol}} = 1\\,\\text{mol}')"/>
           </div>
           <div class="flex flex-wrap items-center gap-2">
             <span class="text-gray-400 min-w-20">Krok 2:</span>
-            <span v-html="km('c = \\dfrac{n}{V} = \\dfrac{1\\,\\text{mol}}{2\\,\\text{L}} = 0{,}5\\,\\text{mol/L}')"></span>
+            <span v-html="km('c = \\dfrac{n}{V} = \\dfrac{1\\,\\text{mol}}{2\\,\\text{L}} = 0{,}5\\,\\text{mol/L}')"/>
           </div>
           <p class="text-orange-700 font-semibold border-t border-orange-100 pt-2">
             Koncentrácia roztoku NaCl je 0,5 mol/L.
@@ -325,7 +325,8 @@
       </p>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        <div v-for="method in separationMethods" :key="method.name"
+        <div
+v-for="method in separationMethods" :key="method.name"
              class="bg-white border border-orange-200 rounded-xl p-4">
           <div class="text-2xl mb-2">{{ method.icon }}</div>
           <h3 class="font-semibold text-orange-700 mb-1">{{ method.name }}</h3>
@@ -358,7 +359,7 @@
           <span class="text-orange-500 font-bold mt-0.5">▶</span>
           <span>
             Hmotnostný zlomok:
-            <span v-html="km('w = m_{\\text{zl.}}/m_{\\text{zm.}}')"></span>
+            <span v-html="km('w = m_{\\text{zl.}}/m_{\\text{zm.}}')"/>
             (bezrozmerný; v % násobíme 100).
           </span>
         </li>
@@ -366,16 +367,16 @@
           <span class="text-orange-500 font-bold mt-0.5">▶</span>
           <span>
             Avogadrova konštanta:
-            <span v-html="km('N_A = 6{,}022 \\times 10^{23}\\,\\text{mol}^{-1}')"></span>
+            <span v-html="km('N_A = 6{,}022 \\times 10^{23}\\,\\text{mol}^{-1}')"/>
           </span>
         </li>
         <li class="flex items-start gap-2">
           <span class="text-orange-500 font-bold mt-0.5">▶</span>
           <span>
             Látkové množstvo:
-            <span v-html="km('n = m/M')"></span>
+            <span v-html="km('n = m/M')"/>
             [mol]; Koncentrácia:
-            <span v-html="km('c = n/V')"></span>
+            <span v-html="km('c = n/V')"/>
             [mol/L].
           </span>
         </li>
@@ -410,7 +411,7 @@
                       ? 'bg-orange-600'
                       : 'bg-gray-200'
                 "
-              ></div>
+              />
             </div>
           </div>
 

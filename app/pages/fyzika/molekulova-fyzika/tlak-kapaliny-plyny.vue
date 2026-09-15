@@ -359,7 +359,7 @@ function km(f: string) {
 }
 
 useHead({
-  title: 'Tlak v kvapalinách a plynoch | Fyzika | NaucSaTo',
+  title: 'Tlak v kvapalinách a plynoch | Fyzika | Náuka Portál',
   meta: [
     {
       name: 'description',

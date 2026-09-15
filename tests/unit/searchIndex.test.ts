@@ -107,3 +107,147 @@ describe('searchIndex', () => {
     expect(mol).toBeDefined()
   })
 })
+
+// ─── Chémia ────────────────────────────────────────────────────────────────────
+describe('searchIndex — Chémia', () => {
+  it('obsahuje hlavnú stránku chémie', () => {
+    const entry = searchIndex.find(e => e.path === '/chemia')
+    expect(entry).toBeDefined()
+    expect(entry?.title).toContain('Chémia')
+  })
+
+  it('obsahuje všetky sekcie chémie', () => {
+    const paths = searchIndex.map(e => e.path)
+    expect(paths).toContain('/chemia/uvod')
+    expect(paths).toContain('/chemia/stavba-latky')
+    expect(paths).toContain('/chemia/chemicke-reakcie')
+    expect(paths).toContain('/chemia/anorganicka-chemia')
+    expect(paths).toContain('/chemia/organicka-chemia')
+  })
+
+  it('obsahuje stránky sekcie Úvod do chémie', () => {
+    const paths = searchIndex.map(e => e.path)
+    expect(paths).toContain('/chemia/uvod/bezpecnost-laboratorium')
+    expect(paths).toContain('/chemia/uvod/sustava-latkov')
+  })
+
+  it('obsahuje stránky sekcie Stavba látky', () => {
+    const paths = searchIndex.map(e => e.path)
+    expect(paths).toContain('/chemia/stavba-latky/stavba-atomu')
+    expect(paths).toContain('/chemia/stavba-latky/periodicka-tabulka')
+    expect(paths).toContain('/chemia/stavba-latky/chemicka-vazba')
+    expect(paths).toContain('/chemia/stavba-latky/nazvoslovie')
+  })
+
+  it('obsahuje stránky sekcie Chemické reakcie', () => {
+    const paths = searchIndex.map(e => e.path)
+    expect(paths).toContain('/chemia/chemicke-reakcie/chemicke-rovnice')
+    expect(paths).toContain('/chemia/chemicke-reakcie/rychlost-rovnovaha')
+    expect(paths).toContain('/chemia/chemicke-reakcie/acidobaza-pH')
+    expect(paths).toContain('/chemia/chemicke-reakcie/redox')
+  })
+
+  it('obsahuje stránky anorganickej chémie', () => {
+    const paths = searchIndex.map(e => e.path)
+    expect(paths).toContain('/chemia/anorganicka-chemia/nekovy')
+    expect(paths).toContain('/chemia/anorganicka-chemia/kovy')
+  })
+
+  it('obsahuje stránky organickej chémie', () => {
+    const paths = searchIndex.map(e => e.path)
+    expect(paths).toContain('/chemia/organicka-chemia/uhlovodiky')
+    expect(paths).toContain('/chemia/organicka-chemia/derivaty-a-plasty')
+  })
+
+  it('chémia záznamy majú správne kategórie', () => {
+    const stavba = searchIndex.find(e => e.path === '/chemia/stavba-latky/stavba-atomu')
+    expect(stavba?.category).toContain('Stavba látky')
+
+    const reakcie = searchIndex.find(e => e.path === '/chemia/chemicke-reakcie/acidobaza-pH')
+    expect(reakcie?.category).toContain('Chemické reakcie')
+  })
+
+  it('chémia záznamy majú keywords', () => {
+    const vazba = searchIndex.find(e => e.path === '/chemia/stavba-latky/chemicka-vazba')
+    expect(vazba?.keywords).toBeTruthy()
+    expect(vazba?.keywords).toContain('kovalentna')
+  })
+})
+
+// ─── Matematika ────────────────────────────────────────────────────────────────
+describe('searchIndex — Matematika', () => {
+  it('obsahuje hlavnú stránku matematiky', () => {
+    const entry = searchIndex.find(e => e.path === '/matematika')
+    expect(entry).toBeDefined()
+    expect(entry?.title).toContain('Matematika')
+  })
+
+  it('obsahuje všetky sekcie matematiky', () => {
+    const paths = searchIndex.map(e => e.path)
+    expect(paths).toContain('/matematika/cisla-a-vyrazy')
+    expect(paths).toContain('/matematika/funkcie')
+    expect(paths).toContain('/matematika/geometria')
+    expect(paths).toContain('/matematika/kombinatorika-statistika')
+    expect(paths).toContain('/matematika/logika-a-dokazovanie')
+  })
+
+  it('obsahuje stránky Čísla a výrazy', () => {
+    const paths = searchIndex.map(e => e.path)
+    expect(paths).toContain('/matematika/cisla-a-vyrazy/cisla-a-mnoziny')
+    expect(paths).toContain('/matematika/cisla-a-vyrazy/mocniny-odmocniny')
+    expect(paths).toContain('/matematika/cisla-a-vyrazy/rovnice-a-nerovnice')
+    expect(paths).toContain('/matematika/cisla-a-vyrazy/percentualne-vypocty')
+  })
+
+  it('obsahuje stránky Funkcie a grafy', () => {
+    const paths = searchIndex.map(e => e.path)
+    expect(paths).toContain('/matematika/funkcie/zaklady-funkcie')
+    expect(paths).toContain('/matematika/funkcie/linearna-kvadraticka')
+    expect(paths).toContain('/matematika/funkcie/exponencialna-logaritmicka')
+    expect(paths).toContain('/matematika/funkcie/goniometricke-funkcie')
+  })
+
+  it('obsahuje stránky Geometria', () => {
+    const paths = searchIndex.map(e => e.path)
+    expect(paths).toContain('/matematika/geometria/planimetria')
+    expect(paths).toContain('/matematika/geometria/trigonometria')
+    expect(paths).toContain('/matematika/geometria/stereometria')
+    expect(paths).toContain('/matematika/geometria/analyticka-geometria')
+  })
+
+  it('obsahuje stránky Kombinatorika a štatistika', () => {
+    const paths = searchIndex.map(e => e.path)
+    expect(paths).toContain('/matematika/kombinatorika-statistika/kombinatorika')
+    expect(paths).toContain('/matematika/kombinatorika-statistika/pravdepodobnost')
+    expect(paths).toContain('/matematika/kombinatorika-statistika/statistika')
+  })
+
+  it('obsahuje stránky Logika a dôkazovanie', () => {
+    const paths = searchIndex.map(e => e.path)
+    expect(paths).toContain('/matematika/logika-a-dokazovanie/vyroky-a-logika')
+    expect(paths).toContain('/matematika/logika-a-dokazovanie/dokazovanie')
+    expect(paths).toContain('/matematika/logika-a-dokazovanie/postupnosti')
+  })
+
+  it('matematika záznamy majú správne kategórie', () => {
+    const geom = searchIndex.find(e => e.path === '/matematika/geometria/planimetria')
+    expect(geom?.category).toContain('Geometria')
+
+    const komb = searchIndex.find(e => e.path === '/matematika/kombinatorika-statistika/kombinatorika')
+    expect(komb?.category).toContain('Kombinatorika')
+  })
+
+  it('matematika záznamy majú keywords', () => {
+    const gonio = searchIndex.find(e => e.path === '/matematika/funkcie/goniometricke-funkcie')
+    expect(gonio?.keywords).toBeTruthy()
+    expect(gonio?.keywords).toContain('sinus')
+
+    const stat = searchIndex.find(e => e.path === '/matematika/kombinatorika-statistika/statistika')
+    expect(stat?.keywords).toContain('priemer')
+  })
+
+  it('celkový počet záznamov je aspoň 60', () => {
+    // Fyzika ~45 + Chémia ~22 + Matematika ~20 + hlavné = 87+
+    expect(searchIndex.length).toBeGreaterThanOrEqual(60)
+  })
+})

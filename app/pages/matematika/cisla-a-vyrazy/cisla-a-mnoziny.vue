@@ -456,7 +456,7 @@
 import { ref, computed } from 'vue'
 
 useHead({
-  title: 'Čísla a množiny | Matematika | NaucSaTo',
+  title: 'Čísla a množiny | Matematika | Náuka Portál',
   meta: [
     {
       name: 'description',

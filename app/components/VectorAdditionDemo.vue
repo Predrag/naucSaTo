@@ -91,12 +91,12 @@ v-if="phase >= 3"
           </p>
           <div class="space-y-2">
             <div class="flex items-center gap-3">
-              <span class="text-xs text-gray-400 w-16 shrink-0">Veľkosť</span>
-              <input v-model.number="aLen" type="range" min="40" max="130" class="flex-1 accent-blue-500" @input="onSlider">
+              <label for="vec-a-len" class="text-xs text-gray-400 w-16 shrink-0">Veľkosť</label>
+              <input id="vec-a-len" v-model.number="aLen" type="range" min="40" max="130" class="flex-1 accent-blue-500" @input="onSlider">
             </div>
             <div class="flex items-center gap-3">
-              <span class="text-xs text-gray-400 w-16 shrink-0">Uhol</span>
-              <input v-model.number="aAngle" type="range" min="-75" max="75" class="flex-1 accent-blue-500" @input="onSlider">
+              <label for="vec-a-angle" class="text-xs text-gray-400 w-16 shrink-0">Uhol</label>
+              <input id="vec-a-angle" v-model.number="aAngle" type="range" min="-75" max="75" class="flex-1 accent-blue-500" @input="onSlider">
             </div>
           </div>
         </div>
@@ -108,12 +108,12 @@ v-if="phase >= 3"
           </p>
           <div class="space-y-2">
             <div class="flex items-center gap-3">
-              <span class="text-xs text-gray-400 w-16 shrink-0">Veľkosť</span>
-              <input v-model.number="bLen" type="range" min="40" max="130" class="flex-1 accent-purple-500" @input="onSlider">
+              <label for="vec-b-len" class="text-xs text-gray-400 w-16 shrink-0">Veľkosť</label>
+              <input id="vec-b-len" v-model.number="bLen" type="range" min="40" max="130" class="flex-1 accent-purple-500" @input="onSlider">
             </div>
             <div class="flex items-center gap-3">
-              <span class="text-xs text-gray-400 w-16 shrink-0">Uhol</span>
-              <input v-model.number="bAngle" type="range" min="-75" max="75" class="flex-1 accent-purple-500" @input="onSlider">
+              <label for="vec-b-angle" class="text-xs text-gray-400 w-16 shrink-0">Uhol</label>
+              <input id="vec-b-angle" v-model.number="bAngle" type="range" min="-75" max="75" class="flex-1 accent-purple-500" @input="onSlider">
             </div>
           </div>
         </div>

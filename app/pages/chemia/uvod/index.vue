@@ -75,10 +75,10 @@ const sections = [
 ]
 
 useHead({
-  title: 'Úvod do chémie | Chémia | NaučSaTo',
+  title: 'Úvod do chémie | Chémia | Náuka Portál',
   meta: [
     { name: 'description', content: 'Základy chémie — bezpečnosť v laboratóriu, látky, zmesi a molárna hmotnosť pre gymnázium.' },
-    { property: 'og:title', content: 'Úvod do chémie | Chémia | NaučSaTo' },
+    { property: 'og:title', content: 'Úvod do chémie | Chémia | Náuka Portál' },
     { property: 'og:description', content: 'Základy chémie — bezpečnosť v laboratóriu, látky, zmesi a molárna hmotnosť pre gymnázium.' },
   ],
 })

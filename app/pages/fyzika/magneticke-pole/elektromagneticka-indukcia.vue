@@ -550,7 +550,7 @@ function optionClass(i: number) {
 }
 
 useHead({
-  title: 'Elektromagnetická indukcia | Magnetické pole | Fyzika | NaucSaTo',
+  title: 'Elektromagnetická indukcia | Magnetické pole | Fyzika | Náuka Portál',
   meta: [
     {
       name: 'description',

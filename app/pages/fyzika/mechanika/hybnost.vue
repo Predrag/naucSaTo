@@ -336,7 +336,7 @@ function km(f) {
 }
 
 useHead({
-  title: 'Hybnosť a zákon zachovania hybnosti | Fyzika | NaucSaTo',
+  title: 'Hybnosť a zákon zachovania hybnosti | Fyzika | Náuka Portál',
   meta: [
     { name: 'description', content: 'Hybnosť p=mv, impulz sily, zákon zachovania hybnosti, pružný a nepružný náraz, reaktívny pohon — fyzika pre gymnázistov.' }
   ]

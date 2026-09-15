@@ -32,18 +32,18 @@
       <!-- Definícia rýchlosti -->
       <div class="bg-orange-50 border border-orange-200 rounded-xl p-5 mb-6">
         <p class="text-sm font-semibold text-orange-700 mb-3">Definícia rýchlosti reakcie:</p>
-        <div class="text-center text-xl mb-3" v-html="km('v = \\dfrac{\\Delta c}{\\Delta t}')"></div>
+        <div class="text-center text-xl mb-3" v-html="km('v = \\dfrac{\\Delta c}{\\Delta t}')"/>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm text-gray-600">
           <div>
-            <span class="font-semibold" v-html="km('v')"></span>
+            <span class="font-semibold" v-html="km('v')"/>
             — rýchlosť reakcie <span class="text-gray-400">[mol·l⁻¹·s⁻¹]</span>
           </div>
           <div>
-            <span class="font-semibold" v-html="km('\\Delta c')"></span>
+            <span class="font-semibold" v-html="km('\\Delta c')"/>
             — zmena koncentrácie <span class="text-gray-400">[mol·l⁻¹]</span>
           </div>
           <div>
-            <span class="font-semibold" v-html="km('\\Delta t')"></span>
+            <span class="font-semibold" v-html="km('\\Delta t')"/>
             — zmena času <span class="text-gray-400">[s]</span>
           </div>
         </div>
@@ -61,7 +61,7 @@
             Vyššia koncentrácia → viac častíc v objeme → viac účinných zrážok za sekundu → vyššia rýchlosť.
             Závislosť popisuje <strong>rýchlostná rovnica</strong>:
           </p>
-          <div class="text-center" v-html="km('v = k \\cdot c_A^{\\,m} \\cdot c_B^{\\,n}')"></div>
+          <div class="text-center" v-html="km('v = k \\cdot c_A^{\\,m} \\cdot c_B^{\\,n}')"/>
         </div>
 
         <div class="bg-white border border-orange-200 rounded-xl p-4">
@@ -74,7 +74,7 @@
             Vyššia teplota dáva časticiam väčšiu kinetickú energiu — viac zrážok je účinných.
             Arrhenius:
           </p>
-          <div class="text-center" v-html="km('k = A \\cdot e^{-E_a / RT}')"></div>
+          <div class="text-center" v-html="km('k = A \\cdot e^{-E_a / RT}')"/>
         </div>
 
         <div class="bg-white border border-orange-200 rounded-xl p-4">
@@ -162,7 +162,7 @@
         </svg>
         <p class="text-center text-sm text-gray-500 mt-2">
           Po dosiahnutí rovnováhy sa koncentrácie zdanlivo nemenia — rýchlosť doprednej reakcie
-          <span v-html="km('v_1')"></span> sa rovná rýchlosti spätnej reakcie <span v-html="km('v_2')"></span>.
+          <span v-html="km('v_1')"/> sa rovná rýchlosti spätnej reakcie <span v-html="km('v_2')"/>.
         </p>
       </div>
 
@@ -174,9 +174,9 @@
           Aká je priemerná rýchlosť reakcie?
         </p>
         <div class="space-y-2 text-gray-800 text-sm">
-          <div v-html="km('\\Delta c = c_0 - c_t = 0{,}50 - 0{,}35 = 0{,}15 \\;\\text{mol/l}')"></div>
-          <div v-html="km('\\Delta t = 30 \\;\\text{s}')"></div>
-          <div class="font-semibold" v-html="km('v = \\dfrac{\\Delta c}{\\Delta t} = \\dfrac{0{,}15}{30} = 5 \\times 10^{-3} \\;\\text{mol·l}^{-1}\\text{·s}^{-1}')"></div>
+          <div v-html="km('\\Delta c = c_0 - c_t = 0{,}50 - 0{,}35 = 0{,}15 \\;\\text{mol/l}')"/>
+          <div v-html="km('\\Delta t = 30 \\;\\text{s}')"/>
+          <div class="font-semibold" v-html="km('v = \\dfrac{\\Delta c}{\\Delta t} = \\dfrac{0{,}15}{30} = 5 \\times 10^{-3} \\;\\text{mol·l}^{-1}\\text{·s}^{-1}')"/>
         </div>
         <p class="text-sm text-blue-700 mt-3 font-semibold">
           Rýchlosť reakcie je 5 × 10⁻³ mol·l⁻¹·s⁻¹.
@@ -195,7 +195,7 @@
 
       <div class="bg-orange-50 border border-orange-200 rounded-xl p-5 mb-6">
         <p class="text-sm font-semibold text-orange-700 mb-2">Príklad vratnej reakcie — syntéza amoniaku (Haber-Boschov proces):</p>
-        <div class="text-center text-lg" v-html="km('\\text{N}_2 + 3\\,\\text{H}_2 \\rightleftharpoons 2\\,\\text{NH}_3 \\quad \\Delta H < 0 \\;\\text{(exotermická)}')"></div>
+        <div class="text-center text-lg" v-html="km('\\text{N}_2 + 3\\,\\text{H}_2 \\rightleftharpoons 2\\,\\text{NH}_3 \\quad \\Delta H < 0 \\;\\text{(exotermická)}')"/>
         <p class="text-sm text-gray-500 mt-2 text-center">Symbol ⇌ označuje vratnú reakciu prebiehajúcu v oboch smeroch.</p>
       </div>
 
@@ -205,10 +205,10 @@
         Rovnovážna konštanta K vyjadruje pomer rovnovážnych koncentrácií produktov a reaktantov.
         Pre všeobecnú reakciu:
       </p>
-      <div class="text-center mb-3" v-html="km('a\\,\\text{A} + b\\,\\text{B} \\rightleftharpoons c\\,\\text{C} + d\\,\\text{D}')"></div>
+      <div class="text-center mb-3" v-html="km('a\\,\\text{A} + b\\,\\text{B} \\rightleftharpoons c\\,\\text{C} + d\\,\\text{D}')"/>
 
       <div class="bg-orange-50 border border-orange-200 rounded-xl p-5 mb-6">
-        <div class="text-center text-xl mb-4" v-html="km('K = \\dfrac{[\\text{C}]^{c} \\cdot [\\text{D}]^{d}}{[\\text{A}]^{a} \\cdot [\\text{B}]^{b}}')"></div>
+        <div class="text-center text-xl mb-4" v-html="km('K = \\dfrac{[\\text{C}]^{c} \\cdot [\\text{D}]^{d}}{[\\text{A}]^{a} \\cdot [\\text{B}]^{b}}')"/>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm">
           <div class="bg-white rounded-lg p-3 text-center border border-orange-200">
             <div class="font-bold text-green-700 text-base mb-1">K ≫ 1</div>
@@ -229,20 +229,20 @@
       <div class="bg-blue-50 border border-blue-200 rounded-xl p-5 mb-6">
         <h3 class="font-bold text-blue-800 mb-3">Príklad 2: Výpočet rovnovážnej konštanty K</h3>
         <p class="text-gray-700 mb-3">
-          Pre reakciu <span v-html="km('\\text{H}_2 + \\text{I}_2 \\rightleftharpoons 2\\,\\text{HI}')"></span>
+          Pre reakciu <span v-html="km('\\text{H}_2 + \\text{I}_2 \\rightleftharpoons 2\\,\\text{HI}')"/>
           sú rovnovážne koncentrácie:
-          <span v-html="km('[\\text{H}_2] = 0{,}10 \\;\\text{mol/l}')"></span>,
-          <span v-html="km('[\\text{I}_2] = 0{,}10 \\;\\text{mol/l}')"></span>,
-          <span v-html="km('[\\text{HI}] = 0{,}60 \\;\\text{mol/l}')"></span>.
+          <span v-html="km('[\\text{H}_2] = 0{,}10 \\;\\text{mol/l}')"/>,
+          <span v-html="km('[\\text{I}_2] = 0{,}10 \\;\\text{mol/l}')"/>,
+          <span v-html="km('[\\text{HI}] = 0{,}60 \\;\\text{mol/l}')"/>.
           Vypočítajte K.
         </p>
         <div class="space-y-2 text-gray-800 text-sm">
-          <div v-html="km('K = \\dfrac{[\\text{HI}]^2}{[\\text{H}_2] \\cdot [\\text{I}_2]}')"></div>
-          <div v-html="km('K = \\dfrac{(0{,}60)^2}{0{,}10 \\cdot 0{,}10} = \\dfrac{0{,}36}{0{,}01} = 36')"></div>
+          <div v-html="km('K = \\dfrac{[\\text{HI}]^2}{[\\text{H}_2] \\cdot [\\text{I}_2]}')"/>
+          <div v-html="km('K = \\dfrac{(0{,}60)^2}{0{,}10 \\cdot 0{,}10} = \\dfrac{0{,}36}{0{,}01} = 36')"/>
         </div>
         <p class="text-sm text-blue-700 mt-3 font-semibold">
           K = 36 — rovnováha je výrazne posunutá doprava, v rovnováhe prevažuje
-          <span v-html="km('\\text{HI}')"></span>.
+          <span v-html="km('\\text{HI}')"/>.
         </p>
       </div>
 
@@ -302,7 +302,7 @@
       <h2 class="text-2xl font-bold text-orange-700 mb-4">3. Katalyzátor a aktivačná energia</h2>
       <p class="text-gray-700 mb-4">
         Aby mohla chemická reakcia nastať, musia reagujúce častice prekročiť energetickú bariéru —
-        <strong>aktivačnú energiu</strong> <span v-html="km('E_a')"></span>. Katalyzátor ponúka alternatívnu
+        <strong>aktivačnú energiu</strong> <span v-html="km('E_a')"/>. Katalyzátor ponúka alternatívnu
         reakčnú cestu s nižšou aktivačnou energiou, čím reakciu urýchľuje bez zmeny rovnovážneho stavu.
       </p>
 
@@ -362,7 +362,7 @@
         </svg>
         <p class="text-center text-sm text-gray-500 mt-2">
           Katalyzátor znižuje aktivačnú energiu z
-          <span v-html="km('E_a')"></span> na <span v-html="km('E_a\'')"></span>.
+          <span v-html="km('E_a')"/> na <span v-html="km('E_a\'')"/>.
           Energetický rozdiel reaktantov a produktov zostáva nezmenený.
         </p>
       </div>
@@ -395,7 +395,7 @@
           <span class="text-orange-500 font-bold mt-0.5">→</span>
           <span>
             Rýchlosť reakcie
-            <span v-html="km('v = \\Delta c / \\Delta t')"></span>
+            <span v-html="km('v = \\Delta c / \\Delta t')"/>
             závisí od <strong>koncentrácie reaktantov</strong>, <strong>teploty</strong>, <strong>katalyzátora</strong>
             a <strong>veľkosti povrchu</strong> tuhých reaktantov.
           </span>
@@ -403,17 +403,17 @@
         <li class="flex items-start gap-2">
           <span class="text-orange-500 font-bold mt-0.5">→</span>
           <span>Katalyzátor <strong>znižuje aktivačnú energiu</strong>
-            <span v-html="km('E_a')"></span> — urýchľuje reakciu, ale sám sa nespotrebúva ani neovplyvňuje polohu rovnováhy.</span>
+            <span v-html="km('E_a')"/> — urýchľuje reakciu, ale sám sa nespotrebúva ani neovplyvňuje polohu rovnováhy.</span>
         </li>
         <li class="flex items-start gap-2">
           <span class="text-orange-500 font-bold mt-0.5">→</span>
           <span>Chemická rovnováha je <strong>dynamický stav</strong>:
-            <span v-html="km('v_1 = v_2')"></span> — koncentrácie sa zdanlivo nemenia, ale reakcia stále prebieha v oboch smeroch.</span>
+            <span v-html="km('v_1 = v_2')"/> — koncentrácie sa zdanlivo nemenia, ale reakcia stále prebieha v oboch smeroch.</span>
         </li>
         <li class="flex items-start gap-2">
           <span class="text-orange-500 font-bold mt-0.5">→</span>
           <span>Rovnovážna konštanta
-            <span v-html="km('K = [\\text{produkty}]^{\\text{exp}} / [\\text{reaktanty}]^{\\text{exp}}')"></span>
+            <span v-html="km('K = [\\text{produkty}]^{\\text{exp}} / [\\text{reaktanty}]^{\\text{exp}}')"/>
             — K ≫ 1 znamená prevahu produktov; K ≪ 1 prevahu reaktantov.</span>
         </li>
         <li class="flex items-start gap-2">
@@ -444,7 +444,7 @@
             <div
               class="bg-orange-500 h-2 rounded-full transition-all"
               :style="{ width: ((currentQ + 1) / quiz.length * 100) + '%' }"
-            ></div>
+            />
           </div>
 
           <Transition name="fade" mode="out-in">
@@ -453,7 +453,7 @@
                 data-testid="quiz-question"
                 class="text-lg font-semibold text-gray-800 mb-4"
                 v-html="currentQuestion.question"
-              ></p>
+              />
 
               <div class="space-y-3 mb-4">
                 <button
@@ -470,7 +470,7 @@
                   }"
                   @click="selectAnswer(i)"
                   v-html="option"
-                ></button>
+                />
               </div>
 
               <Transition name="fade">
@@ -483,7 +483,7 @@
                   <span class="font-bold">
                     {{ selectedAnswer === currentQuestion.correctIndex ? '✓ Správne!' : '✗ Nesprávne.' }}
                   </span>
-                  <span class="ml-1" v-html="currentQuestion.explanation"></span>
+                  <span class="ml-1" v-html="currentQuestion.explanation"/>
                 </div>
               </Transition>
 
