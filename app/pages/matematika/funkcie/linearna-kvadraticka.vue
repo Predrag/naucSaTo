@@ -89,7 +89,7 @@
               max="5"
               step="0.5"
               class="w-full accent-blue-500 cursor-pointer"
-            />
+            >
             <div class="flex justify-between text-xs text-gray-400 mt-0.5">
               <span>−5</span><span>0</span><span>5</span>
             </div>
@@ -106,7 +106,7 @@
               max="5"
               step="0.5"
               class="w-full accent-blue-500 cursor-pointer"
-            />
+            >
             <div class="flex justify-between text-xs text-gray-400 mt-0.5">
               <span>−5</span><span>0</span><span>5</span>
             </div>
@@ -308,7 +308,7 @@
               <span>Koef. <em>a</em></span>
               <span class="font-bold text-blue-600">a = {{ quadA }}</span>
             </label>
-            <input v-model.number="quadA" type="range" min="-3" max="3" step="0.5" class="w-full accent-blue-500 cursor-pointer" />
+            <input v-model.number="quadA" type="range" min="-3" max="3" step="0.5" class="w-full accent-blue-500 cursor-pointer" >
             <div class="flex justify-between text-xs text-gray-400 mt-0.5"><span>−3</span><span>0</span><span>3</span></div>
           </div>
           <div>
@@ -316,7 +316,7 @@
               <span>Koef. <em>b</em></span>
               <span class="font-bold text-blue-600">b = {{ quadB }}</span>
             </label>
-            <input v-model.number="quadB" type="range" min="-5" max="5" step="0.5" class="w-full accent-blue-500 cursor-pointer" />
+            <input v-model.number="quadB" type="range" min="-5" max="5" step="0.5" class="w-full accent-blue-500 cursor-pointer" >
             <div class="flex justify-between text-xs text-gray-400 mt-0.5"><span>−5</span><span>0</span><span>5</span></div>
           </div>
           <div>
@@ -324,7 +324,7 @@
               <span>Koef. <em>c</em></span>
               <span class="font-bold text-blue-600">c = {{ quadC }}</span>
             </label>
-            <input v-model.number="quadC" type="range" min="-5" max="5" step="0.5" class="w-full accent-blue-500 cursor-pointer" />
+            <input v-model.number="quadC" type="range" min="-5" max="5" step="0.5" class="w-full accent-blue-500 cursor-pointer" >
             <div class="flex justify-between text-xs text-gray-400 mt-0.5"><span>−5</span><span>0</span><span>5</span></div>
           </div>
         </div>
@@ -857,7 +857,7 @@ const scoreMessage = computed(() => {
 })
 
 useSeoMeta({
-  title: 'Lineárna a kvadratická funkcia | Matematika | NaučSaTo',
+  title: 'Lineárna a kvadratická funkcia | Matematika | Náuka Portál',
   description: 'Kompletný výklad lineárnej a kvadratickej funkcie pre gymnazistov: smernica, parabola, vrchol, diskriminant, Viètove vzťahy a nerovnice z grafu. S kvízom.',
 })
 </script>

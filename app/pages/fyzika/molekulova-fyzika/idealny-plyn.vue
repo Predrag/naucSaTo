@@ -486,7 +486,7 @@ function km(f: string) {
 }
 
 useHead({
-  title: 'Ideálny plyn | Molekulová fyzika | Fyzika | NaucSaTo',
+  title: 'Ideálny plyn | Molekulová fyzika | Fyzika | Náuka Portál',
   meta: [
     {
       name: 'description',

@@ -53,17 +53,17 @@
           <div class="bg-white rounded-lg p-3 border border-orange-100 text-center">
             <div class="text-2xl mb-1">💀</div>
             <div class="text-sm font-medium text-gray-800">Toxický</div>
-            <div class="text-xs text-gray-500 mt-1">napr. <span v-html="km('\\text{HCN}')"></span></div>
+            <div class="text-xs text-gray-500 mt-1">napr. <span v-html="km('\\text{HCN}')"/></div>
           </div>
           <div class="bg-white rounded-lg p-3 border border-orange-100 text-center">
             <div class="text-2xl mb-1">🔥</div>
             <div class="text-sm font-medium text-gray-800">Horľavý</div>
-            <div class="text-xs text-gray-500 mt-1">napr. <span v-html="km('\\text{C}_2\\text{H}_5\\text{OH}')"></span></div>
+            <div class="text-xs text-gray-500 mt-1">napr. <span v-html="km('\\text{C}_2\\text{H}_5\\text{OH}')"/></div>
           </div>
           <div class="bg-white rounded-lg p-3 border border-orange-100 text-center">
             <div class="text-2xl mb-1">🧪</div>
             <div class="text-sm font-medium text-gray-800">Leptavý</div>
-            <div class="text-xs text-gray-500 mt-1">napr. <span v-html="km('\\text{H}_2\\text{SO}_4')"></span></div>
+            <div class="text-xs text-gray-500 mt-1">napr. <span v-html="km('\\text{H}_2\\text{SO}_4')"/></div>
           </div>
           <div class="bg-white rounded-lg p-3 border border-orange-100 text-center">
             <div class="text-2xl mb-1">💥</div>
@@ -73,7 +73,7 @@
           <div class="bg-white rounded-lg p-3 border border-orange-100 text-center">
             <div class="text-2xl mb-1">🌡️</div>
             <div class="text-sm font-medium text-gray-800">Oxidujúci</div>
-            <div class="text-xs text-gray-500 mt-1">napr. <span v-html="km('\\text{KMnO}_4')"></span></div>
+            <div class="text-xs text-gray-500 mt-1">napr. <span v-html="km('\\text{KMnO}_4')"/></div>
           </div>
           <div class="bg-white rounded-lg p-3 border border-orange-100 text-center">
             <div class="text-2xl mb-1">♻️</div>
@@ -201,16 +201,16 @@
         <h3 class="text-lg font-semibold text-blue-800 mb-3">📐 Príklad 1: Riedenie kyseliny (použitie pipety a odmernej banky)</h3>
         <p class="text-gray-700 mb-3">
           Potrebuješ pripraviť 250 ml roztoku kyseliny chlorovodíkovej
-          (<span v-html="km('\\text{HCl}')"></span>) s koncentráciou
-          <span v-html="km('c = 0{,}5 \\; \\text{mol/l}')"></span>.
+          (<span v-html="km('\\text{HCl}')"/>) s koncentráciou
+          <span v-html="km('c = 0{,}5 \\; \\text{mol/l}')"/>.
           Koľko mililitrov koncentrovanej kyseliny
-          (<span v-html="km('c_0 = 12 \\; \\text{mol/l}')"></span>)
+          (<span v-html="km('c_0 = 12 \\; \\text{mol/l}')"/>)
           odmeríš pipetou?
         </p>
         <div class="bg-white rounded-lg p-4 border border-blue-100 space-y-2">
           <p class="text-sm font-medium text-blue-700 mb-1">Riešenie — zákon zachovania látky pri riedení:</p>
-          <div v-html="km('c_0 \\cdot V_0 = c \\cdot V')"></div>
-          <div v-html="km('V_0 = \\dfrac{c \\cdot V}{c_0} = \\dfrac{0{,}5 \\cdot 250}{12} \\approx 10{,}4 \\; \\text{ml}')"></div>
+          <div v-html="km('c_0 \\cdot V_0 = c \\cdot V')"/>
+          <div v-html="km('V_0 = \\dfrac{c \\cdot V}{c_0} = \\dfrac{0{,}5 \\cdot 250}{12} \\approx 10{,}4 \\; \\text{ml}')"/>
           <p class="text-sm text-gray-600 mt-2">
             Odmeríš <strong>10,4 ml</strong> koncentrovanej kyseliny pipetou a doplníš destilovanou vodou
             na 250 ml v odmernej banke.
@@ -226,18 +226,18 @@
         <h3 class="text-lg font-semibold text-green-800 mb-3">📐 Príklad 2: Navážka tuhej látky (použitie laboratórnej lyžičky a váh)</h3>
         <p class="text-gray-700 mb-3">
           Chceš pripraviť 100 ml roztoku hydroxidu sodného
-          (<span v-html="km('\\text{NaOH}')"></span>) s koncentráciou
-          <span v-html="km('c = 1 \\; \\text{mol/l}')"></span>.
-          Akú hmotnosť <span v-html="km('\\text{NaOH}')"></span> naváži
+          (<span v-html="km('\\text{NaOH}')"/>) s koncentráciou
+          <span v-html="km('c = 1 \\; \\text{mol/l}')"/>.
+          Akú hmotnosť <span v-html="km('\\text{NaOH}')"/> naváži
           laboratórnou lyžičkou na analytické váhy?
-          <span class="text-gray-500">(</span><span v-html="km('M_{\\text{NaOH}} = 40 \\; \\text{g/mol}')"></span><span class="text-gray-500">)</span>
+          <span class="text-gray-500">(</span><span v-html="km('M_{\\text{NaOH}} = 40 \\; \\text{g/mol}')"/><span class="text-gray-500">)</span>
         </p>
         <div class="bg-white rounded-lg p-4 border border-green-100 space-y-2">
           <p class="text-sm font-medium text-green-700 mb-1">Riešenie:</p>
-          <div v-html="km('n = c \\cdot V = 1 \\; \\text{mol/l} \\cdot 0{,}1 \\; \\text{l} = 0{,}1 \\; \\text{mol}')"></div>
-          <div v-html="km('m = n \\cdot M = 0{,}1 \\; \\text{mol} \\cdot 40 \\; \\text{g/mol} = 4 \\; \\text{g}')"></div>
+          <div v-html="km('n = c \\cdot V = 1 \\; \\text{mol/l} \\cdot 0{,}1 \\; \\text{l} = 0{,}1 \\; \\text{mol}')"/>
+          <div v-html="km('m = n \\cdot M = 0{,}1 \\; \\text{mol} \\cdot 40 \\; \\text{g/mol} = 4 \\; \\text{g}')"/>
           <p class="text-sm text-gray-600 mt-2">
-            Naváži <strong>4 g</strong> <span v-html="km('\\text{NaOH}')"></span>,
+            Naváži <strong>4 g</strong> <span v-html="km('\\text{NaOH}')"/>,
             opatrne rozpustí v malom množstve vody (rozpúšťanie je exotermické!) a doplní destilovanou vodou na 100 ml v odmernej banke.
           </p>
         </div>
@@ -318,8 +318,8 @@
         <li>✅ <strong>Nikdy nechutaj ani nečuchaj</strong> chemikálie priamo z nádoby</li>
         <li>
           ✅ <strong>Kyseliny vždy pridávaj do vody</strong>
-          (<span v-html="km('\\text{H}_2\\text{SO}_4')"></span>,
-          <span v-html="km('\\text{HCl}')"></span> atď.)
+          (<span v-html="km('\\text{H}_2\\text{SO}_4')"/>,
+          <span v-html="km('\\text{HCl}')"/> atď.)
         </li>
         <li>✅ <strong>Základné sklenené pomôcky:</strong> skúmavka, kadička, odmerná banka, byreta, pipeta</li>
         <li>✅ <strong>Prvá pomoc</strong> — oplachuj vodou (oči/koža), čerstvý vzduch (výpary), zavolaj 112</li>
@@ -343,7 +343,7 @@
               :key="i"
               class="w-3 h-3 rounded-full"
               :class="i < currentQ ? 'bg-orange-500' : i === currentQ ? 'bg-orange-300' : 'bg-gray-200'"
-            ></div>
+            />
           </div>
         </div>
 
@@ -353,7 +353,7 @@
               data-testid="quiz-question"
               class="text-lg font-semibold text-gray-800 mb-5"
               v-html="currentQuestion.question"
-            ></p>
+            />
             <div class="space-y-3">
               <button
                 v-for="(option, i) in currentQuestion.options"
@@ -364,7 +364,7 @@
                 :class="optionClass(i)"
                 @click="selectAnswer(i)"
                 v-html="option"
-              ></button>
+              />
             </div>
             <Transition name="fade">
               <div
@@ -381,7 +381,7 @@
                 >
                   {{ selectedAnswer === currentQuestion.correctIndex ? '✅ Správne!' : '❌ Nesprávne.' }}
                 </p>
-                <p class="text-gray-600 text-sm mt-1" v-html="currentQuestion.explanation"></p>
+                <p class="text-gray-600 text-sm mt-1" v-html="currentQuestion.explanation"/>
               </div>
             </Transition>
           </div>
@@ -556,7 +556,7 @@ const scoreMessage = computed(() => {
 })
 
 useHead({
-  title: 'Bezpečnosť v laboratóriu — Chémia | NaučSaTo',
+  title: 'Bezpečnosť v laboratóriu — Chémia | Náuka Portál',
   meta: [
     {
       name: 'description',

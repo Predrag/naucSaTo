@@ -632,7 +632,7 @@ const scoreMessage = computed(() => {
 })
 
 useSeoMeta({
-  title: 'Analytická geometria | Matematika | NaucSaTo',
+  title: 'Analytická geometria | Matematika | Náuka Portál',
   description: 'Analytická geometria pre gymnazistov: kartézska sústava, vzdialenosť bodov, stred úsečky, rovnica priamky, kružnica a vzájomná poloha útvarov.',
 })
 </script>

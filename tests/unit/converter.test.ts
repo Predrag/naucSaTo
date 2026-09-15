@@ -8,7 +8,7 @@ import {
 } from '../../app/utils/converter'
 
 // Normalizuje nezalomiteľné medzery (U+202F, U+00A0) na bežné medzery
-const norm = (s: string) => s.replace(/[  ]/g, ' ')
+const norm = (s: string) => s.replace(/[\u00A0\u202F]/g, ' ')
 
 describe('convertTemp', () => {
   it('°C → K: 0 °C = 273.15 K', () => {
