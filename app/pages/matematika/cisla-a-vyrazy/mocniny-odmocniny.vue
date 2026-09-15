@@ -538,7 +538,7 @@
 import { ref, computed } from 'vue'
 
 useHead({
-  title: 'Mocniny a odmocniny | Matematika | NaučSaTo',
+  title: 'Mocniny a odmocniny | Matematika | Náuka Portál',
   meta: [
     {
       name: 'description',

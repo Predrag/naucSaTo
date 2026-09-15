@@ -4,83 +4,97 @@
       <div
         v-if="isOpen"
         data-testid="search-backdrop"
-        class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-start justify-center pt-24 px-4"
+        class="fixed inset-0 z-[200] bg-black/40 backdrop-blur-sm sm:flex sm:items-start sm:justify-center sm:pt-24 sm:px-4"
         @click.self="close"
       >
-        <Transition name="modal">
-          <div v-if="isOpen" data-testid="search-modal" class="w-full max-w-xl bg-white rounded-2xl shadow-2xl overflow-hidden">
-
-            <!-- Input -->
-            <div class="flex items-center gap-3 px-4 py-3 border-b border-gray-100">
+        <!-- Modal: full-screen na mobile, karta na desktope -->
+        <div
+          v-if="isOpen"
+          data-testid="search-modal"
+          class="flex flex-col bg-white h-full sm:h-auto sm:w-full sm:max-w-xl sm:rounded-2xl sm:shadow-2xl sm:max-h-[80vh]"
+        >
+          <!-- Input row -->
+          <div class="flex items-center gap-2 px-3 py-3 border-b border-gray-200 bg-white shrink-0">
+            <!-- Styled input box -->
+            <div class="flex items-center gap-2 flex-1 bg-gray-100 border border-gray-300 rounded-xl px-3 py-2.5">
               <svg class="w-5 h-5 text-gray-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
               </svg>
               <input
                 ref="inputRef"
                 v-model="query"
-                type="text"
-                placeholder="Vyhľadaj tému, vedca, jednotku…"
+                type="search"
+                placeholder="Vyhľadaj tému…"
                 data-testid="search-input"
-                class="flex-1 text-base text-gray-900 placeholder-gray-400 outline-none bg-transparent"
+                class="flex-1 text-base text-gray-900 placeholder-gray-400 outline-none bg-transparent min-w-0"
                 @keydown.escape="close"
                 @keydown.arrow-down.prevent="moveDown"
                 @keydown.arrow-up.prevent="moveUp"
                 @keydown.enter.prevent="selectActive"
               >
-              <kbd class="hidden sm:inline-flex items-center gap-1 text-xs text-gray-400 border border-gray-200 rounded px-1.5 py-0.5">Esc</kbd>
             </div>
-
-            <!-- Results -->
-            <ul v-if="results.length" data-testid="search-results" class="max-h-80 overflow-y-auto py-2" role="listbox">
-              <li
-                v-for="(result, i) in results"
-                :key="result.item.path"
-                role="option"
-                :aria-selected="i === activeIndex"
-                :class="[
-                  'flex items-start gap-3 px-4 py-3 cursor-pointer transition-colors',
-                  i === activeIndex ? 'bg-emerald-50' : 'hover:bg-gray-50',
-                ]"
-                @click="navigate(result.item.path)"
-                @mouseenter="activeIndex = i"
-              >
-                <span class="mt-0.5 text-xs font-semibold text-emerald-700 bg-emerald-100 rounded-full px-2 py-0.5 shrink-0 whitespace-nowrap">
-                  {{ result.item.category }}
-                </span>
-                <div class="min-w-0">
-                  <p class="font-semibold text-gray-900 text-sm truncate">{{ result.item.title }}</p>
-                  <p class="text-xs text-gray-500 truncate">{{ result.item.description }}</p>
-                </div>
-              </li>
-            </ul>
-
-            <!-- Empty state -->
-            <div v-else-if="query" class="px-4 py-8 text-center text-gray-400 text-sm">
-              Žiadne výsledky pre „{{ query }}"
-            </div>
-
-            <!-- Hint (no query) -->
-            <div v-else class="px-4 py-4 flex flex-wrap gap-2">
-              <button
-                v-for="hint in hints"
-                :key="hint"
-                type="button"
-                class="text-xs text-gray-500 bg-gray-100 hover:bg-gray-200 rounded-full px-3 py-1 transition-colors"
-                @click="query = hint"
-              >
-                {{ hint }}
-              </button>
-            </div>
-
-            <!-- Footer -->
-            <div class="border-t border-gray-100 px-4 py-2 flex items-center gap-4 text-xs text-gray-400">
-              <span><kbd class="border border-gray-200 rounded px-1">↑↓</kbd> navigácia</span>
-              <span><kbd class="border border-gray-200 rounded px-1">Enter</kbd> otvoriť</span>
-              <span><kbd class="border border-gray-200 rounded px-1">Esc</kbd> zavrieť</span>
-            </div>
-
+            <!-- Zavrieť — viditeľné na mobile -->
+            <button
+              type="button"
+              class="sm:hidden text-base text-blue-600 font-medium px-2 shrink-0"
+              @click="close"
+            >
+              Zrušiť
+            </button>
+            <kbd class="hidden sm:inline-flex items-center gap-1 text-xs text-gray-400 border border-gray-200 rounded px-1.5 py-0.5">Esc</kbd>
           </div>
-        </Transition>
+
+          <!-- Results -->
+          <ul v-if="results.length" data-testid="search-results" class="overflow-y-auto flex-1 py-2" role="listbox">
+            <li
+              v-for="(result, i) in results"
+              :key="result.item.path"
+              role="option"
+              :aria-selected="i === activeIndex"
+              :class="[
+                'flex items-start gap-3 px-4 py-3 cursor-pointer transition-colors',
+                i === activeIndex ? 'bg-emerald-50' : 'hover:bg-gray-50',
+              ]"
+              @click="navigate(result.item.path)"
+              @mouseenter="activeIndex = i"
+            >
+              <span class="mt-0.5 text-xs font-semibold text-emerald-700 bg-emerald-100 rounded-full px-2 py-0.5 shrink-0 whitespace-nowrap">
+                {{ result.item.category }}
+              </span>
+              <div class="min-w-0">
+                <p class="font-semibold text-gray-900 text-sm truncate">{{ result.item.title }}</p>
+                <p class="text-xs text-gray-500 truncate">{{ result.item.description }}</p>
+              </div>
+            </li>
+          </ul>
+
+          <!-- Empty state -->
+          <div v-else-if="query" class="px-4 py-10 text-center text-gray-400 text-sm flex-1">
+            Žiadne výsledky pre „{{ query }}"
+          </div>
+
+          <!-- Hint (no query) -->
+          <div v-else class="px-4 py-4 flex flex-wrap gap-2 flex-1 content-start">
+            <p class="w-full text-xs text-gray-400 mb-2">Návrhy:</p>
+            <button
+              v-for="hint in hints"
+              :key="hint"
+              type="button"
+              class="text-sm text-gray-600 bg-gray-100 hover:bg-gray-200 rounded-full px-3 py-1.5 transition-colors"
+              @click="query = hint"
+            >
+              {{ hint }}
+            </button>
+          </div>
+
+          <!-- Footer — iba na desktope -->
+          <div class="hidden sm:flex border-t border-gray-100 px-4 py-2 items-center gap-4 text-xs text-gray-400">
+            <span><kbd class="border border-gray-200 rounded px-1">↑↓</kbd> navigácia</span>
+            <span><kbd class="border border-gray-200 rounded px-1">Enter</kbd> otvoriť</span>
+            <span><kbd class="border border-gray-200 rounded px-1">Esc</kbd> zavrieť</span>
+          </div>
+
+        </div>
       </div>
     </Transition>
   </Teleport>
@@ -121,7 +135,10 @@ watch(query, () => { activeIndex.value = 0 })
 function open() {
   isOpen.value = true
   query.value = ''
-  nextTick(() => inputRef.value?.focus())
+  // Auto-focus len na desktope — na mobile by klávesnica okamžite zakryla výsledky
+  nextTick(() => {
+    if (window.innerWidth >= 640) inputRef.value?.focus()
+  })
 }
 
 function close() {

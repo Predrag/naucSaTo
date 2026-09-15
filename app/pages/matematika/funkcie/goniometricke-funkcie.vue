@@ -119,11 +119,11 @@
 
         <!-- Slider pre uhol α -->
         <div class="mb-4">
-          <label class="flex justify-between text-sm font-medium text-gray-700 mb-1">
+          <label for="uc-angle-slider" class="flex justify-between text-sm font-medium text-gray-700 mb-1">
             <span>Uhol <em>α</em></span>
             <span class="font-bold text-blue-600">α = {{ ucAngle }}°</span>
           </label>
-          <input v-model.number="ucAngle" type="range" min="0" max="360" step="1" class="w-full accent-blue-500 cursor-pointer" />
+          <input id="uc-angle-slider" v-model.number="ucAngle" type="range" min="0" max="360" step="1" class="w-full accent-blue-500 cursor-pointer" >
           <div class="flex justify-between text-xs text-gray-400 mt-0.5">
             <span>0°</span><span>90°</span><span>180°</span><span>270°</span><span>360°</span>
           </div>
@@ -290,11 +290,11 @@
         <table class="w-full text-center border-collapse rounded-xl overflow-hidden shadow-sm">
           <thead>
             <tr class="bg-blue-500 text-white">
-              <th class="px-4 py-3 font-semibold">Uhol α</th>
-              <th class="px-4 py-3 font-semibold">sin α</th>
-              <th class="px-4 py-3 font-semibold">cos α</th>
-              <th class="px-4 py-3 font-semibold">tg α</th>
-              <th class="px-4 py-3 font-semibold">cotg α</th>
+              <th scope="col" class="px-4 py-3 font-semibold">Uhol α</th>
+              <th scope="col" class="px-4 py-3 font-semibold">sin α</th>
+              <th scope="col" class="px-4 py-3 font-semibold">cos α</th>
+              <th scope="col" class="px-4 py-3 font-semibold">tg α</th>
+              <th scope="col" class="px-4 py-3 font-semibold">cotg α</th>
             </tr>
           </thead>
           <tbody>
@@ -412,21 +412,21 @@
 
         <div class="grid sm:grid-cols-2 gap-5 mb-4">
           <div>
-            <label class="flex justify-between text-sm font-medium text-gray-700 mb-1">
+            <label for="goni-a-slider" class="flex justify-between text-sm font-medium text-gray-700 mb-1">
               <span>Amplitúda <em>A</em></span>
               <span class="font-bold text-blue-600">A = {{ goniA }}</span>
             </label>
-            <input v-model.number="goniA" type="range" min="0.5" max="3" step="0.5" class="w-full accent-blue-500 cursor-pointer" />
+            <input id="goni-a-slider" v-model.number="goniA" type="range" min="0.5" max="3" step="0.5" class="w-full accent-blue-500 cursor-pointer" >
             <div class="flex justify-between text-xs text-gray-400 mt-0.5">
               <span>0,5</span><span>1</span><span>1,5</span><span>2</span><span>2,5</span><span>3</span>
             </div>
           </div>
           <div>
-            <label class="flex justify-between text-sm font-medium text-gray-700 mb-1">
+            <label for="goni-b-slider" class="flex justify-between text-sm font-medium text-gray-700 mb-1">
               <span>Frekvencia <em>B</em></span>
               <span class="font-bold text-blue-600">B = {{ goniB }}</span>
             </label>
-            <input v-model.number="goniB" type="range" min="0.5" max="3" step="0.5" class="w-full accent-blue-500 cursor-pointer" />
+            <input id="goni-b-slider" v-model.number="goniB" type="range" min="0.5" max="3" step="0.5" class="w-full accent-blue-500 cursor-pointer" >
             <div class="flex justify-between text-xs text-gray-400 mt-0.5">
               <span>0,5</span><span>1</span><span>1,5</span><span>2</span><span>2,5</span><span>3</span>
             </div>
@@ -448,12 +448,12 @@
 
         <!-- Toggles -->
         <div class="flex gap-4 mb-3 text-sm">
-          <label for="goni-show-sin" class="flex items-center gap-2 cursor-pointer">
-            <input id="goni-show-sin" v-model="showSin" type="checkbox" class="accent-blue-500 w-4 h-4" />
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input v-model="showSin" type="checkbox" class="accent-blue-500 w-4 h-4" aria-label="Zobraziť sínus">
             <span class="text-blue-700 font-medium">sin (modrá)</span>
           </label>
-          <label for="goni-show-cos" class="flex items-center gap-2 cursor-pointer">
-            <input id="goni-show-cos" v-model="showCos" type="checkbox" class="accent-red-500 w-4 h-4" />
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input v-model="showCos" type="checkbox" class="accent-red-500 w-4 h-4" aria-label="Zobraziť kosínus">
             <span class="text-red-700 font-medium">cos (červená)</span>
           </label>
         </div>
@@ -482,15 +482,18 @@
 
           <!-- Jemná mriežka (pri každom π/2 ≈ 1.571) -->
           <g stroke="#f3f4f6" stroke-width="0.05">
-            <line v-for="k in [-4,-3,-2,-1,1,2,3,4]" :key="`gx${k}`"
+            <line
+v-for="k in [-4,-3,-2,-1,1,2,3,4]" :key="`gx${k}`"
               :x1="k * Math.PI / 2" y1="-3.5" :x2="k * Math.PI / 2" y2="3.5" />
-            <line v-for="k in [-3,-2,-1,1,2,3]" :key="`gy${k}`"
+            <line
+v-for="k in [-3,-2,-1,1,2,3]" :key="`gy${k}`"
               x1="-7" :y1="k" x2="7" :y2="k" />
           </g>
 
           <!-- Zvislé čiary pri π, 2π, -π, -2π (výraznejšie) -->
           <g stroke="#e5e7eb" stroke-width="0.06">
-            <line v-for="k in [-2,-1,1,2]" :key="`gxp${k}`"
+            <line
+v-for="k in [-2,-1,1,2]" :key="`gxp${k}`"
               :x1="k * Math.PI" y1="-3.5" :x2="k * Math.PI" y2="3.5" />
           </g>
 
@@ -564,7 +567,7 @@
               <span>Amplitúda <em>A</em></span>
               <span class="font-bold text-blue-600">A = {{ goniTanA }}</span>
             </label>
-            <input id="tan-a-slider" v-model.number="goniTanA" type="range" min="0.5" max="2" step="0.5" class="w-full accent-blue-500 cursor-pointer" />
+            <input id="tan-a-slider" v-model.number="goniTanA" type="range" min="0.5" max="2" step="0.5" class="w-full accent-blue-500 cursor-pointer" >
             <div class="flex justify-between text-xs text-gray-400 mt-0.5">
               <span>0,5</span><span>1</span><span>1,5</span><span>2</span>
             </div>
@@ -574,7 +577,7 @@
               <span>Frekvencia <em>B</em></span>
               <span class="font-bold text-blue-600">B = {{ goniTanB }}</span>
             </label>
-            <input id="tan-b-slider" v-model.number="goniTanB" type="range" min="0.5" max="2" step="0.5" class="w-full accent-blue-500 cursor-pointer" />
+            <input id="tan-b-slider" v-model.number="goniTanB" type="range" min="0.5" max="2" step="0.5" class="w-full accent-blue-500 cursor-pointer" >
             <div class="flex justify-between text-xs text-gray-400 mt-0.5">
               <span>0,5</span><span>1</span><span>1,5</span><span>2</span>
             </div>
@@ -595,12 +598,12 @@
 
         <!-- Toggles -->
         <div class="flex gap-4 mb-3 text-sm">
-          <label for="show-tan" class="flex items-center gap-2 cursor-pointer">
-            <input id="show-tan" v-model="showTan" type="checkbox" class="accent-amber-500 w-4 h-4" />
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input v-model="showTan" type="checkbox" class="accent-amber-500 w-4 h-4" aria-label="Zobraziť tangens">
             <span class="text-amber-700 font-medium">tg (oranžová)</span>
           </label>
-          <label for="show-cot" class="flex items-center gap-2 cursor-pointer">
-            <input id="show-cot" v-model="showCot" type="checkbox" class="accent-purple-500 w-4 h-4" />
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input v-model="showCot" type="checkbox" class="accent-purple-500 w-4 h-4" aria-label="Zobraziť kotangens">
             <span class="text-purple-700 font-medium">cotg (fialová)</span>
           </label>
         </div>
@@ -629,9 +632,11 @@
 
           <!-- Jemná mriežka -->
           <g stroke="#f3f4f6" stroke-width="0.05">
-            <line v-for="k in [-4,-3,-2,-1,1,2,3,4]" :key="`tgx${k}`"
+            <line
+v-for="k in [-4,-3,-2,-1,1,2,3,4]" :key="`tgx${k}`"
               :x1="k * Math.PI / 2" y1="-4" :x2="k * Math.PI / 2" y2="4" />
-            <line v-for="k in [-4,-3,-2,-1,1,2,3,4]" :key="`tgy${k}`"
+            <line
+v-for="k in [-4,-3,-2,-1,1,2,3,4]" :key="`tgy${k}`"
               x1="-7" :y1="k" x2="7" :y2="k" />
           </g>
 
@@ -958,7 +963,7 @@
 import { ref, computed } from 'vue'
 
 useHead({
-  title: 'Goniometrické funkcie | Funkcie a grafy | Matematika | NaucSaTo',
+  title: 'Goniometrické funkcie | Funkcie a grafy | Matematika | Náuka Portál',
   meta: [
     {
       name: 'description',

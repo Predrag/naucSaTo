@@ -285,7 +285,7 @@
             <text x="40" y="130" text-anchor="middle" font-size="10" fill="#92400e" font-weight="600">L (4e⁻)</text>
           </svg>
           <figcaption class="text-center text-sm text-gray-500 mt-3">
-            Bohrov model atómu uhlíka-12 (<span v-html="km('{}^{12}_{6}\\mathrm{C}')"/>):<br/>
+            Bohrov model atómu uhlíka-12 (<span v-html="km('{}^{12}_{6}\\mathrm{C}')"/>):<br>
             jadro (6 protónov, 6 neutrónov), K vrstva (2 elektróny), L vrstva (4 elektróny)
           </figcaption>
         </figure>
@@ -518,7 +518,8 @@
               :disabled="selectedAnswer !== null"
               @click="selectAnswer(i)"
             >
-              <span class="inline-block w-6 h-6 rounded-full border-2 mr-2 text-xs text-center leading-5 font-bold"
+              <span
+class="inline-block w-6 h-6 rounded-full border-2 mr-2 text-xs text-center leading-5 font-bold"
                 :class="[
                   selectedAnswer === null ? 'border-gray-300' :
                   i === currentQuestion.correctIndex ? 'border-green-500 bg-green-500 text-white' :
@@ -572,7 +573,7 @@ function km (f: string): string {
 
 // SEO
 useHead({
-  title: 'Stavba atómu — Chémia | NaučSaTo',
+  title: 'Stavba atómu — Chémia | Náuka Portál',
   meta: [
     {
       name: 'description',

@@ -5,12 +5,21 @@
     <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
       <nav aria-label="Hlavná navigácia" class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between gap-6">
 
-        <NuxtLink to="/" class="flex items-center gap-2 shrink-0">
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="32" height="32" rx="8" fill="#14BF96"/>
-            <path d="M8 22L16 10L24 22H8Z" fill="white" opacity="0.9"/>
+        <NuxtLink to="/" class="flex items-center gap-2.5 shrink-0 group">
+          <svg width="36" height="36" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="navLogoGrad" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#0ea5e9"/>
+                <stop offset="100%" stop-color="#10b981"/>
+              </linearGradient>
+            </defs>
+            <rect width="64" height="64" rx="16" fill="url(#navLogoGrad)"/>
+            <circle cx="32" cy="32" r="5.5" fill="white"/>
+            <ellipse cx="32" cy="32" rx="26" ry="9" fill="none" stroke="white" stroke-width="2.2" opacity="0.92"/>
+            <ellipse cx="32" cy="32" rx="26" ry="9" fill="none" stroke="white" stroke-width="2.2" opacity="0.92" transform="rotate(60 32 32)"/>
+            <ellipse cx="32" cy="32" rx="26" ry="9" fill="none" stroke="white" stroke-width="2.2" opacity="0.92" transform="rotate(-60 32 32)"/>
           </svg>
-          <span class="text-lg font-bold text-gray-900">Náuka Portál</span>
+          <span class="text-lg font-bold text-gray-900 group-hover:text-teal-700 transition-colors">Náuka Portál</span>
         </NuxtLink>
 
         <ul class="hidden md:flex items-center gap-1 flex-1">
@@ -60,9 +69,18 @@
       <div class="max-w-6xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
         <div>
           <div class="flex items-center gap-2 mb-3">
-            <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
-              <rect width="32" height="32" rx="8" fill="#14BF96"/>
-              <path d="M8 22L16 10L24 22H8Z" fill="white" opacity="0.9"/>
+            <svg width="28" height="28" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+              <defs>
+                <linearGradient id="footerLogoGrad" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#0ea5e9"/>
+                  <stop offset="100%" stop-color="#10b981"/>
+                </linearGradient>
+              </defs>
+              <rect width="64" height="64" rx="16" fill="url(#footerLogoGrad)"/>
+              <circle cx="32" cy="32" r="5.5" fill="white"/>
+              <ellipse cx="32" cy="32" rx="26" ry="9" fill="none" stroke="white" stroke-width="2.2" opacity="0.92"/>
+              <ellipse cx="32" cy="32" rx="26" ry="9" fill="none" stroke="white" stroke-width="2.2" opacity="0.92" transform="rotate(60 32 32)"/>
+              <ellipse cx="32" cy="32" rx="26" ry="9" fill="none" stroke="white" stroke-width="2.2" opacity="0.92" transform="rotate(-60 32 32)"/>
             </svg>
             <span class="text-white font-bold">Náuka Portál</span>
           </div>

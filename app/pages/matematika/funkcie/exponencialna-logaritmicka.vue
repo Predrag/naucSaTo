@@ -211,7 +211,7 @@
             max="4"
             step="0.1"
             class="w-full accent-blue-500 cursor-pointer"
-          />
+          >
           <div class="relative h-4 text-xs text-gray-400 mt-0.5">
             <span class="absolute" style="left: 0%; transform: translateX(0%)">0,2</span>
             <span class="absolute" style="left: 21.05%; transform: translateX(-50%)">1</span>
@@ -646,7 +646,7 @@ const scoreMessage = computed(() => {
 })
 
 useSeoMeta({
-  title: 'Exponenciálna a logaritmická funkcia | Matematika | NaucSaTo',
+  title: 'Exponenciálna a logaritmická funkcia | Matematika | Náuka Portál',
   description:
     'Nauč sa exponenciálnu a logaritmickú funkciu: grafy, vlastnosti, vzorce, rovnice a reálne aplikácie (rádioaktivita, úroky). Pre gymnazistov so príkladmi a kvízom.',
 })

@@ -589,7 +589,7 @@ const scoreMessage = computed(() => {
 // ---- SEO -----------------------------------------------------------------
 
 useSeoMeta({
-  title: 'Zapojenie rezistorov | Elektrický prúd | NaucSaTo',
+  title: 'Zapojenie rezistorov | Elektrický prúd | Náuka Portál',
   description: 'Sériové a paralelné zapojenie rezistorov, Kirchhoffove zákony, delič napätia — interaktívna lekcia s príkladmi a kvízom pre gymnazistov.'
 })
 </script>
