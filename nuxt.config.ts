@@ -33,7 +33,7 @@ export default defineNuxtConfig({
           async: true,
         },
         {
-          innerHTML: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-T7PXZ11SFC');`,
+          innerHTML: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-T7PXZ11SFC',{'send_page_view':false});`,
         },
       ],
     },
