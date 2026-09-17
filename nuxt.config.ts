@@ -27,6 +27,15 @@ export default defineNuxtConfig({
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
       ],
+      script: [
+        {
+          src: 'https://www.googletagmanager.com/gtag/js?id=G-T7PXZ11SFC',
+          async: true,
+        },
+        {
+          innerHTML: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-T7PXZ11SFC',{'send_page_view':false});`,
+        },
+      ],
     },
   },
 })
