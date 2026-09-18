@@ -15,7 +15,7 @@
     <div class="bg-red-500 rounded-2xl p-8 mb-10 text-white">
       <div class="flex items-center gap-3 mb-2">
         <span class="text-4xl">🌈</span>
-        <h1 class="text-3xl font-extrabold">Vlnové vlastnosti svetla</h1>
+        <h1 class="text-3xl font-extrabold">{{ activeTitle ?? 'Vlnové vlastnosti svetla' }}</h1>
       </div>
       <p class="text-red-100 text-lg">Optika · Gymnázium</p>
     </div>
@@ -684,12 +684,152 @@ const quiz: QuizQuestion[] = [
   },
 ]
 
+const { locale } = useI18n()
+
+const titleRu = 'Волновые свойства света'
+const titleUk = 'Хвильові властивості світла'
+const activeTitle = computed(() => locale.value === 'ru' ? titleRu : locale.value === 'uk' ? titleUk : null)
+
+const quizRu: QuizQuestion[] = [
+  {
+    question: 'Что является причиной дисперсии света в стекле?',
+    options: [
+      'Различная скорость света в вакууме для разных цветов',
+      'Различный показатель преломления стекла для разных длин волн',
+      'Различная амплитуда световых волн',
+      'Огибание света на краях стекла',
+    ],
+    correctIndex: 1,
+    explanation: 'Дисперсия возникает потому, что показатель преломления зависит от длины волны — <em>n</em> больше для коротких длин волн (фиолетовый). В вакууме все цвета распространяются с одинаковой скоростью c.',
+  },
+  {
+    question: 'При каком условии возникает конструктивная интерференция двух световых волн?',
+    options: [
+      `Разность хода ${km('\\Delta = (k+\\frac{1}{2})\\lambda')}`,
+      `Разность хода ${km('\\Delta = k\\lambda')} где k = 0, ±1, ±2, …`,
+      'Амплитуды обеих волн должны быть равны',
+      'Частоты обеих волн должны быть различны',
+    ],
+    correctIndex: 1,
+    explanation: `Конструктивная интерференция (максимум) возникает при целочисленной разности хода: ${km('\\Delta = k\\lambda')}. Деструктивная (минимум) при ${km('\\Delta = (k+\\frac{1}{2})\\lambda')}.`,
+  },
+  {
+    question: `Дифракционная решётка имеет ${km('d = 1{,}5\\;\\mu\\text{m}')}. При каком угле возникнет 1-й максимум красного света с ${km('\\lambda = 660\\;\\text{nm}')}?`,
+    options: ['26°', '44°', '34°', '56°'],
+    correctIndex: 0,
+    explanation: `${km('\\sin\\alpha = \\frac{k\\lambda}{d} = \\frac{1 \\cdot 660\\times10^{-9}}{1{,}5\\times10^{-6}} = 0{,}44 \\Rightarrow \\alpha \\approx 26°')}`,
+  },
+  {
+    question: 'Какова энергия фотона видимого зелёного света с длиной волны 550 нм? (h = 6,626×10⁻³⁴ Дж·с, c = 3×10⁸ м/с)',
+    options: [
+      '3,62 × 10⁻¹⁹ Дж',
+      '1,20 × 10⁻²⁵ Дж',
+      '5,50 × 10⁻¹⁵ Дж',
+      '8,80 × 10⁻³⁴ Дж',
+    ],
+    correctIndex: 0,
+    explanation: `${km('E = \\frac{hc}{\\lambda} = \\frac{6{,}626\\times10^{-34}\\cdot 3\\times10^8}{550\\times10^{-9}} \\approx 3{,}62\\times10^{-19}\\;\\text{Дж}')}`,
+  },
+  {
+    question: 'Работа выхода металла Wv = 2,3 эВ. На него падает свет частотой f = 8×10¹⁴ Гц. Что произойдёт?',
+    options: [
+      'Электрон не вырвется — частота слишком низкая',
+      'Электрон вырвется с кинетической энергией ≈ 1,0 эВ',
+      'Электрон вырвется без кинетической энергии',
+      'Электрон вырвется с кинетической энергией ≈ 2,3 эВ',
+    ],
+    correctIndex: 1,
+    explanation: `${km('E = hf = 6{,}626\\times10^{-34}\\cdot 8\\times10^{14} \\approx 5{,}3\\times10^{-19}\\;\\text{Дж} \\approx 3{,}3\\;\\text{эВ}')} → ${km('E_k = 3{,}3 - 2{,}3 = 1{,}0\\;\\text{эВ}')}. Электрон вырвется.`,
+  },
+  {
+    question: 'Поляризованный свет интенсивности I₀ проходит через анализатор, повёрнутый на 60° относительно поляризатора. Какова результирующая интенсивность?',
+    options: [
+      '0,25 I₀',
+      '0,50 I₀',
+      '0,75 I₀',
+      '0,87 I₀',
+    ],
+    correctIndex: 0,
+    explanation: `Закон Малюса: ${km('I = I_0\\cos^2\\varphi = I_0\\cos^2 60° = I_0\\cdot(0{,}5)^2 = 0{,}25\\;I_0')}.`,
+  },
+]
+
+const quizUk: QuizQuestion[] = [
+  {
+    question: 'Що є причиною дисперсії світла в склі?',
+    options: [
+      'Різна швидкість світла у вакуумі для різних кольорів',
+      'Різний показник заломлення скла для різних довжин хвиль',
+      'Різна амплітуда світлових хвиль',
+      'Огинання світла на краях скла',
+    ],
+    correctIndex: 1,
+    explanation: 'Дисперсія виникає тому, що показник заломлення залежить від довжини хвилі — <em>n</em> більший для коротших довжин хвиль (фіолетовий). У вакуумі всі кольори поширюються з однаковою швидкістю c.',
+  },
+  {
+    question: 'За якої умови виникає конструктивна інтерференція двох світлових хвиль?',
+    options: [
+      `Різниця ходу ${km('\\Delta = (k+\\frac{1}{2})\\lambda')}`,
+      `Різниця ходу ${km('\\Delta = k\\lambda')} де k = 0, ±1, ±2, …`,
+      'Амплітуди обох хвиль мають бути рівними',
+      'Частоти обох хвиль мають бути різними',
+    ],
+    correctIndex: 1,
+    explanation: `Конструктивна інтерференція (максимум) виникає при цілочисельній різниці ходу: ${km('\\Delta = k\\lambda')}. Деструктивна (мінімум) при ${km('\\Delta = (k+\\frac{1}{2})\\lambda')}.`,
+  },
+  {
+    question: `Дифракційна решітка має ${km('d = 1{,}5\\;\\mu\\text{m}')}. При якому куті виникне 1-й максимум червоного світла з ${km('\\lambda = 660\\;\\text{nm}')}?`,
+    options: ['26°', '44°', '34°', '56°'],
+    correctIndex: 0,
+    explanation: `${km('\\sin\\alpha = \\frac{k\\lambda}{d} = \\frac{1 \\cdot 660\\times10^{-9}}{1{,}5\\times10^{-6}} = 0{,}44 \\Rightarrow \\alpha \\approx 26°')}`,
+  },
+  {
+    question: 'Яка енергія фотона видимого зеленого світла з довжиною хвилі 550 нм? (h = 6,626×10⁻³⁴ Дж·с, c = 3×10⁸ м/с)',
+    options: [
+      '3,62 × 10⁻¹⁹ Дж',
+      '1,20 × 10⁻²⁵ Дж',
+      '5,50 × 10⁻¹⁵ Дж',
+      '8,80 × 10⁻³⁴ Дж',
+    ],
+    correctIndex: 0,
+    explanation: `${km('E = \\frac{hc}{\\lambda} = \\frac{6{,}626\\times10^{-34}\\cdot 3\\times10^8}{550\\times10^{-9}} \\approx 3{,}62\\times10^{-19}\\;\\text{Дж}')}`,
+  },
+  {
+    question: 'Робота виходу металу Wv = 2,3 еВ. На нього падає світло частотою f = 8×10¹⁴ Гц. Що відбудеться?',
+    options: [
+      'Електрон не вирветься — частота надто низька',
+      'Електрон вирветься з кінетичною енергією ≈ 1,0 еВ',
+      'Електрон вирветься без кінетичної енергії',
+      'Електрон вирветься з кінетичною енергією ≈ 2,3 еВ',
+    ],
+    correctIndex: 1,
+    explanation: `${km('E = hf = 6{,}626\\times10^{-34}\\cdot 8\\times10^{14} \\approx 5{,}3\\times10^{-19}\\;\\text{Дж} \\approx 3{,}3\\;\\text{еВ}')} → ${km('E_k = 3{,}3 - 2{,}3 = 1{,}0\\;\\text{еВ}')}. Електрон вирветься.`,
+  },
+  {
+    question: 'Поляризоване світло інтенсивності I₀ проходить через аналізатор, повернутий на 60° відносно поляризатора. Яка результуюча інтенсивність?',
+    options: [
+      '0,25 I₀',
+      '0,50 I₀',
+      '0,75 I₀',
+      '0,87 I₀',
+    ],
+    correctIndex: 0,
+    explanation: `Закон Малюса: ${km('I = I_0\\cos^2\\varphi = I_0\\cos^2 60° = I_0\\cdot(0{,}5)^2 = 0{,}25\\;I_0')}.`,
+  },
+]
+
+const activeQuiz = computed(() => {
+  if (locale.value === 'ru') return quizRu
+  if (locale.value === 'uk') return quizUk
+  return quiz
+})
+
 const currentQ = ref(0)
 const selectedAnswer = ref<number | null>(null)
 const quizScore = ref(0)
 const quizFinished = ref(false)
 
-const currentQuestion = computed(() => quiz[currentQ.value] as QuizQuestion)
+const currentQuestion = computed(() => activeQuiz.value[currentQ.value] as QuizQuestion)
 
 function selectAnswer(i: number) {
   if (selectedAnswer.value !== null) return

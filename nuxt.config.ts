@@ -11,7 +11,29 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@oro.ad/nuxt-claude-devtools',
     '@nuxtjs/sitemap',
+    '@nuxtjs/i18n',
   ],
+
+  i18n: {
+    strategy: 'prefix_except_default',
+    defaultLocale: 'sk',
+    locales: [
+      { code: 'sk', language: 'sk-SK', file: 'sk.json', name: 'Slovenský' },
+      { code: 'ru', language: 'ru-RU', file: 'ru.json', name: 'Ruský' },
+      { code: 'uk', language: 'uk-UA', file: 'uk.json', name: 'Ukrajinský' },
+    ],
+    lazy: true,
+    langDir: 'locales',
+    bundle: {
+      optimizeTranslationDirective: false,
+    },
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root',
+      alwaysRedirect: false,
+    },
+  },
 
   runtimeConfig: {
     public: {

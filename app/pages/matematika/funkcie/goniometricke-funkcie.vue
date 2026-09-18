@@ -13,7 +13,7 @@
 
     <!-- Title -->
     <h1 class="text-4xl font-bold text-blue-700 mb-4 flex items-center gap-3">
-      〰️ Goniometrické funkcie
+      〰️ {{ activeTitle ?? 'Goniometrické funkcie' }}
     </h1>
     <p class="text-gray-600 text-lg mb-10 leading-relaxed">
       Goniometrické funkcie — sínus, kosínus, tangens a kotangens — opisujú vzťah medzi uhlom
@@ -962,6 +962,12 @@ v-for="k in [-4,-3,-2,-1,1,2,3,4]" :key="`tgy${k}`"
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 
+const { locale } = useI18n()
+
+const titleRu = 'Тригонометрические функции'
+const titleUk = 'Тригонометричні функції'
+const activeTitle = computed(() => locale.value === 'ru' ? titleRu : locale.value === 'uk' ? titleUk : null)
+
 useHead({
   title: 'Goniometrické funkcie | Funkcie a grafy | Matematika | Náuka Portál',
   meta: [
@@ -1168,12 +1174,128 @@ const quiz: QuizQuestion[] = [
   },
 ]
 
+const quizRu: QuizQuestion[] = [
+  {
+    question: 'Чему равен sin 30°?',
+    options: ['√3/2', '1/2', '√2/2', '1'],
+    correctIndex: 1,
+    explanation:
+      'sin 30° = 1/2. Это значение соответствует y-координате точки на единичной окружности при угле 30°.',
+  },
+  {
+    question: 'Чему равен cos 60°?',
+    options: ['√3/2', '√2/2', '0', '1/2'],
+    correctIndex: 3,
+    explanation:
+      'cos 60° = 1/2. Заметь симметрию: sin 30° = cos 60° = 1/2, так как 30° и 60° — дополнительные углы.',
+  },
+  {
+    question: 'Какой период функции y = sin x?',
+    options: ['π', '2π', 'π/2', '4π'],
+    correctIndex: 1,
+    explanation:
+      'Период синуса T = 2π ≈ 6,28. По истечении этого расстояния график функции точно повторяется.',
+  },
+  {
+    question: 'Чему равен tg 45°?',
+    options: ['√3', '1/√3', '0', '1'],
+    correctIndex: 3,
+    explanation:
+      'tg 45° = sin 45° / cos 45° = (√2/2) / (√2/2) = 1. Это единственный положительный угол, где синус и косинус равны.',
+  },
+  {
+    question: 'Какое выражение является основным тригонометрическим тождеством?',
+    options: [
+      'sin α · cos α = 1',
+      'sin α + cos α = 1',
+      'sin²α + cos²α = 1',
+      'sin²α − cos²α = 0',
+    ],
+    correctIndex: 2,
+    explanation:
+      'sin²α + cos²α = 1 следует из теоремы Пифагора на единичной окружности (r = 1) и справедливо для любого угла α.',
+  },
+  {
+    question: 'При каких значениях α функция tg α не определена?',
+    options: [
+      'α = k · 360°, k ∈ ℤ',
+      'α = 90° + k · 180°, k ∈ ℤ',
+      'α = k · 180°, k ∈ ℤ',
+      'α = 45° + k · 90°, k ∈ ℤ',
+    ],
+    correctIndex: 1,
+    explanation:
+      'tg α = sin α / cos α, поэтому tg α не определён тогда, когда cos α = 0 — это происходит при α = 90° + k·180°.',
+  },
+]
+
+const quizUk: QuizQuestion[] = [
+  {
+    question: 'Чому дорівнює sin 30°?',
+    options: ['√3/2', '1/2', '√2/2', '1'],
+    correctIndex: 1,
+    explanation:
+      'sin 30° = 1/2. Це значення відповідає y-координаті точки на одиничному колі при куті 30°.',
+  },
+  {
+    question: 'Чому дорівнює cos 60°?',
+    options: ['√3/2', '√2/2', '0', '1/2'],
+    correctIndex: 3,
+    explanation:
+      'cos 60° = 1/2. Зверни увагу на симетрію: sin 30° = cos 60° = 1/2, оскільки 30° і 60° — доповняльні кути.',
+  },
+  {
+    question: 'Який період функції y = sin x?',
+    options: ['π', '2π', 'π/2', '4π'],
+    correctIndex: 1,
+    explanation:
+      'Період синуса T = 2π ≈ 6,28. Після цієї відстані графік функції точно повторюється.',
+  },
+  {
+    question: 'Чому дорівнює tg 45°?',
+    options: ['√3', '1/√3', '0', '1'],
+    correctIndex: 3,
+    explanation:
+      'tg 45° = sin 45° / cos 45° = (√2/2) / (√2/2) = 1. Це також єдиний додатній кут, де синус і косинус рівні.',
+  },
+  {
+    question: 'Який вираз є основною тригонометричною тотожністю?',
+    options: [
+      'sin α · cos α = 1',
+      'sin α + cos α = 1',
+      'sin²α + cos²α = 1',
+      'sin²α − cos²α = 0',
+    ],
+    correctIndex: 2,
+    explanation:
+      'sin²α + cos²α = 1 випливає з теореми Піфагора на одиничному колі (r = 1) і справедливе для будь-якого кута α.',
+  },
+  {
+    question: 'При яких значеннях α функція tg α не визначена?',
+    options: [
+      'α = k · 360°, k ∈ ℤ',
+      'α = 90° + k · 180°, k ∈ ℤ',
+      'α = k · 180°, k ∈ ℤ',
+      'α = 45° + k · 90°, k ∈ ℤ',
+    ],
+    correctIndex: 1,
+    explanation:
+      'tg α = sin α / cos α, тому tg α не визначений тоді, коли cos α = 0 — це відбувається при α = 90° + k·180°.',
+  },
+]
+
+const activeQuiz = computed(() => {
+  if (locale.value === 'ru') return quizRu
+  if (locale.value === 'uk') return quizUk
+  return quiz
+})
+
 const currentQ = ref(0)
 const selectedAnswer = ref<number | null>(null)
 const quizScore = ref(0)
 const quizFinished = ref(false)
 
-const currentQuestion = computed(() => quiz[currentQ.value] as QuizQuestion)
+const currentQuestion = computed(() => activeQuiz.value[currentQ.value] as QuizQuestion)
 
 function selectAnswer(i: number) {
   if (selectedAnswer.value !== null) return

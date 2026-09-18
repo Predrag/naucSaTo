@@ -12,7 +12,7 @@
 
     <div class="flex items-center gap-3 mb-4">
       <span class="text-5xl">💨</span>
-      <h1 class="text-4xl font-extrabold text-orange-700">Nekovy a ich zlúčeniny</h1>
+      <h1 class="text-4xl font-extrabold text-orange-700">{{ activeTitle ?? 'Nekovy a ich zlúčeniny' }}</h1>
     </div>
     <p class="text-lg text-gray-600 mb-10">
       Nekovy tvoria len asi štvrtinu prvkov PSP, no sú to práve ony, čo sú základom života (C, H, O, N). Ich zlúčeniny sú kľúčové v priemysle, poľnohospodárstve i životnom prostredí.
@@ -289,12 +289,102 @@ const quiz: QuizQuestion[] = [
   },
 ]
 
+const { locale } = useI18n()
+
+const titleRu = 'Неметаллы и их соединения'
+const titleUk = 'Неметали та їх сполуки'
+const activeTitle = computed(() => locale.value === 'ru' ? titleRu : locale.value === 'uk' ? titleUk : null)
+
+const quizRu: QuizQuestion[] = [
+  {
+    question: 'Что такое гремучая смесь?',
+    options: ['Смесь H₂ и Cl₂', 'Смесь H₂ и O₂ в соотношении 2:1', 'Раствор H₂SO₄', 'Смесь CO₂ и H₂O'],
+    correctIndex: 1,
+    explanation: 'Гремучая смесь — это смесь H₂ и O₂ в объёмном соотношении 2:1. Горит взрывообразно: 2H₂ + O₂ → 2H₂O.',
+  },
+  {
+    question: 'Почему лёд плавает на поверхности воды?',
+    options: ['Потому что он тёплый', 'Потому что его плотность меньше, чем у жидкой воды', 'Потому что в нём растворяется воздух', 'Потому что он бесцветный'],
+    correctIndex: 1,
+    explanation: 'Аномалия воды: плотность льда ≈ 0,92 г/см³, жидкой воды ≈ 1 г/см³. Твёрдая фаза легче → лёд плавает.',
+  },
+  {
+    question: 'Какой процент атмосферы составляет азот?',
+    options: ['21 %', '50 %', '78 %', '1 %'],
+    correctIndex: 2,
+    explanation: 'Воздух: 78 % N₂, 21 % O₂, 1 % прочие (Ar, CO₂...).',
+  },
+  {
+    question: 'Что вызывает кислотный дождь?',
+    options: ['CO₂ и H₂O', 'SO₂ и NOₓ, растворённые в дожде', 'Хлор Cl₂', 'Озон O₃'],
+    correctIndex: 1,
+    explanation: 'SO₂ (от сжигания серы) и NOₓ (от транспорта) реагируют с водяным паром, образуя H₂SO₄ и HNO₃ — кислотный дождь.',
+  },
+  {
+    question: 'Какова реактивность галогенов? Расположить от наиболее реактивного:',
+    options: ['I > Br > Cl > F', 'Cl > F > I > Br', 'F > Cl > Br > I', 'Br > Cl > F > I'],
+    correctIndex: 2,
+    explanation: 'Реактивность галогенов убывает с ростом атомного номера: F > Cl > Br > I. Фтор — наиболее реактивный элемент вообще.',
+  },
+  {
+    question: 'Для чего используется NH₃, получаемый процессом Хабера-Боша?',
+    options: ['Дезинфекция воды', 'Производство азотных удобрений', 'Производство стекла', 'Производство цемента'],
+    correctIndex: 1,
+    explanation: 'Большая часть NH₃ (аммиака) используется для производства азотных удобрений (напр. аммиачная селитра NH₄NO₃).',
+  },
+]
+
+const quizUk: QuizQuestion[] = [
+  {
+    question: 'Що таке гримуча суміш?',
+    options: ['Суміш H₂ і Cl₂', 'Суміш H₂ і O₂ у співвідношенні 2:1', 'Розчин H₂SO₄', 'Суміш CO₂ і H₂O'],
+    correctIndex: 1,
+    explanation: 'Гримуча суміш — це суміш H₂ і O₂ у об\'ємному співвідношенні 2:1. Горить вибухово: 2H₂ + O₂ → 2H₂O.',
+  },
+  {
+    question: 'Чому лід плаває на поверхні води?',
+    options: ['Тому що він тёплий', 'Тому що має меншу густину, ніж рідка вода', 'Тому що в ньому розчиняється повітря', 'Тому що він безбарвний'],
+    correctIndex: 1,
+    explanation: 'Аномалія води: густина льоду ≈ 0,92 г/см³, рідкої води ≈ 1 г/см³. Тверда фаза легша → лід плаває.',
+  },
+  {
+    question: 'Який відсоток атмосфери складає азот?',
+    options: ['21 %', '50 %', '78 %', '1 %'],
+    correctIndex: 2,
+    explanation: 'Повітря: 78 % N₂, 21 % O₂, 1 % інші (Ar, CO₂...).',
+  },
+  {
+    question: 'Що спричиняє кислотний дощ?',
+    options: ['CO₂ і H₂O', 'SO₂ та NOₓ, розчинені в дощі', 'Хлор Cl₂', 'Озон O₃'],
+    correctIndex: 1,
+    explanation: 'SO₂ (від спалювання сірки) та NOₓ (від транспорту) реагують з водяною парою, утворюючи H₂SO₄ і HNO₃ — кислотний дощ.',
+  },
+  {
+    question: 'Яка реактивність галогенів? Розташувати від найреактивнішого:',
+    options: ['I > Br > Cl > F', 'Cl > F > I > Br', 'F > Cl > Br > I', 'Br > Cl > F > I'],
+    correctIndex: 2,
+    explanation: 'Реактивність галогенів зменшується зі зростанням атомного номера: F > Cl > Br > I. Фтор — найреактивніший елемент взагалі.',
+  },
+  {
+    question: 'Для чого використовується NH₃, вироблений процесом Габера-Боша?',
+    options: ['Дезінфекція води', 'Виробництво азотних добрив', 'Виробництво скла', 'Виробництво цементу'],
+    correctIndex: 1,
+    explanation: 'Більша частина NH₃ (аміаку) використовується для виробництва азотних добрив (напр. аміачна селітра NH₄NO₃).',
+  },
+]
+
+const activeQuiz = computed(() => {
+  if (locale.value === 'ru') return quizRu
+  if (locale.value === 'uk') return quizUk
+  return quiz
+})
+
 const currentQ = ref(0)
 const selectedAnswer = ref<number | null>(null)
 const quizScore = ref(0)
 const quizFinished = ref(false)
 
-const currentQuestion = computed(() => quiz[currentQ.value] as QuizQuestion)
+const currentQuestion = computed(() => activeQuiz.value[currentQ.value] as QuizQuestion)
 
 function selectAnswer(i: number) {
   if (selectedAnswer.value !== null) return

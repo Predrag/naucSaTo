@@ -1,0 +1,103 @@
+{
+  "nav": {
+    "search": "Hľadať",
+    "search_placeholder": "Vyhľadaj tému, vedca, jednotku…",
+    "search_cancel": "Zrušiť"
+  },
+  "subjects": {
+    "math": "Matematika",
+    "physics": "Fyzika",
+    "chemistry": "Chémia"
+  },
+  "home": {
+    "hero_title": "Každý žiak si zaslúži skvelé vzdelanie.",
+    "hero_desc": "Bezplatné vysvetlenia, príklady a cvičenia z fyziky, matematiky a chémie pre žiakov ZŠ a SŠ na Slovensku.",
+    "cta": "Začať sa učiť",
+    "pick_subject": "Vyber si predmet",
+    "pick_desc": "Klikni na predmet a začni sa učiť hneď teraz.",
+    "open": "Otvoriť predmet →",
+    "soon": "Čoskoro",
+    "why_title": "Prečo Náuka Portál?",
+    "feat_clear_title": "Prehľadne a jednoducho",
+    "feat_clear_desc": "Každá téma vysvetlená od základov, bez zbytočného žargónu.",
+    "feat_level_title": "Pre ZŠ aj SŠ",
+    "feat_level_desc": "Obsah prispôsobený veku — od základov až po maturitné témy.",
+    "feat_free_title": "Úplne zadarmo",
+    "feat_free_desc": "Bez registrácie, bez poplatkov. Len otvor a uč sa.",
+    "physics_desc": "Mechanika, elektrina, optika, atómová fyzika a ďalšie témy.",
+    "math_desc": "Algebra, geometria, funkcie, kombinatorika a štatistika.",
+    "chemistry_desc": "Chémia od laboratória po organické zlúčeniny."
+  },
+  "footer": {
+    "tagline": "Bezplatné vzdelávacie materiály z prírodných vied pre žiakov ZŠ a SŠ na Slovensku.",
+    "subjects_title": "Predmety",
+    "for_whom_title": "Pre koho?",
+    "students_primary": "Žiaci základných škôl",
+    "students_secondary": "Žiaci stredných škôl",
+    "everyone": "Každý, kto sa chce učiť",
+    "rights": "Všetky práva vyhradené."
+  },
+  "physics": {
+    "title": "Fyzika",
+    "subtitle": "Vyber si tému, ktorú si chceš preštudovať.",
+    "intro": "Úvod do fyziky",
+    "intro_desc": "Základné veličiny, meranie, skalárne a vektorové veličiny, osobnosti fyziky.",
+    "mechanics": "Mechanika",
+    "mechanics_desc": "Kinematika, Newtonove zákony, gravitácia, práca, energia a hybnosť.",
+    "molecular": "Molekulová fyzika a termodynamika",
+    "molecular_desc": "Teplo, teplota, stavová rovnica plynu, zmeny skupenstva.",
+    "electricity": "Elektrický prúd",
+    "electricity_desc": "Ohmov zákon, elektrické obvody, výkon a Kirchhoffove zákony.",
+    "magnetic": "Magnetické pole",
+    "magnetic_desc": "Magnetická indukcia, elektromagnetická indukcia a striedavý prúd.",
+    "waves": "Kmity a vlnenie",
+    "waves_desc": "Mechanické kmitanie, vlnenie, zvuk a Dopplerov jav.",
+    "optics": "Optika",
+    "optics_desc": "Odraz, lom svetla, šošovky, zrkadlá a optické prístroje.",
+    "atomic": "Atómová a jadrová fyzika",
+    "atomic_desc": "Rádioaktivita, jadrové reakcie, jadrová energia a žiarenie."
+  },
+  "math": {
+    "title": "Matematika",
+    "subtitle": "Vyber si tému, ktorú si chceš preštudovať.",
+    "numbers": "Čísla, premenné a výrazy",
+    "numbers_desc": "Číselné obory, mocniny, rovnice, nerovnice a percentuálne výpočty.",
+    "functions": "Funkcie a grafy",
+    "functions_desc": "Lineárna, kvadratická, exponenciálna, logaritmická a goniometrické funkcie.",
+    "geometry": "Geometria a meranie",
+    "geometry_desc": "Planimetria, trigonometria, stereometria a analytická geometria.",
+    "combinatorics": "Kombinatorika a štatistika",
+    "combinatorics_desc": "Permutácie, kombinácie, pravdepodobnosť a štatistické ukazovatele.",
+    "logic": "Logika, dôkazy a postupnosti",
+    "logic_desc": "Výroky, logické spojky, matematická indukcia a postupnosti."
+  },
+  "chemistry": {
+    "title": "Chémia",
+    "subtitle": "Vyber si tému, ktorú si chceš preštudovať.",
+    "intro": "Úvod do chémie",
+    "intro_desc": "Bezpečnosť v laboratóriu, látky a zmesi, molárna hmotnosť, Avogadrova konštanta.",
+    "structure": "Stavba látky a periodická sústava",
+    "structure_desc": "Atóm, jadro, elektróny, ióny, periodická tabuľka prvkov, chemická väzba.",
+    "reactions": "Chemické reakcie",
+    "reactions_desc": "Chemické rovnice, stechiometria, rýchlosť reakcií, rovnováha, redox, acidobáza, pH.",
+    "inorganic": "Anorganická chémia",
+    "inorganic_desc": "Vodík, voda, kovy, nekovy a ich zlúčeniny. Praktické anorganické látky.",
+    "organic": "Organická chémia",
+    "organic_desc": "Uhľovodíky, alkány, alkény, alkíny, arény, deriváty, polyméry, ropa."
+  },
+  "common": {
+    "open": "Otvoriť →",
+    "soon": "Čoskoro",
+    "back": "Späť",
+    "translation_coming": "Preklad tejto stránky sa pripravuje.",
+    "translation_coming_desc": "Táto stránka je momentálne dostupná len v slovenčine. Preklad do ďalších jazykov bude čoskoro pridaný.",
+    "quiz_title": "Otestuj sa",
+    "quiz_progress": "Otázka {current} z {total}",
+    "quiz_correct": "✓ Správne!",
+    "quiz_wrong": "✗ Nesprávne.",
+    "quiz_next": "Ďalšia otázka →",
+    "quiz_result": "Zobraziť výsledok",
+    "quiz_reset": "Skúsiť znova",
+    "quiz_finished": "Kvíz dokončený"
+  }
+}

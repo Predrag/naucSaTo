@@ -12,7 +12,7 @@
 
     <div class="flex items-center gap-3 mb-4">
       <span class="text-5xl">🧴</span>
-      <h1 class="text-4xl font-extrabold text-orange-700">Deriváty uhľovodíkov a polyméry</h1>
+      <h1 class="text-4xl font-extrabold text-orange-700">{{ activeTitle ?? 'Deriváty uhľovodíkov a polyméry' }}</h1>
     </div>
     <p class="text-lg text-gray-600 mb-10">
       Deriváty uhľovodíkov obsahujú okrem C a H aj iné prvky (O, N, halogény). Patria sem alkoholy, kyseliny, estery a ďalšie skupiny zlúčenín dôležitých v prírode, priemysle aj každodennom živote.
@@ -296,12 +296,102 @@ const quiz: QuizQuestion[] = [
   },
 ]
 
+const { locale } = useI18n()
+
+const titleRu = 'Производные углеводородов и полимеры'
+const titleUk = 'Похідні вуглеводнів і полімери'
+const activeTitle = computed(() => locale.value === 'ru' ? titleRu : locale.value === 'uk' ? titleUk : null)
+
+const quizRu: QuizQuestion[] = [
+  {
+    question: 'Какую функциональную группу имеют спирты?',
+    options: ['–COOH', '–CHO', '–OH', '–NH₂'],
+    correctIndex: 2,
+    explanation: 'Спирты имеют гидроксильную группу –OH. Этанол (питьевой спирт): CH₃CH₂OH.',
+  },
+  {
+    question: 'Что образуется при этерификации?',
+    options: ['Кислота + щёлочь → соль + вода', 'Кислота + спирт → эфир + вода', 'Спирт + вода → кислота', 'Эфир + вода → два эфира'],
+    correctIndex: 1,
+    explanation: 'Этерификация: R–COOH + R\'–OH ⇌ R–COO–R\' + H₂O. Это равновесная (обратимая) реакция.',
+  },
+  {
+    question: 'Что такое октановое число бензина?',
+    options: ['Содержание октана в %', 'Мера стойкости к детонации двигателя', 'Температура кипения бензина', 'Количество атомов углерода в молекуле'],
+    correctIndex: 1,
+    explanation: 'Октановое число выражает стойкость топлива к неконтролируемому воспламенению (детонации). Более высокое ОЧ = более качественное топливо.',
+  },
+  {
+    question: 'Из чего производится полиэтилен (ПЭ)?',
+    options: ['Из бензола', 'Из этана', 'Из этена (CH₂=CH₂)', 'Из ацетилена'],
+    correctIndex: 2,
+    explanation: 'ПЭ образуется полимеризацией этена: n CH₂=CH₂ → (–CH₂–CH₂–)ₙ. Это самый используемый пластик в мире.',
+  },
+  {
+    question: 'Почему пластики являются экологической проблемой?',
+    options: ['Они ядовиты при прикосновении', 'Их разложение занимает сотни лет', 'Они быстро корродируют', 'Они дорогие в производстве'],
+    correctIndex: 1,
+    explanation: 'Большинство пластиков биологически не разлагается сотни лет. Они накапливаются в природе, океанах, попадают в пищевую цепь в виде микропластика.',
+  },
+  {
+    question: 'Что является основным компонентом природного газа?',
+    options: ['Пропан C₃H₈', 'Метан CH₄', 'Этен C₂H₄', 'Бутан C₄H₁₀'],
+    correctIndex: 1,
+    explanation: 'Природный газ состоит на 70–90 % из метана (CH₄). Остаток: этан, пропан, CO₂ и N₂. Он чище угля — при сгорании выделяется меньше SO₂.',
+  },
+]
+
+const quizUk: QuizQuestion[] = [
+  {
+    question: 'Яку функціональну групу мають спирти?',
+    options: ['–COOH', '–CHO', '–OH', '–NH₂'],
+    correctIndex: 2,
+    explanation: 'Спирти мають гідроксильну групу –OH. Етанол (питний спирт): CH₃CH₂OH.',
+  },
+  {
+    question: 'Що утворюється при естерифікації?',
+    options: ['Кислота + луг → сіль + вода', 'Кислота + спирт → естер + вода', 'Спирт + вода → кислота', 'Естер + вода → два естери'],
+    correctIndex: 1,
+    explanation: 'Естерифікація: R–COOH + R\'–OH ⇌ R–COO–R\' + H₂O. Це рівноважна (оборотна) реакція.',
+  },
+  {
+    question: 'Що таке октанове число бензину?',
+    options: ['Вміст октану в %', 'Міра стійкості до детонації двигуна', 'Температура кипіння бензину', 'Кількість атомів вуглецю в молекулі'],
+    correctIndex: 1,
+    explanation: 'Октанове число виражає стійкість палива до неконтрольованого займання (детонації). Вище ОЧ = якісніше паливо.',
+  },
+  {
+    question: 'З чого виробляється поліетилен (ПЕ)?',
+    options: ['З бензолу', 'З етану', 'З етену (CH₂=CH₂)', 'З ацетилену'],
+    correctIndex: 2,
+    explanation: 'ПЕ утворюється полімеризацією етену: n CH₂=CH₂ → (–CH₂–CH₂–)ₙ. Це найпоширеніший пластик у світі.',
+  },
+  {
+    question: 'Чому пластики є екологічною проблемою?',
+    options: ['Вони отруйні при дотику', 'Їх розкладання займає сотні років', 'Вони швидко корродують', 'Вони дорогі у виробництві'],
+    correctIndex: 1,
+    explanation: 'Більшість пластиків біологічно не розкладається сотні років. Вони накопичуються в природі, океанах, потрапляють у харчовий ланцюг як мікропластик.',
+  },
+  {
+    question: 'Що є основним компонентом природного газу?',
+    options: ['Пропан C₃H₈', 'Метан CH₄', 'Етен C₂H₄', 'Бутан C₄H₁₀'],
+    correctIndex: 1,
+    explanation: 'Природний газ складається на 70–90 % з метану (CH₄). Решта: етан, пропан, CO₂ і N₂. Він чистіший за вугілля — при згорянні виділяється менше SO₂.',
+  },
+]
+
+const activeQuiz = computed(() => {
+  if (locale.value === 'ru') return quizRu
+  if (locale.value === 'uk') return quizUk
+  return quiz
+})
+
 const currentQ = ref(0)
 const selectedAnswer = ref<number | null>(null)
 const quizScore = ref(0)
 const quizFinished = ref(false)
 
-const currentQuestion = computed(() => quiz[currentQ.value] as QuizQuestion)
+const currentQuestion = computed(() => activeQuiz.value[currentQ.value] as QuizQuestion)
 
 function selectAnswer(i: number) {
   if (selectedAnswer.value !== null) return

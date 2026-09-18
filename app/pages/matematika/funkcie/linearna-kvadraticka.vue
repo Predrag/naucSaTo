@@ -13,7 +13,7 @@
     <!-- Nadpis -->
     <h1 class="text-4xl font-bold text-blue-700 mb-4 flex items-center gap-3">
       <span aria-hidden="true">📉</span>
-      Lineárna a kvadratická funkcia
+      {{ activeTitle ?? 'Lineárna a kvadratická funkcia' }}
     </h1>
     <p class="text-gray-600 text-lg mb-10 max-w-2xl">
       Dve najdôležitejšie funkcie strednej školy. Naučíš sa čítať ich grafy, nájsť vrchol paraboly,
@@ -816,12 +816,102 @@ const quiz: QuizQuestion[] = [
   },
 ]
 
+const { locale } = useI18n()
+
+const titleRu = 'Линейная и квадратичная функция'
+const titleUk = 'Лінійна та квадратична функція'
+const activeTitle = computed(() => locale.value === 'ru' ? titleRu : locale.value === 'uk' ? titleUk : null)
+
+const quizRu: QuizQuestion[] = [
+  {
+    question: 'Линейная функция y = −3x + 5 является:',
+    options: ['Возрастающей', 'Убывающей', 'Постоянной', 'Квадратичной'],
+    correctIndex: 1,
+    explanation: 'Угловой коэффициент k = −3 < 0, поэтому функция убывающая.',
+  },
+  {
+    question: 'Каков угловой коэффициент прямой, проходящей через точки A(0, 2) и B(4, 10)?',
+    options: ['k = 0,5', 'k = 1', 'k = 2', 'k = 4'],
+    correctIndex: 2,
+    explanation: 'k = (10 − 2) / (4 − 0) = 8 / 4 = 2.',
+  },
+  {
+    question: 'Где находится ось симметрии параболы y = 2x² − 8x + 1?',
+    options: ['x = −2', 'x = 2', 'x = 4', 'x = −4'],
+    correctIndex: 1,
+    explanation: 'xV = −b/(2a) = −(−8)/(2·2) = 8/4 = 2.',
+  },
+  {
+    question: 'Парабола y = −x² + 4x − 3 имеет:',
+    options: ['Минимум в точке V(2, 1)', 'Максимум в точке V(2, 1)', 'Минимум в точке V(−2, −3)', 'Нет экстремума'],
+    correctIndex: 1,
+    explanation: 'a = −1 < 0 → парабола открыта вниз → максимум. xV = 4/2 = 2, yV = −4+8−3 = 1. V(2,1).',
+  },
+  {
+    question: 'Сколько вещественных корней имеет уравнение x² + 2x + 5 = 0?',
+    options: ['Ни одного', 'Один (двукратный)', 'Два различных', 'Зависит от a'],
+    correctIndex: 0,
+    explanation: 'D = 4 − 4·1·5 = 4 − 20 = −16 < 0 → нет вещественных корней.',
+  },
+  {
+    question: 'Решение неравенства x² − x − 6 < 0 (корни x₁ = −2, x₂ = 3, a = 1):',
+    options: ['x ∈ (−∞, −2) ∪ (3, +∞)', 'x ∈ (−2, 3)', 'x ∈ [−2, 3]', 'x ∈ ∅'],
+    correctIndex: 1,
+    explanation: 'При a > 0 парабола находится ниже оси x именно между корнями: x ∈ (−2, 3).',
+  },
+]
+
+const quizUk: QuizQuestion[] = [
+  {
+    question: 'Лінійна функція y = −3x + 5 є:',
+    options: ['Зростаючою', 'Спадною', 'Сталою', 'Квадратичною'],
+    correctIndex: 1,
+    explanation: 'Кутовий коефіцієнт k = −3 < 0, тому функція є спадною.',
+  },
+  {
+    question: 'Який кутовий коефіцієнт прямої, що проходить через точки A(0, 2) і B(4, 10)?',
+    options: ['k = 0,5', 'k = 1', 'k = 2', 'k = 4'],
+    correctIndex: 2,
+    explanation: 'k = (10 − 2) / (4 − 0) = 8 / 4 = 2.',
+  },
+  {
+    question: 'Де знаходиться вісь симетрії параболи y = 2x² − 8x + 1?',
+    options: ['x = −2', 'x = 2', 'x = 4', 'x = −4'],
+    correctIndex: 1,
+    explanation: 'xV = −b/(2a) = −(−8)/(2·2) = 8/4 = 2.',
+  },
+  {
+    question: 'Парабола y = −x² + 4x − 3 має:',
+    options: ['Мінімум у точці V(2, 1)', 'Максимум у точці V(2, 1)', 'Мінімум у точці V(−2, −3)', 'Жодного екстремуму'],
+    correctIndex: 1,
+    explanation: 'a = −1 < 0 → парабола відкрита донизу → максимум. xV = 4/2 = 2, yV = −4+8−3 = 1. V(2,1).',
+  },
+  {
+    question: 'Скільки дійсних коренів має рівняння x² + 2x + 5 = 0?',
+    options: ['Жодного', 'Один (подвійний)', 'Два різних', 'Залежить від a'],
+    correctIndex: 0,
+    explanation: 'D = 4 − 4·1·5 = 4 − 20 = −16 < 0 → жодного дійсного кореня.',
+  },
+  {
+    question: 'Розв\'язок нерівності x² − x − 6 < 0 (корені x₁ = −2, x₂ = 3, a = 1):',
+    options: ['x ∈ (−∞, −2) ∪ (3, +∞)', 'x ∈ (−2, 3)', 'x ∈ [−2, 3]', 'x ∈ ∅'],
+    correctIndex: 1,
+    explanation: 'При a > 0 парабола знаходиться нижче осі x саме між коренями: x ∈ (−2, 3).',
+  },
+]
+
+const activeQuiz = computed(() => {
+  if (locale.value === 'ru') return quizRu
+  if (locale.value === 'uk') return quizUk
+  return quiz
+})
+
 const currentQ = ref(0)
 const selectedAnswer = ref<number | null>(null)
 const quizScore = ref(0)
 const quizFinished = ref(false)
 
-const currentQuestion = computed(() => quiz[currentQ.value] as QuizQuestion)
+const currentQuestion = computed(() => activeQuiz.value[currentQ.value] as QuizQuestion)
 
 function selectAnswer(i: number) {
   if (selectedAnswer.value !== null) return

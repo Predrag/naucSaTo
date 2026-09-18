@@ -15,7 +15,7 @@
     <div class="bg-slate-600 text-white rounded-2xl px-8 py-8 mb-10 flex items-center gap-5">
       <span class="text-5xl select-none">⛰️</span>
       <div>
-        <h1 class="text-3xl font-extrabold mb-1">Trenie a naklonená rovina</h1>
+        <h1 class="text-3xl font-extrabold mb-1">{{ activeTitle ?? 'Trenie a naklonená rovina' }}</h1>
         <p class="text-slate-300 text-base leading-relaxed">
           Prečo sa predmet zastaví, hoci po ňom tlačíme? Ako rýchlo sa auto pohybuje po svahu? Trenie a rozklad gravitácie sú odpoveďou.
         </p>
@@ -441,6 +441,8 @@ x="152" y="127" width="8" height="8" fill="none" stroke="#9CA3AF" stroke-width="
 import { ref, computed } from 'vue'
 import katex from 'katex'
 
+const { locale } = useI18n()
+
 function km(f: string) {
   return katex.renderToString(f, { throwOnError: false, output: 'html' })
 }
@@ -525,12 +527,132 @@ const quiz: QuizQuestion[] = [
   },
 ]
 
+// ── Preklady RU / UK ─────────────────────────────────────────────────────────
+
+const titleRu = 'Трение и наклонная плоскость'
+const titleUk = 'Тертя і похила площина'
+const activeTitle = computed(() => locale.value === 'ru' ? titleRu : locale.value === 'uk' ? titleUk : null)
+
+const quizRu: QuizQuestion[] = [
+  {
+    question: 'Что такое статическое трение?',
+    options: [
+      'Сила, действующая на движущееся тело в направлении движения',
+      'Сила, препятствующая движению тела, пока оно находится в покое',
+      'Сила, параллельная наклонной плоскости',
+      'Сила, зависящая от скорости движения тела',
+    ],
+    correctIndex: 1,
+    explanation: 'Статическое трение препятствует движению тела, пока оно находится в покое. Оно действует против направления приложенной силы, и его величина автоматически подстраивается, пока не достигнет максимума, определяемого формулой ' + km('F_{t,\\max} = \\mu_s \\cdot N') + '.',
+  },
+  {
+    question: 'Тело массой 5 кг лежит на горизонтальном полу (μs = 0,4, g = 10 м/с²). Какова максимальная сила статического трения?',
+    options: ['5 Н', '10 Н', '20 Н', '40 Н'],
+    correctIndex: 2,
+    explanation: km('N = mg = 5 \\cdot 10 = 50\\;\\text{N}') + ', затем ' + km('F_{t,\\max} = \\mu_s \\cdot N = 0{,}4 \\cdot 50 = 20\\;\\text{N}') + '.',
+  },
+  {
+    question: 'Почему коэффициент кинетического трения меньше коэффициента статического трения?',
+    options: [
+      'Потому что при движении температура поверхности повышается',
+      'Потому что площадь контакта во время движения уменьшается',
+      'Потому что при движении микросвязи между неровностями поверхностей не успевают образовываться',
+      'Потому что скорость движения снижает нормальную силу',
+    ],
+    correctIndex: 2,
+    explanation: 'Поверхности в покое более «сцеплены» — неровности взаимно зацепляются. Во время движения эти микросвязи не успевают образовываться, поэтому сопротивление меньше: ' + km('\\mu_k < \\mu_s') + '.',
+  },
+  {
+    question: 'Тело массой 2 кг лежит на наклонной плоскости с углом α = 30°. Какова сила, параллельная наклонной плоскости? (g = 10 м/с²)',
+    options: ['17,3 Н', '10 Н', '20 Н', '8,7 Н'],
+    correctIndex: 1,
+    explanation: km('F_{\\parallel} = mg\\sin\\alpha = 2 \\cdot 10 \\cdot \\sin 30° = 20 \\cdot 0{,}5 = 10\\;\\text{N}') + '. Параллельная составляющая, тянущая тело вниз по плоскости.',
+  },
+  {
+    question: 'При каком условии тело останется в покое на наклонной плоскости с углом α и коэффициентом статического трения μs?',
+    options: [
+      'sin α ≥ μs · cos α',
+      'tan α ≤ μs',
+      'cos α ≤ μs · sin α',
+      'mg · sin α ≥ μs · N',
+    ],
+    correctIndex: 1,
+    explanation: 'Условие равновесия: сила статического трения должна уравновесить параллельную составляющую: ' + km('mg\\sin\\alpha \\leq \\mu_s \\cdot mg\\cos\\alpha') + '. После деления на ' + km('mg\\cos\\alpha') + ' получим ' + km('\\tan\\alpha \\leq \\mu_s') + '.',
+  },
+  {
+    question: 'Ящик (m = 4 кг) движется по наклонной плоскости α = 45° при μk = 0,3. Каково его ускорение? (g = 10 м/с², sin 45° ≈ cos 45° ≈ 0,707)',
+    options: ['4,17 м/с²', '7,07 м/с²', '3,0 м/с²', '10,0 м/с²'],
+    correctIndex: 0,
+    explanation: km('a = g(\\sin 45° - \\mu_k\\cos 45°) = 10 \\cdot (0{,}707 - 0{,}3 \\cdot 0{,}707) = 10 \\cdot 0{,}707 \\cdot 0{,}7 \\approx 4{,}17\\;\\text{m/s}^2') + '. Масса ящика не влияет на результат — она сокращается.',
+  },
+]
+
+const quizUk: QuizQuestion[] = [
+  {
+    question: 'Що таке статичне тертя?',
+    options: [
+      'Сила, що діє на тіло, яке рухається, у напрямку руху',
+      'Сила, що перешкоджає руху тіла, поки воно перебуває у спокої',
+      'Сила, паралельна до похилої площини',
+      'Сила, що залежить від швидкості руху тіла',
+    ],
+    correctIndex: 1,
+    explanation: 'Статичне тертя перешкоджає руху тіла, поки воно перебуває у спокої. Воно діє проти напрямку прикладеної сили, і його величина автоматично підлаштовується, поки не досягне максимуму, що визначається формулою ' + km('F_{t,\\max} = \\mu_s \\cdot N') + '.',
+  },
+  {
+    question: 'Тіло масою 5 кг лежить на горизонтальній підлозі (μs = 0,4, g = 10 м/с²). Яка максимальна сила статичного тертя?',
+    options: ['5 Н', '10 Н', '20 Н', '40 Н'],
+    correctIndex: 2,
+    explanation: km('N = mg = 5 \\cdot 10 = 50\\;\\text{N}') + ', потім ' + km('F_{t,\\max} = \\mu_s \\cdot N = 0{,}4 \\cdot 50 = 20\\;\\text{N}') + '.',
+  },
+  {
+    question: 'Чому коефіцієнт кінетичного тертя менший від коефіцієнта статичного тертя?',
+    options: [
+      'Тому що при русі температура поверхні підвищується',
+      'Тому що площа контакту під час руху зменшується',
+      'Тому що при русі мікрозв\'язки між нерівностями поверхонь не встигають утворюватися',
+      'Тому що швидкість руху знижує нормальну силу',
+    ],
+    correctIndex: 2,
+    explanation: 'Поверхні у спокої більш «зчеплені» — нерівності взаємно зачіплюються. Під час руху ці мікрозв\'язки не встигають утворюватися, тому опір менший: ' + km('\\mu_k < \\mu_s') + '.',
+  },
+  {
+    question: 'Тіло масою 2 кг лежить на похилій площині з кутом α = 30°. Яка сила паралельна до похилої площини? (g = 10 м/с²)',
+    options: ['17,3 Н', '10 Н', '20 Н', '8,7 Н'],
+    correctIndex: 1,
+    explanation: km('F_{\\parallel} = mg\\sin\\alpha = 2 \\cdot 10 \\cdot \\sin 30° = 20 \\cdot 0{,}5 = 10\\;\\text{N}') + '. Паралельна складова, що тягне тіло вниз по похилій площині.',
+  },
+  {
+    question: 'За якої умови тіло залишиться у спокої на похилій площині з кутом α і коефіцієнтом статичного тертя μs?',
+    options: [
+      'sin α ≥ μs · cos α',
+      'tan α ≤ μs',
+      'cos α ≤ μs · sin α',
+      'mg · sin α ≥ μs · N',
+    ],
+    correctIndex: 1,
+    explanation: 'Умова рівноваги: статичне тертя повинно врівноважити паралельну складову: ' + km('mg\\sin\\alpha \\leq \\mu_s \\cdot mg\\cos\\alpha') + '. Після ділення на ' + km('mg\\cos\\alpha') + ' отримаємо ' + km('\\tan\\alpha \\leq \\mu_s') + '.',
+  },
+  {
+    question: 'Скринька (m = 4 кг) рухається по похилій площині α = 45° при μk = 0,3. Яке її прискорення? (g = 10 м/с², sin 45° ≈ cos 45° ≈ 0,707)',
+    options: ['4,17 м/с²', '7,07 м/с²', '3,0 м/с²', '10,0 м/с²'],
+    correctIndex: 0,
+    explanation: km('a = g(\\sin 45° - \\mu_k\\cos 45°) = 10 \\cdot (0{,}707 - 0{,}3 \\cdot 0{,}707) = 10 \\cdot 0{,}707 \\cdot 0{,}7 \\approx 4{,}17\\;\\text{m/s}^2') + '. Маса скриньки не впливає на результат — вона скорочується.',
+  },
+]
+
+const activeQuiz = computed(() => {
+  if (locale.value === 'ru') return quizRu
+  if (locale.value === 'uk') return quizUk
+  return quiz
+})
+
 const currentQ = ref(0)
 const selectedAnswer = ref<number | null>(null)
 const quizScore = ref(0)
 const quizFinished = ref(false)
 
-const currentQuestion = computed(() => quiz[currentQ.value] as QuizQuestion)
+const currentQuestion = computed(() => activeQuiz.value[currentQ.value] as QuizQuestion)
 
 function selectAnswer(i: number) {
   if (selectedAnswer.value !== null) return

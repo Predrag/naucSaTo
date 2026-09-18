@@ -12,7 +12,7 @@
 
     <div class="flex items-center gap-3 mb-3">
       <span class="text-4xl">🔔</span>
-      <h1 class="text-4xl font-extrabold text-emerald-700">Mechanické kmitanie</h1>
+      <h1 class="text-4xl font-extrabold text-emerald-700">{{ activeTitle ?? 'Mechanické kmitanie' }}</h1>
     </div>
     <p class="text-gray-500 text-lg mb-10">Perióda, frekvencia, harmonické kmitanie a rezonancia — základ pre pochopenie kmitov, vĺn a zvuku.</p>
 
@@ -481,6 +481,13 @@ function km(f: string): string {
   return katex.renderToString(f, { throwOnError: false, output: 'html' })
 }
 
+interface QuizQuestion {
+  question: string
+  options: string[]
+  correctIndex: number
+  explanation: string
+}
+
 // --------------- KVÍZ ---------------
 const quiz = [
   {
@@ -541,12 +548,142 @@ const quiz = [
   }
 ]
 
+const quizRu: QuizQuestion[] = [
+  {
+    question: 'Маятник совершает 80 колебаний за 40 секунд. Какова его частота?',
+    options: ['0,5 Гц', '1 Гц', '2 Гц', '80 Гц'],
+    correctIndex: 2,
+    explanation: `${km('f = N/t = 80/40 = 2\\,\\text{Гц}')}. Частота — количество полных колебаний в секунду.`
+  },
+  {
+    question: 'Что выражает амплитуда гармонических колебаний?',
+    options: [
+      'Время одного полного колебания',
+      'Максимальное отклонение тела от положения равновесия',
+      'Количество колебаний в секунду',
+      'Скорость тела в положении равновесия'
+    ],
+    correctIndex: 1,
+    explanation: 'Амплитуда A — максимальное отклонение тела от положения равновесия. Измеряется в метрах и зависит от начальных условий (например, с какой силой было отклонено тело).'
+  },
+  {
+    question: `Тело колеблется по уравнению ${km('x(t)=A\\cos(\\omega t)')}. Когда его скорость наибольшая?`,
+    options: [
+      'Когда отклонение максимально (тело находится в крайнем положении)',
+      'Когда отклонение равно нулю (тело проходит через положение равновесия)',
+      'Когда ускорение максимально',
+      'Скорость не изменяется — всегда постоянна'
+    ],
+    correctIndex: 1,
+    explanation: `Скорость ${km('v = -A\\omega\\sin(\\omega t)')} наибольшая, когда ${km('|\\sin(\\omega t)| = 1')} — то есть когда отклонение ${km('x = 0')}. В крайних положениях скорость равна нулю.`
+  },
+  {
+    question: `Гармонический осциллятор имеет амплитуду A = 0,2 м и угловую частоту ${km('\\omega = 10\\,\\text{рад/с}')}. Каково его максимальное ускорение?`,
+    options: ['2 м/с²', '10 м/с²', '20 м/с²', '200 м/с²'],
+    correctIndex: 2,
+    explanation: `${km('a_{\\max} = A\\omega^2 = 0{,}2\\,\\text{м} \\cdot (10)^2 = 0{,}2 \\cdot 100 = 20\\,\\text{м/с}^2')}`
+  },
+  {
+    question: 'Когда возникает резонанс при вынужденных колебаниях?',
+    options: [
+      'Когда частота вынуждающей силы вдвое больше собственной частоты системы',
+      'Когда частота вынуждающей силы равна собственной частоте системы',
+      'Когда амплитуда вынуждающей силы максимальна',
+      'Когда система полностью затухает'
+    ],
+    correctIndex: 1,
+    explanation: `Резонанс возникает при ${km('f_{\\text{буд}} = f_0')}. Тогда система поглощает максимальную энергию и амплитуда колебаний резко возрастает.`
+  },
+  {
+    question: 'Какова собственная угловая частота пружинного осциллятора с жёсткостью k = 400 Н/м и массой m = 4 кг?',
+    options: [
+      `${km('5\\,\\text{рад/с}')}`,
+      `${km('10\\,\\text{рад/с}')}`,
+      `${km('100\\,\\text{рад/с}')}`,
+      `${km('40\\,\\text{рад/с}')}`
+    ],
+    correctIndex: 1,
+    explanation: `${km('\\omega_0 = \\sqrt{k/m} = \\sqrt{400/4} = \\sqrt{100} = 10\\,\\text{рад/с}')}`
+  }
+]
+
+const quizUk: QuizQuestion[] = [
+  {
+    question: 'Маятник здійснює 80 коливань за 40 секунд. Яка його частота?',
+    options: ['0,5 Гц', '1 Гц', '2 Гц', '80 Гц'],
+    correctIndex: 2,
+    explanation: `${km('f = N/t = 80/40 = 2\\,\\text{Гц}')}. Частота — кількість повних коливань за секунду.`
+  },
+  {
+    question: 'Що виражає амплітуда гармонічних коливань?',
+    options: [
+      'Час одного повного коливання',
+      'Максимальне відхилення тіла від положення рівноваги',
+      'Кількість коливань за секунду',
+      'Швидкість тіла в положенні рівноваги'
+    ],
+    correctIndex: 1,
+    explanation: 'Амплітуда A — максимальне відхилення тіла від положення рівноваги. Вимірюється в метрах і залежить від початкових умов (наприклад, з якою силою ми відхилили тіло).'
+  },
+  {
+    question: `Тіло коливається за рівнянням ${km('x(t)=A\\cos(\\omega t)')}. Коли його швидкість найбільша?`,
+    options: [
+      'Коли відхилення максимальне (тіло знаходиться в крайньому положенні)',
+      'Коли відхилення дорівнює нулю (тіло проходить через положення рівноваги)',
+      'Коли прискорення максимальне',
+      'Швидкість не змінюється — завжди постійна'
+    ],
+    correctIndex: 1,
+    explanation: `Швидкість ${km('v = -A\\omega\\sin(\\omega t)')} найбільша, коли ${km('|\\sin(\\omega t)| = 1')} — тобто коли відхилення ${km('x = 0')}. У крайніх положеннях швидкість дорівнює нулю.`
+  },
+  {
+    question: `Гармонічний осцилятор має амплітуду A = 0,2 м і кутову частоту ${km('\\omega = 10\\,\\text{рад/с}')}. Яке його максимальне прискорення?`,
+    options: ['2 м/с²', '10 м/с²', '20 м/с²', '200 м/с²'],
+    correctIndex: 2,
+    explanation: `${km('a_{\\max} = A\\omega^2 = 0{,}2\\,\\text{м} \\cdot (10)^2 = 0{,}2 \\cdot 100 = 20\\,\\text{м/с}^2')}`
+  },
+  {
+    question: 'Коли виникає резонанс при вимушених коливаннях?',
+    options: [
+      'Коли частота вимушуючої сили вдвічі більша за власну частоту системи',
+      'Коли частота вимушуючої сили дорівнює власній частоті системи',
+      'Коли амплітуда вимушуючої сили максимальна',
+      'Коли система повністю загасає'
+    ],
+    correctIndex: 1,
+    explanation: `Резонанс виникає при ${km('f_{\\text{збудж}} = f_0')}. Тоді система поглинає максимальну енергію і амплітуда коливань різко зростає.`
+  },
+  {
+    question: 'Яка власна кутова частота пружинного осцилятора з жорсткістю k = 400 Н/м і масою m = 4 кг?',
+    options: [
+      `${km('5\\,\\text{рад/с}')}`,
+      `${km('10\\,\\text{рад/с}')}`,
+      `${km('100\\,\\text{рад/с}')}`,
+      `${km('40\\,\\text{рад/с}')}`
+    ],
+    correctIndex: 1,
+    explanation: `${km('\\omega_0 = \\sqrt{k/m} = \\sqrt{400/4} = \\sqrt{100} = 10\\,\\text{рад/с}')}`
+  }
+]
+
+const { locale } = useI18n()
+
+const titleRu = 'Механические колебания'
+const titleUk = 'Механічні коливання'
+const activeTitle = computed(() => locale.value === 'ru' ? titleRu : locale.value === 'uk' ? titleUk : null)
+
+const activeQuiz = computed(() => {
+  if (locale.value === 'ru') return quizRu
+  if (locale.value === 'uk') return quizUk
+  return quiz
+})
+
 const currentQ = ref(0)
 const selectedAnswer = ref<number | null>(null)
 const quizScore = ref(0)
 const quizFinished = ref(false)
 
-const currentQuestion = computed(() => quiz[currentQ.value] as QuizQuestion)
+const currentQuestion = computed(() => activeQuiz.value[currentQ.value] as QuizQuestion)
 
 function selectAnswer(i: number) {
   if (selectedAnswer.value !== null) return

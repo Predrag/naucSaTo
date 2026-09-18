@@ -12,7 +12,7 @@
 
     <div class="flex items-center gap-3 mb-3">
       <span class="text-4xl">⏱️</span>
-      <h1 class="text-4xl font-extrabold text-emerald-700">Kyvadlo a oscilátor</h1>
+      <h1 class="text-4xl font-extrabold text-emerald-700">{{ activeTitle ?? 'Kyvadlo a oscilátor' }}</h1>
     </div>
     <p class="text-gray-500 text-lg mb-10">
       Periodický pohyb s presnou pravidelnosťou — základ hodín, seizmografov, mostov aj hudobných nástrojov.
@@ -458,6 +458,12 @@ function km(f: string): string {
   return katex.renderToString(f, { throwOnError: false, output: 'html' })
 }
 
+const { locale } = useI18n()
+
+const titleRu = 'Маятник и осциллятор'
+const titleUk = 'Маятник і осцилятор'
+const activeTitle = computed(() => locale.value === 'ru' ? titleRu : locale.value === 'uk' ? titleUk : null)
+
 // Porovnávacia tabuľka kyvadlo vs oscilátor
 const comparisonTable = [
   {
@@ -604,12 +610,146 @@ interface QuizQuestion {
   explanation: string
 }
 
+const quizRu: QuizQuestion[] = [
+  {
+    questionHtml: 'Какая формула описывает период математического маятника?',
+    options: [
+      km('T = 2\\pi\\sqrt{m/k}'),
+      km('T = 2\\pi\\sqrt{l/g}'),
+      km('T = 2\\pi\\sqrt{g/l}'),
+      km('T = 2\\pi \\cdot l \\cdot g'),
+    ],
+    correctIndex: 1,
+    explanation: `Период математического маятника ${km('T = 2\\pi\\sqrt{l/g}')} зависит от длины подвеса ${km('l')} и ускорения свободного падения ${km('g')}. Масса и амплитуда (при малых отклонениях) на него не влияют.`,
+  },
+  {
+    questionHtml: `Математический маятник имеет длину ${km('l = 1{,}0\\ \\text{m}')} и ${km('g = 9{,}81\\ \\text{m/s}^2')}. Каков его период?`,
+    options: ['1,0 s', '1,5 s', '2,0 s', '4,0 s'],
+    correctIndex: 2,
+    explanation: `${km('T = 2\\pi\\sqrt{1{,}0/9{,}81} = 2\\pi \\cdot 0{,}319 \\approx 2{,}0\\ \\text{s}')}. Маятник длиной 1 м колеблется с периодом почти ровно 2 секунды.`,
+  },
+  {
+    questionHtml: `Закон Гука ${km('F = -kx')} — что выражает знак минус?`,
+    options: [
+      'Константа k отрицательная',
+      'Отклонение x всегда отрицательное',
+      'Упругая сила всегда направлена в сторону отклонения',
+      'Упругая сила направлена против отклонения (возвращающая сила)',
+    ],
+    correctIndex: 3,
+    explanation: 'Знак минус означает, что упругая сила является <strong>возвращающей</strong> — всегда направлена обратно к положению равновесия, то есть в сторону, противоположную отклонению.',
+  },
+  {
+    questionHtml: `Пружинный осциллятор имеет ${km('m = 0{,}5\\ \\text{kg}')} и ${km('k = 200\\ \\text{N/m}')}. Каков период колебаний?`,
+    options: [
+      km('T \\approx 0{,}16\\ \\text{s}'),
+      km('T \\approx 0{,}31\\ \\text{s}'),
+      km('T \\approx 0{,}63\\ \\text{s}'),
+      km('T \\approx 1{,}26\\ \\text{s}'),
+    ],
+    correctIndex: 1,
+    explanation: `${km('T = 2\\pi\\sqrt{0{,}5/200} = 2\\pi\\sqrt{0{,}0025} = 2\\pi \\cdot 0{,}05 \\approx 0{,}314\\ \\text{s}')}`,
+  },
+  {
+    questionHtml: 'Полная механическая энергия гармонического осциллятора без трения:',
+    options: [
+      'Максимальная в положении равновесия, нулевая в крайнем положении',
+      'Нулевая в положении равновесия, максимальная в крайнем положении',
+      'Постоянная — не изменяется во время колебания',
+      'Зависит от частоты колебания',
+    ],
+    correctIndex: 2,
+    explanation: `Полная энергия ${km('E = \\tfrac{1}{2}kA^2')} постоянна. Кинетическая и потенциальная энергии преобразуются, но их сумма остаётся неизменной — действует <strong>закон сохранения энергии</strong>.`,
+  },
+  {
+    questionHtml: 'Когда возникает резонанс?',
+    options: [
+      'Когда амплитуда колебаний падает до нуля',
+      'Когда частота вынуждающих колебаний равна собственной частоте системы',
+      'Когда частота вынуждающих колебаний вдвое превышает собственную частоту',
+      'Когда система достаточно заглушена',
+    ],
+    correctIndex: 1,
+    explanation: `Резонанс возникает при ${km('f_{\\text{budenie}} = f_0')}. Система получает максимальное количество энергии — амплитуда резко возрастает. Примером служит обрушение моста Такома-Нэрроуз в 1940 году.`,
+  },
+]
+
+const quizUk: QuizQuestion[] = [
+  {
+    questionHtml: 'Яка формула описує період математичного маятника?',
+    options: [
+      km('T = 2\\pi\\sqrt{m/k}'),
+      km('T = 2\\pi\\sqrt{l/g}'),
+      km('T = 2\\pi\\sqrt{g/l}'),
+      km('T = 2\\pi \\cdot l \\cdot g'),
+    ],
+    correctIndex: 1,
+    explanation: `Період математичного маятника ${km('T = 2\\pi\\sqrt{l/g}')} залежить від довжини підвісу ${km('l')} та прискорення вільного падіння ${km('g')}. Маса і амплітуда (при малих відхиленнях) на нього не впливають.`,
+  },
+  {
+    questionHtml: `Математичний маятник має довжину ${km('l = 1{,}0\\ \\text{m}')} і ${km('g = 9{,}81\\ \\text{m/s}^2')}. Який його період?`,
+    options: ['1,0 s', '1,5 s', '2,0 s', '4,0 s'],
+    correctIndex: 2,
+    explanation: `${km('T = 2\\pi\\sqrt{1{,}0/9{,}81} = 2\\pi \\cdot 0{,}319 \\approx 2{,}0\\ \\text{s}')}. Маятник завдовжки 1 м коливається з періодом майже рівно 2 секунди.`,
+  },
+  {
+    questionHtml: `Закон Гука ${km('F = -kx')} — що виражає знак мінус?`,
+    options: [
+      'Константа k від\'ємна',
+      'Відхилення x завжди від\'ємне',
+      'Пружна сила завжди спрямована в бік відхилення',
+      'Пружна сила спрямована проти відхилення (повертальна сила)',
+    ],
+    correctIndex: 3,
+    explanation: 'Знак мінус означає, що пружна сила є <strong>повертальною</strong> — завжди спрямована назад до положення рівноваги, тобто у напрямку, протилежному відхиленню.',
+  },
+  {
+    questionHtml: `Пружинний осцилятор має ${km('m = 0{,}5\\ \\text{kg}')} і ${km('k = 200\\ \\text{N/m}')}. Який період коливань?`,
+    options: [
+      km('T \\approx 0{,}16\\ \\text{s}'),
+      km('T \\approx 0{,}31\\ \\text{s}'),
+      km('T \\approx 0{,}63\\ \\text{s}'),
+      km('T \\approx 1{,}26\\ \\text{s}'),
+    ],
+    correctIndex: 1,
+    explanation: `${km('T = 2\\pi\\sqrt{0{,}5/200} = 2\\pi\\sqrt{0{,}0025} = 2\\pi \\cdot 0{,}05 \\approx 0{,}314\\ \\text{s}')}`,
+  },
+  {
+    questionHtml: 'Повна механічна енергія гармонічного осцилятора без тертя:',
+    options: [
+      'Максимальна в положенні рівноваги, нульова в крайньому положенні',
+      'Нульова в положенні рівноваги, максимальна в крайньому положенні',
+      'Постійна — не змінюється під час коливання',
+      'Залежить від частоти коливання',
+    ],
+    correctIndex: 2,
+    explanation: `Повна енергія ${km('E = \\tfrac{1}{2}kA^2')} постійна. Кінетична та потенціальна енергії перетворюються, але їхня сума залишається незмінною — діє <strong>закон збереження енергії</strong>.`,
+  },
+  {
+    questionHtml: 'Коли виникає резонанс?',
+    options: [
+      'Коли амплітуда коливань падає до нуля',
+      'Коли частота вимушених коливань дорівнює власній частоті системи',
+      'Коли частота вимушених коливань удвічі перевищує власну частоту',
+      'Коли система достатньо загашена',
+    ],
+    correctIndex: 1,
+    explanation: `Резонанс виникає при ${km('f_{\\text{budenie}} = f_0')}. Система отримує максимальну кількість енергії — амплітуда різко зростає. Прикладом є руйнування мосту Такома-Нерроуз у 1940 році.`,
+  },
+]
+
+const activeQuiz = computed(() => {
+  if (locale.value === 'ru') return quizRu
+  if (locale.value === 'uk') return quizUk
+  return quiz
+})
+
 const currentQ = ref(0)
 const selectedAnswer = ref<number | null>(null)
 const quizScore = ref(0)
 const quizFinished = ref(false)
 
-const currentQuestion = computed(() => quiz[currentQ.value] as QuizQuestion)
+const currentQuestion = computed(() => activeQuiz.value[currentQ.value] as QuizQuestion)
 
 function selectAnswer(i: number) {
   if (selectedAnswer.value !== null) return

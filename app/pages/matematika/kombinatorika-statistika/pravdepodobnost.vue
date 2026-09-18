@@ -14,7 +14,7 @@
     <!-- Header -->
     <div class="flex items-center gap-3 mb-4">
       <span class="text-5xl" aria-hidden="true">🎯</span>
-      <h1 class="text-4xl font-extrabold text-blue-700">Pravdepodobnosť</h1>
+      <h1 class="text-4xl font-extrabold text-blue-700">{{ activeTitle ?? 'Pravdepodobnosť' }}</h1>
     </div>
     <p class="text-gray-600 text-lg leading-relaxed mb-10">
       Pravdepodobnosť nám umožňuje vyjadriť číslom, ako je „istý" alebo „nepravdepodobný" nejaký
@@ -360,10 +360,10 @@
       <div v-if="!quizFinished">
         <!-- Progress -->
         <div data-testid="quiz-progress" class="flex items-center justify-between mb-4">
-          <span class="text-sm text-gray-500">Otázka {{ currentQ + 1 }} z {{ quiz.length }}</span>
+          <span class="text-sm text-gray-500">Otázka {{ currentQ + 1 }} z {{ activeQuiz.length }}</span>
           <div class="flex gap-1">
             <span
-              v-for="(_, i) in quiz"
+              v-for="(_, i) in activeQuiz"
               :key="i"
               :class="[
                 'w-3 h-3 rounded-full transition-colors',
@@ -433,7 +433,7 @@
           class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl transition-colors"
           @click="nextQuestion"
         >
-          {{ currentQ < quiz.length - 1 ? 'Ďalšia otázka →' : 'Zobraziť výsledok' }}
+          {{ currentQ < activeQuiz.length - 1 ? 'Ďalšia otázka →' : 'Zobraziť výsledok' }}
         </button>
       </div>
 
@@ -442,7 +442,7 @@
         <div class="text-5xl mb-3">{{ scoreEmoji }}</div>
         <div class="text-2xl font-bold text-blue-700 mb-1">{{ scoreMessage }}</div>
         <div data-testid="score" class="text-gray-600 mb-6">
-          Správne odpovede: <span class="font-bold text-blue-600">{{ quizScore }}</span> / {{ quiz.length }}
+          Správne odpovede: <span class="font-bold text-blue-600">{{ quizScore }}</span> / {{ activeQuiz.length }}
         </div>
         <button
           data-testid="reset-btn"
@@ -517,12 +517,102 @@ const quiz: QuizQuestion[] = [
   },
 ]
 
+const { locale } = useI18n()
+
+const titleRu = 'Вероятность'
+const titleUk = 'Імовірність'
+const activeTitle = computed(() => locale.value === 'ru' ? titleRu : locale.value === 'uk' ? titleUk : null)
+
+const quizRu: QuizQuestion[] = [
+  {
+    question: 'Какова вероятность того, что при броске кубика выпадет число больше 4?',
+    options: ['1/6', '1/3', '1/2', '2/3'],
+    correctIndex: 1,
+    explanation: 'Числа больше 4 — это 5 и 6, то есть 2 благоприятных исхода из 6. P = 2/6 = 1/3.',
+  },
+  {
+    question: 'Если P(A) = 0,3, какова вероятность дополнительного события A\'?',
+    options: ['0,3', '0,5', '0,7', '1,3'],
+    correctIndex: 2,
+    explanation: 'Дополнительное событие: P(A\') = 1 − P(A) = 1 − 0,3 = 0,7.',
+  },
+  {
+    question: 'События A и B независимы. P(A) = 0,4 и P(B) = 0,5. Чему равно P(A ∩ B)?',
+    options: ['0,1', '0,2', '0,45', '0,9'],
+    correctIndex: 1,
+    explanation: 'Для независимых событий: P(A ∩ B) = P(A) · P(B) = 0,4 · 0,5 = 0,2.',
+  },
+  {
+    question: 'События A и B взаимно исключают друг друга, P(A) = 0,3, P(B) = 0,4. Чему равно P(A ∪ B)?',
+    options: ['0,1', '0,12', '0,7', '0,58'],
+    correctIndex: 2,
+    explanation: 'Для взаимно исключающих событий: P(A ∪ B) = P(A) + P(B) = 0,3 + 0,4 = 0,7.',
+  },
+  {
+    question: 'Подбрасываем честную монету 3 раза. Какова вероятность того, что орёл выпадет ровно 2 раза? (Схема Бернулли)',
+    options: ['1/8', '3/8', '1/2', '6/8'],
+    correctIndex: 1,
+    explanation: 'P(X=2) = C(3,2) · (1/2)² · (1/2)¹ = 3 · 1/4 · 1/2 = 3/8.',
+  },
+  {
+    question: 'Условная вероятность P(A|B) вычисляется как:',
+    options: ['P(A) + P(B)', 'P(A) · P(B)', 'P(A ∩ B) / P(B)', 'P(A ∪ B) / P(B)'],
+    correctIndex: 2,
+    explanation: 'Условная вероятность определяется формулой P(A|B) = P(A ∩ B) / P(B).',
+  },
+]
+
+const quizUk: QuizQuestion[] = [
+  {
+    question: 'Яка імовірність того, що при киданні кубика випаде число більше 4?',
+    options: ['1/6', '1/3', '1/2', '2/3'],
+    correctIndex: 1,
+    explanation: 'Числа більші за 4 — це 5 і 6, тобто 2 сприятливих результати з 6. P = 2/6 = 1/3.',
+  },
+  {
+    question: 'Якщо P(A) = 0,3, яка імовірність доповняльної події A\'?',
+    options: ['0,3', '0,5', '0,7', '1,3'],
+    correctIndex: 2,
+    explanation: 'Доповняльна подія: P(A\') = 1 − P(A) = 1 − 0,3 = 0,7.',
+  },
+  {
+    question: 'Події A і B незалежні. P(A) = 0,4 і P(B) = 0,5. Чому дорівнює P(A ∩ B)?',
+    options: ['0,1', '0,2', '0,45', '0,9'],
+    correctIndex: 1,
+    explanation: 'Для незалежних подій: P(A ∩ B) = P(A) · P(B) = 0,4 · 0,5 = 0,2.',
+  },
+  {
+    question: 'Події A і B взаємно виключають одна одну, P(A) = 0,3, P(B) = 0,4. Чому дорівнює P(A ∪ B)?',
+    options: ['0,1', '0,12', '0,7', '0,58'],
+    correctIndex: 2,
+    explanation: 'Для взаємно виключних подій: P(A ∪ B) = P(A) + P(B) = 0,3 + 0,4 = 0,7.',
+  },
+  {
+    question: 'Підкидаємо чесну монету 3 рази. Яка імовірність того, що орел випаде рівно 2 рази? (Схема Бернуллі)',
+    options: ['1/8', '3/8', '1/2', '6/8'],
+    correctIndex: 1,
+    explanation: 'P(X=2) = C(3,2) · (1/2)² · (1/2)¹ = 3 · 1/4 · 1/2 = 3/8.',
+  },
+  {
+    question: 'Умовна імовірність P(A|B) обчислюється як:',
+    options: ['P(A) + P(B)', 'P(A) · P(B)', 'P(A ∩ B) / P(B)', 'P(A ∪ B) / P(B)'],
+    correctIndex: 2,
+    explanation: 'Умовна імовірність визначається формулою P(A|B) = P(A ∩ B) / P(B).',
+  },
+]
+
+const activeQuiz = computed(() => {
+  if (locale.value === 'ru') return quizRu
+  if (locale.value === 'uk') return quizUk
+  return quiz
+})
+
 const currentQ = ref(0)
 const selectedAnswer = ref<number | null>(null)
 const quizScore = ref(0)
 const quizFinished = ref(false)
 
-const currentQuestion = computed(() => quiz[currentQ.value] as QuizQuestion)
+const currentQuestion = computed(() => activeQuiz.value[currentQ.value] as QuizQuestion)
 
 function selectAnswer(i: number) {
   if (selectedAnswer.value !== null) return
@@ -531,7 +621,7 @@ function selectAnswer(i: number) {
 }
 
 function nextQuestion() {
-  if (currentQ.value < quiz.length - 1) {
+  if (currentQ.value < activeQuiz.value.length - 1) {
     currentQ.value++
     selectedAnswer.value = null
   }
@@ -548,12 +638,12 @@ function resetQuiz() {
 }
 
 const scoreEmoji = computed(() => {
-  const r = quizScore.value / quiz.length
+  const r = quizScore.value / activeQuiz.value.length
   return r === 1 ? '🏆' : r >= 0.7 ? '🎉' : r >= 0.4 ? '💪' : '📚'
 })
 
 const scoreMessage = computed(() => {
-  const r = quizScore.value / quiz.length
+  const r = quizScore.value / activeQuiz.value.length
   return r === 1 ? 'Perfektné!' : r >= 0.7 ? 'Výborne!' : r >= 0.4 ? 'Oplatí sa zopakovať.' : 'Skús znova.'
 })
 </script>

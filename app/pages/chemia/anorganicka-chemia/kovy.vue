@@ -12,7 +12,7 @@
 
     <div class="flex items-center gap-3 mb-4">
       <span class="text-5xl">🔩</span>
-      <h1 class="text-4xl font-extrabold text-orange-700">Kovy a ich zlúčeniny</h1>
+      <h1 class="text-4xl font-extrabold text-orange-700">{{ activeTitle ?? 'Kovy a ich zlúčeniny' }}</h1>
     </div>
     <p class="text-lg text-gray-600 mb-10">
       Kovy tvoria väčšinu prvkov PSP. Majú spoločné vlastnosti: kovový lesk, elektrickú vodivosť, tepelnú vodivosť a ťažnosť. V chemických reakciách sú redukovadlami — odovzdávajú elektróny.
@@ -269,12 +269,102 @@ const quiz: QuizQuestion[] = [
   },
 ]
 
+const { locale } = useI18n()
+
+const titleRu = 'Металлы и их соединения'
+const titleUk = 'Метали та їх сполуки'
+const activeTitle = computed(() => locale.value === 'ru' ? titleRu : locale.value === 'uk' ? titleUk : null)
+
+const quizRu: QuizQuestion[] = [
+  {
+    question: 'Что образуется при реакции натрия с водой?',
+    options: ['NaCl + H₂', 'NaOH + H₂', 'Na₂O + H₂O', 'NaHCO₃ + H₂'],
+    correctIndex: 1,
+    explanation: '2Na + 2H₂O → 2NaOH + H₂↑. Образуется гидроксид натрия (щёлочь) и газообразный водород.',
+  },
+  {
+    question: 'Какой цвет имеет пламя при испытании натрия на пламя?',
+    options: ['Фиолетовый', 'Красный', 'Жёлтый', 'Зелёный'],
+    correctIndex: 2,
+    explanation: 'Натрий (Na) окрашивает пламя интенсивно в жёлтый цвет — это одно из наиболее характерных испытаний на пламя.',
+  },
+  {
+    question: 'Как называется реакция: CaCO₃ → CaO + CO₂?',
+    options: ['Нейтрализация', 'Обжиг известняка (кальцинация)', 'Гашение извести', 'Коррозия'],
+    correctIndex: 1,
+    explanation: 'Обжиг известняка при ~900 °C даёт негашёную известь (CaO) и диоксид углерода. Гашение — CaO + H₂O → Ca(OH)₂.',
+  },
+  {
+    question: 'Что такое сталь?',
+    options: ['Чистое железо', 'Сплав Fe с 0,02–2 % C', 'Сплав Fe + Ni', 'Чугун с > 4 % C'],
+    correctIndex: 1,
+    explanation: 'Сталь — это сплав железа с углеродом (0,02–2 %). Чугун содержит > 2 % C и является хрупким.',
+  },
+  {
+    question: 'Почему алюминий устойчив к коррозии, несмотря на то что является реактивным металлом?',
+    options: ['Это благородный металл', 'Поверхность покрывается слоем Al₂O₃ (пассивация)', 'Не реагирует с O₂', 'Имеет низкую плотность'],
+    correctIndex: 1,
+    explanation: 'Алюминий реагирует с кислородом, образуя Al₂O₃ — тонкий слой оксида защищает поверхность от дальнейшего окисления (пассивация).',
+  },
+  {
+    question: 'Из каких материалов состоит бронза?',
+    options: ['Cu + Zn', 'Fe + Ni', 'Cu + Sn', 'Al + Mg'],
+    correctIndex: 2,
+    explanation: 'Бронза = Cu (медь) + Sn (олово). Латунь — Cu + Zn. Бронза использовалась в бронзовом веке для оружия и инструментов.',
+  },
+]
+
+const quizUk: QuizQuestion[] = [
+  {
+    question: 'Що утворюється при реакції натрію з водою?',
+    options: ['NaCl + H₂', 'NaOH + H₂', 'Na₂O + H₂O', 'NaHCO₃ + H₂'],
+    correctIndex: 1,
+    explanation: '2Na + 2H₂O → 2NaOH + H₂↑. Утворюється гідроксид натрію (луг) та газоподібний водень.',
+  },
+  {
+    question: 'Який колір має полум\'я при полум\'яній пробі натрію?',
+    options: ['Фіолетовий', 'Червоний', 'Жовтий', 'Зелений'],
+    correctIndex: 2,
+    explanation: 'Натрій (Na) фарбує полум\'я інтенсивно в жовтий колір — це одна з найхарактерніших полум\'яних проб.',
+  },
+  {
+    question: 'Як називається реакція: CaCO₃ → CaO + CO₂?',
+    options: ['Нейтралізація', 'Випал вапняку (палення)', 'Гасіння вапна', 'Корозія'],
+    correctIndex: 1,
+    explanation: 'Випал вапняку при ~900 °C дає палене вапно (CaO) та діоксид вуглецю. Гасіння — CaO + H₂O → Ca(OH)₂.',
+  },
+  {
+    question: 'Що таке сталь?',
+    options: ['Чисте залізо', 'Сплав Fe з 0,02–2 % C', 'Сплав Fe + Ni', 'Чавун з > 4 % C'],
+    correctIndex: 1,
+    explanation: 'Сталь — це сплав заліза з вуглецем (0,02–2 %). Чавун містить > 2 % C і є крихким.',
+  },
+  {
+    question: 'Чому алюміній стійкий до корозії, незважаючи на те що є реактивним металом?',
+    options: ['Це благородний метал', 'Поверхня покривається шаром Al₂O₃ (пасивація)', 'Не реагує з O₂', 'Має низьку густину'],
+    correctIndex: 1,
+    explanation: 'Алюміній реагує з киснем з утворенням Al₂O₃ — тонкий шар оксиду захищає поверхню від подальшого окиснення (пасивація).',
+  },
+  {
+    question: 'З яких матеріалів складається бронза?',
+    options: ['Cu + Zn', 'Fe + Ni', 'Cu + Sn', 'Al + Mg'],
+    correctIndex: 2,
+    explanation: 'Бронза = Cu (мідь) + Sn (олово). Латунь — Cu + Zn. Бронза використовувалась у бронзовому віці для зброї та знарядь.',
+  },
+]
+
+const activeQuiz = computed(() => {
+  if (locale.value === 'ru') return quizRu
+  if (locale.value === 'uk') return quizUk
+  return quiz
+})
+
 const currentQ = ref(0)
 const selectedAnswer = ref<number | null>(null)
 const quizScore = ref(0)
 const quizFinished = ref(false)
 
-const currentQuestion = computed(() => quiz[currentQ.value] as QuizQuestion)
+const currentQuestion = computed(() => activeQuiz.value[currentQ.value] as QuizQuestion)
 
 function selectAnswer(i: number) {
   if (selectedAnswer.value !== null) return

@@ -12,7 +12,7 @@
 
     <div class="flex items-center gap-3 mb-4">
       <span class="text-5xl">⛽</span>
-      <h1 class="text-4xl font-extrabold text-orange-700">Uhľovodíky</h1>
+      <h1 class="text-4xl font-extrabold text-orange-700">{{ activeTitle ?? 'Uhľovodíky' }}</h1>
     </div>
     <p class="text-lg text-gray-600 mb-10">
       Uhľovodíky sú organické zlúčeniny obsahujúce iba uhlík (C) a vodík (H). Sú základom organickej chémie a hlavnou zložkou ropy a zemného plynu. Rozdeľujeme ich podľa väzieb medzi atómami uhlíka.
@@ -303,12 +303,102 @@ const quiz: QuizQuestion[] = [
   },
 ]
 
+const { locale } = useI18n()
+
+const titleRu = 'Углеводороды'
+const titleUk = 'Вуглеводні'
+const activeTitle = computed(() => locale.value === 'ru' ? titleRu : locale.value === 'uk' ? titleUk : null)
+
+const quizRu: QuizQuestion[] = [
+  {
+    question: 'Какова формула алканов?',
+    options: ['CₙH₂ₙ', 'CₙH₂ₙ₊₂', 'CₙH₂ₙ₋₂', 'CₙH₂ₙ₋₆'],
+    correctIndex: 1,
+    explanation: 'Алканы (насыщенные): CₙH₂ₙ₊₂. Алкены: CₙH₂ₙ. Алкины: CₙH₂ₙ₋₂. Арены: CₙH₂ₙ₋₆ (бензол C₆H₆).',
+  },
+  {
+    question: 'Какой продукт образуется при полимеризации этена?',
+    options: ['Полипропилен', 'ПВХ', 'Полиэтилен (ПЭ)', 'Полистирол'],
+    correctIndex: 2,
+    explanation: 'n CH₂=CH₂ → (–CH₂–CH₂–)ₙ = полиэтилен (ПЭ). Это наиболее распространённый пластик.',
+  },
+  {
+    question: 'Что такое ацетилен и для чего он используется?',
+    options: ['Этан, ракетное топливо', 'Этин (HC≡CH), сварка и резка металлов', 'Этен, производство пластмасс', 'Метан, приготовление пищи'],
+    correctIndex: 1,
+    explanation: 'Ацетилен = этин HC≡CH. Его пламя достигает ~3000 °C — используется для автогенной сварки и резки металлов.',
+  },
+  {
+    question: 'Чем арены отличаются от алкенов?',
+    options: ['Арены не имеют двойных связей', 'Арены реагируют по механизму замещения, а не присоединения (сохраняют ароматичность)', 'Арены всегда являются газами', 'Арены содержат азот'],
+    correctIndex: 1,
+    explanation: 'Бензольное кольцо стабилизировано делокализацией электронов. Арены реагируют по механизму замещения (не присоединения) — сохраняют ароматическую систему.',
+  },
+  {
+    question: 'Что такое изомерия?',
+    options: ['Элементы с одинаковым Z', 'Соединения с одинаковой формулой, но разной структурой', 'Реакция с изотопами', 'Разделение алканов по температуре'],
+    correctIndex: 1,
+    explanation: 'Изомеры имеют одинаковую молекулярную формулу, но разную структуру (например, н-бутан и и-бутан, оба C₄H₁₀).',
+  },
+  {
+    question: 'Какой тип реакции характерен для алканов?',
+    options: ['Реакция присоединения', 'Реакция элиминирования', 'Радикальная реакция замещения', 'Нейтрализация'],
+    correctIndex: 2,
+    explanation: 'Алканы малореакционноспособны. Их типичная реакция — радикальное галогенирование замещения (напр. CH₄ + Cl₂ → CH₃Cl + HCl под UV-светом).',
+  },
+]
+
+const quizUk: QuizQuestion[] = [
+  {
+    question: 'Яка формула алканів?',
+    options: ['CₙH₂ₙ', 'CₙH₂ₙ₊₂', 'CₙH₂ₙ₋₂', 'CₙH₂ₙ₋₆'],
+    correctIndex: 1,
+    explanation: 'Алкани (насичені): CₙH₂ₙ₊₂. Алкени: CₙH₂ₙ. Алкіни: CₙH₂ₙ₋₂. Арени: CₙH₂ₙ₋₆ (бензол C₆H₆).',
+  },
+  {
+    question: 'Який продукт утворюється при полімеризації етену?',
+    options: ['Поліпропілен', 'ПВХ', 'Поліетилен (ПЕ)', 'Полістирол'],
+    correctIndex: 2,
+    explanation: 'n CH₂=CH₂ → (–CH₂–CH₂–)ₙ = поліетилен (ПЕ). Це найпоширеніший пластик.',
+  },
+  {
+    question: 'Що таке ацетилен і для чого він використовується?',
+    options: ['Етан, ракетне паливо', 'Етин (HC≡CH), зварювання та різання металів', 'Етен, виробництво пластмас', 'Метан, приготування їжі'],
+    correctIndex: 1,
+    explanation: "Ацетилен = етин HC≡CH. Його полум'я досягає ~3000 °C — використовується для автогенного зварювання та різання металів.",
+  },
+  {
+    question: 'Чим арени відрізняються від алкенів?',
+    options: ["Арени не мають подвійних зв'язків", 'Арени реагують за механізмом заміщення, а не приєднання (зберігають ароматичність)', 'Арени завжди є газами', 'Арени містять азот'],
+    correctIndex: 1,
+    explanation: 'Бензольне кільце стабілізоване делокалізацією електронів. Арени реагують за механізмом заміщення (не приєднання) — зберігають ароматичну систему.',
+  },
+  {
+    question: 'Що таке ізомерія?',
+    options: ['Елементи з однаковим Z', 'Сполуки з однаковою формулою, але різною структурою', 'Реакція з ізотопами', 'Поділ алканів за температурою'],
+    correctIndex: 1,
+    explanation: 'Ізомери мають однакову молекулярну формулу, але різну структуру (наприклад, н-бутан і і-бутан, обидва C₄H₁₀).',
+  },
+  {
+    question: 'Який тип реакції характерний для алканів?',
+    options: ['Реакція приєднання', 'Реакція елімінування', 'Радикальна реакція заміщення', 'Нейтралізація'],
+    correctIndex: 2,
+    explanation: 'Алкани малореакційні. Їхня типова реакція — радикальне галогенування заміщення (напр. CH₄ + Cl₂ → CH₃Cl + HCl під UV-світлом).',
+  },
+]
+
+const activeQuiz = computed(() => {
+  if (locale.value === 'ru') return quizRu
+  if (locale.value === 'uk') return quizUk
+  return quiz
+})
+
 const currentQ = ref(0)
 const selectedAnswer = ref<number | null>(null)
 const quizScore = ref(0)
 const quizFinished = ref(false)
 
-const currentQuestion = computed(() => quiz[currentQ.value] as QuizQuestion)
+const currentQuestion = computed(() => activeQuiz.value[currentQ.value] as QuizQuestion)
 
 function selectAnswer(i: number) {
   if (selectedAnswer.value !== null) return

@@ -12,7 +12,7 @@
 
     <div class="flex items-center gap-3 mb-4">
       <span class="text-5xl">🔗</span>
-      <h1 class="text-4xl font-extrabold text-orange-700">Chemická väzba</h1>
+      <h1 class="text-4xl font-extrabold text-orange-700">{{ activeTitle ?? 'Chemická väzba' }}</h1>
     </div>
     <p class="text-lg text-gray-600 mb-10">
       Chemická väzba je sila, ktorá drží atómy pohromade v molekule alebo kryštalickej látke. Vzniká pri znižovaní celkovej energie sústavy — atómy sa spájajú, lebo je to pre ne energeticky výhodné.
@@ -141,7 +141,7 @@
 
       <div v-if="!quizFinished">
         <p data-testid="quiz-progress" class="text-xs text-gray-400 mb-3">
-          Otázka {{ currentQ + 1 }} / {{ quiz.length }}
+          Otázka {{ currentQ + 1 }} / {{ activeQuiz.length }}
         </p>
         <Transition name="fade" mode="out-in">
           <div :key="currentQ">
@@ -179,7 +179,7 @@
               class="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-2 rounded-xl transition-colors"
               @click="nextQuestion"
             >
-              {{ currentQ < quiz.length - 1 ? 'Ďalšia otázka' : 'Zobraziť výsledok' }}
+              {{ currentQ < activeQuiz.length - 1 ? 'Ďalšia otázka' : 'Zobraziť výsledok' }}
             </button>
           </div>
         </Transition>
@@ -188,7 +188,7 @@
       <div v-else data-testid="quiz-result" class="text-center">
         <p class="text-5xl mb-3">{{ scoreEmoji }}</p>
         <p class="text-2xl font-bold text-gray-800 mb-1">
-          <span data-testid="quiz-score">{{ quizScore }}</span> / {{ quiz.length }}
+          <span data-testid="quiz-score">{{ quizScore }}</span> / {{ activeQuiz.length }}
         </p>
         <p class="text-gray-600 mb-6">{{ scoreMessage }}</p>
         <button
@@ -261,12 +261,102 @@ const quiz: QuizQuestion[] = [
   },
 ]
 
+const { locale } = useI18n()
+
+const titleRu = 'Химическая связь'
+const titleUk = 'Хімічний зв\'язок'
+const activeTitle = computed(() => locale.value === 'ru' ? titleRu : locale.value === 'uk' ? titleUk : null)
+
+const quizRu: QuizQuestion[] = [
+  {
+    question: 'Какой тип связи возникает между двумя атомами водорода (H₂)?',
+    options: ['Ионная связь', 'Металлическая связь', 'Неполярная ковалентная связь', 'Полярная ковалентная связь'],
+    correctIndex: 2,
+    explanation: 'H₂ — два одинаковых атома симметрично делят электронную пару → неполярная ковалентная связь.',
+  },
+  {
+    question: 'Что обусловливает полярность молекулы H₂O?',
+    options: ['Одинаковая электроотрицательность O и H', 'Большая электроотрицательность O по сравнению с H и угловое строение', 'Наличие ионов H⁺ и OH⁻', 'Тройная связь O≡O'],
+    correctIndex: 1,
+    explanation: 'Кислород более электроотрицателен, чем водород → электронная пара смещена к O → частичный заряд δ–. Угловое строение (104,5°) препятствует компенсации диполей.',
+  },
+  {
+    question: 'Какой тип связи характерен для NaCl?',
+    options: ['Неполярная ковалентная', 'Полярная ковалентная', 'Ионная', 'Водородная'],
+    correctIndex: 2,
+    explanation: 'NaCl образуется путём переноса электрона: Na → Na⁺, Cl → Cl⁻. Ионы с противоположными зарядами притягиваются → ионная связь.',
+  },
+  {
+    question: 'Почему вода имеет необычно высокую температуру кипения по сравнению с H₂S?',
+    options: ['Большая молекулярная масса', 'Водородные связи между молекулами H₂O', 'Ковалентная тройная связь', 'Ионная структура воды'],
+    correctIndex: 1,
+    explanation: 'Молекулы H₂O связаны водородными связями (H–O···H), для их разрыва требуется дополнительная энергия → более высокая температура кипения (100 °C вместо –80 °C).',
+  },
+  {
+    question: 'Что характерно для металлического типа связи?',
+    options: ['Обобществление электронных пар', '«Море» свободных электронов в кристаллической решётке', 'Перенос электрона от металла к неметаллу', 'Только короткодействующие силы'],
+    correctIndex: 1,
+    explanation: 'В металлах положительные ионы окружены «морем» свободных электронов. Именно эти электроны обеспечивают электрическую и тепловую проводимость.',
+  },
+  {
+    question: 'Алмаз и графит — обе формы одного и того же элемента. Что это за элемент?',
+    options: ['Кремний', 'Силикат', 'Углерод', 'Карбид кремния'],
+    correctIndex: 2,
+    explanation: 'Алмаз (ковалентный кристалл, sp³) и графит (слоистая структура, sp²) — аллотропные модификации углерода (C).',
+  },
+]
+
+const quizUk: QuizQuestion[] = [
+  {
+    question: 'Який тип зв\'язку виникає між двома атомами водню (H₂)?',
+    options: ['Іонний зв\'язок', 'Металічний зв\'язок', 'Неполярний ковалентний зв\'язок', 'Полярний ковалентний зв\'язок'],
+    correctIndex: 2,
+    explanation: 'H₂ — два однакових атоми симетрично ділять електронну пару → неполярний ковалентний зв\'язок.',
+  },
+  {
+    question: 'Що зумовлює полярність молекули H₂O?',
+    options: ['Однакова електронегативність O та H', 'Більша електронегативність O порівняно з H та кутова будова', 'Наявність іонів H⁺ та OH⁻', 'Потрійний зв\'язок O≡O'],
+    correctIndex: 1,
+    explanation: 'Кисень більш електронегативний, ніж водень → електронна пара зміщена до O → частковий заряд δ–. Кутова будова (104,5°) перешкоджає компенсації диполів.',
+  },
+  {
+    question: 'Який тип зв\'язку характерний для NaCl?',
+    options: ['Неполярний ковалентний', 'Полярний ковалентний', 'Іонний', 'Водневий'],
+    correctIndex: 2,
+    explanation: 'NaCl утворюється шляхом перенесення електрона: Na → Na⁺, Cl → Cl⁻. Іони з протилежними зарядами притягуються → іонний зв\'язок.',
+  },
+  {
+    question: 'Чому вода має незвично високу температуру кипіння порівняно з H₂S?',
+    options: ['Більша молекулярна маса', 'Водневі зв\'язки між молекулами H₂O', 'Ковалентний потрійний зв\'язок', 'Іонна структура води'],
+    correctIndex: 1,
+    explanation: 'Молекули H₂O з\'єднані водневими зв\'язками (H–O···H), для їх розриву потрібна додаткова енергія → вища температура кипіння (100 °C замість –80 °C).',
+  },
+  {
+    question: 'Що характерно для металічного типу зв\'язку?',
+    options: ['Спільне використання електронних пар', '«Море» вільних електронів у кристалічній гратці', 'Перенесення електрона від металу до неметалу', 'Лише короткодіючі сили'],
+    correctIndex: 1,
+    explanation: 'У металах позитивні іони оточені «морем» вільних електронів. Саме ці електрони забезпечують електричну та теплову провідність.',
+  },
+  {
+    question: 'Алмаз і графіт — обидві форми одного й того самого елемента. Який це елемент?',
+    options: ['Кремній', 'Силікат', 'Вуглець', 'Карбід кремнію'],
+    correctIndex: 2,
+    explanation: 'Алмаз (ковалентний кристал, sp³) і графіт (шарувата структура, sp²) — алотропні модифікації вуглецю (C).',
+  },
+]
+
+const activeQuiz = computed(() => {
+  if (locale.value === 'ru') return quizRu
+  if (locale.value === 'uk') return quizUk
+  return quiz
+})
+
 const currentQ = ref(0)
 const selectedAnswer = ref<number | null>(null)
 const quizScore = ref(0)
 const quizFinished = ref(false)
 
-const currentQuestion = computed(() => quiz[currentQ.value] as QuizQuestion)
+const currentQuestion = computed(() => activeQuiz.value[currentQ.value] as QuizQuestion)
 
 function selectAnswer(i: number) {
   if (selectedAnswer.value !== null) return
@@ -275,7 +365,7 @@ function selectAnswer(i: number) {
 }
 
 function nextQuestion() {
-  if (currentQ.value < quiz.length - 1) {
+  if (currentQ.value < activeQuiz.value.length - 1) {
     currentQ.value++
     selectedAnswer.value = null
   } else {
@@ -291,11 +381,11 @@ function resetQuiz() {
 }
 
 const scoreEmoji = computed(() => {
-  const r = quizScore.value / quiz.length
+  const r = quizScore.value / activeQuiz.value.length
   return r === 1 ? '🏆' : r >= 0.7 ? '🎉' : r >= 0.4 ? '💪' : '📚'
 })
 const scoreMessage = computed(() => {
-  const r = quizScore.value / quiz.length
+  const r = quizScore.value / activeQuiz.value.length
   return r === 1 ? 'Perfektné! Zvládol si celý kvíz.' : r >= 0.7 ? 'Výborne!' : r >= 0.4 ? 'Oplatí sa zopakovať.' : 'Skús znova!'
 })
 </script>

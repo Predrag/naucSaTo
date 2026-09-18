@@ -13,7 +13,7 @@
 
     <!-- Title -->
     <h1 class="text-4xl font-bold text-blue-700 mb-4 flex items-center gap-3">
-      📊 Základy funkcie
+      📊 {{ activeTitle ?? 'Základy funkcie' }}
     </h1>
     <p class="text-gray-600 text-lg mb-10 leading-relaxed">
       Funkcia je jedným z najdôležitejších pojmov matematiky. Opisuje vzťah medzi dvoma veličinami —
@@ -365,11 +365,11 @@
       <div v-if="!quizFinished" class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
         <!-- Progress -->
         <div data-testid="quiz-progress" class="text-sm text-gray-500 mb-4">
-          Otázka {{ currentQ + 1 }} / {{ quiz.length }}
+          Otázka {{ currentQ + 1 }} / {{ activeQuiz.length }}
           <div class="w-full bg-gray-200 rounded-full h-2 mt-2">
             <div
               class="bg-blue-500 h-2 rounded-full transition-all duration-300"
-              :style="{ width: `${((currentQ + 1) / quiz.length) * 100}%` }"
+              :style="{ width: `${((currentQ + 1) / activeQuiz.length) * 100}%` }"
             />
           </div>
         </div>
@@ -421,7 +421,7 @@
           class="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-6 py-2 rounded-xl transition-colors"
           @click="nextQuestion"
         >
-          {{ currentQ < quiz.length - 1 ? 'Ďalšia otázka' : 'Zobraziť výsledok' }}
+          {{ currentQ < activeQuiz.length - 1 ? 'Ďalšia otázka' : 'Zobraziť výsledok' }}
         </button>
       </div>
 
@@ -435,7 +435,7 @@
           <div class="text-5xl mb-4">{{ scoreEmoji }}</div>
           <h3 class="text-2xl font-bold text-gray-800 mb-2">{{ scoreMessage }}</h3>
           <p data-testid="quiz-score" class="text-gray-600 mb-6">
-            Správne odpovede: <strong>{{ quizScore }}</strong> / {{ quiz.length }}
+            Správne odpovede: <strong>{{ quizScore }}</strong> / {{ activeQuiz.length }}
           </p>
           <button
             data-testid="quiz-reset-btn"
@@ -526,12 +526,152 @@ const quiz: QuizQuestion[] = [
   }
 ]
 
+const { locale } = useI18n()
+
+const titleRu = 'Основы функции'
+const titleUk = 'Основи функції'
+const activeTitle = computed(() => locale.value === 'ru' ? titleRu : locale.value === 'uk' ? titleUk : null)
+
+const quizRu: QuizQuestion[] = [
+  {
+    question: 'Что такое область определения D(f) функции?',
+    options: [
+      'Множество всех значений, которые принимает функция',
+      'Множество всех значений x, при которых функция определена',
+      'График функции в системе координат',
+      'Формула функции'
+    ],
+    correctIndex: 1,
+    explanation:
+      'Область определения D(f) — это множество всех значений аргумента x, при которых функция определена (имеет смысл).'
+  },
+  {
+    question: 'Какому условию удовлетворяет чётная функция?',
+    options: [
+      'f(−x) = −f(x)',
+      'f(x + T) = f(x)',
+      'f(−x) = f(x)',
+      'f(x₁) < f(x₂) при x₁ < x₂'
+    ],
+    correctIndex: 2,
+    explanation:
+      'Чётная функция удовлетворяет условию f(−x) = f(x). Её график симметричен относительно оси y. Нечётная функция удовлетворяет f(−x) = −f(x).'
+  },
+  {
+    question: 'Каково значение функции f(3) для f(x) = x² − 2x + 1?',
+    options: ['4', '6', '10', '2'],
+    correctIndex: 0,
+    explanation: 'f(3) = 3² − 2·3 + 1 = 9 − 6 + 1 = 4.'
+  },
+  {
+    question: 'Что такое нули функции?',
+    options: [
+      'Точки, где функция принимает минимум',
+      'Точки пересечения графика функции с осью y',
+      'Значения x, при которых f(x) = 0',
+      'Точки, где функция не определена'
+    ],
+    correctIndex: 2,
+    explanation:
+      'Нули функции — это значения x₀ ∈ D(f), при которых f(x₀) = 0. Геометрически это точки пересечения графика с осью x.'
+  },
+  {
+    question: 'Для каких функций существует обратная функция f⁻¹?',
+    options: [
+      'Для всех функций',
+      'Только для чётных функций',
+      'Только для взаимно однозначных (инъективных) функций',
+      'Только для периодических функций'
+    ],
+    correctIndex: 2,
+    explanation:
+      'Обратная функция существует только для взаимно однозначных функций — тех, у которых разным значениям x соответствуют разные значения f(x).'
+  },
+  {
+    question: 'Если g(x) = x + 2 и f(x) = x², чему равно (f∘g)(x)?',
+    options: ['x² + 2', '(x + 2)²', 'x² · (x + 2)', '2x²'],
+    correctIndex: 1,
+    explanation:
+      '(f∘g)(x) = f(g(x)) = f(x + 2) = (x + 2)². Сначала применяем g, результат подставляем в f.'
+  }
+]
+
+const quizUk: QuizQuestion[] = [
+  {
+    question: 'Що таке область визначення D(f) функції?',
+    options: [
+      'Множина всіх значень, які приймає функція',
+      'Множина всіх значень x, для яких функція визначена',
+      'Графік функції в системі координат',
+      'Формула функції'
+    ],
+    correctIndex: 1,
+    explanation:
+      'Область визначення D(f) — це множина всіх значень аргументу x, для яких функція визначена (має сенс).'
+  },
+  {
+    question: 'Якій умові задовольняє парна функція?',
+    options: [
+      'f(−x) = −f(x)',
+      'f(x + T) = f(x)',
+      'f(−x) = f(x)',
+      'f(x₁) < f(x₂) при x₁ < x₂'
+    ],
+    correctIndex: 2,
+    explanation:
+      'Парна функція задовольняє умові f(−x) = f(x). Її графік симетричний відносно осі y. Непарна функція задовольняє f(−x) = −f(x).'
+  },
+  {
+    question: 'Яке значення функції f(3) для f(x) = x² − 2x + 1?',
+    options: ['4', '6', '10', '2'],
+    correctIndex: 0,
+    explanation: 'f(3) = 3² − 2·3 + 1 = 9 − 6 + 1 = 4.'
+  },
+  {
+    question: 'Що таке нулі функції?',
+    options: [
+      'Точки, де функція приймає мінімум',
+      'Точки перетину графіка функції з віссю y',
+      'Значення x, для яких f(x) = 0',
+      'Точки, де функція не визначена'
+    ],
+    correctIndex: 2,
+    explanation:
+      'Нулі функції — це значення x₀ ∈ D(f), для яких f(x₀) = 0. Геометрично це точки перетину графіка з віссю x.'
+  },
+  {
+    question: 'Для яких функцій існує обернена функція f⁻¹?',
+    options: [
+      'Для всіх функцій',
+      'Тільки для парних функцій',
+      'Тільки для взаємно однозначних (ін\'єктивних) функцій',
+      'Тільки для періодичних функцій'
+    ],
+    correctIndex: 2,
+    explanation:
+      'Обернена функція існує тільки для взаємно однозначних функцій — тих, у яких різним значенням x відповідають різні значення f(x).'
+  },
+  {
+    question: 'Якщо g(x) = x + 2 і f(x) = x², чому дорівнює (f∘g)(x)?',
+    options: ['x² + 2', '(x + 2)²', 'x² · (x + 2)', '2x²'],
+    correctIndex: 1,
+    explanation:
+      '(f∘g)(x) = f(g(x)) = f(x + 2) = (x + 2)². Спочатку застосовуємо g, результат підставляємо в f.'
+  }
+]
+
+const activeQuiz = computed(() => {
+  if (locale.value === 'ru') return quizRu
+  if (locale.value === 'uk') return quizUk
+  return quiz
+})
+
 const currentQ = ref(0)
 const selectedAnswer = ref<number | null>(null)
 const quizScore = ref(0)
 const quizFinished = ref(false)
 
-const currentQuestion = computed(() => quiz[currentQ.value] as QuizQuestion)
+const currentQuestion = computed(() => activeQuiz.value[currentQ.value] as QuizQuestion)
 
 function optionClass(i: number): string {
   if (selectedAnswer.value === null) {
@@ -553,7 +693,7 @@ function selectAnswer(i: number): void {
 }
 
 function nextQuestion(): void {
-  if (currentQ.value < quiz.length - 1) {
+  if (currentQ.value < activeQuiz.value.length - 1) {
     currentQ.value++
     selectedAnswer.value = null
   } else {
@@ -569,12 +709,12 @@ function resetQuiz(): void {
 }
 
 const scoreEmoji = computed(() => {
-  const r = quizScore.value / quiz.length
+  const r = quizScore.value / activeQuiz.value.length
   return r === 1 ? '🏆' : r >= 0.7 ? '🎉' : r >= 0.4 ? '💪' : '📚'
 })
 
 const scoreMessage = computed(() => {
-  const r = quizScore.value / quiz.length
+  const r = quizScore.value / activeQuiz.value.length
   return r === 1
     ? 'Perfektné!'
     : r >= 0.7

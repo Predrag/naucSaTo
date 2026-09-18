@@ -14,7 +14,7 @@
     <!-- Title -->
     <div class="flex items-center gap-3 mb-4">
       <span class="text-4xl">💹</span>
-      <h1 class="text-4xl font-extrabold text-blue-700">Percentuálne výpočty</h1>
+      <h1 class="text-4xl font-extrabold text-blue-700">{{ activeTitle ?? 'Percentuálne výpočty' }}</h1>
     </div>
     <p class="text-gray-500 text-lg mb-10 leading-relaxed">
       Percentá sú základným nástrojom matematiky aj každodenného života — pomáhajú nám porovnávať zlomky,
@@ -399,12 +399,102 @@ const quiz: QuizQuestion[] = [
   }
 ]
 
+const { locale } = useI18n()
+
+const titleRu = 'Процентные вычисления'
+const titleUk = 'Відсоткові обчислення'
+const activeTitle = computed(() => locale.value === 'ru' ? titleRu : locale.value === 'uk' ? titleUk : null)
+
+const quizRu: QuizQuestion[] = [
+  {
+    question: 'Что такое 1 % от 800?',
+    options: ['8', '80', '0,8', '800'],
+    correctIndex: 0,
+    explanation: '1 % = 1/100, то есть 800 × 0,01 = 8.'
+  },
+  {
+    question: 'В школе 600 учеников. 35 % из них — первоклассники. Сколько первоклассников?',
+    options: ['180', '210', '200', '250'],
+    correctIndex: 1,
+    explanation: '600 × 35/100 = 600 × 0,35 = 210 первоклассников.'
+  },
+  {
+    question: 'Цена ноутбука была 850 €, после скидки — 680 €. На сколько процентов снизилась цена?',
+    options: ['25 %', '17 %', '20 %', '15 %'],
+    correctIndex: 2,
+    explanation: 'Снижение = 170 €. p = (170 / 850) × 100 = 20 %.'
+  },
+  {
+    question: 'Товар стоит без НДС 250 €. НДС — 20 %. Какова цена с НДС?',
+    options: ['270 €', '275 €', '310 €', '300 €'],
+    correctIndex: 3,
+    explanation: '250 × 1,20 = 300 €. НДС 20 % от 250 € — это 50 €, итого 300 €.'
+  },
+  {
+    question: 'Вы кладёте 1 000 € на счёт с годовой ставкой 5 %. Сколько будет через 3 года при простом начислении процентов?',
+    options: ['1 050 €', '1 157,63 €', '1 200 €', '1 150 €'],
+    correctIndex: 3,
+    explanation: 'Kₙ = 1 000 × (1 + 0,05 × 3) = 1 000 × 1,15 = 1 150 €.'
+  },
+  {
+    question: 'При сложном начислении процентов вы вкладываете 2 000 € на 2 года, годовая ставка — 10 %. Какой результат?',
+    options: ['2 400 €', '2 420 €', '2 200 €', '2 440 €'],
+    correctIndex: 1,
+    explanation: 'Kₙ = 2 000 × (1,10)² = 2 000 × 1,21 = 2 420 €. Каждый год начисляются проценты и на предыдущие проценты.'
+  }
+]
+
+const quizUk: QuizQuestion[] = [
+  {
+    question: 'Що таке 1 % від 800?',
+    options: ['8', '80', '0,8', '800'],
+    correctIndex: 0,
+    explanation: '1 % = 1/100, тобто 800 × 0,01 = 8.'
+  },
+  {
+    question: 'У школі 600 учнів. 35 % з них — першокласники. Скільки першокласників?',
+    options: ['180', '210', '200', '250'],
+    correctIndex: 1,
+    explanation: '600 × 35/100 = 600 × 0,35 = 210 першокласників.'
+  },
+  {
+    question: 'Ціна ноутбука була 850 €, після знижки — 680 €. На скільки відсотків знизилась ціна?',
+    options: ['25 %', '17 %', '20 %', '15 %'],
+    correctIndex: 2,
+    explanation: 'Зниження = 170 €. p = (170 / 850) × 100 = 20 %.'
+  },
+  {
+    question: 'Товар коштує без ПДВ 250 €. ПДВ — 20 %. Яка ціна з ПДВ?',
+    options: ['270 €', '275 €', '310 €', '300 €'],
+    correctIndex: 3,
+    explanation: '250 × 1,20 = 300 €. ПДВ 20 % від 250 € — це 50 €, разом 300 €.'
+  },
+  {
+    question: 'Ти вкладаєш 1 000 € на рахунок з річною ставкою 5 %. Скільки матимеш через 3 роки при простому нарахуванні відсотків?',
+    options: ['1 050 €', '1 157,63 €', '1 200 €', '1 150 €'],
+    correctIndex: 3,
+    explanation: 'Kₙ = 1 000 × (1 + 0,05 × 3) = 1 000 × 1,15 = 1 150 €.'
+  },
+  {
+    question: 'При складному нарахуванні відсотків ти вкладаєш 2 000 € на 2 роки, річна ставка — 10 %. Який результат?',
+    options: ['2 400 €', '2 420 €', '2 200 €', '2 440 €'],
+    correctIndex: 1,
+    explanation: 'Kₙ = 2 000 × (1,10)² = 2 000 × 1,21 = 2 420 €. Щороку нараховуються відсотки і на попередні відсотки.'
+  }
+]
+
+const activeQuiz = computed(() => {
+  if (locale.value === 'ru') return quizRu
+  if (locale.value === 'uk') return quizUk
+  return quiz
+})
+
 const currentQ = ref(0)
 const selectedAnswer = ref<number | null>(null)
 const quizScore = ref(0)
 const quizFinished = ref(false)
 
-const currentQuestion = computed(() => quiz[currentQ.value] as QuizQuestion)
+const currentQuestion = computed(() => activeQuiz.value[currentQ.value] as QuizQuestion)
 
 function selectAnswer(i: number) {
   if (selectedAnswer.value !== null) return

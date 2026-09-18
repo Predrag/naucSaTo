@@ -12,7 +12,7 @@
 
     <div class="flex items-center gap-3 mb-4">
       <span class="text-5xl">📋</span>
-      <h1 class="text-4xl font-extrabold text-orange-700">Periodická sústava prvkov</h1>
+      <h1 class="text-4xl font-extrabold text-orange-700">{{ activeTitle ?? 'Periodická sústava prvkov' }}</h1>
     </div>
     <p class="text-lg text-gray-600 mb-10">
       Periodická sústava prvkov (PSP) je usporiadanie chemických prvkov podľa ich protónového čísla. Odhaľuje pravidelnosti vo vlastnostiach prvkov a umožňuje predpovedať, ako sa budú správať v chemických reakciách.
@@ -296,12 +296,102 @@ const quiz: QuizQuestion[] = [
   },
 ]
 
+const { locale } = useI18n()
+
+const titleRu = 'Периодическая система элементов'
+const titleUk = 'Періодична система елементів'
+const activeTitle = computed(() => locale.value === 'ru' ? titleRu : locale.value === 'uk' ? titleUk : null)
+
+const quizRu: QuizQuestion[] = [
+  {
+    question: 'Что определяет порядок элемента в периодической системе?',
+    options: ['Атомная масса', 'Протонное число Z', 'Количество нейтронов', 'Количество электронных слоёв'],
+    correctIndex: 1,
+    explanation: 'Элементы расположены по возрастающему протонному числу Z (числу протонов в ядре).',
+  },
+  {
+    question: 'В какой группе ПСЭ находятся галогены?',
+    options: ['Группа 1', 'Группа 2', 'Группа 16', 'Группа 17'],
+    correctIndex: 3,
+    explanation: 'Галогены (F, Cl, Br, I) находятся в 17-й группе. У них 7 валентных электронов, и им не хватает 1 электрона до октета.',
+  },
+  {
+    question: 'Как изменяется электроотрицательность в периоде слева направо?',
+    options: ['Убывает', 'Возрастает', 'Остаётся неизменной', 'Сначала возрастает, потом убывает'],
+    correctIndex: 1,
+    explanation: 'В периоде слева направо электроотрицательность возрастает — атомы имеют больше протонов и сильнее притягивают электроны.',
+  },
+  {
+    question: 'Что общего у элементов одной группы ПСЭ?',
+    options: ['Одинаковое число электронов', 'Одинаковое число валентных электронов', 'Одинаковая атомная масса', 'Одинаковое число нейтронов'],
+    correctIndex: 1,
+    explanation: 'Элементы одной группы имеют одинаковое число валентных электронов, что обеспечивает им схожие химические свойства.',
+  },
+  {
+    question: 'Натрий (Na) относится к:',
+    options: ['Галогенам', 'Благородным газам', 'Щелочным металлам', 'Щелочноземельным металлам'],
+    correctIndex: 2,
+    explanation: 'Натрий (Z=11) находится в 1-й группе — щелочные металлы. Мягкий, реактивный, бурно реагирует с водой.',
+  },
+  {
+    question: 'Сколько периодов содержит периодическая система элементов?',
+    options: ['5', '6', '7', '8'],
+    correctIndex: 2,
+    explanation: 'ПСЭ содержит 7 периодов (рядов). Первый период имеет только 2 элемента (H, He), седьмой — незавершённый.',
+  },
+]
+
+const quizUk: QuizQuestion[] = [
+  {
+    question: 'Що визначає порядок елемента в періодичній системі?',
+    options: ['Атомна маса', 'Протонне число Z', 'Кількість нейтронів', 'Кількість електронних шарів'],
+    correctIndex: 1,
+    explanation: 'Елементи розташовані за зростаючим протонним числом Z (кількістю протонів у ядрі).',
+  },
+  {
+    question: 'У якій групі ПСЕ знаходяться галогени?',
+    options: ['Група 1', 'Група 2', 'Група 16', 'Група 17'],
+    correctIndex: 3,
+    explanation: 'Галогени (F, Cl, Br, I) знаходяться в 17-й групі. Вони мають 7 валентних електронів і їм не вистачає 1 електрона до октету.',
+  },
+  {
+    question: 'Як змінюється електронегативність у межах періоду зліва направо?',
+    options: ['Спадає', 'Зростає', 'Залишається незмінною', 'Спочатку зростає, потім спадає'],
+    correctIndex: 1,
+    explanation: 'У межах періоду зліва направо електронегативність зростає — атоми мають більше протонів і сильніше притягують електрони.',
+  },
+  {
+    question: 'Що спільного у елементів однієї групи ПСЕ?',
+    options: ['Однакова кількість електронів', 'Однакова кількість валентних електронів', 'Однакова атомна маса', 'Однакова кількість нейтронів'],
+    correctIndex: 1,
+    explanation: 'Елементи однієї групи мають однакову кількість валентних електронів, що зумовлює схожі хімічні властивості.',
+  },
+  {
+    question: 'Натрій (Na) належить до:',
+    options: ['Галогенів', 'Благородних газів', 'Лужних металів', 'Лужноземельних металів'],
+    correctIndex: 2,
+    explanation: 'Натрій (Z=11) знаходиться в 1-й групі — лужні метали. М\'який, реактивний, бурхливо реагує з водою.',
+  },
+  {
+    question: 'Скільки періодів містить періодична система елементів?',
+    options: ['5', '6', '7', '8'],
+    correctIndex: 2,
+    explanation: 'ПСЕ містить 7 періодів (рядів). Перший період має лише 2 елементи (H, He), сьомий — незавершений.',
+  },
+]
+
+const activeQuiz = computed(() => {
+  if (locale.value === 'ru') return quizRu
+  if (locale.value === 'uk') return quizUk
+  return quiz
+})
+
 const currentQ = ref(0)
 const selectedAnswer = ref<number | null>(null)
 const quizScore = ref(0)
 const quizFinished = ref(false)
 
-const currentQuestion = computed(() => quiz[currentQ.value] as QuizQuestion)
+const currentQuestion = computed(() => activeQuiz.value[currentQ.value] as QuizQuestion)
 
 function selectAnswer(i: number) {
   if (selectedAnswer.value !== null) return
